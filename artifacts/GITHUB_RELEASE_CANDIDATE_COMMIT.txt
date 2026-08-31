@@ -1,0 +1,6 @@
+The archival release candidate is the annotated Git tag `v1.0.0`.
+Resolve the immutable commit with:
+
+    git rev-parse 'v1.0.0^{}'
+
+The concrete SHA is also recorded in the external release checksum record generated after the tag is created.

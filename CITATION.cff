@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use this benchmark, please cite the archived software release and the associated article when available."
+title: "FGCS Quantum Resource Benchmark: Resource-Aware Amplitude Amplification with QAOA and Classical References"
+type: software
+authors:
+  - family-names: Erkalkan
+    given-names: Ercan
+    affiliation: "Marmara University, Vocational School of Technical Sciences, Department of Electronics and Automation, Artificial Intelligence Operator Program"
+version: 1.0.0
+license: BSD-3-Clause
+repository-code: "https://github.com/ErcanErkalkan/FGCS-Quantum-Resource-Benchmark"
+keywords:
+  - quantum computing
+  - amplitude amplification
+  - QAOA
+  - Max-Cut
+  - hybrid quantum-classical systems
+  - reproducible benchmarking
+abstract: >-
+  Reproducibility package for a resource-aware weighted Max-Cut benchmark that
+  separates operational target construction, amplitude-amplification configuration,
+  logical resource modeling, ideal-statevector QAOA, and classical reference methods.
+  The package includes exact micro-instance ground truth, fixed-density random and
+  structured graph coverage, inference tables, resource-sensitivity studies,
+  generated figures/tables, tests, and fail-closed preflight validation. It makes no
+  hardware-speedup or quantum-advantage claim.

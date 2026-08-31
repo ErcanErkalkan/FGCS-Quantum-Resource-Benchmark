@@ -1,0 +1,117 @@
+\begin{thebibliography}{10}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \def\href#1#2{#2} \def\path#1{#1}\fi
+
+\bibitem{grover1996}
+L.~K. Grover, A fast quantum mechanical algorithm for database search, in:
+  Proceedings of the Twenty-Eighth Annual ACM Symposium on Theory of Computing,
+  1996, pp. 212--219.
+\newblock \href {https://doi.org/10.1145/237814.237866}
+  {\path{doi:10.1145/237814.237866}}.
+
+\bibitem{brassard2002}
+G.~Brassard, P.~H{\o}yer, M.~Mosca, A.~Tapp, Quantum amplitude amplification
+  and estimation, in: Quantum Computation and Information, Vol. 305 of
+  Contemporary Mathematics, American Mathematical Society, 2002, pp. 53--74.
+\newblock \href {https://doi.org/10.1090/conm/305/05215}
+  {\path{doi:10.1090/conm/305/05215}}.
+
+\bibitem{netzer2026}
+G.~Netzer, P.~R. Hegde, I.~Peng, S.~Markidis, Tightly-integrated
+  quantum--classical computing using the qhdl hardware description language,
+  Future Generation Computer Systems 174 (2026) 107977.
+\newblock \href {https://doi.org/10.1016/j.future.2025.107977}
+  {\path{doi:10.1016/j.future.2025.107977}}.
+
+\bibitem{markidis2026editorial}
+S.~Markidis, L.~Grandinetti, M.~Taufer, Editorial on future generation computer
+  systems special collection on advances in quantum computing: methods,
+  algorithms, and systems vol ii, Future Generation Computer Systems 174 (2026)
+  107993.
+\newblock \href {https://doi.org/10.1016/j.future.2025.107993}
+  {\path{doi:10.1016/j.future.2025.107993}}.
+
+\bibitem{vallero2026}
+M.~Vallero, P.~Rech, F.~Vella, State of practice: Evaluating gpu performance of
+  state vector and tensor network methods, Future Generation Computer Systems
+  174 (2026) 107927.
+\newblock \href {https://doi.org/10.1016/j.future.2025.107927}
+  {\path{doi:10.1016/j.future.2025.107927}}.
+
+\bibitem{farhi2014}
+E.~Farhi, J.~Goldstone, S.~Gutmann, A quantum approximate optimization
+  algorithm, arXiv preprint arXiv:1411.4028 (2014).
+
+\bibitem{fernandez2022}
+M.~Fern{\'a}ndez-Pend{\'a}s, E.~F. Combarro, S.~Vallecorsa, J.~Ranilla, I.~F.
+  R{\'u}a, A study of the performance of classical minimizers in the quantum
+  approximate optimization algorithm, Journal of Computational and Applied
+  Mathematics 404 (2022) 113388.
+\newblock \href {https://doi.org/10.1016/j.cam.2021.113388}
+  {\path{doi:10.1016/j.cam.2021.113388}}.
+
+\bibitem{sack2021}
+S.~H. Sack, M.~Serbyn, Quantum annealing initialization of the quantum
+  approximate optimization algorithm, Quantum 5 (2021) 491.
+\newblock \href {https://doi.org/10.22331/q-2021-07-01-491}
+  {\path{doi:10.22331/q-2021-07-01-491}}.
+
+\bibitem{pan2022}
+Y.~Pan, Y.~Tong, Y.~Yang, Automatic depth optimization for a quantum
+  approximate optimization algorithm, Physical Review A 105 (2022) 032433.
+\newblock \href {https://doi.org/10.1103/PhysRevA.105.032433}
+  {\path{doi:10.1103/PhysRevA.105.032433}}.
+
+\bibitem{yoder2014}
+T.~J. Yoder, G.~H. Low, I.~L. Chuang, Fixed-point quantum search with an
+  optimal number of queries, Physical Review Letters 113 (2014) 210501.
+\newblock \href {https://doi.org/10.1103/PhysRevLett.113.210501}
+  {\path{doi:10.1103/PhysRevLett.113.210501}}.
+
+\bibitem{boyer1998}
+M.~Boyer, G.~Brassard, P.~H{\o}yer, A.~Tapp, Tight bounds on quantum searching,
+  Fortschritte der Physik 46~(4--5) (1998) 493--505.
+\newblock \href
+  {https://doi.org/10.1002/(SICI)1521-3978(199806)46:4/5<493::AID-PROP493>3.0.CO;2-P}
+  {\path{doi:10.1002/(SICI)1521-3978(199806)46:4/5<493::AID-PROP493>3.0.CO;2-P}}.
+
+\bibitem{tirado2026}
+J.~A. Tirado-Dom{\'i}nguez, E.~Guti{\'e}rrez, O.~Plata, Qtis: A qaoa-based
+  quantum time interval scheduler, Future Generation Computer Systems 183
+  (2026) 108594.
+\newblock \href {https://doi.org/10.1016/j.future.2026.108594}
+  {\path{doi:10.1016/j.future.2026.108594}}.
+
+\bibitem{li2023qasmbench}
+A.~Li, S.~Stein, S.~Krishnamoorthy, J.~Ang, {QASMBench}: A low-level quantum
+  benchmark suite for {NISQ} evaluation and simulation, ACM Transactions on
+  Quantum Computing 4~(2) (2023) 1--26.
+\newblock \href {https://doi.org/10.1145/3550488} {\path{doi:10.1145/3550488}}.
+
+\bibitem{tomesh2022supermarq}
+T.~Tomesh, P.~Gokhale, V.~Omole, G.~S. Ravi, K.~N. Smith, J.~Viszlai, X.-C. Wu,
+  N.~Hardavellas, M.~Martonosi, F.~T. Chong, {SupermarQ}: A scalable quantum
+  benchmark suite, in: 2022 IEEE International Symposium on High-Performance
+  Computer Architecture (HPCA), 2022, pp. 587--603.
+\newblock \href {https://doi.org/10.1109/HPCA53966.2022.00050}
+  {\path{doi:10.1109/HPCA53966.2022.00050}}.
+
+\bibitem{lubinski2023application}
+T.~Lubinski, S.~Johri, P.~Varosy, J.~Coleman, L.~Zhao, J.~Necaise, C.~H.
+  Baldwin, K.~Mayer, T.~Proctor, Application-oriented performance benchmarks
+  for quantum computing, IEEE Transactions on Quantum Engineering 4 (2023)
+  1--32.
+\newblock \href {https://doi.org/10.1109/TQE.2023.3253761}
+  {\path{doi:10.1109/TQE.2023.3253761}}.
+
+\bibitem{goemans1995}
+M.~X. Goemans, D.~P. Williamson, Improved approximation algorithms for maximum
+  cut and satisfiability problems using semidefinite programming, Journal of
+  the ACM 42~(6) (1995) 1115--1145.
+\newblock \href {https://doi.org/10.1145/227683.227684}
+  {\path{doi:10.1145/227683.227684}}.
+
+\end{thebibliography}

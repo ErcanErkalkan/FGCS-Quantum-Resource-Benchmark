@@ -1,0 +1,804 @@
+{
+  "status": "PASS",
+  "created_utc": "2026-08-31T16:42:33.684318+00:00",
+  "root": "/mnt/data/fgcs_p2_license",
+  "runtime_checked": true,
+  "artifacts_checked": true,
+  "summary": {
+    "pass": 158,
+    "warn": 0,
+    "fail": 0
+  },
+  "checks": [
+    {
+      "name": "required:README.md",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:requirements.txt",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:requirements.lock",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:.python-version",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:src/benchmark.py",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:src/render_tables.py",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:src/render_figures.py",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:src/render_p2_figures.py",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:src/preflight.py",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:src/finalize_manifest.py",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:tests/test_core.py",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:tests/test_preflight.py",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:tests/test_finalize_manifest.py",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:manuscript/main.tex",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:manuscript/references.bib",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:manuscript/CLAIMS_REGISTER.md",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/run_manifest.json",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:reproducibility/ENVIRONMENT_LOCK.md",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:reproducibility/UW_PREFLIGHT.md",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "python-version",
+      "status": "PASS",
+      "detail": "expected=3.13.5; actual=3.13.5"
+    },
+    {
+      "name": "requirements-lock-parse",
+      "status": "PASS",
+      "detail": "16 exact pins"
+    },
+    {
+      "name": "package:contourpy",
+      "status": "PASS",
+      "detail": "expected=1.3.3; actual=1.3.3"
+    },
+    {
+      "name": "package:cycler",
+      "status": "PASS",
+      "detail": "expected=0.12.1; actual=0.12.1"
+    },
+    {
+      "name": "package:fonttools",
+      "status": "PASS",
+      "detail": "expected=4.63.0; actual=4.63.0"
+    },
+    {
+      "name": "package:iniconfig",
+      "status": "PASS",
+      "detail": "expected=2.3.0; actual=2.3.0"
+    },
+    {
+      "name": "package:kiwisolver",
+      "status": "PASS",
+      "detail": "expected=1.5.0; actual=1.5.0"
+    },
+    {
+      "name": "package:matplotlib",
+      "status": "PASS",
+      "detail": "expected=3.10.8; actual=3.10.8"
+    },
+    {
+      "name": "package:numpy",
+      "status": "PASS",
+      "detail": "expected=2.3.5; actual=2.3.5"
+    },
+    {
+      "name": "package:packaging",
+      "status": "PASS",
+      "detail": "expected=25.0; actual=25.0"
+    },
+    {
+      "name": "package:pillow",
+      "status": "PASS",
+      "detail": "expected=12.3.0; actual=12.3.0"
+    },
+    {
+      "name": "package:pluggy",
+      "status": "PASS",
+      "detail": "expected=1.6.0; actual=1.6.0"
+    },
+    {
+      "name": "package:pygments",
+      "status": "PASS",
+      "detail": "expected=2.20.0; actual=2.20.0"
+    },
+    {
+      "name": "package:pyparsing",
+      "status": "PASS",
+      "detail": "expected=3.3.2; actual=3.3.2"
+    },
+    {
+      "name": "package:pytest",
+      "status": "PASS",
+      "detail": "expected=9.0.2; actual=9.0.2"
+    },
+    {
+      "name": "package:python-dateutil",
+      "status": "PASS",
+      "detail": "expected=2.9.0.post0; actual=2.9.0.post0"
+    },
+    {
+      "name": "package:scipy",
+      "status": "PASS",
+      "detail": "expected=1.17.0; actual=1.17.0"
+    },
+    {
+      "name": "package:six",
+      "status": "PASS",
+      "detail": "expected=1.17.0; actual=1.17.0"
+    },
+    {
+      "name": "manifest:hardware_claims",
+      "status": "PASS",
+      "detail": "false"
+    },
+    {
+      "name": "manifest:compiler_claims",
+      "status": "PASS",
+      "detail": "false"
+    },
+    {
+      "name": "claim-fence:manuscript/main.tex",
+      "status": "PASS",
+      "detail": "no affirmative hardware/quantum-advantage claim pattern"
+    },
+    {
+      "name": "claim-fence:README.md",
+      "status": "PASS",
+      "detail": "no affirmative hardware/quantum-advantage claim pattern"
+    },
+    {
+      "name": "manuscript-fence:primary-suite-size",
+      "status": "PASS",
+      "detail": "required phrase='18 primary'"
+    },
+    {
+      "name": "manuscript-fence:coverage-suite-size",
+      "status": "PASS",
+      "detail": "required phrase='63 coverage'"
+    },
+    {
+      "name": "manuscript-fence:fixed-qaoa-inference-boundary",
+      "status": "PASS",
+      "detail": "required phrase='18-instance QAOA'"
+    },
+    {
+      "name": "manuscript-fence:no-physical-backend",
+      "status": "PASS",
+      "detail": "required phrase='No physical-backend'"
+    },
+    {
+      "name": "manuscript-fence:fixed-density-random-design",
+      "status": "PASS",
+      "detail": "required phrase='fixed-edge-count/fixed-density random simple-graph design'"
+    },
+    {
+      "name": "manuscript-fence:credit-statement",
+      "status": "PASS",
+      "detail": "required phrase='CRediT authorship contribution statement'"
+    },
+    {
+      "name": "manuscript-fence:ai-version-log",
+      "status": "PASS",
+      "detail": "required phrase='GPT-5.6 Sol'"
+    },
+    {
+      "name": "manuscript-fence:ai-history-limit",
+      "status": "PASS",
+      "detail": "required phrase='not consistently logged at the exact model-version level'"
+    },
+    {
+      "name": "bibliography-fence:boyer1998",
+      "status": "PASS",
+      "detail": "required BibTeX key=boyer1998"
+    },
+    {
+      "name": "bibliography-fence:li2023qasmbench",
+      "status": "PASS",
+      "detail": "required BibTeX key=li2023qasmbench"
+    },
+    {
+      "name": "bibliography-fence:tomesh2022supermarq",
+      "status": "PASS",
+      "detail": "required BibTeX key=tomesh2022supermarq"
+    },
+    {
+      "name": "bibliography-fence:lubinski2023application",
+      "status": "PASS",
+      "detail": "required BibTeX key=lubinski2023application"
+    },
+    {
+      "name": "random-family-label",
+      "status": "PASS",
+      "detail": "requires random_fixed_density and forbids legacy erdos_renyi label"
+    },
+    {
+      "name": "tex-env:abstract",
+      "status": "PASS",
+      "detail": "begin=1; end=1"
+    },
+    {
+      "name": "tex-env:align",
+      "status": "PASS",
+      "detail": "begin=2; end=2"
+    },
+    {
+      "name": "tex-env:document",
+      "status": "PASS",
+      "detail": "begin=1; end=1"
+    },
+    {
+      "name": "tex-env:enumerate",
+      "status": "PASS",
+      "detail": "begin=1; end=1"
+    },
+    {
+      "name": "tex-env:equation",
+      "status": "PASS",
+      "detail": "begin=21; end=21"
+    },
+    {
+      "name": "tex-env:figure",
+      "status": "PASS",
+      "detail": "begin=8; end=8"
+    },
+    {
+      "name": "tex-env:frontmatter",
+      "status": "PASS",
+      "detail": "begin=1; end=1"
+    },
+    {
+      "name": "tex-env:keyword",
+      "status": "PASS",
+      "detail": "begin=1; end=1"
+    },
+    {
+      "name": "tex-env:quote",
+      "status": "PASS",
+      "detail": "begin=1; end=1"
+    },
+    {
+      "name": "tex-env:table",
+      "status": "PASS",
+      "detail": "begin=18; end=18"
+    },
+    {
+      "name": "duplicate:main.tex",
+      "status": "PASS",
+      "detail": "none"
+    },
+    {
+      "name": "duplicate:references.bib",
+      "status": "PASS",
+      "detail": "none"
+    },
+    {
+      "name": "duplicate:CLAIMS_REGISTER.md",
+      "status": "PASS",
+      "detail": "none"
+    },
+    {
+      "name": "duplicate:run_manifest.json",
+      "status": "PASS",
+      "detail": "none"
+    },
+    {
+      "name": "artifact-hash:amplitude_amplification_sensitivity.csv",
+      "status": "PASS",
+      "detail": "expected=e4ff5991427097da7ec8d7b4c2c12687b41d57d03c038c0f4624c6de95754338; actual=e4ff5991427097da7ec8d7b4c2c12687b41d57d03c038c0f4624c6de95754338"
+    },
+    {
+      "name": "artifact-hash:classical_budgeted_runs.csv",
+      "status": "PASS",
+      "detail": "expected=e1325b7d9b22876560756beb9a59cc995c90c5249f254ac5f8cc8c50a02bc43f; actual=e1325b7d9b22876560756beb9a59cc995c90c5249f254ac5f8cc8c50a02bc43f"
+    },
+    {
+      "name": "artifact-hash:classical_budgeted_summary.csv",
+      "status": "PASS",
+      "detail": "expected=1e64f5d72810178037a78175311ecf93bcfff6725c30d32baefe429007d0d722; actual=1e64f5d72810178037a78175311ecf93bcfff6725c30d32baefe429007d0d722"
+    },
+    {
+      "name": "artifact-hash:classical_hillclimb.csv",
+      "status": "PASS",
+      "detail": "expected=ff467ae2c6894686fae6913403a8b2cf0dd65f7e6f4988f0361a1cf34e8ac3dd; actual=ff467ae2c6894686fae6913403a8b2cf0dd65f7e6f4988f0361a1cf34e8ac3dd"
+    },
+    {
+      "name": "artifact-hash:coupled_oracle_depth_sensitivity.csv",
+      "status": "PASS",
+      "detail": "expected=4fc0bb52e508a1f364d0c77a0242c022b71b213348f6d827ff42e18bbf934684; actual=4fc0bb52e508a1f364d0c77a0242c022b71b213348f6d827ff42e18bbf934684"
+    },
+    {
+      "name": "artifact-hash:coverage_coupled_oracle.csv",
+      "status": "PASS",
+      "detail": "expected=24b7954e06483ad5ea2d9aebd2f6de80461352bbcaf1c1c7abf29bad915edf43; actual=24b7954e06483ad5ea2d9aebd2f6de80461352bbcaf1c1c7abf29bad915edf43"
+    },
+    {
+      "name": "artifact-hash:coverage_graphs.csv",
+      "status": "PASS",
+      "detail": "expected=b7cc2440cc0e728e6f918e194a7f15fb1199d84839a383b9c106bf1c607b1374; actual=b7cc2440cc0e728e6f918e194a7f15fb1199d84839a383b9c106bf1c607b1374"
+    },
+    {
+      "name": "artifact-hash:coverage_ground_truth.csv",
+      "status": "PASS",
+      "detail": "expected=3220e68e5cd8cc1c477f5e99365031e88fab78d11adbdbf6be44e95f67e3cb2e; actual=3220e68e5cd8cc1c477f5e99365031e88fab78d11adbdbf6be44e95f67e3cb2e"
+    },
+    {
+      "name": "artifact-hash:coverage_hillclimb.csv",
+      "status": "PASS",
+      "detail": "expected=4337e59df672424a81520c15c9baf85bb740c8ab713241a6586bf146038a59ee; actual=4337e59df672424a81520c15c9baf85bb740c8ab713241a6586bf146038a59ee"
+    },
+    {
+      "name": "artifact-hash:coverage_operational_thresholds.csv",
+      "status": "PASS",
+      "detail": "expected=eb8c5611af365e65d70a52bb90e6833ac5cd2b078f84894d4581571c3e55998d; actual=eb8c5611af365e65d70a52bb90e6833ac5cd2b078f84894d4581571c3e55998d"
+    },
+    {
+      "name": "artifact-hash:coverage_summary.csv",
+      "status": "PASS",
+      "detail": "expected=d56d5315868209b91c421f50013e403b5ac44fd9059834e1cb1ac05d1391bcc6; actual=d56d5315868209b91c421f50013e403b5ac44fd9059834e1cb1ac05d1391bcc6"
+    },
+    {
+      "name": "artifact-hash:fixed_overhead_sensitivity.csv",
+      "status": "PASS",
+      "detail": "expected=78ec97afcbd816cbb06805c722a516457400b034176232a91bf53b80250d6a71; actual=78ec97afcbd816cbb06805c722a516457400b034176232a91bf53b80250d6a71"
+    },
+    {
+      "name": "artifact-hash:large_searchspace_sensitivity.csv",
+      "status": "PASS",
+      "detail": "expected=370ee4be210b585781683897d19e2c42663b4adbfa7cca3c30b96dba91acc5b3; actual=370ee4be210b585781683897d19e2c42663b4adbfa7cca3c30b96dba91acc5b3"
+    },
+    {
+      "name": "artifact-hash:maxcut_ground_truth.csv",
+      "status": "PASS",
+      "detail": "expected=b55981c44ea4bc6cc8cde1296d4b8d7c0ed4f352767fcbd0f0fef15745fcc6d8; actual=b55981c44ea4bc6cc8cde1296d4b8d7c0ed4f352767fcbd0f0fef15745fcc6d8"
+    },
+    {
+      "name": "artifact-hash:maxcut_suite_graphs.csv",
+      "status": "PASS",
+      "detail": "expected=5403b56ade24e49ff6433d38f75f321c576955c4ff826b6b0c9f3da014218133; actual=5403b56ade24e49ff6433d38f75f321c576955c4ff826b6b0c9f3da014218133"
+    },
+    {
+      "name": "artifact-hash:operational_target_metric_summary.csv",
+      "status": "PASS",
+      "detail": "expected=7f2960377ce1508d3ec4757da48959ca67909aebab9f89ae122038c5ef8ec66e; actual=7f2960377ce1508d3ec4757da48959ca67909aebab9f89ae122038c5ef8ec66e"
+    },
+    {
+      "name": "artifact-hash:operational_thresholds.csv",
+      "status": "PASS",
+      "detail": "expected=edbf99c55731d825580dfcad30046997949e3027276aa08667004183b6303665; actual=edbf99c55731d825580dfcad30046997949e3027276aa08667004183b6303665"
+    },
+    {
+      "name": "artifact-hash:oracle_resource_model.csv",
+      "status": "PASS",
+      "detail": "expected=72eea63b89395b4f0de0c33128c9a940fafb05e02fd512edf47e86e143b07009; actual=72eea63b89395b4f0de0c33128c9a940fafb05e02fd512edf47e86e143b07009"
+    },
+    {
+      "name": "artifact-hash:qaoa_aggregate_summary.csv",
+      "status": "PASS",
+      "detail": "expected=021539b1cad27a928c9e52d80d08bf067b6d94cd171a038332f4766b16147003; actual=021539b1cad27a928c9e52d80d08bf067b6d94cd171a038332f4766b16147003"
+    },
+    {
+      "name": "artifact-hash:qaoa_depth_inference.csv",
+      "status": "PASS",
+      "detail": "expected=0ac7e7c0e28a94223bf1a373cd1820d7133b067e6914d09367f2bf80123e7834; actual=0ac7e7c0e28a94223bf1a373cd1820d7133b067e6914d09367f2bf80123e7834"
+    },
+    {
+      "name": "artifact-hash:qaoa_instance_summary.csv",
+      "status": "PASS",
+      "detail": "expected=8aebb448236ef2d6cfed0f52e5937c8bb264fe5186ab0f328c2da980cde6dbb2; actual=8aebb448236ef2d6cfed0f52e5937c8bb264fe5186ab0f328c2da980cde6dbb2"
+    },
+    {
+      "name": "artifact-hash:qaoa_optimizer_budget_aggregate.csv",
+      "status": "PASS",
+      "detail": "expected=a220aa74d317bf875a3bdab2aea5ad2eb0ce4aa8b7bbf06824b8695e1b15b670; actual=a220aa74d317bf875a3bdab2aea5ad2eb0ce4aa8b7bbf06824b8695e1b15b670"
+    },
+    {
+      "name": "artifact-hash:qaoa_optimizer_budget_instance_summary.csv",
+      "status": "PASS",
+      "detail": "expected=201786a516dab1139110168a5578e2bc4999653bda3b686616c59e766e1e7bb0; actual=201786a516dab1139110168a5578e2bc4999653bda3b686616c59e766e1e7bb0"
+    },
+    {
+      "name": "artifact-hash:qaoa_optimizer_budget_paired.csv",
+      "status": "PASS",
+      "detail": "expected=f7e7b2b784826d190e01b813c18c6fe9d41364447c6e3d05f2af1ba70759e174; actual=f7e7b2b784826d190e01b813c18c6fe9d41364447c6e3d05f2af1ba70759e174"
+    },
+    {
+      "name": "artifact-hash:qaoa_optimizer_budget_runs.csv",
+      "status": "PASS",
+      "detail": "expected=6df8453f0d9847e1c8203e0652e11979c5b39176913e2f5a9ba0d2d69702e9c7; actual=6df8453f0d9847e1c8203e0652e11979c5b39176913e2f5a9ba0d2d69702e9c7"
+    },
+    {
+      "name": "artifact-hash:qaoa_optimizer_inference.csv",
+      "status": "PASS",
+      "detail": "expected=e133f5b08589373b883b7b7820c032683d4d21a9d9ef9b4d586bc23ee5d28247; actual=e133f5b08589373b883b7b7820c032683d4d21a9d9ef9b4d586bc23ee5d28247"
+    },
+    {
+      "name": "artifact-hash:qaoa_optimizer_inference_instance_deltas.csv",
+      "status": "PASS",
+      "detail": "expected=c167bf9c3d0c4c9060a6f04151eade492755904db71f4b935bf923c37c714055; actual=c167bf9c3d0c4c9060a6f04151eade492755904db71f4b935bf923c37c714055"
+    },
+    {
+      "name": "artifact-hash:qaoa_runs.csv",
+      "status": "PASS",
+      "detail": "expected=6db7fdd15d4645a152eb5c2e806687d7f88b510f75305a095494bdf4c17ee131; actual=6db7fdd15d4645a152eb5c2e806687d7f88b510f75305a095494bdf4c17ee131"
+    },
+    {
+      "name": "artifact-hash:resource_robustness_grid.csv",
+      "status": "PASS",
+      "detail": "expected=3159815433818de12853d1c3565ecaff5a19652ed67bc3a7130da2974e09c116; actual=3159815433818de12853d1c3565ecaff5a19652ed67bc3a7130da2974e09c116"
+    },
+    {
+      "name": "artifact-hash:rho_estimation_robustness.csv",
+      "status": "PASS",
+      "detail": "expected=3fc06eec650b0c390d16ad13fbfc728f86d53ad0da5e64dd45bc67061a1d60f8; actual=3fc06eec650b0c390d16ad13fbfc728f86d53ad0da5e64dd45bc67061a1d60f8"
+    },
+    {
+      "name": "artifact-hash:simulator_scaling.csv",
+      "status": "PASS",
+      "detail": "expected=3f2e0b949233b2d4fb479e8ed891bcb442c163d78ed76b012b91f6f098ccfffe; actual=3f2e0b949233b2d4fb479e8ed891bcb442c163d78ed76b012b91f6f098ccfffe"
+    },
+    {
+      "name": "artifact-hash:target_metric_summary.csv",
+      "status": "PASS",
+      "detail": "expected=8e902b8fd5a14ab5a32a87a0ac3da7ff9ee00592fd33a16968948413e1d624f7; actual=8e902b8fd5a14ab5a32a87a0ac3da7ff9ee00592fd33a16968948413e1d624f7"
+    },
+    {
+      "name": "source-hash:.python-version",
+      "status": "PASS",
+      "detail": "expected=e72b03ed5b70312f2782f2b05055c55b24670e126d50e24c4f2c559bf288f810; actual=e72b03ed5b70312f2782f2b05055c55b24670e126d50e24c4f2c559bf288f810"
+    },
+    {
+      "name": "source-hash:CLAIMS_REGISTER.md",
+      "status": "PASS",
+      "detail": "expected=a760d36311a743be7a8950847423569195e4ae033b21f83ce229fb56ec0ec558; actual=a760d36311a743be7a8950847423569195e4ae033b21f83ce229fb56ec0ec558"
+    },
+    {
+      "name": "source-hash:README.md",
+      "status": "PASS",
+      "detail": "expected=30177e70be5c308e3199889aec220b973c087b877f810c9bb29fab6c0671040a; actual=30177e70be5c308e3199889aec220b973c087b877f810c9bb29fab6c0671040a"
+    },
+    {
+      "name": "source-hash:benchmark.py",
+      "status": "PASS",
+      "detail": "expected=702562b0c4ad740972f7cc6b238b2176a1e8223b7c5fcdd17a9a06208a35491a; actual=702562b0c4ad740972f7cc6b238b2176a1e8223b7c5fcdd17a9a06208a35491a"
+    },
+    {
+      "name": "source-hash:finalize_manifest.py",
+      "status": "PASS",
+      "detail": "expected=b7bd721db7bf5bb75e68d55412bf6614974e70ae6972c046ef375b37fefc6565; actual=b7bd721db7bf5bb75e68d55412bf6614974e70ae6972c046ef375b37fefc6565"
+    },
+    {
+      "name": "source-hash:main.tex",
+      "status": "PASS",
+      "detail": "expected=a8f40931f832e568f483f5c402705e0eeaef43df0c2012ec010c325f696326ae; actual=a8f40931f832e568f483f5c402705e0eeaef43df0c2012ec010c325f696326ae"
+    },
+    {
+      "name": "source-hash:preflight.py",
+      "status": "PASS",
+      "detail": "expected=82af9ec43136bc8f1fdab46820f386f302bf114bb880fb7620aeeaa49e037d74; actual=82af9ec43136bc8f1fdab46820f386f302bf114bb880fb7620aeeaa49e037d74"
+    },
+    {
+      "name": "source-hash:references.bib",
+      "status": "PASS",
+      "detail": "expected=a9cd6fca7b448d752607a16950218263a4b2efdd55175c51fef6c7c37a6a8195; actual=a9cd6fca7b448d752607a16950218263a4b2efdd55175c51fef6c7c37a6a8195"
+    },
+    {
+      "name": "source-hash:render_figures.py",
+      "status": "PASS",
+      "detail": "expected=2d24423b030f8398735d71486c4a57d2e6c6f0a0a4acedb3803239eadb0caef8; actual=2d24423b030f8398735d71486c4a57d2e6c6f0a0a4acedb3803239eadb0caef8"
+    },
+    {
+      "name": "source-hash:render_p2_figures.py",
+      "status": "PASS",
+      "detail": "expected=fa48ef5b9841f214575f2162288b82df5ed71988b288d04c7b23cc6f55f07016; actual=fa48ef5b9841f214575f2162288b82df5ed71988b288d04c7b23cc6f55f07016"
+    },
+    {
+      "name": "source-hash:render_tables.py",
+      "status": "PASS",
+      "detail": "expected=05af2e787cfe2a646be8d66cd3ef2d532ee6ccd0674a30f891dd8c06ee2f6d78; actual=05af2e787cfe2a646be8d66cd3ef2d532ee6ccd0674a30f891dd8c06ee2f6d78"
+    },
+    {
+      "name": "source-hash:requirements.lock",
+      "status": "PASS",
+      "detail": "expected=5d0a8b79c483fa93cfe257654bcb62783c49c2243cbc98ce61da159d7db90b0e; actual=5d0a8b79c483fa93cfe257654bcb62783c49c2243cbc98ce61da159d7db90b0e"
+    },
+    {
+      "name": "source-hash:requirements.txt",
+      "status": "PASS",
+      "detail": "expected=593c510ee8af7799985831f334d55681312656f53b1f2a006aa58e83c0e36888; actual=593c510ee8af7799985831f334d55681312656f53b1f2a006aa58e83c0e36888"
+    },
+    {
+      "name": "source-hash:test_core.py",
+      "status": "PASS",
+      "detail": "expected=587f73e99fc534df63104e186cb720f66a82139772c27fb495782e82c28ca34c; actual=587f73e99fc534df63104e186cb720f66a82139772c27fb495782e82c28ca34c"
+    },
+    {
+      "name": "source-hash:test_finalize_manifest.py",
+      "status": "PASS",
+      "detail": "expected=d4d682135d839123acdfcce4c7d0c0e27c16d4c8b2529a28c64fa1f46120fde9; actual=d4d682135d839123acdfcce4c7d0c0e27c16d4c8b2529a28c64fa1f46120fde9"
+    },
+    {
+      "name": "source-hash:test_preflight.py",
+      "status": "PASS",
+      "detail": "expected=480335e8d68eaa60cfb4677dd0d4701c373e17e3ee479172c71c6c32a19c349b; actual=480335e8d68eaa60cfb4677dd0d4701c373e17e3ee479172c71c6c32a19c349b"
+    },
+    {
+      "name": "manuscript-dependency-hash:figures/fig_aa_sensitivity.pdf",
+      "status": "PASS",
+      "detail": "expected=a1cd12f690249d2fefa765361dd66f7bb08796ea24252b54b043327138cf2025; actual=a1cd12f690249d2fefa765361dd66f7bb08796ea24252b54b043327138cf2025"
+    },
+    {
+      "name": "manuscript-dependency-hash:figures/fig_fixed_overhead_phase.pdf",
+      "status": "PASS",
+      "detail": "expected=a8cd16dbfd6acad40b18b4f1d151e19aea51c7d35fe7c28ae059921b6b9d3390; actual=a8cd16dbfd6acad40b18b4f1d151e19aea51c7d35fe7c28ae059921b6b9d3390"
+    },
+    {
+      "name": "manuscript-dependency-hash:figures/fig_p2_large_tier.pdf",
+      "status": "PASS",
+      "detail": "expected=68e6f6d74da360167b6905162de5b869fac7a6d9ff030122bf5f87ea2faf27af; actual=68e6f6d74da360167b6905162de5b869fac7a6d9ff030122bf5f87ea2faf27af"
+    },
+    {
+      "name": "manuscript-dependency-hash:figures/fig_p2_robustness_map.pdf",
+      "status": "PASS",
+      "detail": "expected=a4f47e6e2a13ee2e866208851d80f713ba8106955db7f138de5f2c3761cdf47a; actual=a4f47e6e2a13ee2e866208851d80f713ba8106955db7f138de5f2c3761cdf47a"
+    },
+    {
+      "name": "manuscript-dependency-hash:figures/fig_p2_simulator_scaling.pdf",
+      "status": "PASS",
+      "detail": "expected=b835363ef445ee21d20294da7c1d65cba0b565f2b9faad85a9391a6e009f25f4; actual=b835363ef445ee21d20294da7c1d65cba0b565f2b9faad85a9391a6e009f25f4"
+    },
+    {
+      "name": "manuscript-dependency-hash:figures/fig_qaoa_depth.pdf",
+      "status": "PASS",
+      "detail": "expected=01e61404ae6c67956f1b5419c534b82a13d4352fb37f11ebcf38bb651813e1ab; actual=01e61404ae6c67956f1b5419c534b82a13d4352fb37f11ebcf38bb651813e1ab"
+    },
+    {
+      "name": "manuscript-dependency-hash:figures/fig_qaoa_vs_local.pdf",
+      "status": "PASS",
+      "detail": "expected=147661ecaf21406211e8d6f67bd4697cf1a76bf0d75eddf206310005f993f133; actual=147661ecaf21406211e8d6f67bd4697cf1a76bf0d75eddf206310005f993f133"
+    },
+    {
+      "name": "manuscript-dependency-hash:figures/fig_threshold_common_metric.pdf",
+      "status": "PASS",
+      "detail": "expected=765146959950e2089e38de1a00c06309677fc4d40c7f8ba36985fbe5a6e67a61; actual=765146959950e2089e38de1a00c06309677fc4d40c7f8ba36985fbe5a6e67a61"
+    },
+    {
+      "name": "manuscript-dependency-hash:results/table_aa_aggregate.tex",
+      "status": "PASS",
+      "detail": "expected=4d6fb13545bc6b167076cfc697ef6e302cef123d8c38d0ef1b35bcc58d30c59b; actual=4d6fb13545bc6b167076cfc697ef6e302cef123d8c38d0ef1b35bcc58d30c59b"
+    },
+    {
+      "name": "manuscript-dependency-hash:results/table_classical.tex",
+      "status": "PASS",
+      "detail": "expected=fb9c340e48baa25d6b28ebc8e4e66ec53f4b6c003ebeadbf30f1868d64f5f32e; actual=fb9c340e48baa25d6b28ebc8e4e66ec53f4b6c003ebeadbf30f1868d64f5f32e"
+    },
+    {
+      "name": "manuscript-dependency-hash:results/table_classical_budgeted.tex",
+      "status": "PASS",
+      "detail": "expected=bf04f9ae82e0343232124b326f8b74b4a6ca5c6aefd969bc795e89b2aa4abe55; actual=bf04f9ae82e0343232124b326f8b74b4a6ca5c6aefd969bc795e89b2aa4abe55"
+    },
+    {
+      "name": "manuscript-dependency-hash:results/table_coupled_oracle.tex",
+      "status": "PASS",
+      "detail": "expected=e70365209193bbd2d755902ae3f129928be0519fc007c332e4974dd331a76a66; actual=e70365209193bbd2d755902ae3f129928be0519fc007c332e4974dd331a76a66"
+    },
+    {
+      "name": "manuscript-dependency-hash:results/table_coverage.tex",
+      "status": "PASS",
+      "detail": "expected=bb1409a5a4824bb341f5f718da93c05661594a1217b228d451f62a399a474ec3; actual=bb1409a5a4824bb341f5f718da93c05661594a1217b228d451f62a399a474ec3"
+    },
+    {
+      "name": "manuscript-dependency-hash:results/table_fixed_overhead.tex",
+      "status": "PASS",
+      "detail": "expected=0307574662ec551f39e6081aeb45eaa3609539a32105585153999e0f267d634c; actual=0307574662ec551f39e6081aeb45eaa3609539a32105585153999e0f267d634c"
+    },
+    {
+      "name": "manuscript-dependency-hash:results/table_large_tier.tex",
+      "status": "PASS",
+      "detail": "expected=3c0233581eb4c34dfe4b48d38f226caa5cbec0351fd520591c7a1566725f8753; actual=3c0233581eb4c34dfe4b48d38f226caa5cbec0351fd520591c7a1566725f8753"
+    },
+    {
+      "name": "manuscript-dependency-hash:results/table_operational_metric.tex",
+      "status": "PASS",
+      "detail": "expected=6697b878b2d17cd7cb713e1f5910a2f07ab21cf598eff9da80004c17da0767e3; actual=6697b878b2d17cd7cb713e1f5910a2f07ab21cf598eff9da80004c17da0767e3"
+    },
+    {
+      "name": "manuscript-dependency-hash:results/table_operational_threshold.tex",
+      "status": "PASS",
+      "detail": "expected=7e333aa950053083b98dc696fb3f5836e068fda76c666d3183cb0b0fda3774e1; actual=7e333aa950053083b98dc696fb3f5836e068fda76c666d3183cb0b0fda3774e1"
+    },
+    {
+      "name": "manuscript-dependency-hash:results/table_oracle_resource.tex",
+      "status": "PASS",
+      "detail": "expected=5d40d40120aadeeba4a4c88c04411c13f4a87db40b0b257aa214f42cdccf44d5; actual=5d40d40120aadeeba4a4c88c04411c13f4a87db40b0b257aa214f42cdccf44d5"
+    },
+    {
+      "name": "manuscript-dependency-hash:results/table_qaoa_aggregate.tex",
+      "status": "PASS",
+      "detail": "expected=e0ea43ceb84c660c8bc69c8023eb93dd35b0159e695bf86771f2079909278e38; actual=e0ea43ceb84c660c8bc69c8023eb93dd35b0159e695bf86771f2079909278e38"
+    },
+    {
+      "name": "manuscript-dependency-hash:results/table_qaoa_inference.tex",
+      "status": "PASS",
+      "detail": "expected=f2501ab8aa05511bfb85e65667ce7a83a245f5dbb3964a96eafe96e7d3f838e6; actual=f2501ab8aa05511bfb85e65667ce7a83a245f5dbb3964a96eafe96e7d3f838e6"
+    },
+    {
+      "name": "manuscript-dependency-hash:results/table_qaoa_optimizer_budget.tex",
+      "status": "PASS",
+      "detail": "expected=ef4840f48a94a051cf5d60d98c516d6eb3445170d7008559d147182e531c5c5c; actual=ef4840f48a94a051cf5d60d98c516d6eb3445170d7008559d147182e531c5c5c"
+    },
+    {
+      "name": "manuscript-dependency-hash:results/table_rho_robustness.tex",
+      "status": "PASS",
+      "detail": "expected=2df5d4d5097c42797ba982b896bb818cfda86f98ed7c5fa34b08ef7e0a83c428; actual=2df5d4d5097c42797ba982b896bb818cfda86f98ed7c5fa34b08ef7e0a83c428"
+    },
+    {
+      "name": "manuscript-dependency-hash:results/table_robustness.tex",
+      "status": "PASS",
+      "detail": "expected=5873def68850773c483c0df05371c98e06fa63e5cd001fb5e73e24e6d35d610d; actual=5873def68850773c483c0df05371c98e06fa63e5cd001fb5e73e24e6d35d610d"
+    },
+    {
+      "name": "manuscript-dependency-hash:results/table_simulator_scaling.tex",
+      "status": "PASS",
+      "detail": "expected=818755489fe5b733aadc6b0a259899cf169a8815be00cc00c2da22f00ca3eb25; actual=818755489fe5b733aadc6b0a259899cf169a8815be00cc00c2da22f00ca3eb25"
+    },
+    {
+      "name": "manuscript-dependency-hash:results/table_suite.tex",
+      "status": "PASS",
+      "detail": "expected=88f256ef20afd0c59d4b17eb06b6650073c8c4256175b9e605f9091578779791; actual=88f256ef20afd0c59d4b17eb06b6650073c8c4256175b9e605f9091578779791"
+    },
+    {
+      "name": "manuscript-dependency-hash:results/table_target_metric.tex",
+      "status": "PASS",
+      "detail": "expected=11f1cd18c77b6f674dcbd8fa12551a08773364d9ca2d3882bc72fc2aa5d75b71; actual=11f1cd18c77b6f674dcbd8fa12551a08773364d9ca2d3882bc72fc2aa5d75b71"
+    },
+    {
+      "name": "row-count:classical_budgeted_runs.csv",
+      "status": "PASS",
+      "detail": "expected=2304; actual=2304"
+    },
+    {
+      "name": "row-count:classical_budgeted_summary.csv",
+      "status": "PASS",
+      "detail": "expected=36; actual=36"
+    },
+    {
+      "name": "row-count:coupled_oracle_depth_sensitivity.csv",
+      "status": "PASS",
+      "detail": "expected=255; actual=255"
+    },
+    {
+      "name": "row-count:coverage_coupled_oracle.csv",
+      "status": "PASS",
+      "detail": "expected=360; actual=360"
+    },
+    {
+      "name": "row-count:coverage_graphs.csv",
+      "status": "PASS",
+      "detail": "expected=1326; actual=1326"
+    },
+    {
+      "name": "row-count:coverage_ground_truth.csv",
+      "status": "PASS",
+      "detail": "expected=63; actual=63"
+    },
+    {
+      "name": "row-count:coverage_operational_thresholds.csv",
+      "status": "PASS",
+      "detail": "expected=189; actual=189"
+    },
+    {
+      "name": "row-count:coverage_summary.csv",
+      "status": "PASS",
+      "detail": "expected=12; actual=12"
+    },
+    {
+      "name": "row-count:fixed_overhead_sensitivity.csv",
+      "status": "PASS",
+      "detail": "expected=8085; actual=8085"
+    },
+    {
+      "name": "row-count:maxcut_ground_truth.csv",
+      "status": "PASS",
+      "detail": "expected=18; actual=18"
+    },
+    {
+      "name": "row-count:operational_thresholds.csv",
+      "status": "PASS",
+      "detail": "expected=54; actual=54"
+    },
+    {
+      "name": "row-count:oracle_resource_model.csv",
+      "status": "PASS",
+      "detail": "expected=54; actual=54"
+    },
+    {
+      "name": "row-count:qaoa_depth_inference.csv",
+      "status": "PASS",
+      "detail": "expected=3; actual=3"
+    },
+    {
+      "name": "row-count:qaoa_optimizer_inference.csv",
+      "status": "PASS",
+      "detail": "expected=3; actual=3"
+    },
+    {
+      "name": "row-count:qaoa_optimizer_inference_instance_deltas.csv",
+      "status": "PASS",
+      "detail": "expected=54; actual=54"
+    },
+    {
+      "name": "row-count:qaoa_runs.csv",
+      "status": "PASS",
+      "detail": "expected=270; actual=270"
+    }
+  ]
+}

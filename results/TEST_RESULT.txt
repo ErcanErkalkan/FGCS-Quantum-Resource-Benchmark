@@ -1,0 +1,16 @@
+FGCS P2 GitHub/Zenodo release-preparation revalidation — 2026-08-31
+68/68 scientific regression tests PASS
+Full scientific/package preflight: 158 PASS, 0 WARN, 0 FAIL
+Release metadata syntax: CITATION.cff PASS; GitHub Actions YAML PASS
+Final manuscript candidate: 15 pages, double-column (elsarticle 5p,times)
+LaTeX: 0 overfull boxes; 0 undefined references/citations; 0 LaTeX warnings
+P0-1: configuration-specific deterministic random-graph streams (v2); 18 primary QAOA instances
+P0-2: 8,085 fixed-overhead sensitivity rows; zero-overhead selector compatibility preserved
+P1: random graph family random_fixed_density; literature/declaration/taxonomy cleanup complete
+P2: GitHub/Zenodo release metadata and preservation guide prepared; numerical evidence unchanged
+Funding: manual author confirmation required; no funding/no-funding assertion inferred
+License: manual author selection required before public v1.0.0 release
+GitHub remote: target ErcanErkalkan/FGCS-Quantum-Resource-Benchmark; repository creation/push pending
+Zenodo: repository enablement/release ingestion pending; DOI not yet assigned
+Hardware claims: false
+Compiler claims: false

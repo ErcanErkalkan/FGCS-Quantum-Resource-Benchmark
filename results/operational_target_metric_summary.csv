@@ -1,0 +1,433 @@
+instance_id,n,operational_level,threshold,feasible_exact_validation,realized_quality_ratio_exact_validation,method,configuration,p_target,expected_independent_repetitions,resource_metric_scope
+n8_d25_s17,8,0.25,25,True,0.625,uniform,uniform sample,0.28125,3.5555555555555554,common probability only; threshold construction independent of C*
+n8_d25_s17,8,0.25,25,True,0.625,hillclimb,256 starts,1.0,1.0,common probability only; threshold construction independent of C*
+n8_d25_s17,8,0.25,25,True,0.625,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n8_d25_s17,8,0.25,25,True,0.625,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n8_d25_s17,8,0.25,25,True,0.625,amplitude_amplification,k=1; exact-rho validation; eps=0; oracle_cost=1,0.9887695312500001,1.0113580246913578,oracle-informed validation reference; normalized_resource_per_hit=3.03407407407
+n8_d25_s17,8,0.25,25,True,0.625,qaoa,p=1; median over 5 L-BFGS-B starts,0.28125,3.5555555555555554,common probability only; threshold construction independent of C*
+n8_d25_s17,8,0.25,25,True,0.625,qaoa,p=2; median over 5 L-BFGS-B starts,0.6650567996684321,1.5036309688113192,common probability only; threshold construction independent of C*
+n8_d25_s17,8,0.25,25,True,0.625,qaoa,p=3; median over 5 L-BFGS-B starts,0.8831975202122553,1.13224955586342,common probability only; threshold construction independent of C*
+n8_d25_s17,8,0.4,28,True,0.7,uniform,uniform sample,0.1875,5.333333333333333,common probability only; threshold construction independent of C*
+n8_d25_s17,8,0.4,28,True,0.7,hillclimb,256 starts,1.0,1.0,common probability only; threshold construction independent of C*
+n8_d25_s17,8,0.4,28,True,0.7,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n8_d25_s17,8,0.4,28,True,0.7,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n8_d25_s17,8,0.4,28,True,0.7,amplitude_amplification,k=1; exact-rho validation; eps=0; oracle_cost=1,0.94921875,1.0534979423868314,oracle-informed validation reference; normalized_resource_per_hit=3.16049382716
+n8_d25_s17,8,0.4,28,True,0.7,qaoa,p=1; median over 5 L-BFGS-B starts,0.1875,5.333333333333333,common probability only; threshold construction independent of C*
+n8_d25_s17,8,0.4,28,True,0.7,qaoa,p=2; median over 5 L-BFGS-B starts,0.5837304437005923,1.7131194899831559,common probability only; threshold construction independent of C*
+n8_d25_s17,8,0.4,28,True,0.7,qaoa,p=3; median over 5 L-BFGS-B starts,0.8715385879236337,1.147396126638999,common probability only; threshold construction independent of C*
+n8_d25_s17,8,0.55,31,True,0.775,uniform,uniform sample,0.1328125,7.529411764705882,common probability only; threshold construction independent of C*
+n8_d25_s17,8,0.55,31,True,0.775,hillclimb,256 starts,1.0,1.0,common probability only; threshold construction independent of C*
+n8_d25_s17,8,0.55,31,True,0.775,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n8_d25_s17,8,0.55,31,True,0.775,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n8_d25_s17,8,0.55,31,True,0.775,amplitude_amplification,k=1; exact-rho validation; eps=0; oracle_cost=1,0.8094558715820314,1.2353977963561644,oracle-informed validation reference; normalized_resource_per_hit=3.70619338907
+n8_d25_s17,8,0.55,31,True,0.775,qaoa,p=1; median over 5 L-BFGS-B starts,0.1328125,7.529411764705882,common probability only; threshold construction independent of C*
+n8_d25_s17,8,0.55,31,True,0.775,qaoa,p=2; median over 5 L-BFGS-B starts,0.44709572125596225,2.236657504104138,common probability only; threshold construction independent of C*
+n8_d25_s17,8,0.55,31,True,0.775,qaoa,p=3; median over 5 L-BFGS-B starts,0.6877347787403938,1.4540489021531366,common probability only; threshold construction independent of C*
+n8_d25_s42,8,0.25,24,True,0.7741935483870968,uniform,uniform sample,0.28125,3.5555555555555554,common probability only; threshold construction independent of C*
+n8_d25_s42,8,0.25,24,True,0.7741935483870968,hillclimb,256 starts,1.0,1.0,common probability only; threshold construction independent of C*
+n8_d25_s42,8,0.25,24,True,0.7741935483870968,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n8_d25_s42,8,0.25,24,True,0.7741935483870968,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n8_d25_s42,8,0.25,24,True,0.7741935483870968,amplitude_amplification,k=1; exact-rho validation; eps=0; oracle_cost=1,0.9887695312500001,1.0113580246913578,oracle-informed validation reference; normalized_resource_per_hit=3.03407407407
+n8_d25_s42,8,0.25,24,True,0.7741935483870968,qaoa,p=1; median over 5 L-BFGS-B starts,0.28125,3.5555555555555554,common probability only; threshold construction independent of C*
+n8_d25_s42,8,0.25,24,True,0.7741935483870968,qaoa,p=2; median over 5 L-BFGS-B starts,0.5852334642575171,1.7087197863312469,common probability only; threshold construction independent of C*
+n8_d25_s42,8,0.25,24,True,0.7741935483870968,qaoa,p=3; median over 5 L-BFGS-B starts,0.8422180816242073,1.1873409296455761,common probability only; threshold construction independent of C*
+n8_d25_s42,8,0.4,27,True,0.8709677419354839,uniform,uniform sample,0.21875,4.571428571428571,common probability only; threshold construction independent of C*
+n8_d25_s42,8,0.4,27,True,0.8709677419354839,hillclimb,256 starts,1.0,1.0,common probability only; threshold construction independent of C*
+n8_d25_s42,8,0.4,27,True,0.8709677419354839,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n8_d25_s42,8,0.4,27,True,0.8709677419354839,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n8_d25_s42,8,0.4,27,True,0.8709677419354839,amplitude_amplification,k=1; exact-rho validation; eps=0; oracle_cost=1,0.9877929687500001,1.0123578843302026,oracle-informed validation reference; normalized_resource_per_hit=3.03707365299
+n8_d25_s42,8,0.4,27,True,0.8709677419354839,qaoa,p=1; median over 5 L-BFGS-B starts,0.21875,4.571428571428571,common probability only; threshold construction independent of C*
+n8_d25_s42,8,0.4,27,True,0.8709677419354839,qaoa,p=2; median over 5 L-BFGS-B starts,0.5414874737536555,1.8467647886069851,common probability only; threshold construction independent of C*
+n8_d25_s42,8,0.4,27,True,0.8709677419354839,qaoa,p=3; median over 5 L-BFGS-B starts,0.6989720790846536,1.430672311417018,common probability only; threshold construction independent of C*
+n8_d25_s42,8,0.55,30,True,0.967741935483871,uniform,uniform sample,0.0625,16.0,common probability only; threshold construction independent of C*
+n8_d25_s42,8,0.55,30,True,0.967741935483871,hillclimb,256 starts,1.0,1.0,common probability only; threshold construction independent of C*
+n8_d25_s42,8,0.55,30,True,0.967741935483871,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n8_d25_s42,8,0.55,30,True,0.967741935483871,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n8_d25_s42,8,0.55,30,True,0.967741935483871,amplitude_amplification,k=2; exact-rho validation; eps=0; oracle_cost=1,0.908447265625,1.1007793603869926,oracle-informed validation reference; normalized_resource_per_hit=5.50389680193
+n8_d25_s42,8,0.55,30,True,0.967741935483871,qaoa,p=1; median over 5 L-BFGS-B starts,0.0625,16.0,common probability only; threshold construction independent of C*
+n8_d25_s42,8,0.55,30,True,0.967741935483871,qaoa,p=2; median over 5 L-BFGS-B starts,0.08440340466255625,11.847863294116955,common probability only; threshold construction independent of C*
+n8_d25_s42,8,0.55,30,True,0.967741935483871,qaoa,p=3; median over 5 L-BFGS-B starts,0.442476362018004,2.260007733383305,common probability only; threshold construction independent of C*
+n8_d50_s17,8,0.25,48,True,0.8421052631578947,uniform,uniform sample,0.1953125,5.12,common probability only; threshold construction independent of C*
+n8_d50_s17,8,0.25,48,True,0.8421052631578947,hillclimb,256 starts,1.0,1.0,common probability only; threshold construction independent of C*
+n8_d50_s17,8,0.25,48,True,0.8421052631578947,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n8_d50_s17,8,0.25,48,True,0.8421052631578947,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n8_d50_s17,8,0.25,48,True,0.8421052631578947,amplitude_amplification,k=1; exact-rho validation; eps=0; oracle_cost=1,0.9614944458007814,1.0400476096012694,oracle-informed validation reference; normalized_resource_per_hit=3.1201428288
+n8_d50_s17,8,0.25,48,True,0.8421052631578947,qaoa,p=1; median over 5 L-BFGS-B starts,0.26354718792882154,3.7943869098314136,common probability only; threshold construction independent of C*
+n8_d50_s17,8,0.25,48,True,0.8421052631578947,qaoa,p=2; median over 5 L-BFGS-B starts,0.332537321460292,3.0071812559523763,common probability only; threshold construction independent of C*
+n8_d50_s17,8,0.25,48,True,0.8421052631578947,qaoa,p=3; median over 5 L-BFGS-B starts,0.1953125,5.12,common probability only; threshold construction independent of C*
+n8_d50_s17,8,0.4,54,True,0.9473684210526315,uniform,uniform sample,0.0625,16.0,common probability only; threshold construction independent of C*
+n8_d50_s17,8,0.4,54,True,0.9473684210526315,hillclimb,256 starts,0.92578125,1.080168776371308,common probability only; threshold construction independent of C*
+n8_d50_s17,8,0.4,54,True,0.9473684210526315,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n8_d50_s17,8,0.4,54,True,0.9473684210526315,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n8_d50_s17,8,0.4,54,True,0.9473684210526315,amplitude_amplification,k=2; exact-rho validation; eps=0; oracle_cost=1,0.908447265625,1.1007793603869926,oracle-informed validation reference; normalized_resource_per_hit=5.50389680193
+n8_d50_s17,8,0.4,54,True,0.9473684210526315,qaoa,p=1; median over 5 L-BFGS-B starts,0.09354374267316982,10.690185911139725,common probability only; threshold construction independent of C*
+n8_d50_s17,8,0.4,54,True,0.9473684210526315,qaoa,p=2; median over 5 L-BFGS-B starts,0.15557829623936326,6.427631772374349,common probability only; threshold construction independent of C*
+n8_d50_s17,8,0.4,54,True,0.9473684210526315,qaoa,p=3; median over 5 L-BFGS-B starts,0.0625,16.0,common probability only; threshold construction independent of C*
+n8_d50_s17,8,0.55,59,False,1.0350877192982457,uniform,uniform sample,0.0,inf,common probability only; threshold construction independent of C*
+n8_d50_s17,8,0.55,59,False,1.0350877192982457,hillclimb,256 starts,0.0,inf,common probability only; threshold construction independent of C*
+n8_d50_s17,8,0.55,59,False,1.0350877192982457,simulated_annealing,64 runs; <= 4096 objective evaluations/run,0.0,inf,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n8_d50_s17,8,0.55,59,False,1.0350877192982457,tabu_search,64 runs; <= 4096 objective evaluations/run,0.0,inf,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n8_d50_s17,8,0.55,59,False,1.0350877192982457,amplitude_amplification,infeasible threshold under exact Tier-I validation,0.0,inf,no AA selector run because the validated target event is empty
+n8_d50_s17,8,0.55,59,False,1.0350877192982457,qaoa,p=1; median over 5 L-BFGS-B starts,0.0,inf,common probability only; threshold construction independent of C*
+n8_d50_s17,8,0.55,59,False,1.0350877192982457,qaoa,p=2; median over 5 L-BFGS-B starts,0.0,inf,common probability only; threshold construction independent of C*
+n8_d50_s17,8,0.55,59,False,1.0350877192982457,qaoa,p=3; median over 5 L-BFGS-B starts,0.0,inf,common probability only; threshold construction independent of C*
+n8_d50_s42,8,0.25,49,True,0.8166666666666667,uniform,uniform sample,0.1875,5.333333333333333,common probability only; threshold construction independent of C*
+n8_d50_s42,8,0.25,49,True,0.8166666666666667,hillclimb,256 starts,1.0,1.0,common probability only; threshold construction independent of C*
+n8_d50_s42,8,0.25,49,True,0.8166666666666667,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n8_d50_s42,8,0.25,49,True,0.8166666666666667,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n8_d50_s42,8,0.25,49,True,0.8166666666666667,amplitude_amplification,k=1; exact-rho validation; eps=0; oracle_cost=1,0.94921875,1.0534979423868314,oracle-informed validation reference; normalized_resource_per_hit=3.16049382716
+n8_d50_s42,8,0.25,49,True,0.8166666666666667,qaoa,p=1; median over 5 L-BFGS-B starts,0.1875,5.333333333333333,common probability only; threshold construction independent of C*
+n8_d50_s42,8,0.25,49,True,0.8166666666666667,qaoa,p=2; median over 5 L-BFGS-B starts,0.3556692146773322,2.8116012258952834,common probability only; threshold construction independent of C*
+n8_d50_s42,8,0.25,49,True,0.8166666666666667,qaoa,p=3; median over 5 L-BFGS-B starts,0.1875,5.333333333333333,common probability only; threshold construction independent of C*
+n8_d50_s42,8,0.4,54,True,0.9,uniform,uniform sample,0.046875,21.333333333333332,common probability only; threshold construction independent of C*
+n8_d50_s42,8,0.4,54,True,0.9,hillclimb,256 starts,0.8828125,1.1327433628318584,common probability only; threshold construction independent of C*
+n8_d50_s42,8,0.4,54,True,0.9,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n8_d50_s42,8,0.4,54,True,0.9,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n8_d50_s42,8,0.4,54,True,0.9,amplitude_amplification,k=2; exact-rho validation; eps=0; oracle_cost=1,0.7870681285858153,1.2705380432527174,oracle-informed validation reference; normalized_resource_per_hit=6.35269021626
+n8_d50_s42,8,0.4,54,True,0.9,qaoa,p=1; median over 5 L-BFGS-B starts,0.046875,21.333333333333332,common probability only; threshold construction independent of C*
+n8_d50_s42,8,0.4,54,True,0.9,qaoa,p=2; median over 5 L-BFGS-B starts,0.1426922487996092,7.00808914578364,common probability only; threshold construction independent of C*
+n8_d50_s42,8,0.4,54,True,0.9,qaoa,p=3; median over 5 L-BFGS-B starts,0.046875,21.333333333333332,common probability only; threshold construction independent of C*
+n8_d50_s42,8,0.55,60,True,1.0,uniform,uniform sample,0.015625,64.0,common probability only; threshold construction independent of C*
+n8_d50_s42,8,0.55,60,True,1.0,hillclimb,256 starts,0.41796875,2.392523364485981,common probability only; threshold construction independent of C*
+n8_d50_s42,8,0.55,60,True,1.0,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n8_d50_s42,8,0.55,60,True,1.0,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n8_d50_s42,8,0.55,60,True,1.0,amplitude_amplification,k=4; exact-rho validation; eps=0; oracle_cost=1,0.8163770193968958,1.2249242399531983,oracle-informed validation reference; normalized_resource_per_hit=11.0243181596
+n8_d50_s42,8,0.55,60,True,1.0,qaoa,p=1; median over 5 L-BFGS-B starts,0.015625,64.0,common probability only; threshold construction independent of C*
+n8_d50_s42,8,0.55,60,True,1.0,qaoa,p=2; median over 5 L-BFGS-B starts,0.032162261428711314,31.09234101017841,common probability only; threshold construction independent of C*
+n8_d50_s42,8,0.55,60,True,1.0,qaoa,p=3; median over 5 L-BFGS-B starts,0.015625,64.0,common probability only; threshold construction independent of C*
+n8_d75_s17,8,0.25,71,True,0.7888888888888889,uniform,uniform sample,0.21875,4.571428571428571,common probability only; threshold construction independent of C*
+n8_d75_s17,8,0.25,71,True,0.7888888888888889,hillclimb,256 starts,1.0,1.0,common probability only; threshold construction independent of C*
+n8_d75_s17,8,0.25,71,True,0.7888888888888889,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n8_d75_s17,8,0.25,71,True,0.7888888888888889,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n8_d75_s17,8,0.25,71,True,0.7888888888888889,amplitude_amplification,k=1; exact-rho validation; eps=0; oracle_cost=1,0.9877929687500001,1.0123578843302026,oracle-informed validation reference; normalized_resource_per_hit=3.03707365299
+n8_d75_s17,8,0.25,71,True,0.7888888888888889,qaoa,p=1; median over 5 L-BFGS-B starts,0.279857164603021,3.5732513813555773,common probability only; threshold construction independent of C*
+n8_d75_s17,8,0.25,71,True,0.7888888888888889,qaoa,p=2; median over 5 L-BFGS-B starts,0.37183862488086294,2.6893386891165485,common probability only; threshold construction independent of C*
+n8_d75_s17,8,0.25,71,True,0.7888888888888889,qaoa,p=3; median over 5 L-BFGS-B starts,0.2547104769888574,3.9260261761582194,common probability only; threshold construction independent of C*
+n8_d75_s17,8,0.4,77,True,0.8555555555555555,uniform,uniform sample,0.078125,12.8,common probability only; threshold construction independent of C*
+n8_d75_s17,8,0.4,77,True,0.8555555555555555,hillclimb,256 starts,1.0,1.0,common probability only; threshold construction independent of C*
+n8_d75_s17,8,0.4,77,True,0.8555555555555555,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n8_d75_s17,8,0.4,77,True,0.8555555555555555,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n8_d75_s17,8,0.4,77,True,0.8555555555555555,amplitude_amplification,k=2; exact-rho validation; eps=0; oracle_cost=1,0.9763538837432862,1.024218796740026,oracle-informed validation reference; normalized_resource_per_hit=5.1210939837
+n8_d75_s17,8,0.4,77,True,0.8555555555555555,qaoa,p=1; median over 5 L-BFGS-B starts,0.14773527385047064,6.768864157737602,common probability only; threshold construction independent of C*
+n8_d75_s17,8,0.4,77,True,0.8555555555555555,qaoa,p=2; median over 5 L-BFGS-B starts,0.08922808783926807,11.207233329950546,common probability only; threshold construction independent of C*
+n8_d75_s17,8,0.4,77,True,0.8555555555555555,qaoa,p=3; median over 5 L-BFGS-B starts,0.1601687755459191,6.24341415230029,common probability only; threshold construction independent of C*
+n8_d75_s17,8,0.55,84,True,0.9333333333333333,uniform,uniform sample,0.015625,64.0,common probability only; threshold construction independent of C*
+n8_d75_s17,8,0.55,84,True,0.9333333333333333,hillclimb,256 starts,0.6484375,1.5421686746987953,common probability only; threshold construction independent of C*
+n8_d75_s17,8,0.55,84,True,0.9333333333333333,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n8_d75_s17,8,0.55,84,True,0.9333333333333333,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n8_d75_s17,8,0.55,84,True,0.9333333333333333,amplitude_amplification,k=4; exact-rho validation; eps=0; oracle_cost=1,0.8163770193968958,1.2249242399531983,oracle-informed validation reference; normalized_resource_per_hit=11.0243181596
+n8_d75_s17,8,0.55,84,True,0.9333333333333333,qaoa,p=1; median over 5 L-BFGS-B starts,0.02575991445031634,38.820004698723665,common probability only; threshold construction independent of C*
+n8_d75_s17,8,0.55,84,True,0.9333333333333333,qaoa,p=2; median over 5 L-BFGS-B starts,0.015624999999999998,64.00000000000001,common probability only; threshold construction independent of C*
+n8_d75_s17,8,0.55,84,True,0.9333333333333333,qaoa,p=3; median over 5 L-BFGS-B starts,0.01991176622227585,50.221561906510935,common probability only; threshold construction independent of C*
+n8_d75_s42,8,0.25,74,True,0.8043478260869565,uniform,uniform sample,0.1640625,6.095238095238095,common probability only; threshold construction independent of C*
+n8_d75_s42,8,0.25,74,True,0.8043478260869565,hillclimb,256 starts,1.0,1.0,common probability only; threshold construction independent of C*
+n8_d75_s42,8,0.25,74,True,0.8043478260869565,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n8_d75_s42,8,0.25,74,True,0.8043478260869565,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n8_d75_s42,8,0.25,74,True,0.8043478260869565,amplitude_amplification,k=1; exact-rho validation; eps=0; oracle_cost=1,0.9012222290039062,1.1096042328042328,oracle-informed validation reference; normalized_resource_per_hit=3.32881269841
+n8_d75_s42,8,0.25,74,True,0.8043478260869565,qaoa,p=1; median over 5 L-BFGS-B starts,0.1640625,6.095238095238095,common probability only; threshold construction independent of C*
+n8_d75_s42,8,0.25,74,True,0.8043478260869565,qaoa,p=2; median over 5 L-BFGS-B starts,0.22291236537571152,4.486067869382358,common probability only; threshold construction independent of C*
+n8_d75_s42,8,0.25,74,True,0.8043478260869565,qaoa,p=3; median over 5 L-BFGS-B starts,0.2409300718454628,4.150581919227664,common probability only; threshold construction independent of C*
+n8_d75_s42,8,0.4,81,True,0.8804347826086957,uniform,uniform sample,0.0546875,18.285714285714285,common probability only; threshold construction independent of C*
+n8_d75_s42,8,0.4,81,True,0.8804347826086957,hillclimb,256 starts,0.96875,1.032258064516129,common probability only; threshold construction independent of C*
+n8_d75_s42,8,0.4,81,True,0.8804347826086957,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n8_d75_s42,8,0.4,81,True,0.8804347826086957,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n8_d75_s42,8,0.4,81,True,0.8804347826086957,amplitude_amplification,k=2; exact-rho validation; eps=0; oracle_cost=1,0.8550346419215202,1.1695432570459356,oracle-informed validation reference; normalized_resource_per_hit=5.84771628523
+n8_d75_s42,8,0.4,81,True,0.8804347826086957,qaoa,p=1; median over 5 L-BFGS-B starts,0.0546875,18.285714285714285,common probability only; threshold construction independent of C*
+n8_d75_s42,8,0.4,81,True,0.8804347826086957,qaoa,p=2; median over 5 L-BFGS-B starts,0.07156492419383123,13.973325777465131,common probability only; threshold construction independent of C*
+n8_d75_s42,8,0.4,81,True,0.8804347826086957,qaoa,p=3; median over 5 L-BFGS-B starts,0.09265017628382,10.793287612714833,common probability only; threshold construction independent of C*
+n8_d75_s42,8,0.55,88,True,0.9565217391304348,uniform,uniform sample,0.0390625,25.6,common probability only; threshold construction independent of C*
+n8_d75_s42,8,0.55,88,True,0.9565217391304348,hillclimb,256 starts,0.96875,1.032258064516129,common probability only; threshold construction independent of C*
+n8_d75_s42,8,0.55,88,True,0.9565217391304348,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n8_d75_s42,8,0.55,88,True,0.9565217391304348,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n8_d75_s42,8,0.55,88,True,0.9565217391304348,amplitude_amplification,k=2; exact-rho validation; eps=0; oracle_cost=1,0.7032984867691994,1.4218713943119414,oracle-informed validation reference; normalized_resource_per_hit=7.10935697156
+n8_d75_s42,8,0.55,88,True,0.9565217391304348,qaoa,p=1; median over 5 L-BFGS-B starts,0.0390625,25.6,common probability only; threshold construction independent of C*
+n8_d75_s42,8,0.55,88,True,0.9565217391304348,qaoa,p=2; median over 5 L-BFGS-B starts,0.06164188861692359,16.22273461175966,common probability only; threshold construction independent of C*
+n8_d75_s42,8,0.55,88,True,0.9565217391304348,qaoa,p=3; median over 5 L-BFGS-B starts,0.07205962108813867,13.877397423126395,common probability only; threshold construction independent of C*
+n10_d25_s17,10,0.25,37,True,0.6271186440677966,uniform,uniform sample,0.21484375,4.654545454545454,common probability only; threshold construction independent of C*
+n10_d25_s17,10,0.25,37,True,0.6271186440677966,hillclimb,256 starts,1.0,1.0,common probability only; threshold construction independent of C*
+n10_d25_s17,10,0.25,37,True,0.6271186440677966,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n10_d25_s17,10,0.25,37,True,0.6271186440677966,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n10_d25_s17,10,0.25,37,True,0.6271186440677966,amplitude_amplification,k=1; exact-rho validation; eps=0; oracle_cost=1,0.9844732284545898,1.0157716544204902,oracle-informed validation reference; normalized_resource_per_hit=3.04731496326
+n10_d25_s17,10,0.25,37,True,0.6271186440677966,qaoa,p=1; median over 5 L-BFGS-B starts,0.3871543258156077,2.582949313283086,common probability only; threshold construction independent of C*
+n10_d25_s17,10,0.25,37,True,0.6271186440677966,qaoa,p=2; median over 5 L-BFGS-B starts,0.4378030233975882,2.28413223883074,common probability only; threshold construction independent of C*
+n10_d25_s17,10,0.25,37,True,0.6271186440677966,qaoa,p=3; median over 5 L-BFGS-B starts,0.46363184781485245,2.1568837531612837,common probability only; threshold construction independent of C*
+n10_d25_s17,10,0.4,42,True,0.711864406779661,uniform,uniform sample,0.0859375,11.636363636363637,common probability only; threshold construction independent of C*
+n10_d25_s17,10,0.4,42,True,0.711864406779661,hillclimb,256 starts,0.96875,1.032258064516129,common probability only; threshold construction independent of C*
+n10_d25_s17,10,0.4,42,True,0.711864406779661,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n10_d25_s17,10,0.4,42,True,0.711864406779661,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n10_d25_s17,10,0.4,42,True,0.711864406779661,amplitude_amplification,k=1; exact-rho validation; eps=0; oracle_cost=1,0.6063461303710939,1.649223026108839,oracle-informed validation reference; normalized_resource_per_hit=4.94766907833
+n10_d25_s17,10,0.4,42,True,0.711864406779661,qaoa,p=1; median over 5 L-BFGS-B starts,0.1836523144719857,5.445071590167952,common probability only; threshold construction independent of C*
+n10_d25_s17,10,0.4,42,True,0.711864406779661,qaoa,p=2; median over 5 L-BFGS-B starts,0.1894014362701696,5.279791007358366,common probability only; threshold construction independent of C*
+n10_d25_s17,10,0.4,42,True,0.711864406779661,qaoa,p=3; median over 5 L-BFGS-B starts,0.31336080082345263,3.1912096132387653,common probability only; threshold construction independent of C*
+n10_d25_s17,10,0.55,46,True,0.7796610169491526,uniform,uniform sample,0.05078125,19.692307692307693,common probability only; threshold construction independent of C*
+n10_d25_s17,10,0.55,46,True,0.7796610169491526,hillclimb,256 starts,0.921875,1.0847457627118644,common probability only; threshold construction independent of C*
+n10_d25_s17,10,0.55,46,True,0.7796610169491526,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n10_d25_s17,10,0.55,46,True,0.7796610169491526,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n10_d25_s17,10,0.55,46,True,0.7796610169491526,amplitude_amplification,k=2; exact-rho validation; eps=0; oracle_cost=1,0.8229474939871579,1.215144352837175,oracle-informed validation reference; normalized_resource_per_hit=6.07572176419
+n10_d25_s17,10,0.55,46,True,0.7796610169491526,qaoa,p=1; median over 5 L-BFGS-B starts,0.14709517745768458,6.7983194098098405,common probability only; threshold construction independent of C*
+n10_d25_s17,10,0.55,46,True,0.7796610169491526,qaoa,p=2; median over 5 L-BFGS-B starts,0.0905563351437699,11.042849717939342,common probability only; threshold construction independent of C*
+n10_d25_s17,10,0.55,46,True,0.7796610169491526,qaoa,p=3; median over 5 L-BFGS-B starts,0.28078469429564873,3.5614476868424405,common probability only; threshold construction independent of C*
+n10_d25_s42,10,0.25,35,True,0.7,uniform,uniform sample,0.22265625,4.491228070175438,common probability only; threshold construction independent of C*
+n10_d25_s42,10,0.25,35,True,0.7,hillclimb,256 starts,1.0,1.0,common probability only; threshold construction independent of C*
+n10_d25_s42,10,0.25,35,True,0.7,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n10_d25_s42,10,0.25,35,True,0.7,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n10_d25_s42,10,0.25,35,True,0.7,amplitude_amplification,k=1; exact-rho validation; eps=0; oracle_cost=1,0.9907007217407227,1.0093865665535582,oracle-informed validation reference; normalized_resource_per_hit=3.02815969966
+n10_d25_s42,10,0.25,35,True,0.7,qaoa,p=1; median over 5 L-BFGS-B starts,0.22265625,4.491228070175438,common probability only; threshold construction independent of C*
+n10_d25_s42,10,0.25,35,True,0.7,qaoa,p=2; median over 5 L-BFGS-B starts,0.6521571903523722,1.5333726512463692,common probability only; threshold construction independent of C*
+n10_d25_s42,10,0.25,35,True,0.7,qaoa,p=3; median over 5 L-BFGS-B starts,0.22265625,4.491228070175438,common probability only; threshold construction independent of C*
+n10_d25_s42,10,0.4,39,True,0.78,uniform,uniform sample,0.125,8.0,common probability only; threshold construction independent of C*
+n10_d25_s42,10,0.4,39,True,0.78,hillclimb,256 starts,1.0,1.0,common probability only; threshold construction independent of C*
+n10_d25_s42,10,0.4,39,True,0.78,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n10_d25_s42,10,0.4,39,True,0.78,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n10_d25_s42,10,0.4,39,True,0.78,amplitude_amplification,k=1; exact-rho validation; eps=0; oracle_cost=1,0.7812500000000001,1.2799999999999998,oracle-informed validation reference; normalized_resource_per_hit=3.84
+n10_d25_s42,10,0.4,39,True,0.78,qaoa,p=1; median over 5 L-BFGS-B starts,0.125,8.0,common probability only; threshold construction independent of C*
+n10_d25_s42,10,0.4,39,True,0.78,qaoa,p=2; median over 5 L-BFGS-B starts,0.4799851012610587,2.083398000006069,common probability only; threshold construction independent of C*
+n10_d25_s42,10,0.4,39,True,0.78,qaoa,p=3; median over 5 L-BFGS-B starts,0.125,8.0,common probability only; threshold construction independent of C*
+n10_d25_s42,10,0.55,43,True,0.86,uniform,uniform sample,0.0390625,25.6,common probability only; threshold construction independent of C*
+n10_d25_s42,10,0.55,43,True,0.86,hillclimb,256 starts,0.984375,1.0158730158730158,common probability only; threshold construction independent of C*
+n10_d25_s42,10,0.55,43,True,0.86,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n10_d25_s42,10,0.55,43,True,0.86,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n10_d25_s42,10,0.55,43,True,0.86,amplitude_amplification,k=2; exact-rho validation; eps=0; oracle_cost=1,0.7032984867691994,1.4218713943119414,oracle-informed validation reference; normalized_resource_per_hit=7.10935697156
+n10_d25_s42,10,0.55,43,True,0.86,qaoa,p=1; median over 5 L-BFGS-B starts,0.0390625,25.6,common probability only; threshold construction independent of C*
+n10_d25_s42,10,0.55,43,True,0.86,qaoa,p=2; median over 5 L-BFGS-B starts,0.22449100844925424,4.454521394455083,common probability only; threshold construction independent of C*
+n10_d25_s42,10,0.55,43,True,0.86,qaoa,p=3; median over 5 L-BFGS-B starts,0.0390625,25.6,common probability only; threshold construction independent of C*
+n10_d50_s17,10,0.25,56,True,0.8,uniform,uniform sample,0.158203125,6.320987654320987,common probability only; threshold construction independent of C*
+n10_d50_s17,10,0.25,56,True,0.8,hillclimb,256 starts,1.0,1.0,common probability only; threshold construction independent of C*
+n10_d50_s17,10,0.25,56,True,0.8,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n10_d50_s17,10,0.25,56,True,0.8,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n10_d50_s17,10,0.25,56,True,0.8,amplitude_amplification,k=1; exact-rho validation; eps=0; oracle_cost=1,0.8865033388137815,1.128027336409231,oracle-informed validation reference; normalized_resource_per_hit=3.38408200923
+n10_d50_s17,10,0.25,56,True,0.8,qaoa,p=1; median over 5 L-BFGS-B starts,0.26132422074121775,3.8266640465380846,common probability only; threshold construction independent of C*
+n10_d50_s17,10,0.25,56,True,0.8,qaoa,p=2; median over 5 L-BFGS-B starts,0.2780251695206434,3.5967966559435904,common probability only; threshold construction independent of C*
+n10_d50_s17,10,0.25,56,True,0.8,qaoa,p=3; median over 5 L-BFGS-B starts,0.2849124147779782,3.509850565056154,common probability only; threshold construction independent of C*
+n10_d50_s17,10,0.4,63,True,0.9,uniform,uniform sample,0.02734375,36.57142857142857,common probability only; threshold construction independent of C*
+n10_d50_s17,10,0.4,63,True,0.9,hillclimb,256 starts,0.75390625,1.3264248704663213,common probability only; threshold construction independent of C*
+n10_d50_s17,10,0.4,63,True,0.9,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n10_d50_s17,10,0.4,63,True,0.9,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n10_d50_s17,10,0.4,63,True,0.9,amplitude_amplification,k=3; exact-rho validation; eps=0; oracle_cost=1,0.842614590269875,1.1867822033317952,oracle-informed validation reference; normalized_resource_per_hit=8.30747542332
+n10_d50_s17,10,0.4,63,True,0.9,qaoa,p=1; median over 5 L-BFGS-B starts,0.04776432571314929,20.936127226113122,common probability only; threshold construction independent of C*
+n10_d50_s17,10,0.4,63,True,0.9,qaoa,p=2; median over 5 L-BFGS-B starts,0.0524460172907511,19.067224770494647,common probability only; threshold construction independent of C*
+n10_d50_s17,10,0.4,63,True,0.9,qaoa,p=3; median over 5 L-BFGS-B starts,0.04840771620383581,20.65786363044246,common probability only; threshold construction independent of C*
+n10_d50_s17,10,0.55,69,True,0.9857142857142858,uniform,uniform sample,0.00390625,256.0,common probability only; threshold construction independent of C*
+n10_d50_s17,10,0.55,69,True,0.9857142857142858,hillclimb,256 starts,0.640625,1.5609756097560976,common probability only; threshold construction independent of C*
+n10_d50_s17,10,0.55,69,True,0.9857142857142858,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n10_d50_s17,10,0.55,69,True,0.9857142857142858,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n10_d50_s17,10,0.55,69,True,0.9857142857142858,amplitude_amplification,k=9; exact-rho validation; eps=0; oracle_cost=1,0.8606760445971724,1.161877347786572,oracle-informed validation reference; normalized_resource_per_hit=22.0756696079
+n10_d50_s17,10,0.55,69,True,0.9857142857142858,qaoa,p=1; median over 5 L-BFGS-B starts,0.004601772582403385,217.30756618088378,common probability only; threshold construction independent of C*
+n10_d50_s17,10,0.55,69,True,0.9857142857142858,qaoa,p=2; median over 5 L-BFGS-B starts,0.00390625,256.0,common probability only; threshold construction independent of C*
+n10_d50_s17,10,0.55,69,True,0.9857142857142858,qaoa,p=3; median over 5 L-BFGS-B starts,0.00930087426241586,107.5167744220482,common probability only; threshold construction independent of C*
+n10_d50_s42,10,0.25,67,True,0.7282608695652174,uniform,uniform sample,0.140625,7.111111111111111,common probability only; threshold construction independent of C*
+n10_d50_s42,10,0.25,67,True,0.7282608695652174,hillclimb,256 starts,1.0,1.0,common probability only; threshold construction independent of C*
+n10_d50_s42,10,0.25,67,True,0.7282608695652174,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n10_d50_s42,10,0.25,67,True,0.7282608695652174,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n10_d50_s42,10,0.25,67,True,0.7282608695652174,amplitude_amplification,k=1; exact-rho validation; eps=0; oracle_cost=1,0.83551025390625,1.1968734020016072,oracle-informed validation reference; normalized_resource_per_hit=3.590620206
+n10_d50_s42,10,0.25,67,True,0.7282608695652174,qaoa,p=1; median over 5 L-BFGS-B starts,0.1594752584254373,6.270565163984671,common probability only; threshold construction independent of C*
+n10_d50_s42,10,0.25,67,True,0.7282608695652174,qaoa,p=2; median over 5 L-BFGS-B starts,0.140625,7.111111111111111,common probability only; threshold construction independent of C*
+n10_d50_s42,10,0.25,67,True,0.7282608695652174,qaoa,p=3; median over 5 L-BFGS-B starts,0.1837145757213713,5.44322624415299,common probability only; threshold construction independent of C*
+n10_d50_s42,10,0.4,75,True,0.8152173913043478,uniform,uniform sample,0.046875,21.333333333333332,common probability only; threshold construction independent of C*
+n10_d50_s42,10,0.4,75,True,0.8152173913043478,hillclimb,256 starts,1.0,1.0,common probability only; threshold construction independent of C*
+n10_d50_s42,10,0.4,75,True,0.8152173913043478,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n10_d50_s42,10,0.4,75,True,0.8152173913043478,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n10_d50_s42,10,0.4,75,True,0.8152173913043478,amplitude_amplification,k=2; exact-rho validation; eps=0; oracle_cost=1,0.7870681285858153,1.2705380432527174,oracle-informed validation reference; normalized_resource_per_hit=6.35269021626
+n10_d50_s42,10,0.4,75,True,0.8152173913043478,qaoa,p=1; median over 5 L-BFGS-B starts,0.07052024285163781,14.180325528711297,common probability only; threshold construction independent of C*
+n10_d50_s42,10,0.4,75,True,0.8152173913043478,qaoa,p=2; median over 5 L-BFGS-B starts,0.046875,21.333333333333332,common probability only; threshold construction independent of C*
+n10_d50_s42,10,0.4,75,True,0.8152173913043478,qaoa,p=3; median over 5 L-BFGS-B starts,0.06502266020863373,15.37925389074161,common probability only; threshold construction independent of C*
+n10_d50_s42,10,0.55,83,True,0.9021739130434783,uniform,uniform sample,0.00390625,256.0,common probability only; threshold construction independent of C*
+n10_d50_s42,10,0.55,83,True,0.9021739130434783,hillclimb,256 starts,0.5859375,1.7066666666666668,common probability only; threshold construction independent of C*
+n10_d50_s42,10,0.55,83,True,0.9021739130434783,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n10_d50_s42,10,0.55,83,True,0.9021739130434783,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n10_d50_s42,10,0.55,83,True,0.9021739130434783,amplitude_amplification,k=9; exact-rho validation; eps=0; oracle_cost=1,0.8606760445971724,1.161877347786572,oracle-informed validation reference; normalized_resource_per_hit=22.0756696079
+n10_d50_s42,10,0.55,83,True,0.9021739130434783,qaoa,p=1; median over 5 L-BFGS-B starts,0.002635875877164255,379.38053482086815,common probability only; threshold construction independent of C*
+n10_d50_s42,10,0.55,83,True,0.9021739130434783,qaoa,p=2; median over 5 L-BFGS-B starts,0.0039062499999999996,256.00000000000006,common probability only; threshold construction independent of C*
+n10_d50_s42,10,0.55,83,True,0.9021739130434783,qaoa,p=3; median over 5 L-BFGS-B starts,0.004146315445076201,241.17798398274593,common probability only; threshold construction independent of C*
+n10_d75_s17,10,0.25,101,True,0.8782608695652174,uniform,uniform sample,0.09765625,10.24,common probability only; threshold construction independent of C*
+n10_d75_s17,10,0.25,101,True,0.8782608695652174,hillclimb,256 starts,1.0,1.0,common probability only; threshold construction independent of C*
+n10_d75_s17,10,0.25,101,True,0.8782608695652174,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n10_d75_s17,10,0.25,101,True,0.8782608695652174,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n10_d75_s17,10,0.25,101,True,0.8782608695652174,amplitude_amplification,k=1; exact-rho validation; eps=0; oracle_cost=1,0.6649255752563477,1.5039277134354045,oracle-informed validation reference; normalized_resource_per_hit=4.51178314031
+n10_d75_s17,10,0.25,101,True,0.8782608695652174,qaoa,p=1; median over 5 L-BFGS-B starts,0.11986884453585779,8.342451317288356,common probability only; threshold construction independent of C*
+n10_d75_s17,10,0.25,101,True,0.8782608695652174,qaoa,p=2; median over 5 L-BFGS-B starts,0.1374612455275072,7.27477767397278,common probability only; threshold construction independent of C*
+n10_d75_s17,10,0.25,101,True,0.8782608695652174,qaoa,p=3; median over 5 L-BFGS-B starts,0.11288277606491592,8.858747409125783,common probability only; threshold construction independent of C*
+n10_d75_s17,10,0.4,113,True,0.9826086956521739,uniform,uniform sample,0.005859375,170.66666666666666,common probability only; threshold construction independent of C*
+n10_d75_s17,10,0.4,113,True,0.9826086956521739,hillclimb,256 starts,0.35546875,2.8131868131868134,common probability only; threshold construction independent of C*
+n10_d75_s17,10,0.4,113,True,0.9826086956521739,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n10_d75_s17,10,0.4,113,True,0.9826086956521739,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n10_d75_s17,10,0.4,113,True,0.9826086956521739,amplitude_amplification,k=7; exact-rho validation; eps=0; oracle_cost=1,0.8326325428624705,1.201009987625687,oracle-informed validation reference; normalized_resource_per_hit=18.0151498144
+n10_d75_s17,10,0.4,113,True,0.9826086956521739,qaoa,p=1; median over 5 L-BFGS-B starts,0.005859375,170.66666666666666,common probability only; threshold construction independent of C*
+n10_d75_s17,10,0.4,113,True,0.9826086956521739,qaoa,p=2; median over 5 L-BFGS-B starts,0.005859375000000019,170.66666666666612,common probability only; threshold construction independent of C*
+n10_d75_s17,10,0.4,113,True,0.9826086956521739,qaoa,p=3; median over 5 L-BFGS-B starts,0.00585937500000001,170.66666666666637,common probability only; threshold construction independent of C*
+n10_d75_s17,10,0.55,125,False,1.0869565217391304,uniform,uniform sample,0.0,inf,common probability only; threshold construction independent of C*
+n10_d75_s17,10,0.55,125,False,1.0869565217391304,hillclimb,256 starts,0.0,inf,common probability only; threshold construction independent of C*
+n10_d75_s17,10,0.55,125,False,1.0869565217391304,simulated_annealing,64 runs; <= 4096 objective evaluations/run,0.0,inf,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n10_d75_s17,10,0.55,125,False,1.0869565217391304,tabu_search,64 runs; <= 4096 objective evaluations/run,0.0,inf,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n10_d75_s17,10,0.55,125,False,1.0869565217391304,amplitude_amplification,infeasible threshold under exact Tier-I validation,0.0,inf,no AA selector run because the validated target event is empty
+n10_d75_s17,10,0.55,125,False,1.0869565217391304,qaoa,p=1; median over 5 L-BFGS-B starts,0.0,inf,common probability only; threshold construction independent of C*
+n10_d75_s17,10,0.55,125,False,1.0869565217391304,qaoa,p=2; median over 5 L-BFGS-B starts,0.0,inf,common probability only; threshold construction independent of C*
+n10_d75_s17,10,0.55,125,False,1.0869565217391304,qaoa,p=3; median over 5 L-BFGS-B starts,0.0,inf,common probability only; threshold construction independent of C*
+n10_d75_s42,10,0.25,106,True,0.7910447761194029,uniform,uniform sample,0.17578125,5.688888888888889,common probability only; threshold construction independent of C*
+n10_d75_s42,10,0.25,106,True,0.7910447761194029,hillclimb,256 starts,1.0,1.0,common probability only; threshold construction independent of C*
+n10_d75_s42,10,0.25,106,True,0.7910447761194029,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n10_d75_s42,10,0.25,106,True,0.7910447761194029,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n10_d75_s42,10,0.25,106,True,0.7910447761194029,amplitude_amplification,k=1; exact-rho validation; eps=0; oracle_cost=1,0.9273576736450198,1.0783325877592154,oracle-informed validation reference; normalized_resource_per_hit=3.23499776328
+n10_d75_s42,10,0.25,106,True,0.7910447761194029,qaoa,p=1; median over 5 L-BFGS-B starts,0.1842956019779714,5.426065458249669,common probability only; threshold construction independent of C*
+n10_d75_s42,10,0.25,106,True,0.7910447761194029,qaoa,p=2; median over 5 L-BFGS-B starts,0.18027193879570136,5.5471750438834535,common probability only; threshold construction independent of C*
+n10_d75_s42,10,0.25,106,True,0.7910447761194029,qaoa,p=3; median over 5 L-BFGS-B starts,0.2225903867070203,4.492557000299514,common probability only; threshold construction independent of C*
+n10_d75_s42,10,0.4,115,True,0.8582089552238806,uniform,uniform sample,0.05859375,17.066666666666666,common probability only; threshold construction independent of C*
+n10_d75_s42,10,0.4,115,True,0.8582089552238806,hillclimb,256 starts,0.99609375,1.003921568627451,common probability only; threshold construction independent of C*
+n10_d75_s42,10,0.4,115,True,0.8582089552238806,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n10_d75_s42,10,0.4,115,True,0.8582089552238806,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n10_d75_s42,10,0.4,115,True,0.8582089552238806,amplitude_amplification,k=2; exact-rho validation; eps=0; oracle_cost=1,0.8834841137286277,1.1318822652957872,oracle-informed validation reference; normalized_resource_per_hit=5.65941132648
+n10_d75_s42,10,0.4,115,True,0.8582089552238806,qaoa,p=1; median over 5 L-BFGS-B starts,0.06304815764759249,15.860891694718463,common probability only; threshold construction independent of C*
+n10_d75_s42,10,0.4,115,True,0.8582089552238806,qaoa,p=2; median over 5 L-BFGS-B starts,0.061228960440372876,16.332140751823456,common probability only; threshold construction independent of C*
+n10_d75_s42,10,0.4,115,True,0.8582089552238806,qaoa,p=3; median over 5 L-BFGS-B starts,0.0760943348516716,13.141582772873566,common probability only; threshold construction independent of C*
+n10_d75_s42,10,0.55,124,True,0.9253731343283582,uniform,uniform sample,0.009765625,102.4,common probability only; threshold construction independent of C*
+n10_d75_s42,10,0.55,124,True,0.9253731343283582,hillclimb,256 starts,0.875,1.1428571428571428,common probability only; threshold construction independent of C*
+n10_d75_s42,10,0.55,124,True,0.9253731343283582,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n10_d75_s42,10,0.55,124,True,0.9253731343283582,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n10_d75_s42,10,0.55,124,True,0.9253731343283582,amplitude_amplification,k=5; exact-rho validation; eps=0; oracle_cost=1,0.785130573365116,1.2736734932050104,oracle-informed validation reference; normalized_resource_per_hit=14.0104084253
+n10_d75_s42,10,0.55,124,True,0.9253731343283582,qaoa,p=1; median over 5 L-BFGS-B starts,0.006758155747762759,147.96936284444809,common probability only; threshold construction independent of C*
+n10_d75_s42,10,0.55,124,True,0.9253731343283582,qaoa,p=2; median over 5 L-BFGS-B starts,0.009765625,102.4,common probability only; threshold construction independent of C*
+n10_d75_s42,10,0.55,124,True,0.9253731343283582,qaoa,p=3; median over 5 L-BFGS-B starts,0.023465951880785745,42.61493439858343,common probability only; threshold construction independent of C*
+n12_d25_s17,12,0.25,55,True,0.6790123456790124,uniform,uniform sample,0.1884765625,5.305699481865285,common probability only; threshold construction independent of C*
+n12_d25_s17,12,0.25,55,True,0.6790123456790124,hillclimb,256 starts,1.0,1.0,common probability only; threshold construction independent of C*
+n12_d25_s17,12,0.25,55,True,0.6790123456790124,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n12_d25_s17,12,0.25,55,True,0.6790123456790124,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n12_d25_s17,12,0.25,55,True,0.6790123456790124,amplitude_amplification,k=1; exact-rho validation; eps=0; oracle_cost=1,0.9508524090051652,1.0516879281467624,oracle-informed validation reference; normalized_resource_per_hit=3.15506378444
+n12_d25_s17,12,0.25,55,True,0.6790123456790124,qaoa,p=1; median over 5 L-BFGS-B starts,0.23802845740312312,4.201178341908959,common probability only; threshold construction independent of C*
+n12_d25_s17,12,0.25,55,True,0.6790123456790124,qaoa,p=2; median over 5 L-BFGS-B starts,0.3671740274625134,2.723504183863046,common probability only; threshold construction independent of C*
+n12_d25_s17,12,0.25,55,True,0.6790123456790124,qaoa,p=3; median over 5 L-BFGS-B starts,0.45798074703819275,2.183497901313756,common probability only; threshold construction independent of C*
+n12_d25_s17,12,0.4,61,True,0.7530864197530864,uniform,uniform sample,0.0732421875,13.653333333333334,common probability only; threshold construction independent of C*
+n12_d25_s17,12,0.4,61,True,0.7530864197530864,hillclimb,256 starts,1.0,1.0,common probability only; threshold construction independent of C*
+n12_d25_s17,12,0.4,61,True,0.7530864197530864,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n12_d25_s17,12,0.4,61,True,0.7530864197530864,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n12_d25_s17,12,0.4,61,True,0.7530864197530864,amplitude_amplification,k=2; exact-rho validation; eps=0; oracle_cost=1,0.9603183404749416,1.041321359649794,oracle-informed validation reference; normalized_resource_per_hit=5.20660679825
+n12_d25_s17,12,0.4,61,True,0.7530864197530864,qaoa,p=1; median over 5 L-BFGS-B starts,0.10805721754856012,9.254356374210795,common probability only; threshold construction independent of C*
+n12_d25_s17,12,0.4,61,True,0.7530864197530864,qaoa,p=2; median over 5 L-BFGS-B starts,0.17388145821096984,5.751044477592908,common probability only; threshold construction independent of C*
+n12_d25_s17,12,0.4,61,True,0.7530864197530864,qaoa,p=3; median over 5 L-BFGS-B starts,0.2964565340050328,3.373175778891834,common probability only; threshold construction independent of C*
+n12_d25_s17,12,0.55,68,True,0.8395061728395061,uniform,uniform sample,0.0224609375,44.52173913043478,common probability only; threshold construction independent of C*
+n12_d25_s17,12,0.55,68,True,0.8395061728395061,hillclimb,256 starts,0.86328125,1.158371040723982,common probability only; threshold construction independent of C*
+n12_d25_s17,12,0.55,68,True,0.8395061728395061,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n12_d25_s17,12,0.55,68,True,0.8395061728395061,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n12_d25_s17,12,0.55,68,True,0.8395061728395061,amplitude_amplification,k=3; exact-rho validation; eps=0; oracle_cost=1,0.7550559703003803,1.3244051293338888,oracle-informed validation reference; normalized_resource_per_hit=9.27083590534
+n12_d25_s17,12,0.55,68,True,0.8395061728395061,qaoa,p=1; median over 5 L-BFGS-B starts,0.04220671923549919,23.692909994267474,common probability only; threshold construction independent of C*
+n12_d25_s17,12,0.55,68,True,0.8395061728395061,qaoa,p=2; median over 5 L-BFGS-B starts,0.046591159877009125,21.463299103087152,common probability only; threshold construction independent of C*
+n12_d25_s17,12,0.55,68,True,0.8395061728395061,qaoa,p=3; median over 5 L-BFGS-B starts,0.18273448379535875,5.4724208547297675,common probability only; threshold construction independent of C*
+n12_d25_s42,12,0.25,41,True,0.6612903225806451,uniform,uniform sample,0.2119140625,4.71889400921659,common probability only; threshold construction independent of C*
+n12_d25_s42,12,0.25,41,True,0.6612903225806451,hillclimb,256 starts,1.0,1.0,common probability only; threshold construction independent of C*
+n12_d25_s42,12,0.25,41,True,0.6612903225806451,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n12_d25_s42,12,0.25,41,True,0.6612903225806451,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n12_d25_s42,12,0.25,41,True,0.6612903225806451,amplitude_amplification,k=1; exact-rho validation; eps=0; oracle_cost=1,0.9817096143960953,1.0186311566431547,oracle-informed validation reference; normalized_resource_per_hit=3.05589346993
+n12_d25_s42,12,0.25,41,True,0.6612903225806451,qaoa,p=1; median over 5 L-BFGS-B starts,0.2119140625,4.71889400921659,common probability only; threshold construction independent of C*
+n12_d25_s42,12,0.25,41,True,0.6612903225806451,qaoa,p=2; median over 5 L-BFGS-B starts,0.36530022907331033,2.7374743304617937,common probability only; threshold construction independent of C*
+n12_d25_s42,12,0.25,41,True,0.6612903225806451,qaoa,p=3; median over 5 L-BFGS-B starts,0.2119140625,4.71889400921659,common probability only; threshold construction independent of C*
+n12_d25_s42,12,0.4,46,True,0.7419354838709677,uniform,uniform sample,0.09521484375,10.502564102564103,common probability only; threshold construction independent of C*
+n12_d25_s42,12,0.4,46,True,0.7419354838709677,hillclimb,256 starts,1.0,1.0,common probability only; threshold construction independent of C*
+n12_d25_s42,12,0.4,46,True,0.7419354838709677,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n12_d25_s42,12,0.4,46,True,0.7419354838709677,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n12_d25_s42,12,0.4,46,True,0.7419354838709677,amplitude_amplification,k=1; exact-rho validation; eps=0; oracle_cost=1,0.6531640794128178,1.5310088713068561,oracle-informed validation reference; normalized_resource_per_hit=4.59302661392
+n12_d25_s42,12,0.4,46,True,0.7419354838709677,qaoa,p=1; median over 5 L-BFGS-B starts,0.09521484375,10.502564102564103,common probability only; threshold construction independent of C*
+n12_d25_s42,12,0.4,46,True,0.7419354838709677,qaoa,p=2; median over 5 L-BFGS-B starts,0.1792228868422454,5.579644528771677,common probability only; threshold construction independent of C*
+n12_d25_s42,12,0.4,46,True,0.7419354838709677,qaoa,p=3; median over 5 L-BFGS-B starts,0.09521484375,10.502564102564103,common probability only; threshold construction independent of C*
+n12_d25_s42,12,0.55,51,True,0.8225806451612904,uniform,uniform sample,0.0341796875,29.257142857142856,common probability only; threshold construction independent of C*
+n12_d25_s42,12,0.55,51,True,0.8225806451612904,hillclimb,256 starts,1.0,1.0,common probability only; threshold construction independent of C*
+n12_d25_s42,12,0.55,51,True,0.8225806451612904,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n12_d25_s42,12,0.55,51,True,0.8225806451612904,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n12_d25_s42,12,0.55,51,True,0.8225806451612904,amplitude_amplification,k=3; exact-rho validation; eps=0; oracle_cost=1,0.9292825895962306,1.0760989296425922,oracle-informed validation reference; normalized_resource_per_hit=7.5326925075
+n12_d25_s42,12,0.55,51,True,0.8225806451612904,qaoa,p=1; median over 5 L-BFGS-B starts,0.0341796875,29.257142857142856,common probability only; threshold construction independent of C*
+n12_d25_s42,12,0.55,51,True,0.8225806451612904,qaoa,p=2; median over 5 L-BFGS-B starts,0.08308653651216323,12.035644305062682,common probability only; threshold construction independent of C*
+n12_d25_s42,12,0.55,51,True,0.8225806451612904,qaoa,p=3; median over 5 L-BFGS-B starts,0.0341796875,29.257142857142856,common probability only; threshold construction independent of C*
+n12_d50_s17,12,0.25,100,True,0.8403361344537815,uniform,uniform sample,0.10009765625,9.990243902439024,common probability only; threshold construction independent of C*
+n12_d50_s17,12,0.25,100,True,0.8403361344537815,hillclimb,256 starts,1.0,1.0,common probability only; threshold construction independent of C*
+n12_d50_s17,12,0.25,100,True,0.8403361344537815,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n12_d50_s17,12,0.25,100,True,0.8403361344537815,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n12_d50_s17,12,0.25,100,True,0.8403361344537815,amplitude_amplification,k=1; exact-rho validation; eps=0; oracle_cost=1,0.6764568481594325,1.4782908957472958,oracle-informed validation reference; normalized_resource_per_hit=4.43487268724
+n12_d50_s17,12,0.25,100,True,0.8403361344537815,qaoa,p=1; median over 5 L-BFGS-B starts,0.1448506672254293,6.903661675535898,common probability only; threshold construction independent of C*
+n12_d50_s17,12,0.25,100,True,0.8403361344537815,qaoa,p=2; median over 5 L-BFGS-B starts,0.1410688853101859,7.088735391941137,common probability only; threshold construction independent of C*
+n12_d50_s17,12,0.25,100,True,0.8403361344537815,qaoa,p=3; median over 5 L-BFGS-B starts,0.18774919552909505,5.326254513005529,common probability only; threshold construction independent of C*
+n12_d50_s17,12,0.4,112,True,0.9411764705882353,uniform,uniform sample,0.0107421875,93.0909090909091,common probability only; threshold construction independent of C*
+n12_d50_s17,12,0.4,112,True,0.9411764705882353,hillclimb,256 starts,0.953125,1.0491803278688525,common probability only; threshold construction independent of C*
+n12_d50_s17,12,0.4,112,True,0.9411764705882353,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n12_d50_s17,12,0.4,112,True,0.9411764705882353,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n12_d50_s17,12,0.4,112,True,0.9411764705882353,amplitude_amplification,k=5; exact-rho validation; eps=0; oracle_cost=1,0.8272365119547662,1.2088441280680327,oracle-informed validation reference; normalized_resource_per_hit=13.2972854087
+n12_d50_s17,12,0.4,112,True,0.9411764705882353,qaoa,p=1; median over 5 L-BFGS-B starts,0.011790167488689772,84.8164371676054,common probability only; threshold construction independent of C*
+n12_d50_s17,12,0.4,112,True,0.9411764705882353,qaoa,p=2; median over 5 L-BFGS-B starts,0.015888434499716067,62.93886285762581,common probability only; threshold construction independent of C*
+n12_d50_s17,12,0.4,112,True,0.9411764705882353,qaoa,p=3; median over 5 L-BFGS-B starts,0.024353093102653774,41.062545763068975,common probability only; threshold construction independent of C*
+n12_d50_s17,12,0.55,124,False,1.0420168067226891,uniform,uniform sample,0.0,inf,common probability only; threshold construction independent of C*
+n12_d50_s17,12,0.55,124,False,1.0420168067226891,hillclimb,256 starts,0.0,inf,common probability only; threshold construction independent of C*
+n12_d50_s17,12,0.55,124,False,1.0420168067226891,simulated_annealing,64 runs; <= 4096 objective evaluations/run,0.0,inf,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n12_d50_s17,12,0.55,124,False,1.0420168067226891,tabu_search,64 runs; <= 4096 objective evaluations/run,0.0,inf,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n12_d50_s17,12,0.55,124,False,1.0420168067226891,amplitude_amplification,infeasible threshold under exact Tier-I validation,0.0,inf,no AA selector run because the validated target event is empty
+n12_d50_s17,12,0.55,124,False,1.0420168067226891,qaoa,p=1; median over 5 L-BFGS-B starts,0.0,inf,common probability only; threshold construction independent of C*
+n12_d50_s17,12,0.55,124,False,1.0420168067226891,qaoa,p=2; median over 5 L-BFGS-B starts,0.0,inf,common probability only; threshold construction independent of C*
+n12_d50_s17,12,0.55,124,False,1.0420168067226891,qaoa,p=3; median over 5 L-BFGS-B starts,0.0,inf,common probability only; threshold construction independent of C*
+n12_d50_s42,12,0.25,98,True,0.765625,uniform,uniform sample,0.0859375,11.636363636363637,common probability only; threshold construction independent of C*
+n12_d50_s42,12,0.25,98,True,0.765625,hillclimb,256 starts,1.0,1.0,common probability only; threshold construction independent of C*
+n12_d50_s42,12,0.25,98,True,0.765625,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n12_d50_s42,12,0.25,98,True,0.765625,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n12_d50_s42,12,0.25,98,True,0.765625,amplitude_amplification,k=1; exact-rho validation; eps=0; oracle_cost=1,0.6063461303710939,1.649223026108839,oracle-informed validation reference; normalized_resource_per_hit=4.94766907833
+n12_d50_s42,12,0.25,98,True,0.765625,qaoa,p=1; median over 5 L-BFGS-B starts,0.11984239021215413,8.344292851884244,common probability only; threshold construction independent of C*
+n12_d50_s42,12,0.25,98,True,0.765625,qaoa,p=2; median over 5 L-BFGS-B starts,0.12587403427648047,7.944450225560536,common probability only; threshold construction independent of C*
+n12_d50_s42,12,0.25,98,True,0.765625,qaoa,p=3; median over 5 L-BFGS-B starts,0.1304810030170786,7.663950896124782,common probability only; threshold construction independent of C*
+n12_d50_s42,12,0.4,110,True,0.859375,uniform,uniform sample,0.015625,64.0,common probability only; threshold construction independent of C*
+n12_d50_s42,12,0.4,110,True,0.859375,hillclimb,256 starts,0.94921875,1.0534979423868314,common probability only; threshold construction independent of C*
+n12_d50_s42,12,0.4,110,True,0.859375,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n12_d50_s42,12,0.4,110,True,0.859375,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n12_d50_s42,12,0.4,110,True,0.859375,amplitude_amplification,k=4; exact-rho validation; eps=0; oracle_cost=1,0.8163770193968958,1.2249242399531983,oracle-informed validation reference; normalized_resource_per_hit=11.0243181596
+n12_d50_s42,12,0.4,110,True,0.859375,qaoa,p=1; median over 5 L-BFGS-B starts,0.019110777200103526,52.326495648464935,common probability only; threshold construction independent of C*
+n12_d50_s42,12,0.4,110,True,0.859375,qaoa,p=2; median over 5 L-BFGS-B starts,0.019559590295331872,51.12581525997822,common probability only; threshold construction independent of C*
+n12_d50_s42,12,0.4,110,True,0.859375,qaoa,p=3; median over 5 L-BFGS-B starts,0.027884734889469277,35.86191527241853,common probability only; threshold construction independent of C*
+n12_d50_s42,12,0.55,121,True,0.9453125,uniform,uniform sample,0.00244140625,409.6,common probability only; threshold construction independent of C*
+n12_d50_s42,12,0.55,121,True,0.9453125,hillclimb,256 starts,0.81640625,1.2248803827751196,common probability only; threshold construction independent of C*
+n12_d50_s42,12,0.55,121,True,0.9453125,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n12_d50_s42,12,0.55,121,True,0.9453125,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n12_d50_s42,12,0.55,121,True,0.9453125,amplitude_amplification,k=11; exact-rho validation; eps=0; oracle_cost=1,0.823260987425016,1.2146816322825957,oracle-informed validation reference; normalized_resource_per_hit=27.9376775425
+n12_d50_s42,12,0.55,121,True,0.9453125,qaoa,p=1; median over 5 L-BFGS-B starts,0.0033402778370313605,299.37629406562786,common probability only; threshold construction independent of C*
+n12_d50_s42,12,0.55,121,True,0.9453125,qaoa,p=2; median over 5 L-BFGS-B starts,0.00424685438604898,235.46839827732836,common probability only; threshold construction independent of C*
+n12_d50_s42,12,0.55,121,True,0.9453125,qaoa,p=3; median over 5 L-BFGS-B starts,0.003051648211134154,327.69176877971364,common probability only; threshold construction independent of C*
+n12_d75_s17,12,0.25,139,True,0.8475609756097561,uniform,uniform sample,0.13916015625,7.185964912280702,common probability only; threshold construction independent of C*
+n12_d75_s17,12,0.25,139,True,0.8475609756097561,hillclimb,256 starts,1.0,1.0,common probability only; threshold construction independent of C*
+n12_d75_s17,12,0.25,139,True,0.8475609756097561,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n12_d75_s17,12,0.25,139,True,0.8475609756097561,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n12_d75_s17,12,0.25,139,True,0.8475609756097561,amplitude_amplification,k=1; exact-rho validation; eps=0; oracle_cost=1,0.8307868335396051,1.2036781995442254,oracle-informed validation reference; normalized_resource_per_hit=3.61103459863
+n12_d75_s17,12,0.25,139,True,0.8475609756097561,qaoa,p=1; median over 5 L-BFGS-B starts,0.13084568697510507,7.642590467580805,common probability only; threshold construction independent of C*
+n12_d75_s17,12,0.25,139,True,0.8475609756097561,qaoa,p=2; median over 5 L-BFGS-B starts,0.1515489802767002,6.59852674807964,common probability only; threshold construction independent of C*
+n12_d75_s17,12,0.25,139,True,0.8475609756097561,qaoa,p=3; median over 5 L-BFGS-B starts,0.1490971252795405,6.707037430299956,common probability only; threshold construction independent of C*
+n12_d75_s17,12,0.4,150,True,0.9146341463414634,uniform,uniform sample,0.0322265625,31.03030303030303,common probability only; threshold construction independent of C*
+n12_d75_s17,12,0.4,150,True,0.9146341463414634,hillclimb,256 starts,0.97265625,1.0281124497991967,common probability only; threshold construction independent of C*
+n12_d75_s17,12,0.4,150,True,0.9146341463414634,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n12_d75_s17,12,0.4,150,True,0.9146341463414634,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n12_d75_s17,12,0.4,150,True,0.9146341463414634,amplitude_amplification,k=3; exact-rho validation; eps=0; oracle_cost=1,0.908488238425952,1.1007297152603774,oracle-informed validation reference; normalized_resource_per_hit=7.70510800682
+n12_d75_s17,12,0.4,150,True,0.9146341463414634,qaoa,p=1; median over 5 L-BFGS-B starts,0.03164569811759725,31.5998716882131,common probability only; threshold construction independent of C*
+n12_d75_s17,12,0.4,150,True,0.9146341463414634,qaoa,p=2; median over 5 L-BFGS-B starts,0.035800563617137036,27.932521138335357,common probability only; threshold construction independent of C*
+n12_d75_s17,12,0.4,150,True,0.9146341463414634,qaoa,p=3; median over 5 L-BFGS-B starts,0.036281258633413985,27.5624396083941,common probability only; threshold construction independent of C*
+n12_d75_s17,12,0.55,161,True,0.9817073170731707,uniform,uniform sample,0.001953125,512.0,common probability only; threshold construction independent of C*
+n12_d75_s17,12,0.55,161,True,0.9817073170731707,hillclimb,256 starts,0.5,2.0,common probability only; threshold construction independent of C*
+n12_d75_s17,12,0.55,161,True,0.9817073170731707,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n12_d75_s17,12,0.55,161,True,0.9817073170731707,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n12_d75_s17,12,0.55,161,True,0.9817073170731707,amplitude_amplification,k=13; exact-rho validation; eps=0; oracle_cost=1,0.8643653530373577,1.156918190306941,oracle-informed validation reference; normalized_resource_per_hit=31.2367911383
+n12_d75_s17,12,0.55,161,True,0.9817073170731707,qaoa,p=1; median over 5 L-BFGS-B starts,0.0022502865576123064,444.3878476797471,common probability only; threshold construction independent of C*
+n12_d75_s17,12,0.55,161,True,0.9817073170731707,qaoa,p=2; median over 5 L-BFGS-B starts,0.001953125,512.0,common probability only; threshold construction independent of C*
+n12_d75_s17,12,0.55,161,True,0.9817073170731707,qaoa,p=3; median over 5 L-BFGS-B starts,0.0027338008474588034,365.79109298672836,common probability only; threshold construction independent of C*
+n12_d75_s42,12,0.25,148,True,0.8457142857142858,uniform,uniform sample,0.08935546875,11.191256830601093,common probability only; threshold construction independent of C*
+n12_d75_s42,12,0.25,148,True,0.8457142857142858,hillclimb,256 starts,1.0,1.0,common probability only; threshold construction independent of C*
+n12_d75_s42,12,0.25,148,True,0.8457142857142858,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n12_d75_s42,12,0.25,148,True,0.8457142857142858,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n12_d75_s42,12,0.25,148,True,0.8457142857142858,amplitude_amplification,k=1; exact-rho validation; eps=0; oracle_cost=1,0.6239888202399017,1.6025928150692432,oracle-informed validation reference; normalized_resource_per_hit=4.80777844521
+n12_d75_s42,12,0.25,148,True,0.8457142857142858,qaoa,p=1; median over 5 L-BFGS-B starts,0.08935546875,11.191256830601093,common probability only; threshold construction independent of C*
+n12_d75_s42,12,0.25,148,True,0.8457142857142858,qaoa,p=2; median over 5 L-BFGS-B starts,0.09448509505478245,10.583679885385099,common probability only; threshold construction independent of C*
+n12_d75_s42,12,0.25,148,True,0.8457142857142858,qaoa,p=3; median over 5 L-BFGS-B starts,0.10847996550321243,9.218292016975123,common probability only; threshold construction independent of C*
+n12_d75_s42,12,0.4,161,True,0.92,uniform,uniform sample,0.01318359375,75.85185185185185,common probability only; threshold construction independent of C*
+n12_d75_s42,12,0.4,161,True,0.92,hillclimb,256 starts,0.94140625,1.062240663900415,common probability only; threshold construction independent of C*
+n12_d75_s42,12,0.4,161,True,0.92,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n12_d75_s42,12,0.4,161,True,0.92,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n12_d75_s42,12,0.4,161,True,0.92,amplitude_amplification,k=5; exact-rho validation; eps=0; oracle_cost=1,0.9098318013029195,1.0991042504427253,oracle-informed validation reference; normalized_resource_per_hit=12.0901467549
+n12_d75_s42,12,0.4,161,True,0.92,qaoa,p=1; median over 5 L-BFGS-B starts,0.01318359374999999,75.85185185185192,common probability only; threshold construction independent of C*
+n12_d75_s42,12,0.4,161,True,0.92,qaoa,p=2; median over 5 L-BFGS-B starts,0.012964937303682825,77.13110959016667,common probability only; threshold construction independent of C*
+n12_d75_s42,12,0.4,161,True,0.92,qaoa,p=3; median over 5 L-BFGS-B starts,0.015305450802647804,65.33620034419388,common probability only; threshold construction independent of C*
+n12_d75_s42,12,0.55,175,True,1.0,uniform,uniform sample,0.00048828125,2048.0,common probability only; threshold construction independent of C*
+n12_d75_s42,12,0.55,175,True,1.0,hillclimb,256 starts,0.44921875,2.226086956521739,common probability only; threshold construction independent of C*
+n12_d75_s42,12,0.55,175,True,1.0,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n12_d75_s42,12,0.55,175,True,1.0,tabu_search,64 runs; <= 4096 objective evaluations/run,0.921875,1.0847457627118644,classical objective-evaluation budget only; threshold construction independent of C*; not matched to quantum resources
+n12_d75_s42,12,0.55,175,True,1.0,amplitude_amplification,k=26; exact-rho validation; eps=0; oracle_cost=1,0.8486721595721104,1.1783113051619216,oracle-informed validation reference; normalized_resource_per_hit=62.4504991736
+n12_d75_s42,12,0.55,175,True,1.0,qaoa,p=1; median over 5 L-BFGS-B starts,0.0004882812499999435,2048.000000000237,common probability only; threshold construction independent of C*
+n12_d75_s42,12,0.55,175,True,1.0,qaoa,p=2; median over 5 L-BFGS-B starts,0.0004028028170393898,2482.604286012753,common probability only; threshold construction independent of C*
+n12_d75_s42,12,0.55,175,True,1.0,qaoa,p=3; median over 5 L-BFGS-B starts,0.00037107564787004,2694.8682990650605,common probability only; threshold construction independent of C*

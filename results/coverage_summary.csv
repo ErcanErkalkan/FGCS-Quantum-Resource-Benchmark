@@ -1,0 +1,13 @@
+family,operational_level,instances,feasible_count,feasible_fraction,median_tau_over_Cstar_feasible,median_rho_tau_feasible,median_hillclimb_ratio,architecture_zero_attenuation_nonzero_k_fraction,evidence_label
+cubic_circulant,0.25,6,6,1.0,0.6540523156089193,0.1953125,1.0,0.0,"family-level exact coverage summary; descriptive, not population inference"
+cubic_circulant,0.4,6,6,1.0,0.7315608919382504,0.080078125,1.0,0.0,"family-level exact coverage summary; descriptive, not population inference"
+cubic_circulant,0.55,6,6,1.0,0.8090694682675814,0.0322265625,1.0,0.0,"family-level exact coverage summary; descriptive, not population inference"
+cycle,0.25,6,6,1.0,0.6328626444159178,0.2705078125,0.9575134168157424,0.0,"family-level exact coverage summary; descriptive, not population inference"
+cycle,0.4,6,6,1.0,0.7098086124401914,0.1416015625,0.9575134168157424,0.0,"family-level exact coverage summary; descriptive, not population inference"
+cycle,0.55,6,6,1.0,0.7851398601398601,0.076171875,0.9575134168157424,0.0,"family-level exact coverage summary; descriptive, not population inference"
+random_fixed_density,0.25,45,45,1.0,0.7741935483870968,0.1875,1.0,0.0,"family-level exact coverage summary; descriptive, not population inference"
+random_fixed_density,0.4,45,44,0.9777777777777777,0.8587919776119404,0.0625,1.0,0.0,"family-level exact coverage summary; descriptive, not population inference"
+random_fixed_density,0.55,45,39,0.8666666666666667,0.9354838709677419,0.015625,1.0,0.0,"family-level exact coverage summary; descriptive, not population inference"
+two_community,0.25,6,6,1.0,0.8047518231004469,0.197265625,0.9772023875317786,0.0,"family-level exact coverage summary; descriptive, not population inference"
+two_community,0.4,6,6,1.0,0.8759507566847016,0.041259765625,0.9772023875317786,0.0,"family-level exact coverage summary; descriptive, not population inference"
+two_community,0.55,6,4,0.6666666666666666,0.9436309103740297,0.017822265625,0.9772023875317786,0.0,"family-level exact coverage summary; descriptive, not population inference"

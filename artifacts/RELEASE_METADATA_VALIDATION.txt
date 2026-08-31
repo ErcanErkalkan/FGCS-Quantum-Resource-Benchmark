@@ -1,0 +1,19 @@
+FGCS v1.0.0 release metadata validation — 2026-08-31
+PASS: CITATION.cff YAML parse
+PASS: CITATION.cff required field: cff-version
+PASS: CITATION.cff required field: message
+PASS: CITATION.cff required field: title
+PASS: CITATION.cff required field: type
+PASS: CITATION.cff required field: authors
+PASS: CITATION.cff required field: version
+PASS: CITATION.cff required field: repository-code
+PASS: CITATION.cff required field: license
+PASS: CITATION.cff repository target
+PASS: CITATION.cff BSD-3-Clause license
+PASS: LICENSE BSD 3-Clause text present
+PASS: LICENSE scope document present
+PASS: Manuscript no-funding statement
+PASS: README license/funding synchronized
+PASS: GitHub Actions YAML parse
+PASS: GitHub Actions locked environment reference
+TOTAL: 17 PASS, 0 FAIL
