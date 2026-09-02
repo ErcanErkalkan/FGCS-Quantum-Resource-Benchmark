@@ -1,0 +1,30 @@
+name: Compiler Native AA Crosscheck
+
+on:
+  push:
+    branches:
+      - compiler-native-aa-v1.1
+  workflow_dispatch:
+
+jobs:
+  compiler-native-aa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install locked compiler environment
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install 'qiskit==2.4.2' 'numpy==2.5.2'
+      - name: Run compiler-native AA cross-check
+        run: |
+          python src/compiler_native_aa_crosscheck.py --out-dir compiler_native_aa_artifact
+      - name: Upload compiler-native AA evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: compiler-native-aa-qiskit-2.4.2
+          path: compiler_native_aa_artifact/
+          if-no-files-found: error
