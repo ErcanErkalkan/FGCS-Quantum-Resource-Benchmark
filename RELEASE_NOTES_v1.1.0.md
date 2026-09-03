@@ -1,6 +1,6 @@
 # FGCS Quantum Resource Benchmark v1.1.0 — reviewer-driven revision
 
-Status: release candidate notes. Publish only after the exact v1.1.0 tree passes the final full regression/preflight/CI freeze.
+Status: final release notes for the frozen v1.1.0 reproducibility package.
 
 ## Scientific changes since v1.0.0
 - Added explicit structural diagnostics for the primary and coverage graph suites.
@@ -25,11 +25,13 @@ At operational `lambda=0.40`, direct threshold-hit training increases median tar
 ## Evidence boundaries
 This release does **not** claim quantum advantage, hardware speedup, measured device performance, physical runtime superiority, device calibration, fidelity, energy, or fault-tolerant physical-resource estimates. Compiler counts are reproducible compiler/synthetic-topology evidence. Analytical `C_fixed/G_O` and compiler-native fixed-overhead/iteration coordinates use different denominators and are not metric-equivalent.
 
-## Reproducibility state before release
-- Current reviewer manuscript: 18 pages with no unresolved citations/references, LaTeX warnings, or overfull boxes; all pages visually checked after P16.
-- P14/P15/P16 dedicated evidence checks: 11/11, 3/3, and 9/9 PASS.
-- Historical full-project checkpoint before P14-P16: 93/93 regression tests; 244 PASS / 0 WARN / 0 FAIL full preflight.
-- **Required before publishing v1.1.0:** rerun the complete regression suite and full preflight/CI on the exact frozen release-candidate commit.
+## Final reproducibility verification
+- Locked runtime: Python 3.13.5 with the exact dependency closure in `requirements.lock`.
+- Final regression suite: **94/94 tests passed**.
+- Final full reproducibility preflight: **302 PASS / 0 WARN / 0 FAIL** with runtime and artifacts checked.
+- P14/P15/P16 dedicated evidence checks remain **11/11, 3/3, and 9/9 PASS**.
+- The manuscript claim fence, compiler evidence fence, artifact hashes, row counts, source hashes, and manuscript dependency hashes all pass in the full preflight.
+- GitHub Actions is the authoritative final cross-platform verification for the exact commit targeted by the public `v1.1.0` tag.
 
 ## Preservation rule
-The public `v1.0.0` tag remains immutable. Do not create or publish the `v1.1.0` tag/Zenodo DOI until the final full-project verification passes.
+The public `v1.0.0` tag remains immutable. After the `v1.1.0` GitHub Release is published and Zenodo creates the archived record/DOI, the archived `v1.1.0` tag must not be moved or rewritten.
