@@ -419,12 +419,12 @@
     "test_core.py": "86876d6850cd8d6f8f73d3ba2cc3ad3f53d02436bda6e7fee8f0979a2a18ffcb",
     "test_preflight.py": "977eb76933cbab4cc4d780678bb3e29aa1fa35e02e06c2e4a72b9165e7251151",
     "test_finalize_manifest.py": "d4d682135d839123acdfcce4c7d0c0e27c16d4c8b2529a28c64fa1f46120fde9",
-    "main.tex": "2724f0ab61935947f893369c9ef3cad4a9e75fa70ffbaebd6f9159f3695f7c78",
+    "main.tex": "10bf20e90f1f2c192a2682f4d9bc23d6bdac5f996eb550fae0f4dbf592632540",
     "references.bib": "625fd3838014884476e14caeab78e7dd444dab6576485c7cc8a532c839e2bfbc",
-    "README.md": "5fd93d13338345c77b53f751288eadbb3d2a78e2b94af2c0090959b2a751473b",
+    "README.md": "829c4ce5531a9afdb6517136a5175f880bf41a6574e7e62a4ffaa7067e794980",
     "CLAIMS_REGISTER.md": "6c5ae8af6ddbff49226bb5827c27d1211393a1a13e9fa696348c164d2be602fb",
     "requirements.txt": "593c510ee8af7799985831f334d55681312656f53b1f2a006aa58e83c0e36888",
-    "requirements.lock": "5d0a8b79c483fa93cfe257654bcb62783c49c2243cbc98ce61da159d7db90b0e",
+    "requirements.lock": "ad072b8f3992bb4cc9b22ec2209a7ba26d03ca5de879dbeb5c7dcab6d1a50c46",
     ".python-version": "e72b03ed5b70312f2782f2b05055c55b24670e126d50e24c4f2c559bf288f810"
   },
   "manuscript_dependency_sha256": {

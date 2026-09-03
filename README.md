@@ -1,5 +1,10 @@
 # FGCS Quantum Resource Benchmark — canonical project
 
+## Archived release
+Version **1.1.0** is archived on Zenodo with version DOI **[10.5281/zenodo.22272778](https://doi.org/10.5281/zenodo.22272778)**.
+The corresponding GitHub release is **[v1.1.0](https://github.com/ErcanErkalkan/FGCS-Quantum-Resource-Benchmark/releases/tag/v1.1.0)**.
+This DOI identifies the archived v1.1.0 snapshot; subsequent commits on main do not alter that archived release.
+
 **Only target:** Future Generation Computer Systems (Elsevier), intended for the active special collection **Advances in Quantum Computing: Methods, Algorithms, and Systems. Vol. IV**.
 
 This repository is the single canonical project for the current FGCS manuscript. The computational scope is weighted Max-Cut, threshold-oriented resource-aware amplitude amplification, QAOA, and transparent classical references. No factoring-track material belongs in this project.
