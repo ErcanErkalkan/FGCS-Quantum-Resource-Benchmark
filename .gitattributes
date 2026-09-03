@@ -1,0 +1,20 @@
+# Canonical line endings for reproducibility hashes
+* text=auto
+*.csv text eol=lf
+*.json text eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+*.tex text eol=lf
+*.bib text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.cff text eol=lf
+.python-version text eol=lf
+.gitignore text eol=lf
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.zip binary
+*.docx binary
