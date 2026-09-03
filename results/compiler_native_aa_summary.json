@@ -1,0 +1,24 @@
+{
+  "all_k0_compiled_depth": true,
+  "all_k0_compiled_size": true,
+  "basis_gates": [
+    "rz",
+    "sx",
+    "x",
+    "cx"
+  ],
+  "evidence_label": "compiler-native amplitude-amplification cross-check in locked Qiskit basis; no physical hardware claim",
+  "k_max": 64,
+  "median_break_even_fixed_over_iter_depth": 0.14772261677792944,
+  "median_break_even_fixed_over_iter_size": 0.14752030978866423,
+  "median_iteration_compiled_depth": 110391.0,
+  "median_iteration_compiled_size": 147848.0,
+  "median_oracle_to_diffusion_depth_ratio": 1444.65,
+  "median_oracle_to_diffusion_size_ratio": 684.4646017699115,
+  "operational_level": 0.4,
+  "optimization_level": 1,
+  "python_version": "3.12.14",
+  "qiskit_version": "2.4.2",
+  "row_count": 9,
+  "seed_transpiler": 20260901
+}

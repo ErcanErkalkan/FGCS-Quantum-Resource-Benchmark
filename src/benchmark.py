@@ -152,6 +152,266 @@ def build_exact_suite() -> list[MaxCutInstance]:
     return out
 
 
+def graph_structure_metrics(inst: MaxCutInstance) -> dict:
+    """Return exact structural diagnostics used to audit graph degeneracy.
+
+    Connectivity and bipartiteness are graph properties only; they do not use C* to
+    construct any benchmark target.  Exact optimum information is reported only as a
+    retrospective difficulty/degeneracy descriptor in the exact tiers.
+    """
+    adjacency = [set() for _ in range(inst.n)]
+    for i, j, _ in inst.edges:
+        adjacency[i].add(j)
+        adjacency[j].add(i)
+
+    seen: set[int] = set()
+    components = 0
+    for start in range(inst.n):
+        if start in seen:
+            continue
+        components += 1
+        stack = [start]
+        seen.add(start)
+        while stack:
+            u = stack.pop()
+            for v in adjacency[u]:
+                if v not in seen:
+                    seen.add(v)
+                    stack.append(v)
+
+    colors: dict[int, int] = {}
+    bipartite = True
+    for start in range(inst.n):
+        if start in colors:
+            continue
+        colors[start] = 0
+        stack = [start]
+        while stack:
+            u = stack.pop()
+            for v in adjacency[u]:
+                if v not in colors:
+                    colors[v] = 1 - colors[u]
+                    stack.append(v)
+                elif colors[v] == colors[u]:
+                    bipartite = False
+
+    isolated = sum(1 for nbrs in adjacency if not nbrs)
+    cycle_rank = inst.n_edges - inst.n + components
+    total_weight = int(sum(w for _, _, w in inst.edges))
+    return {
+        "component_count": int(components),
+        "connected": bool(components == 1),
+        "isolated_vertices": int(isolated),
+        "bipartite": bool(bipartite),
+        "cycle_rank": int(cycle_rank),
+        "total_edge_weight": total_weight,
+        "Cstar_over_total_weight": float(inst.optimum / total_weight) if total_weight else math.nan,
+        "M_opt": int(len(inst.optimum_states)),
+        "component_flip_symmetry_lower_bound": int(1 << components),
+    }
+
+
+def graph_diagnostics_rows(suite: Iterable[MaxCutInstance], tier: str) -> list[dict]:
+    rows = []
+    for inst in suite:
+        rows.append({
+            "tier": tier,
+            "instance_id": inst.instance_id,
+            "family": inst.family,
+            "n": inst.n,
+            "n_edges": inst.n_edges,
+            "density_actual": inst.n_edges / (inst.n * (inst.n - 1) / 2),
+            "seed": inst.seed,
+            **graph_structure_metrics(inst),
+            "rho_opt": inst.marked_fraction,
+            "evidence_label": "exact structural audit; connectivity/bipartiteness are graph properties, C* descriptors are retrospective",
+        })
+    return rows
+
+
+CONNECTED_VALIDATION_STREAM_VERSION = 1
+CONNECTED_VALIDATION_NS = (10, 12, 14)
+CONNECTED_VALIDATION_DENSITIES = (0.25, 0.50, 0.75)
+CONNECTED_VALIDATION_SEEDS = (17, 42, 73, 101, 211)
+
+
+def _topology_connected_nonbipartite(n: int, pairs: Iterable[tuple[int, int]]) -> tuple[bool, bool]:
+    adjacency = [set() for _ in range(n)]
+    for i, j in pairs:
+        adjacency[i].add(j)
+        adjacency[j].add(i)
+    seen = {0}
+    stack = [0]
+    while stack:
+        u = stack.pop()
+        for v in adjacency[u]:
+            if v not in seen:
+                seen.add(v)
+                stack.append(v)
+    connected = len(seen) == n
+
+    colors: dict[int, int] = {}
+    bipartite = True
+    for start in range(n):
+        if start in colors:
+            continue
+        colors[start] = 0
+        q = [start]
+        while q:
+            u = q.pop()
+            for v in adjacency[u]:
+                if v not in colors:
+                    colors[v] = 1 - colors[u]
+                    q.append(v)
+                elif colors[v] == colors[u]:
+                    bipartite = False
+    return connected, (not bipartite)
+
+
+def build_connected_validation_instance(
+    n: int,
+    density_target: float,
+    seed: int,
+    weight_low: int = 1,
+    weight_high: int = 9,
+    max_attempts: int = 10_000,
+) -> MaxCutInstance:
+    """Condition fixed-density sampling on connected, non-bipartite topology.
+
+    This tier is a reviewer-facing structural stress test.  The original primary suite
+    remains unchanged; conditioning is explicit and deterministic rather than silently
+    discarding inconvenient primary instances.
+    """
+    if not (0 < density_target <= 1):
+        raise ValueError("density_target must be in (0,1]")
+    pairs_all = [(i, j) for i in range(n) for j in range(i + 1, n)]
+    n_edges = max(1, int(round(density_target * len(pairs_all))))
+    if n_edges < n:
+        # A connected non-bipartite simple graph needs at least n edges: n-1 for
+        # connectivity plus one edge to create an odd cycle somewhere.
+        raise ValueError("density too low for guaranteed connected non-bipartite validation")
+    density_code = int(round(100 * density_target))
+    chosen = None
+    accepted_attempt = None
+    accepted_rng = None
+    for attempt in range(max_attempts):
+        stream = np.random.SeedSequence([
+            CONNECTED_VALIDATION_STREAM_VERSION, int(seed), int(n), density_code, int(attempt)
+        ])
+        rng = np.random.default_rng(stream)
+        pairs = list(pairs_all)
+        rng.shuffle(pairs)
+        candidate = pairs[:n_edges]
+        connected, nonbipartite = _topology_connected_nonbipartite(n, candidate)
+        if connected and nonbipartite:
+            chosen = candidate
+            accepted_attempt = attempt
+            accepted_rng = rng
+            break
+    if chosen is None or accepted_rng is None or accepted_attempt is None:
+        raise RuntimeError("unable to sample connected non-bipartite fixed-density graph")
+
+    edges = tuple(
+        (i, j, int(accepted_rng.integers(weight_low, weight_high + 1)))
+        for i, j in chosen
+    )
+    states = np.arange(1 << n, dtype=np.uint64)
+    vals = np.zeros(1 << n, dtype=float)
+    for i, j, w in edges:
+        vals += w * (((states >> np.uint64(i)) & 1) ^ ((states >> np.uint64(j)) & 1))
+    optimum = int(vals.max())
+    opt_states = tuple(int(x) for x in np.flatnonzero(vals == optimum))
+    iid = f"cv_n{n}_d{density_code:02d}_s{seed}"
+    inst = MaxCutInstance(
+        instance_id=iid,
+        n=n,
+        n_edges=n_edges,
+        density_target=float(density_target),
+        seed=int(seed),
+        edges=edges,
+        cut_values=vals,
+        optimum=optimum,
+        optimum_states=opt_states,
+        family="connected_nonbipartite_fixed_density",
+    )
+    metrics = graph_structure_metrics(inst)
+    if not metrics["connected"] or metrics["bipartite"]:
+        raise RuntimeError("connected validation constructor violated its structural contract")
+    return inst
+
+
+def build_connected_validation_suite() -> list[MaxCutInstance]:
+    return [
+        build_connected_validation_instance(n, density, seed)
+        for n in CONNECTED_VALIDATION_NS
+        for density in CONNECTED_VALIDATION_DENSITIES
+        for seed in CONNECTED_VALIDATION_SEEDS
+    ]
+
+
+def connected_validation_graph_rows(suite: Iterable[MaxCutInstance]) -> list[dict]:
+    rows = []
+    for inst in suite:
+        for i, j, w in inst.edges:
+            rows.append({
+                "instance_id": inst.instance_id, "family": inst.family,
+                "n": inst.n, "density_target": inst.density_target, "seed": inst.seed,
+                "i": i, "j": j, "w": w,
+            })
+    return rows
+
+
+def connected_validation_ground_truth_rows(suite: Iterable[MaxCutInstance]) -> list[dict]:
+    rows = []
+    for inst in suite:
+        rows.append({
+            "instance_id": inst.instance_id, "family": inst.family,
+            "n": inst.n, "n_edges": inst.n_edges, "density_target": inst.density_target,
+            "seed": inst.seed, "C_star": inst.optimum, "rho_opt": inst.marked_fraction,
+            **graph_structure_metrics(inst),
+            "evidence_label": "exact connected non-bipartite validation tier; structural stress test, not population inference",
+        })
+    return rows
+
+
+def connected_validation_operational_threshold_rows(suite: Iterable[MaxCutInstance]) -> list[dict]:
+    rows = []
+    for inst in suite:
+        for level in OPERATIONAL_LEVELS:
+            rows.append({
+                "instance_id": inst.instance_id, "family": inst.family,
+                "n": inst.n, "density_target": inst.density_target, "seed": inst.seed,
+                **operational_threshold_spec(inst, level),
+                "evidence_label": "exact post-construction validation on connected non-bipartite tier",
+            })
+    return rows
+
+
+def connected_validation_coupled_oracle_rows(
+    suite: Iterable[MaxCutInstance], eps_levels: tuple[float, ...] = (0.0, 0.001)
+) -> list[dict]:
+    rows = []
+    for inst in suite:
+        for level in OPERATIONAL_LEVELS:
+            spec = operational_threshold_spec(inst, level)
+            rho = float(spec["rho_tau_exact_validation"])
+            if rho <= 0:
+                continue
+            rm = maxcut_threshold_oracle_resource_model(inst, spec["threshold"])
+            for eps in eps_levels:
+                out = select_k_architecture_coupled(rho, float(eps), rm, k_max=80)
+                rows.append({
+                    "instance_id": inst.instance_id, "family": inst.family, "n": inst.n,
+                    "density_target": inst.density_target, "seed": inst.seed,
+                    "operational_level": level, "threshold": spec["threshold"],
+                    "rho_tau_exact_validation": rho, "eps_per_logical_depth_model": float(eps),
+                    "k_star": out["k"], "p_target_eff": out["p_eff"],
+                    "oracle_logical_depth_model": rm["oracle_logical_depth_model"],
+                    "oracle_gate_equivalent_model": rm["oracle_gate_equivalent_model"],
+                    "evidence_label": "connected non-bipartite exact validation under logical model; not compiled or hardware measured",
+                })
+    return rows
+
 
 EXPANDED_RANDOM_SEEDS = (17, 42, 73, 101, 211)
 STRUCTURED_WEIGHT_SEEDS = (17, 42)
@@ -400,6 +660,7 @@ def coverage_summary_rows(
 
 TARGET_RATIOS = (0.90, 0.95, 1.00)
 OPERATIONAL_LEVELS = (0.25, 0.40, 0.55)
+DENSE_OPERATIONAL_LEVELS = tuple(round(i * 0.05, 2) for i in range(21))
 RHO_ESTIMATE_FACTORS = (0.50, 0.75, 0.90, 1.00, 1.10, 1.25, 1.50)
 
 
@@ -492,6 +753,284 @@ def cut_value(x: int, inst: MaxCutInstance) -> int:
     return int(inst.cut_values[x])
 
 
+GW_SDP_STARTS = 12
+GW_SDP_MAX_SWEEPS = 2500
+GW_SDP_CERT_GAP_TOL = 1e-6
+GW_SDP_DUAL_FEAS_EPS = 1e-10
+GW_ROUNDING_SAMPLES = 4096
+GW_RANDOM_STREAM_VERSION = 1
+
+
+def _stable_u32_token(text: str) -> int:
+    """Stable 32-bit token for deterministic RNG stream construction."""
+    return int.from_bytes(hashlib.sha256(text.encode("utf-8")).digest()[:4], "little")
+
+
+def _weighted_laplacian(inst: MaxCutInstance) -> np.ndarray:
+    L = np.zeros((inst.n, inst.n), dtype=float)
+    for i, j, w in inst.edges:
+        wf = float(w)
+        L[i, i] += wf
+        L[j, j] += wf
+        L[i, j] -= wf
+        L[j, i] -= wf
+    return L
+
+
+def _gw_sdp_objective(inst: MaxCutInstance, vectors: np.ndarray) -> float:
+    """Max-Cut SDP objective 1/2 sum_e w_e(1-v_i^T v_j)."""
+    if vectors.shape != (inst.n, inst.n):
+        raise ValueError("GW vector factor must have shape (n,n)")
+    return float(
+        0.5
+        * sum(
+            float(w) * (1.0 - float(vectors[i] @ vectors[j]))
+            for i, j, w in inst.edges
+        )
+    )
+
+
+def gw_sdp_relaxation(
+    inst: MaxCutInstance,
+    starts: int = GW_SDP_STARTS,
+    max_sweeps: int = GW_SDP_MAX_SWEEPS,
+    convergence_tol: float = 1e-11,
+    dual_feas_eps: float = GW_SDP_DUAL_FEAS_EPS,
+) -> dict:
+    """Solve the Goemans--Williamson SDP factorization with a numerical dual certificate.
+
+    The primal factor has rank n, so it can represent every feasible n-by-n SDP
+    Gram matrix.  Block-coordinate ascent optimizes unit vectors.  Crucially, the
+    reported SDP value is not accepted on primal optimization alone: each restart
+    also constructs a dual candidate for
+
+        min sum_i y_i  subject to Diag(y) - L/4 >= 0.
+
+    A uniform diagonal shift makes the candidate numerically PSD.  The smallest
+    dual upper bound across restarts and the largest primal value form an explicit
+    primal--dual gap.  ``certified`` therefore means numerically bracketed to the
+    declared tolerance; it is not a claim of symbolic exact arithmetic.
+    """
+    if starts <= 0 or max_sweeps <= 0:
+        raise ValueError("starts and max_sweeps must be positive")
+    if dual_feas_eps <= 0:
+        raise ValueError("dual_feas_eps must be positive")
+
+    n = inst.n
+    L = _weighted_laplacian(inst)
+    adjacency: list[list[tuple[int, float]]] = [[] for _ in range(n)]
+    for i, j, w in inst.edges:
+        adjacency[i].append((j, float(w)))
+        adjacency[j].append((i, float(w)))
+
+    token = _stable_u32_token(inst.instance_id)
+    best_primal = -math.inf
+    best_vectors: np.ndarray | None = None
+    best_primal_start = -1
+    best_primal_sweeps = -1
+    best_dual = math.inf
+    best_dual_min_eig = -math.inf
+    best_dual_start = -1
+    best_dual_shift = math.nan
+
+    for start in range(starts):
+        rng = np.random.default_rng(
+            np.random.SeedSequence(
+                [GW_RANDOM_STREAM_VERSION, 20260901, token, int(start)]
+            )
+        )
+        vectors = rng.normal(size=(n, n))
+        vectors /= np.linalg.norm(vectors, axis=1, keepdims=True)
+        previous = -math.inf
+
+        for sweep in range(max_sweeps):
+            max_change = 0.0
+            for i in rng.permutation(n):
+                field = np.zeros(n, dtype=float)
+                for j, w in adjacency[i]:
+                    field += w * vectors[j]
+                norm = float(np.linalg.norm(field))
+                if norm > 1e-15:
+                    updated = -field / norm
+                    max_change = max(
+                        max_change, float(np.linalg.norm(updated - vectors[i]))
+                    )
+                    vectors[i] = updated
+            primal = _gw_sdp_objective(inst, vectors)
+            if (
+                math.isfinite(previous)
+                and abs(primal - previous) < convergence_tol
+                and max_change < 3e-8
+            ):
+                break
+            previous = primal
+
+        primal = _gw_sdp_objective(inst, vectors)
+        if primal > best_primal:
+            best_primal = primal
+            best_vectors = vectors.copy()
+            best_primal_start = start
+            best_primal_sweeps = sweep + 1
+
+        # KKT-derived dual candidate.  Shift all y_i equally until the slack
+        # matrix is safely PSD in floating-point arithmetic.
+        LV = L @ vectors
+        y = np.einsum("ij,ij->i", vectors, LV) / 4.0
+        slack = np.diag(y) - L / 4.0
+        min_eig_before = float(np.linalg.eigvalsh(slack)[0])
+        shift = max(0.0, -min_eig_before + dual_feas_eps)
+        y_feasible = y + shift
+        slack_feasible = np.diag(y_feasible) - L / 4.0
+        min_eig_after = float(np.linalg.eigvalsh(slack_feasible)[0])
+        dual = float(y_feasible.sum())
+        if dual < best_dual:
+            best_dual = dual
+            best_dual_min_eig = min_eig_after
+            best_dual_start = start
+            best_dual_shift = shift
+
+    if best_vectors is None:
+        raise RuntimeError("GW SDP solver produced no primal factor")
+
+    gap = float(best_dual - best_primal)
+    certified = bool(
+        best_dual_min_eig >= -1e-9
+        and gap >= -GW_SDP_CERT_GAP_TOL
+        and gap <= GW_SDP_CERT_GAP_TOL
+    )
+    return {
+        "primal_value": float(best_primal),
+        "dual_upper_bound": float(best_dual),
+        "primal_dual_gap": gap,
+        "dual_min_eigenvalue": float(best_dual_min_eig),
+        "dual_diagonal_shift": float(best_dual_shift),
+        "certified": certified,
+        "certificate_tolerance": float(GW_SDP_CERT_GAP_TOL),
+        "starts": int(starts),
+        "max_sweeps": int(max_sweeps),
+        "best_primal_start": int(best_primal_start),
+        "best_primal_sweeps": int(best_primal_sweeps),
+        "best_dual_start": int(best_dual_start),
+        "vectors": best_vectors,
+    }
+
+
+def gw_hyperplane_rounding(
+    inst: MaxCutInstance,
+    vectors: np.ndarray,
+    samples: int = GW_ROUNDING_SAMPLES,
+) -> dict:
+    """Deterministic-seed Goemans--Williamson random-hyperplane rounding."""
+    if samples <= 0:
+        raise ValueError("samples must be positive")
+    if vectors.shape != (inst.n, inst.n):
+        raise ValueError("GW vector factor must have shape (n,n)")
+    token = _stable_u32_token(inst.instance_id + "|gw-rounding")
+    rng = np.random.default_rng(
+        np.random.SeedSequence(
+            [GW_RANDOM_STREAM_VERSION, 20260901, token, int(samples)]
+        )
+    )
+    hyperplanes = rng.normal(size=(inst.n, samples))
+    bits = (vectors @ hyperplanes) >= 0.0
+    values = np.zeros(samples, dtype=float)
+    for i, j, w in inst.edges:
+        values += float(w) * (bits[i] != bits[j])
+
+    out = {
+        "rounding_samples": int(samples),
+        "rounding_mean_cut": float(np.mean(values)),
+        "rounding_median_cut": float(np.median(values)),
+        "rounding_q1_cut": float(np.quantile(values, 0.25)),
+        "rounding_q3_cut": float(np.quantile(values, 0.75)),
+        "rounding_best_cut": int(np.max(values)),
+        "rounding_mean_ratio_to_Cstar": float(np.mean(values) / inst.optimum),
+        "rounding_median_ratio_to_Cstar": float(np.median(values) / inst.optimum),
+        "rounding_best_ratio_to_Cstar": float(np.max(values) / inst.optimum),
+        "rounding_optimum_hit_fraction": float(np.mean(values >= inst.optimum)),
+    }
+    for target_ratio in TARGET_RATIOS:
+        spec = threshold_spec(inst, target_ratio)
+        suffix = f"q{int(round(100 * target_ratio)):03d}"
+        out[f"rounding_target_{suffix}_hit_fraction"] = float(
+            np.mean(values >= spec["threshold"])
+        )
+    for level in OPERATIONAL_LEVELS:
+        spec = operational_threshold_spec(inst, level)
+        suffix = f"l{int(round(100 * level)):03d}"
+        out[f"rounding_oper_{suffix}_hit_fraction"] = float(
+            np.mean(values >= spec["threshold"])
+        )
+    return out
+
+
+def gw_sdp_rows(suite: Iterable[MaxCutInstance], tier: str) -> list[dict]:
+    """Certified numerical SDP + seeded GW rounding rows for an exact suite."""
+    rows: list[dict] = []
+    for inst in suite:
+        solved = gw_sdp_relaxation(inst)
+        if not solved["certified"]:
+            raise RuntimeError(
+                f"GW SDP numerical certificate failed for {inst.instance_id}: "
+                f"gap={solved['primal_dual_gap']:.3e}"
+            )
+        rounded = gw_hyperplane_rounding(inst, solved["vectors"])
+        spectral = spectral_maxcut_upper_bound(inst)
+        row = {
+            "tier": str(tier),
+            "instance_id": inst.instance_id,
+            "family": inst.family,
+            "n": inst.n,
+            "n_edges": inst.n_edges,
+            "density_target": inst.density_target,
+            "seed": inst.seed,
+            "C_star": inst.optimum,
+            "spectral_upper_bound": spectral,
+            "sdp_primal_value": solved["primal_value"],
+            "sdp_dual_upper_bound": solved["dual_upper_bound"],
+            "sdp_primal_dual_gap": solved["primal_dual_gap"],
+            "sdp_dual_min_eigenvalue": solved["dual_min_eigenvalue"],
+            "sdp_dual_diagonal_shift": solved["dual_diagonal_shift"],
+            "sdp_numerically_certified": solved["certified"],
+            "sdp_certificate_tolerance": solved["certificate_tolerance"],
+            "sdp_starts": solved["starts"],
+            "sdp_max_sweeps": solved["max_sweeps"],
+            "sdp_upper_bound_over_Cstar": solved["dual_upper_bound"] / inst.optimum,
+            "sdp_tightening_vs_spectral": spectral - solved["dual_upper_bound"],
+            **rounded,
+            "evidence_label": (
+                "Goemans-Williamson SDP relaxation with numerical primal-dual "
+                "certificate and seeded random-hyperplane rounding; exact C* used "
+                "only for retrospective scoring"
+            ),
+        }
+        rows.append(row)
+    return rows
+
+
+def gw_sdp_summary_rows(rows: list[dict]) -> list[dict]:
+    out: list[dict] = []
+    tiers = sorted({str(r["tier"]) for r in rows})
+    for tier in tiers:
+        group = [r for r in rows if r["tier"] == tier]
+        for n_value in [None] + sorted({int(r["n"]) for r in group}):
+            g = group if n_value is None else [r for r in group if int(r["n"]) == n_value]
+            out.append({
+                "tier": tier,
+                "n": "all" if n_value is None else int(n_value),
+                "instances": len(g),
+                "certified_instances": sum(bool(r["sdp_numerically_certified"]) for r in g),
+                "max_primal_dual_gap": max(float(r["sdp_primal_dual_gap"]) for r in g),
+                "median_sdp_upper_bound_over_Cstar": float(np.median([float(r["sdp_upper_bound_over_Cstar"]) for r in g])),
+                "median_rounding_mean_ratio_to_Cstar": float(np.median([float(r["rounding_mean_ratio_to_Cstar"]) for r in g])),
+                "median_rounding_best_ratio_to_Cstar": float(np.median([float(r["rounding_best_ratio_to_Cstar"]) for r in g])),
+                "instances_with_optimum_in_rounding": sum(float(r["rounding_best_ratio_to_Cstar"]) >= 1.0 - 1e-12 for r in g),
+                "median_sdp_tightening_vs_spectral": float(np.median([float(r["sdp_tightening_vs_spectral"]) for r in g])),
+                "evidence_label": "descriptive GW/SDP summary on exact validation tiers",
+            })
+    return out
+
+
 def local_hillclimb(inst: MaxCutInstance, starts: int = 256, seed: int = 2026) -> dict:
     """Simple classical reference, not claimed as a best-known Max-Cut solver."""
     rng = np.random.default_rng(seed + inst.seed + inst.n * 1000 + inst.n_edges)
@@ -539,6 +1078,7 @@ def local_hillclimb(inst: MaxCutInstance, starts: int = 256, seed: int = 2026) -
 
 CLASSICAL_EVAL_BUDGET = 4096
 CLASSICAL_BUDGETED_RUNS = 64
+CLASSICAL_BUDGET_CURVE = (64, 128, 256, 512, 1024, 4096)
 
 
 def _weighted_degree_scale(inst: MaxCutInstance) -> float:
@@ -733,6 +1273,59 @@ def run_budgeted_classical_suite(
     return raw, summary
 
 
+def run_classical_budget_curve(
+    suite: Iterable[MaxCutInstance],
+    budgets: tuple[int, ...] = CLASSICAL_BUDGET_CURVE,
+    runs: int = CLASSICAL_BUDGETED_RUNS,
+    base_seed: int = 700_001,
+) -> tuple[list[dict], list[dict], list[dict]]:
+    """Evaluate SA/tabu across a declared objective-evaluation budget curve.
+
+    Each budget is a complete deterministic-budget experiment using the same seed
+    mapping. Simulated annealing rescales its temperature schedule to the declared
+    budget, so these are budget-specific runs rather than prefix checkpoints.
+    """
+    if not budgets or any(int(b) < 2 for b in budgets):
+        raise ValueError('budgets must contain evaluation caps >=2')
+    suite_list = list(suite)
+    raw_all: list[dict] = []
+    summary_all: list[dict] = []
+    inst_lookup = {x.instance_id: x for x in suite_list}
+    for budget in budgets:
+        raw, summary = run_budgeted_classical_suite(
+            suite_list, runs=runs, eval_budget=int(budget), base_seed=base_seed
+        )
+        for r in raw:
+            r['curve_budget'] = int(budget)
+            raw_all.append(r)
+        for r in summary:
+            r['curve_budget'] = int(budget)
+            inst = inst_lookup[r['instance_id']]
+            r['state_count'] = inst.state_count
+            r['budget_over_state_count'] = float(int(budget) / inst.state_count)
+            summary_all.append(r)
+
+    aggregate: list[dict] = []
+    for method in ('simulated_annealing', 'tabu_search'):
+        for budget in budgets:
+            rr = [r for r in summary_all if r['method'] == method and int(r['curve_budget']) == int(budget)]
+            vals = np.asarray([float(r['median_best_ratio']) for r in rr], dtype=float)
+            aggregate.append({
+                'method': method,
+                'eval_budget_per_run': int(budget),
+                'instances': len(rr),
+                'runs_per_instance': int(runs),
+                'median_of_instance_median_best_ratio': float(np.median(vals)),
+                'q1_of_instance_median_best_ratio': float(np.quantile(vals, 0.25)),
+                'q3_of_instance_median_best_ratio': float(np.quantile(vals, 0.75)),
+                'median_instance_optimum_hit_fraction': float(np.median([float(r['optimum_hit_fraction']) for r in rr])),
+                'instances_with_at_least_one_optimum_hit': int(sum(float(r['optimum_hit_fraction']) > 0 for r in rr)),
+                'median_budget_over_state_count': float(np.median([float(r['budget_over_state_count']) for r in rr])),
+                'evidence_label': 'within-classical objective-evaluation budget curve; not matched to quantum resources',
+            })
+    return raw_all, summary_all, aggregate
+
+
 def _apply_rx_all(state: np.ndarray, beta: float, n: int) -> np.ndarray:
     c = math.cos(beta)
     s = -1j * math.sin(beta)
@@ -779,6 +1372,33 @@ def wilson_interval(hits: int, shots: int, z: float = 1.959963984540054) -> tupl
     return phat, max(0.0, centre - half), min(1.0, centre + half)
 
 
+
+QAOA_INIT_STREAM_VERSION = 1
+QAOA_STABILITY_STARTS = 20
+
+
+def qaoa_initial_params(inst: MaxCutInstance, p: int, optimizer_seed: int) -> np.ndarray:
+    """Deterministic instance-conditioned QAOA initialization.
+
+    The graph identity participates in the random stream so equal external optimizer
+    seeds do not reuse the same parameter vector across distinct graph instances.
+    Optimizer families still call this same helper at fixed (instance,p,seed), which
+    preserves the paired-initialization contract for the L-BFGS-B/COBYLA ablation.
+    """
+    if p <= 0:
+        raise ValueError("p must be positive")
+    payload = inst.instance_id + "|" + ";".join(f"{i},{j},{w}" for i, j, w in inst.edges)
+    digest = hashlib.sha256(payload.encode("utf-8")).digest()
+    words = [int.from_bytes(digest[i:i+4], "big") for i in range(0, 16, 4)]
+    stream = np.random.SeedSequence([
+        QAOA_INIT_STREAM_VERSION, int(inst.n), int(p), int(optimizer_seed), *words
+    ])
+    rng = np.random.default_rng(stream)
+    return np.concatenate([
+        rng.uniform(0, 2 * math.pi, p),
+        rng.uniform(0, math.pi, p),
+    ])
+
 def run_qaoa_one(
     inst: MaxCutInstance,
     p: int,
@@ -786,10 +1406,7 @@ def run_qaoa_one(
     maxiter: int = 60,
     final_shots: int = 4096,
 ) -> dict:
-    rng = np.random.default_rng(optimizer_seed)
-    x0 = np.concatenate(
-        [rng.uniform(0, 2 * math.pi, p), rng.uniform(0, math.pi, p)]
-    )
+    x0 = qaoa_initial_params(inst, p, optimizer_seed)
     bounds = [(0, 2 * math.pi)] * p + [(0, math.pi)] * p
 
     def obj(x: np.ndarray) -> float:
@@ -887,10 +1504,7 @@ def run_qaoa_budgeted_one(
         raise ValueError(f"unsupported optimizer: {optimizer}")
     if eval_budget < 4:
         raise ValueError("eval_budget must be at least 4")
-    rng = np.random.default_rng(optimizer_seed)
-    x0 = np.concatenate(
-        [rng.uniform(0, 2 * math.pi, p), rng.uniform(0, math.pi, p)]
-    )
+    x0 = qaoa_initial_params(inst, p, optimizer_seed)
     bounds = [(0, 2 * math.pi)] * p + [(0, math.pi)] * p
     nfev = 0
     best_expected = -math.inf
@@ -1124,7 +1738,7 @@ def qaoa_depth_inference(
 ) -> list[dict]:
     """Instance-clustered inference for the primary L-BFGS-B depth study.
 
-    Five initialization runs are first collapsed to an instance-level median at
+    Repeated initialization runs are first collapsed to an instance-level median at
     each depth. The 18 deterministic primary benchmark instances are then the paired
     units. Inference is conditional on this fixed suite; it is not population
     generalization over random graphs.
@@ -1434,6 +2048,12 @@ def rho_estimation_robustness(suite: Iterable[MaxCutInstance]) -> list[dict]:
 
 ORACLE_ATTENUATION_LEVELS = (0.0, 1e-5, 5e-5, 1e-4, 5e-4)
 FIXED_OVERHEAD_ORACLE_RATIOS = (0.0, 0.05, 0.10, 0.25, 0.50, 1.0, 2.0)
+BBHT_LAMBDA = 6.0 / 5.0
+BBHT_EPS_LEVELS = (0.0, 1e-4)
+BBHT_FIXED_OVERHEAD_RATIOS = (0.0, 0.25)
+RESOURCE_TOFFOLI_WEIGHTS = (1.0, 4.0, 6.0, 10.0)
+RESOURCE_SCALARIZATION_EPS_LEVELS = (0.0, 1e-4)
+RESOURCE_SCALARIZATION_CANONICAL_FIXED_RATIOS = (0.0, 0.10, 0.25, 0.50)
 
 
 def maxcut_threshold_oracle_resource_model(inst: MaxCutInstance, threshold: int) -> dict:
@@ -1554,6 +2174,327 @@ def select_k_architecture_coupled(
     }
 
 
+
+def bbht_stage_widths(state_count: int, growth: float = BBHT_LAMBDA) -> list[int]:
+    """Return the finite BBHT growth schedule through the saturated stage.
+
+    The schedule follows Boyer--Brassard--Hoyer--Tapp: m starts at one, an
+    integer j is drawn uniformly from the non-negative integers strictly below
+    m, and after a failed trial m <- min(growth*m, sqrt(N)).  The final returned
+    width is the saturated stage, which is then repeated until success.
+    """
+    if state_count <= 0:
+        raise ValueError('state_count must be positive')
+    if not (1.0 < growth < 4.0 / 3.0):
+        raise ValueError('BBHT growth must lie strictly between 1 and 4/3')
+    cap = math.sqrt(float(state_count))
+    m = 1.0
+    widths: list[int] = []
+    while True:
+        width = max(1, int(math.ceil(m - 1e-12)))
+        widths.append(width)
+        if m >= cap - 1e-12:
+            break
+        m = min(growth * m, cap)
+    return widths
+
+
+def bbht_expected_architecture_cost(
+    rho: float,
+    state_count: int,
+    resource_model: dict,
+    eps_per_logical_depth: float = 0.0,
+    fixed_overhead_gate_equiv: float = 0.0,
+    growth: float = BBHT_LAMBDA,
+) -> dict:
+    """Exact expectation of the BBHT unknown-solution-count schedule.
+
+    The schedule itself never receives ``rho``; exact rho is supplied only here
+    to evaluate the expected success/resource cost retrospectively on Tier-I
+    ground truth.  Before saturation, one trial is taken at each growth stage.
+    At the saturated stage the same randomized-j trial is repeated until success,
+    allowing an exact geometric-tail expectation rather than Monte Carlo noise.
+    """
+    if not (0.0 < rho <= 1.0):
+        raise ValueError('rho must lie in (0,1]')
+    if eps_per_logical_depth < 0 or fixed_overhead_gate_equiv < 0:
+        raise ValueError('attenuation and fixed overhead must be non-negative')
+    prep_cost = float(resource_model['prep_gate_equivalent_model'])
+    iter_cost = float(resource_model['iteration_gate_equivalent_model'])
+    prep_depth = float(resource_model['prep_logical_depth_model'])
+    iter_depth = float(resource_model['iteration_logical_depth_model'])
+    widths = bbht_stage_widths(state_count, growth=growth)
+
+    expected_cost = 0.0
+    expected_trials = 0.0
+    expected_iterations = 0.0
+    survival = 1.0
+    stage_rows: list[dict] = []
+
+    for stage_index, width in enumerate(widths):
+        js = np.arange(width, dtype=int)
+        probs = np.asarray([
+            grover_probability(rho, int(j))
+            * math.exp(-eps_per_logical_depth * (prep_depth + int(j) * iter_depth))
+            for j in js
+        ], dtype=float)
+        costs = np.asarray([
+            fixed_overhead_gate_equiv + prep_cost + int(j) * iter_cost
+            for j in js
+        ], dtype=float)
+        p_bar = float(np.mean(probs))
+        avg_cost = float(np.mean(costs))
+        avg_j = float(np.mean(js))
+        if p_bar <= 0.0:
+            raise RuntimeError('BBHT saturated-stage success probability is zero')
+        saturated = stage_index == len(widths) - 1
+        if saturated:
+            expected_cost += survival * avg_cost / p_bar
+            expected_trials += survival / p_bar
+            expected_iterations += survival * avg_j / p_bar
+            stage_rows.append({
+                'stage': stage_index, 'width': width, 'saturated': True,
+                'survival_before': survival, 'mean_success_probability': p_bar,
+                'mean_trial_cost': avg_cost, 'mean_grover_iterations': avg_j,
+            })
+            survival = 0.0
+            break
+        expected_cost += survival * avg_cost
+        expected_trials += survival
+        expected_iterations += survival * avg_j
+        stage_rows.append({
+            'stage': stage_index, 'width': width, 'saturated': False,
+            'survival_before': survival, 'mean_success_probability': p_bar,
+            'mean_trial_cost': avg_cost, 'mean_grover_iterations': avg_j,
+        })
+        survival *= (1.0 - p_bar)
+
+    return {
+        'growth_lambda': float(growth),
+        'growth_stages_including_saturation': len(widths),
+        'saturated_width': int(widths[-1]),
+        'expected_trials_to_success': float(expected_trials),
+        'expected_grover_iterations_to_success': float(expected_iterations),
+        'expected_gate_equivalent_to_success': float(expected_cost),
+        'eventual_success_probability': 1.0,
+        'stage_rows': stage_rows,
+    }
+
+
+def bbht_operational_rows(
+    suite: Iterable[MaxCutInstance],
+    scope: str,
+    eps_levels: tuple[float, ...] = BBHT_EPS_LEVELS,
+    fixed_overhead_ratios: tuple[float, ...] = BBHT_FIXED_OVERHEAD_RATIOS,
+) -> list[dict]:
+    """Compare BBHT, uniform repetition, and oracle-informed exact-rho selection."""
+    rows: list[dict] = []
+    for inst in suite:
+        for level in OPERATIONAL_LEVELS:
+            spec = operational_threshold_spec(inst, level)
+            rho = float(spec['rho_tau_exact_validation'])
+            if rho <= 0.0:
+                continue
+            rm = maxcut_threshold_oracle_resource_model(inst, spec['threshold'])
+            for eps in eps_levels:
+                for ratio in fixed_overhead_ratios:
+                    fixed = float(ratio) * float(rm['oracle_gate_equivalent_model'])
+                    bbht = bbht_expected_architecture_cost(
+                        rho, inst.state_count, rm, eps_per_logical_depth=float(eps),
+                        fixed_overhead_gate_equiv=fixed, growth=BBHT_LAMBDA,
+                    )
+                    p_uniform = rho * math.exp(-float(eps) * float(rm['prep_logical_depth_model']))
+                    uniform_resource = (fixed + float(rm['prep_gate_equivalent_model'])) / p_uniform
+                    oracle = select_k_architecture_coupled(
+                        rho, float(eps), rm, k_max=80, fixed_overhead_gate_equiv=fixed
+                    )
+                    oracle_resource = float(oracle['gate_equivalent_cost']) / float(oracle['p_eff'])
+                    rows.append({
+                        'scope': str(scope),
+                        'instance_id': inst.instance_id,
+                        'n': inst.n,
+                        'family': inst.family,
+                        'operational_level': level,
+                        'threshold': spec['threshold'],
+                        'rho_tau_exact_validation': rho,
+                        'bbht_schedule_uses_rho': False,
+                        'bbht_lambda': BBHT_LAMBDA,
+                        'eps_per_logical_depth_model': float(eps),
+                        'fixed_overhead_ratio_to_oracle': float(ratio),
+                        'expected_bbht_trials_to_success': bbht['expected_trials_to_success'],
+                        'expected_bbht_grover_iterations_to_success': bbht['expected_grover_iterations_to_success'],
+                        'bbht_expected_resource_per_target_hit_model': bbht['expected_gate_equivalent_to_success'],
+                        'uniform_expected_resource_per_target_hit_model': uniform_resource,
+                        'oracle_informed_k_star': int(oracle['k']),
+                        'oracle_informed_expected_resource_per_target_hit_model': oracle_resource,
+                        'bbht_over_uniform_resource_ratio': bbht['expected_gate_equivalent_to_success'] / uniform_resource,
+                        'bbht_over_oracle_informed_resource_ratio': bbht['expected_gate_equivalent_to_success'] / oracle_resource,
+                        'evidence_label': 'BBHT schedule does not consume rho; exact rho used only for retrospective expected-cost evaluation under the logical model',
+                    })
+    return rows
+
+def bbht_summary_rows(rows: list[dict]) -> list[dict]:
+    """Compact descriptive summary of the BBHT resource comparison."""
+    out: list[dict] = []
+    scopes = sorted({str(r['scope']) for r in rows})
+    eps_values = sorted({float(r['eps_per_logical_depth_model']) for r in rows})
+    fixed_values = sorted({float(r['fixed_overhead_ratio_to_oracle']) for r in rows})
+    for scope in scopes:
+        for eps in eps_values:
+            for fixed in fixed_values:
+                rr = [
+                    r for r in rows
+                    if str(r['scope']) == scope
+                    and abs(float(r['eps_per_logical_depth_model']) - eps) < 1e-15
+                    and abs(float(r['fixed_overhead_ratio_to_oracle']) - fixed) < 1e-15
+                ]
+                if not rr:
+                    continue
+                b_u = np.asarray([float(r['bbht_over_uniform_resource_ratio']) for r in rr])
+                b_o = np.asarray([float(r['bbht_over_oracle_informed_resource_ratio']) for r in rr])
+                it = np.asarray([float(r['expected_bbht_grover_iterations_to_success']) for r in rr])
+                out.append({
+                    'scope': scope,
+                    'eps_per_logical_depth_model': eps,
+                    'fixed_overhead_ratio_to_oracle': fixed,
+                    'feasible_threshold_conditions': len(rr),
+                    'median_bbht_over_uniform_resource_ratio': float(np.median(b_u)),
+                    'q1_bbht_over_uniform_resource_ratio': float(np.quantile(b_u, 0.25)),
+                    'q3_bbht_over_uniform_resource_ratio': float(np.quantile(b_u, 0.75)),
+                    'bbht_better_than_uniform_fraction': float(np.mean(b_u < 1.0)),
+                    'median_bbht_over_oracle_informed_resource_ratio': float(np.median(b_o)),
+                    'median_expected_bbht_grover_iterations': float(np.median(it)),
+                    'evidence_label': 'descriptive BBHT unknown-rho comparison; exact rho used only for retrospective expected-cost evaluation',
+                })
+    return out
+
+
+
+
+def reweight_resource_model(resource_model: dict, toffoli_weight: float) -> dict:
+    """Recompute the mixed logical gate-equivalent score with a new Toffoli weight.
+
+    Raw logical Toffoli/CNOT/single-qubit counts and logical depths are unchanged.
+    Only the scalar bookkeeping projection is changed, allowing direct sensitivity
+    analysis of the canonical factor-six convention.
+    """
+    if toffoli_weight <= 0:
+        raise ValueError('toffoli_weight must be positive')
+    out = dict(resource_model)
+    oracle = (
+        float(resource_model['oracle_single_qubit_model'])
+        + float(resource_model['oracle_cnot_model'])
+        + float(toffoli_weight) * float(resource_model['oracle_toffoli_model'])
+    )
+    diffusion = (
+        float(resource_model['diffusion_single_qubit_model'])
+        + float(resource_model['diffusion_cnot_model'])
+        + float(toffoli_weight) * float(resource_model['diffusion_toffoli_model'])
+    )
+    out['oracle_gate_equivalent_model'] = float(oracle)
+    out['diffusion_gate_equivalent_model'] = float(diffusion)
+    out['iteration_gate_equivalent_model'] = float(oracle + diffusion)
+    out['toffoli_weight_convention'] = float(toffoli_weight)
+    return out
+
+
+def resource_scalarization_sensitivity_rows(
+    suite: Iterable[MaxCutInstance],
+    scope: str,
+    toffoli_weights: tuple[float, ...] = RESOURCE_TOFFOLI_WEIGHTS,
+    eps_levels: tuple[float, ...] = RESOURCE_SCALARIZATION_EPS_LEVELS,
+    canonical_fixed_ratios: tuple[float, ...] = RESOURCE_SCALARIZATION_CANONICAL_FIXED_RATIOS,
+) -> list[dict]:
+    """Sensitivity of architecture selection to the Toffoli scalarization weight.
+
+    Fixed overhead is anchored to the canonical alpha=6 oracle cost so that changing
+    alpha does not silently rescale the external fixed-work assumption itself.
+    """
+    rows: list[dict] = []
+    for inst in suite:
+        for level in OPERATIONAL_LEVELS:
+            spec = operational_threshold_spec(inst, level)
+            rho = float(spec['rho_tau_exact_validation'])
+            if rho <= 0.0:
+                continue
+            canonical = maxcut_threshold_oracle_resource_model(inst, spec['threshold'])
+            canonical_oracle = float(canonical['oracle_gate_equivalent_model'])
+            for alpha in toffoli_weights:
+                rm = reweight_resource_model(canonical, float(alpha))
+                be_reweighted = architecture_fixed_overhead_break_even_ratio(
+                    rho, 0.0, rm, k_max=80
+                )
+                be_canonical = (
+                    be_reweighted * float(rm['oracle_gate_equivalent_model']) / canonical_oracle
+                    if math.isfinite(be_reweighted) else math.inf
+                )
+                for eps in eps_levels:
+                    # recompute the attenuation-specific break-even boundary
+                    be_eps = architecture_fixed_overhead_break_even_ratio(rho, float(eps), rm, k_max=80)
+                    be_eps_canonical = (
+                        be_eps * float(rm['oracle_gate_equivalent_model']) / canonical_oracle
+                        if math.isfinite(be_eps) else math.inf
+                    )
+                    for chi6 in canonical_fixed_ratios:
+                        fixed = float(chi6) * canonical_oracle
+                        out = select_k_architecture_coupled(
+                            rho, float(eps), rm, k_max=80, fixed_overhead_gate_equiv=fixed
+                        )
+                        rows.append({
+                            'scope': str(scope),
+                            'instance_id': inst.instance_id,
+                            'n': inst.n,
+                            'family': inst.family,
+                            'operational_level': level,
+                            'threshold': spec['threshold'],
+                            'rho_tau_exact_validation': rho,
+                            'toffoli_weight_alpha': float(alpha),
+                            'eps_per_logical_depth_model': float(eps),
+                            'fixed_overhead_ratio_to_canonical_alpha6_oracle': float(chi6),
+                            'fixed_overhead_gate_equivalent_model': fixed,
+                            'effective_fixed_overhead_ratio_to_reweighted_oracle': fixed / float(rm['oracle_gate_equivalent_model']),
+                            'break_even_fixed_overhead_ratio_to_canonical_alpha6_oracle': be_eps_canonical,
+                            'k_star': int(out['k']),
+                            'p_target_eff': float(out['p_eff']),
+                            'gate_equivalent_cost_at_k': float(out['gate_equivalent_cost']),
+                            'oracle_gate_equivalent_reweighted': float(rm['oracle_gate_equivalent_model']),
+                            'iteration_gate_equivalent_reweighted': float(rm['iteration_gate_equivalent_model']),
+                            'canonical_alpha6_oracle_gate_equivalent': canonical_oracle,
+                            'evidence_label': 'Toffoli-weight scalarization sensitivity; raw logical counts/depth unchanged; not a native-gate claim',
+                        })
+    return rows
+
+
+def resource_scalarization_summary_rows(rows: list[dict]) -> list[dict]:
+    out: list[dict] = []
+    scopes = sorted({str(r['scope']) for r in rows})
+    alphas = sorted({float(r['toffoli_weight_alpha']) for r in rows})
+    eps_values = sorted({float(r['eps_per_logical_depth_model']) for r in rows})
+    fixed_values = sorted({float(r['fixed_overhead_ratio_to_canonical_alpha6_oracle']) for r in rows})
+    for scope in scopes:
+        for eps in eps_values:
+            for alpha in alphas:
+                # Break-even is independent of the enumerated fixed-overhead coordinate.
+                base = [r for r in rows if str(r['scope']) == scope and abs(float(r['eps_per_logical_depth_model'])-eps)<1e-15 and abs(float(r['toffoli_weight_alpha'])-alpha)<1e-15]
+                bevals = np.asarray([float(r['break_even_fixed_overhead_ratio_to_canonical_alpha6_oracle']) for r in base[::len(fixed_values)]]) if base else np.asarray([])
+                for fixed in fixed_values:
+                    rr = [r for r in base if abs(float(r['fixed_overhead_ratio_to_canonical_alpha6_oracle'])-fixed)<1e-15]
+                    if not rr:
+                        continue
+                    ks = np.asarray([int(r['k_star']) for r in rr])
+                    out.append({
+                        'scope': scope,
+                        'eps_per_logical_depth_model': eps,
+                        'toffoli_weight_alpha': alpha,
+                        'fixed_overhead_ratio_to_canonical_alpha6_oracle': fixed,
+                        'feasible_threshold_conditions': len(rr),
+                        'nonzero_k_fraction': float(np.mean(ks > 0)),
+                        'median_k_star': float(np.median(ks)),
+                        'median_break_even_ratio_to_canonical_alpha6_oracle': float(np.median([float(r['break_even_fixed_overhead_ratio_to_canonical_alpha6_oracle']) for r in rr])),
+                        'evidence_label': 'descriptive scalarization robustness summary; alpha changes bookkeeping only',
+                    })
+    return out
+
 def oracle_resource_rows(suite: Iterable[MaxCutInstance]) -> list[dict]:
     """Logical oracle-resource ledger for every operational threshold."""
     rows = []
@@ -1643,6 +2584,74 @@ def architecture_fixed_overhead_break_even_ratio(
         required = p0 * k * iter_cost / (pk - p0) - prep
         candidates.append(max(0.0, required) / oracle_cost)
     return float(min(candidates)) if candidates else math.inf
+
+
+
+def dense_operational_lambda_rows(
+    suite: Iterable[MaxCutInstance],
+    tier: str,
+    levels: tuple[float, ...] = DENSE_OPERATIONAL_LEVELS,
+) -> list[dict]:
+    """Dense operational-threshold sweep used to audit the three declared levels.
+
+    The sweep uses the same C*-independent construction at every lambda. Exact C*,
+    rho_tau, and resource quantities are retrospective exact-tier diagnostics only.
+    """
+    rows: list[dict] = []
+    for inst in suite:
+        for level in levels:
+            spec = operational_threshold_spec(inst, float(level))
+            row = {
+                "tier": tier,
+                "instance_id": inst.instance_id,
+                "n": inst.n,
+                "density_target": inst.density_target,
+                "seed": inst.seed,
+                "operational_level": float(level),
+                **spec,
+                "declared_level": any(abs(float(level) - x) < 1e-12 for x in OPERATIONAL_LEVELS),
+            }
+            rho = float(spec["rho_tau_exact_validation"])
+            if rho > 0:
+                rm = maxcut_threshold_oracle_resource_model(inst, int(spec["threshold"]))
+                out0 = select_k_architecture_coupled(rho, 0.0, rm, k_max=80)
+                row.update({
+                    "k_star_zero_fixed_zero_attenuation": int(out0["k"]),
+                    "break_even_fixed_overhead_ratio_to_oracle_zero_attenuation": architecture_fixed_overhead_break_even_ratio(rho, 0.0, rm, k_max=80),
+                })
+            else:
+                row.update({
+                    "k_star_zero_fixed_zero_attenuation": "",
+                    "break_even_fixed_overhead_ratio_to_oracle_zero_attenuation": "",
+                })
+            row["evidence_label"] = "dense operational-lambda audit; exact retrospective validation, not population inference"
+            rows.append(row)
+    return rows
+
+
+def dense_operational_lambda_summary_rows(rows: list[dict]) -> list[dict]:
+    out: list[dict] = []
+    tiers = sorted({str(r["tier"]) for r in rows})
+    levels = sorted({float(r["operational_level"]) for r in rows})
+    for tier in tiers:
+        for level in levels:
+            rr = [r for r in rows if str(r["tier"]) == tier and abs(float(r["operational_level"]) - level) < 1e-12]
+            feas = [r for r in rr if bool(r["feasible_exact_validation"])]
+            be = [float(r["break_even_fixed_overhead_ratio_to_oracle_zero_attenuation"]) for r in feas if r["break_even_fixed_overhead_ratio_to_oracle_zero_attenuation"] != "" and math.isfinite(float(r["break_even_fixed_overhead_ratio_to_oracle_zero_attenuation"]))]
+            out.append({
+                "tier": tier,
+                "operational_level": level,
+                "declared_level": any(abs(level - x) < 1e-12 for x in OPERATIONAL_LEVELS),
+                "instances": len(rr),
+                "feasible_count": len(feas),
+                "feasible_fraction": len(feas) / len(rr) if rr else math.nan,
+                "median_tau_over_Cstar_feasible": float(np.median([float(r["realized_quality_ratio_exact_validation"]) for r in feas])) if feas else math.nan,
+                "median_rho_tau_feasible": float(np.median([float(r["rho_tau_exact_validation"]) for r in feas])) if feas else math.nan,
+                "zero_fixed_zero_attenuation_nonzero_k_fraction": float(np.mean([int(r["k_star_zero_fixed_zero_attenuation"]) > 0 for r in feas])) if feas else math.nan,
+                "median_break_even_fixed_overhead_ratio_to_oracle": float(np.median(be)) if be else math.nan,
+                "evidence_label": "dense lambda summary; descriptive exact-tier sensitivity",
+            })
+    return out
 
 
 def fixed_overhead_sensitivity_rows(
@@ -1735,7 +2744,7 @@ def write_csv(path: Path, rows: list[dict]) -> None:
     if not rows:
         raise ValueError(f"no rows for {path.name}")
     with path.open("w", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
+        w = csv.DictWriter(f, fieldnames=list(rows[0].keys()), lineterminator="\n")
         w.writeheader()
         w.writerows(rows)
 
@@ -1751,6 +2760,57 @@ def sha256(path: Path) -> str:
 def main() -> None:
     suite = build_exact_suite()
     coverage_suite = build_coverage_suite()
+    connected_validation_suite = build_connected_validation_suite()
+
+    primary_graph_diagnostics = graph_diagnostics_rows(suite, "primary")
+    coverage_graph_diagnostics = graph_diagnostics_rows(coverage_suite, "coverage")
+    connected_graph_diagnostics = graph_diagnostics_rows(connected_validation_suite, "connected_validation")
+    write_csv(RESULTS / "primary_graph_diagnostics.csv", primary_graph_diagnostics)
+    write_csv(RESULTS / "coverage_graph_diagnostics.csv", coverage_graph_diagnostics)
+    write_csv(RESULTS / "connected_validation_graph_diagnostics.csv", connected_graph_diagnostics)
+
+    connected_graphs = connected_validation_graph_rows(connected_validation_suite)
+    connected_gt = connected_validation_ground_truth_rows(connected_validation_suite)
+    connected_thresholds = connected_validation_operational_threshold_rows(connected_validation_suite)
+    connected_coupled = connected_validation_coupled_oracle_rows(connected_validation_suite)
+    write_csv(DATA / "connected_validation_graphs.csv", connected_graphs)
+    write_csv(RESULTS / "connected_validation_ground_truth.csv", connected_gt)
+    write_csv(RESULTS / "connected_validation_operational_thresholds.csv", connected_thresholds)
+    write_csv(RESULTS / "connected_validation_coupled_oracle.csv", connected_coupled)
+
+    # Canonical Max-Cut classical reference: numerically certified GW SDP relaxation
+    # plus deterministic-seed random-hyperplane rounding.  Exact C* is used only
+    # retrospectively for scoring the exact tiers.
+    gw_primary_rows = gw_sdp_rows(suite, "primary")
+    gw_connected_rows = gw_sdp_rows(connected_validation_suite, "connected_validation")
+    gw_summary = gw_sdp_summary_rows(gw_primary_rows + gw_connected_rows)
+    write_csv(RESULTS / "gw_sdp_primary.csv", gw_primary_rows)
+    write_csv(RESULTS / "gw_sdp_connected_validation.csv", gw_connected_rows)
+    write_csv(RESULTS / "gw_sdp_summary.csv", gw_summary)
+
+    # Unknown-solution-count search: BBHT schedule never receives rho; exact Tier-I rho
+    # is used only to evaluate expected resource-to-success retrospectively.
+    bbht_primary_rows = bbht_operational_rows(suite, "primary")
+    bbht_connected_rows = bbht_operational_rows(connected_validation_suite, "connected_validation")
+    bbht_summary = bbht_summary_rows(bbht_primary_rows + bbht_connected_rows)
+    write_csv(RESULTS / "bbht_operational_primary.csv", bbht_primary_rows)
+    write_csv(RESULTS / "bbht_operational_connected_validation.csv", bbht_connected_rows)
+    write_csv(RESULTS / "bbht_summary.csv", bbht_summary)
+
+    scalar_primary_rows = resource_scalarization_sensitivity_rows(suite, "primary")
+    scalar_connected_rows = resource_scalarization_sensitivity_rows(connected_validation_suite, "connected_validation")
+    scalar_summary = resource_scalarization_summary_rows(scalar_primary_rows + scalar_connected_rows)
+    write_csv(RESULTS / "resource_scalarization_primary.csv", scalar_primary_rows)
+    write_csv(RESULTS / "resource_scalarization_connected_validation.csv", scalar_connected_rows)
+    write_csv(RESULTS / "resource_scalarization_summary.csv", scalar_summary)
+
+    dense_lambda_primary = dense_operational_lambda_rows(suite, "primary")
+    dense_lambda_connected = dense_operational_lambda_rows(connected_validation_suite, "connected_validation")
+    dense_lambda_summary = dense_operational_lambda_summary_rows(dense_lambda_primary + dense_lambda_connected)
+    write_csv(RESULTS / "dense_operational_lambda_primary.csv", dense_lambda_primary)
+    write_csv(RESULTS / "dense_operational_lambda_connected_validation.csv", dense_lambda_connected)
+    write_csv(RESULTS / "dense_operational_lambda_summary.csv", dense_lambda_summary)
+
     coverage_graphs = coverage_graph_rows(coverage_suite)
     coverage_gt = coverage_ground_truth_rows(coverage_suite)
     coverage_thresholds = coverage_operational_threshold_rows(coverage_suite)
@@ -1816,6 +2876,11 @@ def main() -> None:
     write_csv(RESULTS / "classical_budgeted_runs.csv", classical_budgeted_raw)
     write_csv(RESULTS / "classical_budgeted_summary.csv", classical_budgeted_summary)
 
+    classical_curve_raw, classical_curve_summary, classical_curve_aggregate = run_classical_budget_curve(suite)
+    write_csv(RESULTS / "classical_budget_curve_runs.csv", classical_curve_raw)
+    write_csv(RESULTS / "classical_budget_curve_summary.csv", classical_curve_summary)
+    write_csv(RESULTS / "classical_budget_curve_aggregate.csv", classical_curve_aggregate)
+
     scaling_rows = simulator_scaling_tier()
     write_csv(RESULTS / "simulator_scaling.csv", scaling_rows)
 
@@ -1836,6 +2901,10 @@ def main() -> None:
         + fixed_overhead_sensitivity_rows(coverage_suite, "coverage")
     )
     write_csv(RESULTS / "fixed_overhead_sensitivity.csv", fixed_overhead_rows)
+    connected_fixed_overhead_rows = fixed_overhead_sensitivity_rows(
+        connected_validation_suite, "connected_validation"
+    )
+    write_csv(RESULTS / "connected_validation_fixed_overhead.csv", connected_fixed_overhead_rows)
 
     large_rows = large_searchspace_tier()
     write_csv(RESULTS / "large_searchspace_sensitivity.csv", large_rows)
@@ -1884,11 +2953,53 @@ def main() -> None:
                     )
     write_csv(RESULTS / "amplitude_amplification_sensitivity.csv", aa_rows)
 
-    qraw = run_qaoa_suite(suite)
+    # QAOA initialization-stability audit: twenty deterministic instance-conditioned
+    # starts per (instance, depth). The canonical five-start primary ledger is the exact
+    # seed-0..4 subset so the original analysis and the expanded audit are nested.
+    qstable = run_qaoa_suite(suite, optimizer_seeds=range(QAOA_STABILITY_STARTS))
+    write_csv(RESULTS / "qaoa_initialization_stability_runs.csv", qstable)
+    qstable_inst, qstable_agg = summarize_qaoa(qstable)
+    write_csv(RESULTS / "qaoa_initialization_stability_instance_summary.csv", qstable_inst)
+    write_csv(RESULTS / "qaoa_initialization_stability_aggregate.csv", qstable_agg)
+    qstable_inf = qaoa_depth_inference(qstable)
+    write_csv(RESULTS / "qaoa_initialization_stability_inference.csv", qstable_inf)
+
+    qraw = [r for r in qstable if int(r["optimizer_seed"]) < 5]
     write_csv(RESULTS / "qaoa_runs.csv", qraw)
     qinst, qagg = summarize_qaoa(qraw)
     write_csv(RESULTS / "qaoa_instance_summary.csv", qinst)
     write_csv(RESULTS / "qaoa_aggregate_summary.csv", qagg)
+
+    stability_comparison: list[dict] = []
+    for a20 in qstable_agg:
+        pdepth = int(a20["p"])
+        a5 = next(x for x in qagg if int(x["p"]) == pdepth)
+        stability_comparison.append({
+            "metric": "aggregate",
+            "p": pdepth,
+            "comparison": "",
+            "five_start_value": float(a5["instance_median_approx_ratio"]),
+            "twenty_start_value": float(a20["instance_median_approx_ratio"]),
+            "twenty_start_ci_lo": math.nan,
+            "twenty_start_ci_hi": math.nan,
+            "five_start_p_holm": math.nan,
+            "twenty_start_p_holm": math.nan,
+        })
+    depth_inference_rows = qaoa_depth_inference(qraw)
+    for r20 in qstable_inf:
+        r5 = next(x for x in depth_inference_rows if x["comparison"] == r20["comparison"])
+        stability_comparison.append({
+            "metric": "inference",
+            "p": "",
+            "comparison": r20["comparison"],
+            "five_start_value": float(r5["median_delta"]),
+            "twenty_start_value": float(r20["median_delta"]),
+            "twenty_start_ci_lo": float(r20["bootstrap95_lo"]),
+            "twenty_start_ci_hi": float(r20["bootstrap95_hi"]),
+            "five_start_p_holm": float(r5["p_holm"]),
+            "twenty_start_p_holm": float(r20["p_holm"]),
+        })
+    write_csv(RESULTS / "qaoa_initialization_stability_comparison.csv", stability_comparison)
 
     qopt_raw = run_qaoa_optimizer_budget_suite(suite)
     write_csv(RESULTS / "qaoa_optimizer_budget_runs.csv", qopt_raw)
@@ -1898,7 +3009,6 @@ def main() -> None:
     qopt_pair = qaoa_optimizer_paired_deltas(qopt_raw)
     write_csv(RESULTS / "qaoa_optimizer_budget_paired.csv", qopt_pair)
 
-    depth_inference_rows = qaoa_depth_inference(qraw)
     write_csv(RESULTS / "qaoa_depth_inference.csv", depth_inference_rows)
     qopt_inf_inst, qopt_inf_rows = qaoa_optimizer_inference(qopt_pair)
     write_csv(RESULTS / "qaoa_optimizer_inference_instance_deltas.csv", qopt_inf_inst)
@@ -2048,13 +3158,41 @@ def main() -> None:
     files_for_hash = [
         DATA / "maxcut_suite_graphs.csv",
         DATA / "coverage_graphs.csv",
+        DATA / "connected_validation_graphs.csv",
+        RESULTS / "primary_graph_diagnostics.csv",
+        RESULTS / "coverage_graph_diagnostics.csv",
+        RESULTS / "connected_validation_graph_diagnostics.csv",
+        RESULTS / "connected_validation_ground_truth.csv",
+        RESULTS / "connected_validation_operational_thresholds.csv",
+        RESULTS / "connected_validation_coupled_oracle.csv",
+        RESULTS / "connected_validation_fixed_overhead.csv",
+        RESULTS / "gw_sdp_primary.csv",
+        RESULTS / "gw_sdp_connected_validation.csv",
+        RESULTS / "gw_sdp_summary.csv",
+        RESULTS / "bbht_operational_primary.csv",
+        RESULTS / "bbht_operational_connected_validation.csv",
+        RESULTS / "bbht_summary.csv",
+        RESULTS / "resource_scalarization_primary.csv",
+        RESULTS / "resource_scalarization_connected_validation.csv",
+        RESULTS / "resource_scalarization_summary.csv",
+        RESULTS / "dense_operational_lambda_primary.csv",
+        RESULTS / "dense_operational_lambda_connected_validation.csv",
+        RESULTS / "dense_operational_lambda_summary.csv",
         RESULTS / "maxcut_ground_truth.csv",
         RESULTS / "operational_thresholds.csv",
         RESULTS / "classical_hillclimb.csv",
         RESULTS / "classical_budgeted_runs.csv",
         RESULTS / "classical_budgeted_summary.csv",
+        RESULTS / "classical_budget_curve_runs.csv",
+        RESULTS / "classical_budget_curve_summary.csv",
+        RESULTS / "classical_budget_curve_aggregate.csv",
         RESULTS / "amplitude_amplification_sensitivity.csv",
         RESULTS / "qaoa_runs.csv",
+        RESULTS / "qaoa_initialization_stability_runs.csv",
+        RESULTS / "qaoa_initialization_stability_instance_summary.csv",
+        RESULTS / "qaoa_initialization_stability_aggregate.csv",
+        RESULTS / "qaoa_initialization_stability_inference.csv",
+        RESULTS / "qaoa_initialization_stability_comparison.csv",
         RESULTS / "qaoa_instance_summary.csv",
         RESULTS / "qaoa_aggregate_summary.csv",
         RESULTS / "qaoa_optimizer_budget_runs.csv",
@@ -2089,6 +3227,7 @@ def main() -> None:
             "synthetic attenuation/resource-cost sensitivity",
             "simple classical local-search reference",
             "fixed-objective-evaluation-budget simulated-annealing and tabu-search references",
+            "multi-budget classical objective-evaluation curve for simulated annealing and tabu search",
             "host-side simulator scaling diagnostic",
             "dense normalized resource-uncertainty analysis across 90%, 95%, and 100% quality thresholds",
             "common target-quality probability metric across AA, QAOA, uniform sampling, hill climbing, simulated annealing, and tabu search",
@@ -2100,7 +3239,12 @@ def main() -> None:
             "estimated-rho stopping-depth robustness with exact-rho retrospective regret",
             "analytical large-search-space sensitivity",
             "instance-clustered paired QAOA depth and optimizer inference with Holm correction and bootstrap intervals",
+            "twenty-start QAOA initialization-stability audit nested around the canonical five-start primary analysis",
             "expanded exact graph-seed and structured-topology coverage alongside the 18-instance primary QAOA inference suite",
+            "connected non-bipartite fixed-density exact validation tier through n=14 with explicit structural diagnostics",
+            "BBHT unknown-solution-count search schedule evaluated retrospectively under the same logical resource model",
+            "Toffoli-weight scalarization sensitivity with fixed overhead anchored to the canonical alpha=6 oracle cost",
+            "dense operational-lambda sensitivity from 0 to 1 in increments of 0.05",
         ],
         "hardware_claims": False,
         "compiler_claims": False,
@@ -2109,6 +3253,44 @@ def main() -> None:
             "density_targets": [0.25, 0.50, 0.75],
             "graph_seeds": [17, 42],
             "exact_instances": len(suite),
+            "primary_graph_diagnostic_rows": len(primary_graph_diagnostics),
+            "primary_disconnected_instances": sum(not bool(r["connected"]) for r in primary_graph_diagnostics),
+            "primary_bipartite_instances": sum(bool(r["bipartite"]) for r in primary_graph_diagnostics),
+            "coverage_graph_diagnostic_rows": len(coverage_graph_diagnostics),
+            "coverage_disconnected_instances": sum(not bool(r["connected"]) for r in coverage_graph_diagnostics),
+            "coverage_bipartite_instances": sum(bool(r["bipartite"]) for r in coverage_graph_diagnostics),
+            "connected_validation_stream_version": CONNECTED_VALIDATION_STREAM_VERSION,
+            "connected_validation_n_values": list(CONNECTED_VALIDATION_NS),
+            "connected_validation_density_targets": list(CONNECTED_VALIDATION_DENSITIES),
+            "connected_validation_seeds": list(CONNECTED_VALIDATION_SEEDS),
+            "connected_validation_exact_instances": len(connected_validation_suite),
+            "connected_validation_graph_edge_rows": len(connected_graphs),
+            "connected_validation_graph_diagnostic_rows": len(connected_graph_diagnostics),
+            "connected_validation_operational_threshold_rows": len(connected_thresholds),
+            "connected_validation_coupled_oracle_rows": len(connected_coupled),
+            "connected_validation_fixed_overhead_rows": len(connected_fixed_overhead_rows),
+            "gw_sdp_starts": GW_SDP_STARTS,
+            "gw_sdp_max_sweeps": GW_SDP_MAX_SWEEPS,
+            "gw_sdp_certificate_gap_tolerance": GW_SDP_CERT_GAP_TOL,
+            "gw_rounding_samples_per_instance": GW_ROUNDING_SAMPLES,
+            "gw_primary_rows": len(gw_primary_rows),
+            "gw_connected_validation_rows": len(gw_connected_rows),
+            "bbht_lambda": BBHT_LAMBDA,
+            "bbht_eps_levels": list(BBHT_EPS_LEVELS),
+            "bbht_fixed_overhead_ratios": list(BBHT_FIXED_OVERHEAD_RATIOS),
+            "bbht_primary_rows": len(bbht_primary_rows),
+            "bbht_connected_validation_rows": len(bbht_connected_rows),
+            "bbht_summary_rows": len(bbht_summary),
+            "resource_toffoli_weights": list(RESOURCE_TOFFOLI_WEIGHTS),
+            "resource_scalarization_eps_levels": list(RESOURCE_SCALARIZATION_EPS_LEVELS),
+            "resource_scalarization_canonical_fixed_ratios": list(RESOURCE_SCALARIZATION_CANONICAL_FIXED_RATIOS),
+            "resource_scalarization_primary_rows": len(scalar_primary_rows),
+            "resource_scalarization_connected_validation_rows": len(scalar_connected_rows),
+            "resource_scalarization_summary_rows": len(scalar_summary),
+            "dense_operational_levels": list(DENSE_OPERATIONAL_LEVELS),
+            "dense_operational_lambda_primary_rows": len(dense_lambda_primary),
+            "dense_operational_lambda_connected_validation_rows": len(dense_lambda_connected),
+            "dense_operational_lambda_summary_rows": len(dense_lambda_summary),
             "expanded_random_exact_instances": len(build_expanded_random_suite()),
             "structured_exact_instances": len(build_structured_suite()),
             "coverage_exact_instances": len(coverage_suite),
@@ -2120,6 +3302,11 @@ def main() -> None:
             "coverage_coupled_oracle_rows": len(coverage_coupled),
             "coverage_summary_rows": len(coverage_summary),
             "qaoa_instances": len(suite),
+            "qaoa_initialization_stream_version": QAOA_INIT_STREAM_VERSION,
+            "qaoa_initialization_conditioning": "instance+p+optimizer_seed",
+            "qaoa_stability_starts_per_instance_depth": QAOA_STABILITY_STARTS,
+            "qaoa_stability_total_runs": len(qstable),
+            "qaoa_stability_inference_rows": len(qstable_inf),
             "random_graph_stream_version": RANDOM_GRAPH_STREAM_VERSION,
             "simulator_scaling_n_values": [8, 10, 12, 14, 16, 18, 20],
             "large_analytical_n_values": [12, 16, 20, 24],
@@ -2131,6 +3318,10 @@ def main() -> None:
             "operational_target_metric_rows": len(operational_target_rows),
             "budgeted_classical_raw_rows": len(classical_budgeted_raw),
             "budgeted_classical_summary_rows": len(classical_budgeted_summary),
+            "classical_budget_curve_budgets": list(CLASSICAL_BUDGET_CURVE),
+            "classical_budget_curve_raw_rows": len(classical_curve_raw),
+            "classical_budget_curve_summary_rows": len(classical_curve_summary),
+            "classical_budget_curve_aggregate_rows": len(classical_curve_aggregate),
             "budgeted_classical_methods": ["simulated_annealing", "tabu_search"],
             "budgeted_classical_runs_per_instance_method": CLASSICAL_BUDGETED_RUNS,
             "budgeted_classical_eval_budget_per_run": CLASSICAL_EVAL_BUDGET,
@@ -2150,15 +3341,29 @@ def main() -> None:
             "depths": [1, 2, 3],
             "optimizer_seeds": [0, 1, 2, 3, 4],
             "optimizer": "L-BFGS-B",
+            "initialization": "deterministic instance-conditioned stream; independent across graph instances",
+            "initialization_stream_version": QAOA_INIT_STREAM_VERSION,
             "maxiter": 60,
             "optimization_shots": 0,
             "final_shots": 4096,
             "total_runs": len(qraw),
         },
+        "qaoa_initialization_stability": {
+            "depths": [1, 2, 3],
+            "optimizer_seeds": list(range(QAOA_STABILITY_STARTS)),
+            "starts_per_instance_depth": QAOA_STABILITY_STARTS,
+            "optimizer": "L-BFGS-B",
+            "total_runs": len(qstable),
+            "canonical_five_start_subset": [0, 1, 2, 3, 4],
+            "inference_rows": len(qstable_inf),
+            "population_generalization_claim": False,
+        },
         "qaoa_optimizer_robustness": {
             "optimizers": list(QAOA_OPTIMIZER_METHODS),
             "objective_eval_budget_per_run": QAOA_OPTIMIZER_EVAL_BUDGET,
             "paired_initializations": True,
+            "paired_initialization_scope": "identical x0 within each (instance,p,seed) optimizer pair; independent streams across graph instances",
+            "initialization_stream_version": QAOA_INIT_STREAM_VERSION,
             "total_runs": len(qopt_raw),
             "evidence_label": "ideal-statevector optimizer robustness under equal objective-evaluation cap",
         },

@@ -1,0 +1,15 @@
+{
+  "basis_gates": [
+    "rz",
+    "sx",
+    "x",
+    "cx"
+  ],
+  "command": "python src/compiler_validation_qiskit.py --out-dir compiler_validation_artifact",
+  "numpy_version": "2.5.2",
+  "optimization_level": 1,
+  "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+  "python_version": "3.12.14",
+  "qiskit_version": "2.4.2",
+  "seed_transpiler": 20260901
+}

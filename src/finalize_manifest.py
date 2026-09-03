@@ -14,6 +14,11 @@ SOURCE_PATHS = {
     "render_p2_figures.py": "src/render_p2_figures.py",
     "preflight.py": "src/preflight.py",
     "finalize_manifest.py": "src/finalize_manifest.py",
+    "compiler_validation_qiskit.py": "src/compiler_validation_qiskit.py",
+    "compiler_native_aa_crosscheck.py": "src/compiler_native_aa_crosscheck.py",
+    "qaoa_threshold_objective_audit.py": "src/qaoa_threshold_objective_audit.py",
+    "compiler-validation.yml": ".github/workflows/compiler-validation.yml",
+    "compiler-native-aa.yml": ".github/workflows/compiler-native-aa.yml",
     "test_core.py": "tests/test_core.py",
     "test_preflight.py": "tests/test_preflight.py",
     "test_finalize_manifest.py": "tests/test_finalize_manifest.py",
@@ -27,31 +32,25 @@ SOURCE_PATHS = {
 }
 
 MANUSCRIPT_DEPENDENCIES = [
-    # Tables actually included by manuscript/main.tex.
     "results/table_suite.tex",
     "results/table_operational_threshold.tex",
     "results/table_operational_metric.tex",
     "results/table_coverage.tex",
-    "results/table_rho_robustness.tex",
+    "results/table_graph_structure_audit.tex",
+    "results/table_connected_validation.tex",
     "results/table_oracle_resource.tex",
     "results/table_coupled_oracle.tex",
     "results/table_fixed_overhead.tex",
+    "results/table_bbht_summary.tex",
     "results/table_aa_aggregate.tex",
-    "results/table_robustness.tex",
-    "results/table_simulator_scaling.tex",
-    "results/table_large_tier.tex",
     "results/table_target_metric.tex",
     "results/table_qaoa_aggregate.tex",
+    "results/table_qaoa_stability.tex",
     "results/table_qaoa_optimizer_budget.tex",
     "results/table_qaoa_inference.tex",
-    "results/table_classical.tex",
-    "results/table_classical_budgeted.tex",
-    # Figures actually included by manuscript/main.tex.
+    "results/table_gw_sdp.tex",
     "figures/fig_fixed_overhead_phase.pdf",
     "figures/fig_aa_sensitivity.pdf",
-    "figures/fig_p2_robustness_map.pdf",
-    "figures/fig_p2_simulator_scaling.pdf",
-    "figures/fig_p2_large_tier.pdf",
     "figures/fig_threshold_common_metric.pdf",
     "figures/fig_qaoa_depth.pdf",
     "figures/fig_qaoa_vs_local.pdf",
@@ -61,6 +60,25 @@ EXTRA_SCIENCE_ARTIFACTS = [
     "results/oracle_resource_model.csv",
     "results/coupled_oracle_depth_sensitivity.csv",
     "results/fixed_overhead_sensitivity.csv",
+    "results/qaoa_initialization_stability_runs.csv",
+    "results/qaoa_initialization_stability_instance_summary.csv",
+    "results/qaoa_initialization_stability_aggregate.csv",
+    "results/qaoa_initialization_stability_inference.csv",
+    "results/qaoa_initialization_stability_comparison.csv",
+    "results/compiler_validation_qiskit.csv",
+    "results/compiler_validation_summary.json",
+    "results/compiler_vs_analytic_oracle.csv",
+    "results/compiler_native_aa_crosscheck.csv",
+    "results/compiler_native_aa_summary.json",
+    "results/qaoa_threshold_training_budget_runs.csv",
+    "results/qaoa_threshold_training_budget_paired.csv",
+    "results/qaoa_threshold_training_budget_instance_summary.csv",
+    "results/qaoa_threshold_training_budget_inference.csv",
+    "reproducibility/P15_QAOA_THRESHOLD_OBJECTIVE.md",
+    "reproducibility/compiler_environment.json",
+    "reproducibility/compiler_environment_pip_freeze.txt",
+    "reproducibility/P14_COMPILER_LOCKED_VALIDATION.md",
+    "reproducibility/P16_COMPILER_NATIVE_AA_CROSSCHECK.md",
 ]
 
 
@@ -101,7 +119,7 @@ def finalize(root: Path) -> dict:
     # after P4. Artifact names remain basename keys for backward compatibility.
     refreshed_artifacts = {}
     for name in manifest.get("sha256", {}):
-        matches = [p for p in (root / "data" / name, root / "results" / name, root / "figures" / name) if p.exists()]
+        matches = [p for p in (root / "data" / name, root / "results" / name, root / "figures" / name, root / "reproducibility" / name) if p.exists()]
         if len(matches) != 1:
             raise FileNotFoundError(f"cannot uniquely resolve declared artifact {name}: {matches}")
         refreshed_artifacts[name] = sha256(matches[0])
@@ -121,6 +139,24 @@ def finalize(root: Path) -> dict:
         suite["coupled_oracle_depth_rows"] = max(0, len(coupled_path.read_text(encoding="utf-8").splitlines()) - 1)
     if fixed_overhead_path.exists():
         suite["fixed_overhead_sensitivity_rows"] = max(0, len(fixed_overhead_path.read_text(encoding="utf-8").splitlines()) - 1)
+    compiler_csv = root / "results" / "compiler_validation_qiskit.csv"
+    if compiler_csv.exists():
+        suite["compiler_validation_rows"] = max(0, len(compiler_csv.read_text(encoding="utf-8").splitlines()) - 1)
+    compiler_gap_csv = root / "results" / "compiler_vs_analytic_oracle.csv"
+    if compiler_gap_csv.exists():
+        suite["compiler_vs_analytic_oracle_rows"] = max(0, len(compiler_gap_csv.read_text(encoding="utf-8").splitlines()) - 1)
+    compiler_native_csv = root / "results" / "compiler_native_aa_crosscheck.csv"
+    if compiler_native_csv.exists():
+        suite["compiler_native_aa_crosscheck_rows"] = max(0, len(compiler_native_csv.read_text(encoding="utf-8").splitlines()) - 1)
+    threshold_files = {
+        "qaoa_threshold_training_budget_runs_rows": root / "results" / "qaoa_threshold_training_budget_runs.csv",
+        "qaoa_threshold_training_budget_paired_rows": root / "results" / "qaoa_threshold_training_budget_paired.csv",
+        "qaoa_threshold_training_budget_instance_rows": root / "results" / "qaoa_threshold_training_budget_instance_summary.csv",
+        "qaoa_threshold_training_budget_inference_rows": root / "results" / "qaoa_threshold_training_budget_inference.csv",
+    }
+    for key, path in threshold_files.items():
+        if path.exists():
+            suite[key] = max(0, len(path.read_text(encoding="utf-8").splitlines()) - 1)
 
     manifest["source_sha256"] = source_hashes
     manifest["manuscript_dependency_sha256"] = dep_hashes

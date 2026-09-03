@@ -5,6 +5,7 @@ import csv
 import hashlib
 import importlib.metadata
 import json
+import math
 import re
 import sys
 from dataclasses import asdict, dataclass
@@ -49,7 +50,7 @@ def parse_lock(path: Path) -> dict[str, str]:
 
 
 def resolve_artifact(root: Path, name: str) -> tuple[Path | None, list[Path]]:
-    candidates = [p for p in (root / "data" / name, root / "results" / name, root / "figures" / name) if p.exists()]
+    candidates = [p for p in (root / "data" / name, root / "results" / name, root / "figures" / name, root / "reproducibility" / name) if p.exists()]
     if len(candidates) == 1:
         return candidates[0], candidates
     return None, candidates
@@ -64,7 +65,15 @@ def expected_count_checks(manifest: dict) -> dict[str, int]:
         "operational_thresholds.csv": suite.get("operational_threshold_rows"),
         "classical_budgeted_runs.csv": suite.get("budgeted_classical_raw_rows"),
         "classical_budgeted_summary.csv": suite.get("budgeted_classical_summary_rows"),
+        "classical_budget_curve_runs.csv": suite.get("classical_budget_curve_raw_rows"),
+        "classical_budget_curve_summary.csv": suite.get("classical_budget_curve_summary_rows"),
+        "classical_budget_curve_aggregate.csv": suite.get("classical_budget_curve_aggregate_rows"),
         "qaoa_runs.csv": qaoa.get("total_runs"),
+        "qaoa_initialization_stability_runs.csv": suite.get("qaoa_stability_total_runs"),
+        "qaoa_initialization_stability_instance_summary.csv": suite.get("qaoa_stability_instance_summary_rows"),
+        "qaoa_initialization_stability_aggregate.csv": suite.get("qaoa_stability_aggregate_rows"),
+        "qaoa_initialization_stability_inference.csv": suite.get("qaoa_stability_inference_rows"),
+        "qaoa_initialization_stability_comparison.csv": suite.get("qaoa_stability_comparison_rows"),
         "qaoa_optimizer_budget_runs.csv": suite.get("qaoa_optimizer_budget_runs"),
         "qaoa_optimizer_budget_paired.csv": suite.get("qaoa_optimizer_paired_rows"),
         "qaoa_depth_inference.csv": suite.get("qaoa_depth_inference_rows"),
@@ -76,9 +85,35 @@ def expected_count_checks(manifest: dict) -> dict[str, int]:
         "coverage_hillclimb.csv": suite.get("coverage_hillclimb_rows"),
         "coverage_coupled_oracle.csv": suite.get("coverage_coupled_oracle_rows"),
         "coverage_summary.csv": suite.get("coverage_summary_rows"),
+        "primary_graph_diagnostics.csv": suite.get("primary_graph_diagnostic_rows"),
+        "coverage_graph_diagnostics.csv": suite.get("coverage_graph_diagnostic_rows"),
+        "connected_validation_graphs.csv": suite.get("connected_validation_graph_edge_rows"),
+        "connected_validation_graph_diagnostics.csv": suite.get("connected_validation_graph_diagnostic_rows"),
+        "connected_validation_ground_truth.csv": suite.get("connected_validation_exact_instances"),
+        "connected_validation_operational_thresholds.csv": suite.get("connected_validation_operational_threshold_rows"),
+        "connected_validation_coupled_oracle.csv": suite.get("connected_validation_coupled_oracle_rows"),
+        "connected_validation_fixed_overhead.csv": suite.get("connected_validation_fixed_overhead_rows"),
+        "gw_sdp_primary.csv": suite.get("gw_primary_rows"),
+        "gw_sdp_connected_validation.csv": suite.get("gw_connected_validation_rows"),
+        "bbht_operational_primary.csv": suite.get("bbht_primary_rows"),
+        "bbht_operational_connected_validation.csv": suite.get("bbht_connected_validation_rows"),
+        "bbht_summary.csv": suite.get("bbht_summary_rows"),
+        "resource_scalarization_primary.csv": suite.get("resource_scalarization_primary_rows"),
+        "resource_scalarization_connected_validation.csv": suite.get("resource_scalarization_connected_validation_rows"),
+        "dense_operational_lambda_primary.csv": suite.get("dense_operational_lambda_primary_rows"),
+        "dense_operational_lambda_connected_validation.csv": suite.get("dense_operational_lambda_connected_validation_rows"),
+        "dense_operational_lambda_summary.csv": suite.get("dense_operational_lambda_summary_rows"),
+        "resource_scalarization_summary.csv": suite.get("resource_scalarization_summary_rows"),
         "oracle_resource_model.csv": suite.get("oracle_resource_model_rows"),
         "coupled_oracle_depth_sensitivity.csv": suite.get("coupled_oracle_depth_rows"),
         "fixed_overhead_sensitivity.csv": suite.get("fixed_overhead_sensitivity_rows"),
+        "compiler_validation_qiskit.csv": suite.get("compiler_validation_rows"),
+        "compiler_vs_analytic_oracle.csv": suite.get("compiler_vs_analytic_oracle_rows"),
+        "compiler_native_aa_crosscheck.csv": suite.get("compiler_native_aa_crosscheck_rows"),
+        "qaoa_threshold_training_budget_runs.csv": suite.get("qaoa_threshold_training_budget_runs_rows"),
+        "qaoa_threshold_training_budget_paired.csv": suite.get("qaoa_threshold_training_budget_paired_rows"),
+        "qaoa_threshold_training_budget_instance_summary.csv": suite.get("qaoa_threshold_training_budget_instance_rows"),
+        "qaoa_threshold_training_budget_inference.csv": suite.get("qaoa_threshold_training_budget_inference_rows"),
     }
     for name, value in mapping.items():
         if value is not None:
@@ -93,6 +128,9 @@ def source_location(root: Path, name: str) -> Path | None:
         "render_figures.py": root / "src" / "render_figures.py",
         "render_p2_figures.py": root / "src" / "render_p2_figures.py",
         "finalize_manifest.py": root / "src" / "finalize_manifest.py",
+        "compiler_validation_qiskit.py": root / "src" / "compiler_validation_qiskit.py",
+        "compiler_native_aa_crosscheck.py": root / "src" / "compiler_native_aa_crosscheck.py",
+        "qaoa_threshold_objective_audit.py": root / "src" / "qaoa_threshold_objective_audit.py",
         "preflight.py": root / "src" / "preflight.py",
         "test_core.py": root / "tests" / "test_core.py",
         "test_preflight.py": root / "tests" / "test_preflight.py",
@@ -124,6 +162,11 @@ def check_required_structure(root: Path) -> list[Check]:
         "src/render_p2_figures.py",
         "src/preflight.py",
         "src/finalize_manifest.py",
+        "src/compiler_validation_qiskit.py",
+        "src/compiler_native_aa_crosscheck.py",
+        "src/qaoa_threshold_objective_audit.py",
+        ".github/workflows/compiler-validation.yml",
+        ".github/workflows/compiler-native-aa.yml",
         "tests/test_core.py",
         "tests/test_preflight.py",
         "tests/test_finalize_manifest.py",
@@ -131,7 +174,45 @@ def check_required_structure(root: Path) -> list[Check]:
         "manuscript/references.bib",
         "manuscript/CLAIMS_REGISTER.md",
         "results/run_manifest.json",
+        "results/gw_sdp_primary.csv",
+        "results/gw_sdp_connected_validation.csv",
+        "results/gw_sdp_summary.csv",
+        "results/table_gw_sdp.tex",
+        "results/bbht_operational_primary.csv",
+        "results/bbht_operational_connected_validation.csv",
+        "results/bbht_summary.csv",
+        "results/resource_scalarization_primary.csv",
+        "results/resource_scalarization_connected_validation.csv",
+        "results/resource_scalarization_summary.csv",
+        "results/classical_budget_curve_runs.csv",
+        "results/classical_budget_curve_summary.csv",
+        "results/classical_budget_curve_aggregate.csv",
+        "results/dense_operational_lambda_primary.csv",
+        "results/dense_operational_lambda_connected_validation.csv",
+        "results/dense_operational_lambda_summary.csv",
+        "results/qaoa_initialization_stability_runs.csv",
+        "results/qaoa_initialization_stability_instance_summary.csv",
+        "results/qaoa_initialization_stability_aggregate.csv",
+        "results/qaoa_initialization_stability_inference.csv",
+        "results/qaoa_initialization_stability_comparison.csv",
+        "results/compiler_validation_qiskit.csv",
+        "results/compiler_validation_summary.json",
+        "results/compiler_vs_analytic_oracle.csv",
+        "results/compiler_native_aa_crosscheck.csv",
+        "results/compiler_native_aa_summary.json",
+        "reproducibility/compiler_environment.json",
+        "reproducibility/compiler_environment_pip_freeze.txt",
+        "reproducibility/P14_COMPILER_LOCKED_VALIDATION.md",
+        "reproducibility/P16_COMPILER_NATIVE_AA_CROSSCHECK.md",
         "reproducibility/ENVIRONMENT_LOCK.md",
+        "reproducibility/P3_STRUCTURAL_GRAPH_VALIDATION.md",
+        "reproducibility/P4_GW_SDP_BASELINE.md",
+        "reproducibility/P5_BBHT_UNKNOWN_RHO.md",
+        "reproducibility/P6_RESOURCE_SCALARIZATION.md",
+        "reproducibility/P7_CLASSICAL_BUDGET_CURVE.md",
+        "reproducibility/P8_DENSE_OPERATIONAL_LAMBDA.md",
+        "reproducibility/P9_QAOA_INITIALIZATION_STREAM.md",
+        "reproducibility/P10_QAOA_20_START_STABILITY.md",
         "reproducibility/UW_PREFLIGHT.md",
     ]
     out = []
@@ -234,10 +315,11 @@ def check_claim_fences(root: Path, manifest: dict) -> list[Check]:
         out.append(Check("manifest:hardware_claims", "FAIL", f"value={manifest.get('hardware_claims')}"))
     else:
         out.append(Check("manifest:hardware_claims", "PASS", "false"))
-    if manifest.get("compiler_claims") is not False:
-        out.append(Check("manifest:compiler_claims", "FAIL", f"value={manifest.get('compiler_claims')}"))
+    compiler_mode = manifest.get("compiler_claims")
+    if compiler_mode != "locked_synthetic_topology":
+        out.append(Check("manifest:compiler_claims", "FAIL", f"expected=locked_synthetic_topology; value={compiler_mode}"))
     else:
-        out.append(Check("manifest:compiler_claims", "PASS", "false"))
+        out.append(Check("manifest:compiler_claims", "PASS", compiler_mode))
 
     for rel in ["manuscript/main.tex", "README.md"]:
         p = root / rel
@@ -256,10 +338,11 @@ def check_claim_fences(root: Path, manifest: dict) -> list[Check]:
         "coverage-suite-size": "63 coverage",
         "fixed-qaoa-inference-boundary": "18-instance QAOA",
         "no-physical-backend": "No physical-backend",
+        "compiler-lock": "Qiskit 2.4.2",
         "fixed-density-random-design": "fixed-edge-count/fixed-density random simple-graph design",
         "credit-statement": "CRediT authorship contribution statement",
         "ai-version-log": "GPT-5.6 Sol",
-        "ai-history-limit": "not consistently logged at the exact model-version level",
+        "ai-history-limit": "not consistently recorded",
     }
     for key, phrase in required_phrases.items():
         out.append(Check(f"manuscript-fence:{key}", "PASS" if phrase in main else "FAIL", f"required phrase={phrase!r}"))
@@ -280,6 +363,121 @@ def check_claim_fences(root: Path, manifest: dict) -> list[Check]:
     ))
     return out
 
+
+def check_compiler_evidence(root: Path, manifest: dict) -> list[Check]:
+    out: list[Check] = []
+    summary_path = root / "results" / "compiler_validation_summary.json"
+    if not summary_path.exists():
+        return [Check("compiler-evidence:summary", "FAIL", "results/compiler_validation_summary.json missing")]
+    try:
+        summary = json.loads(summary_path.read_text(encoding="utf-8"))
+    except Exception as exc:
+        return [Check("compiler-evidence:summary", "FAIL", f"unreadable: {exc}")]
+    expected = {
+        "qiskit_version": "2.4.2",
+        "seed_transpiler": 20260901,
+        "optimization_level": 1,
+        "row_count": 66,
+        "qaoa_routed_rows": 54,
+        "oracle_basis_rows": 9,
+        "oracle_sparse_routed_rows": 3,
+    }
+    for key, value in expected.items():
+        actual = summary.get(key)
+        out.append(Check(f"compiler-evidence:{key}", "PASS" if actual == value else "FAIL", f"expected={value}; actual={actual}"))
+    basis = summary.get("basis_gates")
+    out.append(Check("compiler-evidence:basis", "PASS" if basis == ["rz", "sx", "x", "cx"] else "FAIL", f"actual={basis}"))
+    semantic = summary.get("semantic_oracle_check", {})
+    semantic_ok = semantic.get("passed") is True and semantic.get("tested_basis_states") == 8 and not semantic.get("failures")
+    out.append(Check("compiler-evidence:oracle-semantic", "PASS" if semantic_ok else "FAIL", f"{semantic}"))
+    depths = summary.get("qaoa_median_compiled_depth_by_p", {})
+    try:
+        monotone = float(depths["1"]) < float(depths["2"]) < float(depths["3"])
+    except Exception:
+        monotone = False
+    out.append(Check("compiler-evidence:qaoa-depth-order", "PASS" if monotone else "FAIL", f"depths={depths}"))
+
+    gap_path = root / "results" / "compiler_vs_analytic_oracle.csv"
+    if not gap_path.exists():
+        out.append(Check("compiler-evidence:abstraction-gap", "FAIL", "results/compiler_vs_analytic_oracle.csv missing"))
+    else:
+        try:
+            import csv as _csv
+            with gap_path.open("r", encoding="utf-8", newline="") as fh:
+                gap_rows = list(_csv.DictReader(fh))
+            depth_ratios = [float(r["compiler_to_analytic_depth_ratio"]) for r in gap_rows]
+            qubit_ratios = [float(r["compiler_to_analytic_qubit_ratio"]) for r in gap_rows]
+            gap_ok = len(gap_rows) == 9 and min(depth_ratios) > 1.0 and all(1.0 <= q <= 2.0 for q in qubit_ratios)
+            out.append(Check(
+                "compiler-evidence:abstraction-gap",
+                "PASS" if gap_ok else "FAIL",
+                f"rows={len(gap_rows)}; depth_ratio_range=({min(depth_ratios):.3f},{max(depth_ratios):.3f}); qubit_ratio_range=({min(qubit_ratios):.3f},{max(qubit_ratios):.3f})",
+            ))
+        except Exception as exc:
+            out.append(Check("compiler-evidence:abstraction-gap", "FAIL", f"unreadable: {exc}"))
+    return out
+
+
+
+def check_compiler_native_aa_evidence(root: Path, manifest: dict) -> list[Check]:
+    summary_path = root / "results" / "compiler_native_aa_summary.json"
+    csv_path = root / "results" / "compiler_native_aa_crosscheck.csv"
+    if not summary_path.exists():
+        return [Check("compiler-native-aa:summary", "FAIL", "results/compiler_native_aa_summary.json missing")]
+    if not csv_path.exists():
+        return [Check("compiler-native-aa:csv", "FAIL", "results/compiler_native_aa_crosscheck.csv missing")]
+    try:
+        summary = json.loads(summary_path.read_text(encoding="utf-8"))
+        with csv_path.open("r", encoding="utf-8", newline="") as f:
+            rows = list(csv.DictReader(f))
+    except Exception as exc:
+        return [Check("compiler-native-aa:parse", "FAIL", str(exc))]
+
+    checks: list[Check] = []
+    checks.append(Check("compiler-native-aa:qiskit", "PASS" if summary.get("qiskit_version") == "2.4.2" else "FAIL", f"qiskit={summary.get('qiskit_version')}"))
+    checks.append(Check("compiler-native-aa:basis", "PASS" if summary.get("basis_gates") == ["rz", "sx", "x", "cx"] else "FAIL", f"basis={summary.get('basis_gates')}"))
+    checks.append(Check("compiler-native-aa:seed", "PASS" if int(summary.get("seed_transpiler", -1)) == 20260901 else "FAIL", f"seed={summary.get('seed_transpiler')}"))
+    checks.append(Check("compiler-native-aa:rows", "PASS" if len(rows) == 9 and int(summary.get("row_count", -1)) == 9 else "FAIL", f"csv={len(rows)}, summary={summary.get('row_count')}"))
+    size_k0 = bool(summary.get("all_k0_compiled_size")) and all(int(float(r["k_star_compiled_size"])) == 0 for r in rows)
+    depth_k0 = bool(summary.get("all_k0_compiled_depth")) and all(int(float(r["k_star_compiled_depth"])) == 0 for r in rows)
+    checks.append(Check("compiler-native-aa:k0-size", "PASS" if size_k0 else "FAIL", "9/9 expected k*=0"))
+    checks.append(Check("compiler-native-aa:k0-depth", "PASS" if depth_k0 else "FAIL", "9/9 expected k*=0"))
+    valid_rows = all(0.0 < float(r["rho"]) <= 1.0 and float(r["iteration_compiled_size"]) > 0 and float(r["iteration_compiled_depth"]) > 0 for r in rows)
+    checks.append(Check("compiler-native-aa:positive-coordinates", "PASS" if valid_rows else "FAIL", "rho in (0,1], iteration coordinates positive"))
+    be_size = float(summary.get("median_break_even_fixed_over_iter_size", float("nan")))
+    be_depth = float(summary.get("median_break_even_fixed_over_iter_depth", float("nan")))
+    be_ok = math.isfinite(be_size) and math.isfinite(be_depth) and 0.0 < be_size < 1.0 and 0.0 < be_depth < 1.0
+    checks.append(Check("compiler-native-aa:break-even", "PASS" if be_ok else "FAIL", f"size={be_size:.6f}, depth={be_depth:.6f}"))
+    expected = int(manifest.get("suite", {}).get("compiler_native_aa_crosscheck_rows", 9))
+    checks.append(Check("compiler-native-aa:manifest-count", "PASS" if expected == len(rows) else "FAIL", f"manifest={expected}, csv={len(rows)}"))
+    return checks
+
+def check_qaoa_threshold_objective_evidence(root: Path, manifest: dict) -> list[Check]:
+    import csv as _csv
+    out: list[Check] = []
+    paths = {
+        "runs": root / "results" / "qaoa_threshold_training_budget_runs.csv",
+        "paired": root / "results" / "qaoa_threshold_training_budget_paired.csv",
+        "instance": root / "results" / "qaoa_threshold_training_budget_instance_summary.csv",
+        "inference": root / "results" / "qaoa_threshold_training_budget_inference.csv",
+    }
+    if any(not p.exists() for p in paths.values()):
+        missing = [k for k,p in paths.items() if not p.exists()]
+        return [Check("qaoa-threshold-objective:files", "FAIL", f"missing={missing}")]
+    try:
+        with paths["paired"].open("r", encoding="utf-8", newline="") as fh:
+            paired = list(_csv.DictReader(fh))
+        with paths["inference"].open("r", encoding="utf-8", newline="") as fh:
+            inf = list(_csv.DictReader(fh))
+        exact_pair = len(paired) == 270 and all(str(r.get("initialization_identical", "")).lower() in {"true", "1"} for r in paired)
+        out.append(Check("qaoa-threshold-objective:pairing", "PASS" if exact_pair else "FAIL", f"paired_rows={len(paired)}"))
+        inf_ok = len(inf) == 3 and all(float(r["median_delta_p_target"]) > 0 and float(r["bootstrap_ci_lo"]) > 0 and float(r["p_holm"]) < 0.05 for r in inf)
+        out.append(Check("qaoa-threshold-objective:inference", "PASS" if inf_ok else "FAIL", f"rows={[(r.get('p'), r.get('median_delta_p_target'), r.get('p_holm')) for r in inf]}"))
+        tradeoff = len(inf) == 3 and all(float(r["median_delta_approx_ratio"]) < 0 for r in inf)
+        out.append(Check("qaoa-threshold-objective:tradeoff", "PASS" if tradeoff else "FAIL", f"delta_AR={[r.get('median_delta_approx_ratio') for r in inf]}"))
+    except Exception as exc:
+        out.append(Check("qaoa-threshold-objective:parse", "FAIL", f"unreadable: {exc}"))
+    return out
 
 def check_duplicate_canonical_files(root: Path) -> list[Check]:
     out: list[Check] = []
@@ -305,6 +503,9 @@ def run_preflight(root: Path, *, runtime: bool = True, artifacts: bool = True) -
         checks.extend(check_runtime_lock(root))
     if manifest:
         checks.extend(check_claim_fences(root, manifest))
+        checks.extend(check_compiler_evidence(root, manifest))
+        checks.extend(check_compiler_native_aa_evidence(root, manifest))
+        checks.extend(check_qaoa_threshold_objective_evidence(root, manifest))
     else:
         checks.append(Check("run-manifest", "FAIL", "results/run_manifest.json missing or unreadable"))
     if (root / "manuscript" / "main.tex").exists():

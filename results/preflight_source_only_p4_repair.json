@@ -1,0 +1,689 @@
+{
+  "status": "PASS",
+  "created_utc": "2026-09-03T05:28:56.078283+00:00",
+  "root": "E:\\Google Drive\\My Drive\\FGCS_Quantum_Resource_Benchmark\\v1.1.0_WORKING",
+  "runtime_checked": true,
+  "artifacts_checked": false,
+  "summary": {
+    "pass": 135,
+    "warn": 0,
+    "fail": 0
+  },
+  "checks": [
+    {
+      "name": "required:README.md",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:requirements.txt",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:requirements.lock",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:.python-version",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:src/benchmark.py",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:src/render_tables.py",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:src/render_figures.py",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:src/render_p2_figures.py",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:src/preflight.py",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:src/finalize_manifest.py",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:src/compiler_validation_qiskit.py",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:src/compiler_native_aa_crosscheck.py",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:src/qaoa_threshold_objective_audit.py",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:.github/workflows/compiler-validation.yml",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:.github/workflows/compiler-native-aa.yml",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:tests/test_core.py",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:tests/test_preflight.py",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:tests/test_finalize_manifest.py",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:manuscript/main.tex",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:manuscript/references.bib",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:manuscript/CLAIMS_REGISTER.md",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/run_manifest.json",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/gw_sdp_primary.csv",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/gw_sdp_connected_validation.csv",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/gw_sdp_summary.csv",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/table_gw_sdp.tex",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/bbht_operational_primary.csv",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/bbht_operational_connected_validation.csv",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/bbht_summary.csv",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/resource_scalarization_primary.csv",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/resource_scalarization_connected_validation.csv",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/resource_scalarization_summary.csv",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/classical_budget_curve_runs.csv",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/classical_budget_curve_summary.csv",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/classical_budget_curve_aggregate.csv",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/dense_operational_lambda_primary.csv",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/dense_operational_lambda_connected_validation.csv",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/dense_operational_lambda_summary.csv",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/qaoa_initialization_stability_runs.csv",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/qaoa_initialization_stability_instance_summary.csv",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/qaoa_initialization_stability_aggregate.csv",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/qaoa_initialization_stability_inference.csv",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/qaoa_initialization_stability_comparison.csv",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/compiler_validation_qiskit.csv",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/compiler_validation_summary.json",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/compiler_vs_analytic_oracle.csv",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/compiler_native_aa_crosscheck.csv",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/compiler_native_aa_summary.json",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:reproducibility/compiler_environment.json",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:reproducibility/compiler_environment_pip_freeze.txt",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:reproducibility/P14_COMPILER_LOCKED_VALIDATION.md",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:reproducibility/P16_COMPILER_NATIVE_AA_CROSSCHECK.md",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:reproducibility/ENVIRONMENT_LOCK.md",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:reproducibility/P3_STRUCTURAL_GRAPH_VALIDATION.md",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:reproducibility/P4_GW_SDP_BASELINE.md",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:reproducibility/P5_BBHT_UNKNOWN_RHO.md",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:reproducibility/P6_RESOURCE_SCALARIZATION.md",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:reproducibility/P7_CLASSICAL_BUDGET_CURVE.md",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:reproducibility/P8_DENSE_OPERATIONAL_LAMBDA.md",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:reproducibility/P9_QAOA_INITIALIZATION_STREAM.md",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:reproducibility/P10_QAOA_20_START_STABILITY.md",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:reproducibility/UW_PREFLIGHT.md",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "python-version",
+      "status": "PASS",
+      "detail": "expected=3.13.5; actual=3.13.5"
+    },
+    {
+      "name": "requirements-lock-parse",
+      "status": "PASS",
+      "detail": "16 exact pins"
+    },
+    {
+      "name": "package:contourpy",
+      "status": "PASS",
+      "detail": "expected=1.3.3; actual=1.3.3"
+    },
+    {
+      "name": "package:cycler",
+      "status": "PASS",
+      "detail": "expected=0.12.1; actual=0.12.1"
+    },
+    {
+      "name": "package:fonttools",
+      "status": "PASS",
+      "detail": "expected=4.63.0; actual=4.63.0"
+    },
+    {
+      "name": "package:iniconfig",
+      "status": "PASS",
+      "detail": "expected=2.3.0; actual=2.3.0"
+    },
+    {
+      "name": "package:kiwisolver",
+      "status": "PASS",
+      "detail": "expected=1.5.0; actual=1.5.0"
+    },
+    {
+      "name": "package:matplotlib",
+      "status": "PASS",
+      "detail": "expected=3.10.8; actual=3.10.8"
+    },
+    {
+      "name": "package:numpy",
+      "status": "PASS",
+      "detail": "expected=2.3.5; actual=2.3.5"
+    },
+    {
+      "name": "package:packaging",
+      "status": "PASS",
+      "detail": "expected=25.0; actual=25.0"
+    },
+    {
+      "name": "package:pillow",
+      "status": "PASS",
+      "detail": "expected=12.3.0; actual=12.3.0"
+    },
+    {
+      "name": "package:pluggy",
+      "status": "PASS",
+      "detail": "expected=1.6.0; actual=1.6.0"
+    },
+    {
+      "name": "package:pygments",
+      "status": "PASS",
+      "detail": "expected=2.20.0; actual=2.20.0"
+    },
+    {
+      "name": "package:pyparsing",
+      "status": "PASS",
+      "detail": "expected=3.3.2; actual=3.3.2"
+    },
+    {
+      "name": "package:pytest",
+      "status": "PASS",
+      "detail": "expected=9.0.2; actual=9.0.2"
+    },
+    {
+      "name": "package:python-dateutil",
+      "status": "PASS",
+      "detail": "expected=2.9.0.post0; actual=2.9.0.post0"
+    },
+    {
+      "name": "package:scipy",
+      "status": "PASS",
+      "detail": "expected=1.17.0; actual=1.17.0"
+    },
+    {
+      "name": "package:six",
+      "status": "PASS",
+      "detail": "expected=1.17.0; actual=1.17.0"
+    },
+    {
+      "name": "manifest:hardware_claims",
+      "status": "PASS",
+      "detail": "false"
+    },
+    {
+      "name": "manifest:compiler_claims",
+      "status": "PASS",
+      "detail": "locked_synthetic_topology"
+    },
+    {
+      "name": "claim-fence:manuscript/main.tex",
+      "status": "PASS",
+      "detail": "no affirmative hardware/quantum-advantage claim pattern"
+    },
+    {
+      "name": "claim-fence:README.md",
+      "status": "PASS",
+      "detail": "no affirmative hardware/quantum-advantage claim pattern"
+    },
+    {
+      "name": "manuscript-fence:primary-suite-size",
+      "status": "PASS",
+      "detail": "required phrase='18 primary'"
+    },
+    {
+      "name": "manuscript-fence:coverage-suite-size",
+      "status": "PASS",
+      "detail": "required phrase='63 coverage'"
+    },
+    {
+      "name": "manuscript-fence:fixed-qaoa-inference-boundary",
+      "status": "PASS",
+      "detail": "required phrase='18-instance QAOA'"
+    },
+    {
+      "name": "manuscript-fence:no-physical-backend",
+      "status": "PASS",
+      "detail": "required phrase='No physical-backend'"
+    },
+    {
+      "name": "manuscript-fence:compiler-lock",
+      "status": "PASS",
+      "detail": "required phrase='Qiskit 2.4.2'"
+    },
+    {
+      "name": "manuscript-fence:fixed-density-random-design",
+      "status": "PASS",
+      "detail": "required phrase='fixed-edge-count/fixed-density random simple-graph design'"
+    },
+    {
+      "name": "manuscript-fence:credit-statement",
+      "status": "PASS",
+      "detail": "required phrase='CRediT authorship contribution statement'"
+    },
+    {
+      "name": "manuscript-fence:ai-version-log",
+      "status": "PASS",
+      "detail": "required phrase='GPT-5.6 Sol'"
+    },
+    {
+      "name": "manuscript-fence:ai-history-limit",
+      "status": "PASS",
+      "detail": "required phrase='not consistently recorded'"
+    },
+    {
+      "name": "bibliography-fence:boyer1998",
+      "status": "PASS",
+      "detail": "required BibTeX key=boyer1998"
+    },
+    {
+      "name": "bibliography-fence:li2023qasmbench",
+      "status": "PASS",
+      "detail": "required BibTeX key=li2023qasmbench"
+    },
+    {
+      "name": "bibliography-fence:tomesh2022supermarq",
+      "status": "PASS",
+      "detail": "required BibTeX key=tomesh2022supermarq"
+    },
+    {
+      "name": "bibliography-fence:lubinski2023application",
+      "status": "PASS",
+      "detail": "required BibTeX key=lubinski2023application"
+    },
+    {
+      "name": "random-family-label",
+      "status": "PASS",
+      "detail": "requires random_fixed_density and forbids legacy erdos_renyi label"
+    },
+    {
+      "name": "compiler-evidence:qiskit_version",
+      "status": "PASS",
+      "detail": "expected=2.4.2; actual=2.4.2"
+    },
+    {
+      "name": "compiler-evidence:seed_transpiler",
+      "status": "PASS",
+      "detail": "expected=20260901; actual=20260901"
+    },
+    {
+      "name": "compiler-evidence:optimization_level",
+      "status": "PASS",
+      "detail": "expected=1; actual=1"
+    },
+    {
+      "name": "compiler-evidence:row_count",
+      "status": "PASS",
+      "detail": "expected=66; actual=66"
+    },
+    {
+      "name": "compiler-evidence:qaoa_routed_rows",
+      "status": "PASS",
+      "detail": "expected=54; actual=54"
+    },
+    {
+      "name": "compiler-evidence:oracle_basis_rows",
+      "status": "PASS",
+      "detail": "expected=9; actual=9"
+    },
+    {
+      "name": "compiler-evidence:oracle_sparse_routed_rows",
+      "status": "PASS",
+      "detail": "expected=3; actual=3"
+    },
+    {
+      "name": "compiler-evidence:basis",
+      "status": "PASS",
+      "detail": "actual=['rz', 'sx', 'x', 'cx']"
+    },
+    {
+      "name": "compiler-evidence:oracle-semantic",
+      "status": "PASS",
+      "detail": "{'failures': [], 'oracle_qubits': 16, 'passed': True, 'tested_basis_states': 8, 'threshold': 5}"
+    },
+    {
+      "name": "compiler-evidence:qaoa-depth-order",
+      "status": "PASS",
+      "detail": "depths={'1': 78.0, '2': 180.5, '3': 260.5}"
+    },
+    {
+      "name": "compiler-evidence:abstraction-gap",
+      "status": "PASS",
+      "detail": "rows=9; depth_ratio_range=(108.173,169.373); qubit_ratio_range=(1.526,1.667)"
+    },
+    {
+      "name": "compiler-native-aa:qiskit",
+      "status": "PASS",
+      "detail": "qiskit=2.4.2"
+    },
+    {
+      "name": "compiler-native-aa:basis",
+      "status": "PASS",
+      "detail": "basis=['rz', 'sx', 'x', 'cx']"
+    },
+    {
+      "name": "compiler-native-aa:seed",
+      "status": "PASS",
+      "detail": "seed=20260901"
+    },
+    {
+      "name": "compiler-native-aa:rows",
+      "status": "PASS",
+      "detail": "csv=9, summary=9"
+    },
+    {
+      "name": "compiler-native-aa:k0-size",
+      "status": "PASS",
+      "detail": "9/9 expected k*=0"
+    },
+    {
+      "name": "compiler-native-aa:k0-depth",
+      "status": "PASS",
+      "detail": "9/9 expected k*=0"
+    },
+    {
+      "name": "compiler-native-aa:positive-coordinates",
+      "status": "PASS",
+      "detail": "rho in (0,1], iteration coordinates positive"
+    },
+    {
+      "name": "compiler-native-aa:break-even",
+      "status": "PASS",
+      "detail": "size=0.147520, depth=0.147723"
+    },
+    {
+      "name": "compiler-native-aa:manifest-count",
+      "status": "PASS",
+      "detail": "manifest=9, csv=9"
+    },
+    {
+      "name": "qaoa-threshold-objective:pairing",
+      "status": "PASS",
+      "detail": "paired_rows=270"
+    },
+    {
+      "name": "qaoa-threshold-objective:inference",
+      "status": "PASS",
+      "detail": "rows=[('1', '0.01592300329958983', '0.0038604736328125'), ('2', '0.01728898781311739', '0.00201416015625'), ('3', '0.01741182483566192', '0.03849029541015625')]"
+    },
+    {
+      "name": "qaoa-threshold-objective:tradeoff",
+      "status": "PASS",
+      "detail": "delta_AR=['-0.001181091870699924', '-0.004465084804763209', '-0.013983252814155744']"
+    },
+    {
+      "name": "tex-env:abstract",
+      "status": "PASS",
+      "detail": "begin=1; end=1"
+    },
+    {
+      "name": "tex-env:align",
+      "status": "PASS",
+      "detail": "begin=2; end=2"
+    },
+    {
+      "name": "tex-env:document",
+      "status": "PASS",
+      "detail": "begin=1; end=1"
+    },
+    {
+      "name": "tex-env:enumerate",
+      "status": "PASS",
+      "detail": "begin=1; end=1"
+    },
+    {
+      "name": "tex-env:equation",
+      "status": "PASS",
+      "detail": "begin=23; end=23"
+    },
+    {
+      "name": "tex-env:figure",
+      "status": "PASS",
+      "detail": "begin=5; end=5"
+    },
+    {
+      "name": "tex-env:frontmatter",
+      "status": "PASS",
+      "detail": "begin=1; end=1"
+    },
+    {
+      "name": "tex-env:keyword",
+      "status": "PASS",
+      "detail": "begin=1; end=1"
+    },
+    {
+      "name": "tex-env:quote",
+      "status": "PASS",
+      "detail": "begin=1; end=1"
+    },
+    {
+      "name": "tex-env:table",
+      "status": "PASS",
+      "detail": "begin=17; end=17"
+    },
+    {
+      "name": "duplicate:main.tex",
+      "status": "PASS",
+      "detail": "none"
+    },
+    {
+      "name": "duplicate:references.bib",
+      "status": "PASS",
+      "detail": "none"
+    },
+    {
+      "name": "duplicate:CLAIMS_REGISTER.md",
+      "status": "PASS",
+      "detail": "none"
+    },
+    {
+      "name": "duplicate:run_manifest.json",
+      "status": "PASS",
+      "detail": "none"
+    }
+  ]
+}

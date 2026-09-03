@@ -10,6 +10,9 @@ from benchmark import (
     build_maxcut_instance,
     build_exact_suite,
     qaoa_metrics,
+    qaoa_initial_params,
+    QAOA_INIT_STREAM_VERSION,
+    QAOA_STABILITY_STARTS,
     wilson_interval,
     local_hillclimb,
     threshold_spec,
@@ -35,6 +38,8 @@ from benchmark import (
     run_budgeted_classical_suite,
     CLASSICAL_EVAL_BUDGET,
     CLASSICAL_BUDGETED_RUNS,
+    CLASSICAL_BUDGET_CURVE,
+    run_classical_budget_curve,
     run_qaoa_budgeted_one,
     run_qaoa_optimizer_budget_suite,
     summarize_qaoa_optimizer_budget,
@@ -56,6 +61,32 @@ from benchmark import (
     coverage_coupled_oracle_rows,
     EXPANDED_RANDOM_SEEDS,
     STRUCTURED_FAMILIES,
+    graph_structure_metrics,
+    graph_diagnostics_rows,
+    build_connected_validation_instance,
+    build_connected_validation_suite,
+    connected_validation_ground_truth_rows,
+    connected_validation_operational_threshold_rows,
+    connected_validation_coupled_oracle_rows,
+    CONNECTED_VALIDATION_NS,
+    CONNECTED_VALIDATION_DENSITIES,
+    CONNECTED_VALIDATION_SEEDS,
+    gw_sdp_relaxation,
+    gw_hyperplane_rounding,
+    gw_sdp_rows,
+    gw_sdp_summary_rows,
+    bbht_stage_widths,
+    bbht_expected_architecture_cost,
+    bbht_operational_rows,
+    bbht_summary_rows,
+    BBHT_LAMBDA,
+    reweight_resource_model,
+    resource_scalarization_sensitivity_rows,
+    resource_scalarization_summary_rows,
+    RESOURCE_TOFFOLI_WEIGHTS,
+    DENSE_OPERATIONAL_LEVELS,
+    dense_operational_lambda_rows,
+    dense_operational_lambda_summary_rows,
 )
 
 
@@ -382,6 +413,27 @@ def test_budgeted_classical_default_contract():
 
 
 
+def test_qaoa_initialization_is_instance_conditioned_and_deterministic():
+    a = build_maxcut_instance(8, 0.25, 42)
+    b = build_maxcut_instance(8, 0.50, 42)
+    xa1 = qaoa_initial_params(a, 2, 3)
+    xa2 = qaoa_initial_params(a, 2, 3)
+    xb = qaoa_initial_params(b, 2, 3)
+    assert QAOA_INIT_STREAM_VERSION == 1
+    assert np.array_equal(xa1, xa2)
+    assert not np.array_equal(xa1, xb)
+
+
+def test_qaoa_initialization_changes_with_depth_or_external_seed():
+    inst = build_maxcut_instance(8, 0.50, 17)
+    x11 = qaoa_initial_params(inst, 1, 1)
+    x12 = qaoa_initial_params(inst, 1, 2)
+    x21 = qaoa_initial_params(inst, 2, 1)
+    assert not np.array_equal(x11, x12)
+    assert len(x21) == 4
+    assert not np.array_equal(x11, x21[:2])
+
+
 def test_qaoa_budgeted_optimizer_is_deterministic_in_quality_fields():
     inst = build_maxcut_instance(8, 0.25, 42)
     a = run_qaoa_budgeted_one(inst, 1, 2, 'COBYLA', eval_budget=24)
@@ -572,3 +624,228 @@ def test_kl_coverage_graph_ledger_matches_edge_counts():
     rows = coverage_graph_rows(suite)
     assert len(rows) == sum(x.n_edges for x in suite)
     assert all(int(r["i"]) < int(r["j"]) for r in rows)
+
+
+# Reviewer-audit connected/non-bipartite validation tier
+def test_graph_structure_audit_exposes_primary_connectivity_and_bipartiteness():
+    rows = graph_diagnostics_rows(build_exact_suite(), 'primary')
+    assert len(rows) == 18
+    assert sum(not bool(r['connected']) for r in rows) == 5
+    assert sum(bool(r['bipartite']) for r in rows) == 2
+    assert all(int(r['component_count']) >= 1 for r in rows)
+    assert all(int(r['component_flip_symmetry_lower_bound']) >= 2 for r in rows)
+
+
+def test_connected_validation_constructor_is_deterministic_and_structurally_filtered():
+    a = build_connected_validation_instance(10, 0.25, 42)
+    b = build_connected_validation_instance(10, 0.25, 42)
+    assert a.edges == b.edges
+    assert a.optimum == b.optimum
+    m = graph_structure_metrics(a)
+    assert m['connected'] is True
+    assert m['bipartite'] is False
+    assert m['isolated_vertices'] == 0
+    assert m['cycle_rank'] >= 1
+
+
+def test_connected_validation_suite_has_45_exact_connected_nonbipartite_instances():
+    suite = build_connected_validation_suite()
+    assert len(suite) == 45
+    assert len({x.instance_id for x in suite}) == 45
+    assert {x.n for x in suite} == set(CONNECTED_VALIDATION_NS)
+    assert {round(x.density_target, 2) for x in suite} == set(CONNECTED_VALIDATION_DENSITIES)
+    assert {x.seed for x in suite} == set(CONNECTED_VALIDATION_SEEDS)
+    metrics = [graph_structure_metrics(x) for x in suite]
+    assert all(m['connected'] and not m['bipartite'] for m in metrics)
+    assert all(m['isolated_vertices'] == 0 for m in metrics)
+
+
+def test_connected_validation_rows_preserve_exact_and_operational_claim_boundaries():
+    suite = build_connected_validation_suite()
+    gt = connected_validation_ground_truth_rows(suite)
+    op = connected_validation_operational_threshold_rows(suite)
+    cc = connected_validation_coupled_oracle_rows(suite, eps_levels=(0.0,))
+    assert len(gt) == 45
+    assert len(op) == 45 * len(OPERATIONAL_LEVELS)
+    assert all(r['construction_uses_C_star'] is False for r in op)
+    assert all(r['connected'] and not r['bipartite'] for r in gt)
+    assert cc
+    assert all('not compiled or hardware measured' in r['evidence_label'] for r in cc)
+
+
+# Reviewer-audit canonical Goemans--Williamson SDP baseline
+def test_gw_sdp_primal_dual_certificate_brackets_exact_maxcut():
+    inst = build_maxcut_instance(8, 0.25, 17)
+    solved = gw_sdp_relaxation(inst, starts=4, max_sweeps=1200)
+    assert solved['certified'] is True
+    assert solved['primal_value'] <= solved['dual_upper_bound'] + 1e-8
+    assert solved['dual_upper_bound'] + 1e-7 >= inst.optimum
+    assert solved['primal_dual_gap'] <= 1e-6
+    # This particular tree instance has an integral SDP relaxation.
+    assert abs(solved['dual_upper_bound'] - inst.optimum) < 1e-5
+
+
+def test_gw_rounding_is_seeded_feasible_and_never_exceeds_exact_optimum():
+    inst = build_maxcut_instance(8, 0.50, 17)
+    solved = gw_sdp_relaxation(inst, starts=4, max_sweeps=1200)
+    a = gw_hyperplane_rounding(inst, solved['vectors'], samples=512)
+    b = gw_hyperplane_rounding(inst, solved['vectors'], samples=512)
+    assert a == b
+    assert 0 <= a['rounding_best_cut'] <= inst.optimum
+    assert 0.0 <= a['rounding_optimum_hit_fraction'] <= 1.0
+    assert a['rounding_best_ratio_to_Cstar'] <= 1.0 + 1e-12
+
+
+def test_gw_rows_are_certified_and_summary_preserves_tier_counts():
+    suite = build_exact_suite()[:3]
+    rows = gw_sdp_rows(suite, 'test_primary')
+    assert len(rows) == 3
+    assert all(r['sdp_numerically_certified'] for r in rows)
+    assert all(float(r['sdp_dual_upper_bound']) + 1e-6 >= float(r['C_star']) for r in rows)
+    summary = gw_sdp_summary_rows(rows)
+    overall = [r for r in summary if r['n'] == 'all'][0]
+    assert overall['instances'] == 3
+    assert overall['certified_instances'] == 3
+
+
+def test_bbht_schedule_is_rho_independent_and_saturates_at_sqrt_n():
+    widths = bbht_stage_widths(256)
+    assert widths[0] == 1
+    assert widths[-1] == 16
+    assert all(a <= b for a, b in zip(widths, widths[1:]))
+    assert 1.0 < BBHT_LAMBDA < 4.0 / 3.0
+
+
+def test_bbht_expected_cost_is_finite_and_respects_classical_bbht_bound():
+    inst = build_maxcut_instance(10, 0.50, 17)
+    spec = operational_threshold_spec(inst, 0.55)
+    rho = float(spec['rho_tau_exact_validation'])
+    assert 0 < rho <= 0.75
+    rm = maxcut_threshold_oracle_resource_model(inst, spec['threshold'])
+    out = bbht_expected_architecture_cost(rho, inst.state_count, rm)
+    assert out['eventual_success_probability'] == 1.0
+    assert out['expected_trials_to_success'] > 0
+    assert out['expected_gate_equivalent_to_success'] > 0
+    # Boyer et al. give a 4.5*sqrt(N/M) worst-case Grover-iteration envelope for lambda=6/5.
+    assert out['expected_grover_iterations_to_success'] <= 4.5 / np.sqrt(rho) + 1e-12
+
+
+def test_bbht_operational_rows_cover_primary_and_connected_validation_without_rho_input():
+    primary = bbht_operational_rows(build_exact_suite(), 'primary', eps_levels=(0.0,), fixed_overhead_ratios=(0.0,))
+    connected = bbht_operational_rows(build_connected_validation_suite(), 'connected_validation', eps_levels=(0.0,), fixed_overhead_ratios=(0.0,))
+    assert len(primary) == 51
+    assert len(connected) == 126
+    assert all(r['bbht_schedule_uses_rho'] is False for r in primary + connected)
+    assert all(r['bbht_expected_resource_per_target_hit_model'] > 0 for r in primary + connected)
+    assert all(r['uniform_expected_resource_per_target_hit_model'] > 0 for r in primary + connected)
+    assert all(r['oracle_informed_expected_resource_per_target_hit_model'] > 0 for r in primary + connected)
+
+
+def test_bbht_summary_has_expected_scope_rows():
+    rows = bbht_operational_rows(build_exact_suite(), 'primary', eps_levels=(0.0,), fixed_overhead_ratios=(0.0, 0.25))
+    summary = bbht_summary_rows(rows)
+    assert len(summary) == 2
+    assert {r['fixed_overhead_ratio_to_oracle'] for r in summary} == {0.0, 0.25}
+    assert all(r['feasible_threshold_conditions'] == 51 for r in summary)
+
+
+def test_resource_reweight_alpha6_reproduces_canonical_gate_equivalent_counts():
+    inst = build_maxcut_instance(10, 0.50, 17)
+    spec = operational_threshold_spec(inst, 0.40)
+    rm = maxcut_threshold_oracle_resource_model(inst, spec['threshold'])
+    r6 = reweight_resource_model(rm, 6.0)
+    assert r6['oracle_gate_equivalent_model'] == rm['oracle_gate_equivalent_model']
+    assert r6['diffusion_gate_equivalent_model'] == rm['diffusion_gate_equivalent_model']
+    assert r6['iteration_gate_equivalent_model'] == rm['iteration_gate_equivalent_model']
+    assert r6['oracle_toffoli_model'] == rm['oracle_toffoli_model']
+    assert r6['oracle_logical_depth_model'] == rm['oracle_logical_depth_model']
+
+
+def test_resource_reweight_changes_only_scalar_projection_not_raw_counts():
+    inst = build_maxcut_instance(8, 0.75, 42)
+    spec = operational_threshold_spec(inst, 0.25)
+    rm = maxcut_threshold_oracle_resource_model(inst, spec['threshold'])
+    r1 = reweight_resource_model(rm, 1.0)
+    r10 = reweight_resource_model(rm, 10.0)
+    assert r1['oracle_gate_equivalent_model'] < r10['oracle_gate_equivalent_model']
+    for key in ('oracle_toffoli_model','oracle_cnot_model','oracle_single_qubit_model','oracle_logical_depth_model','total_logical_qubits_model'):
+        assert r1[key] == r10[key] == rm[key]
+
+
+def test_resource_scalarization_rows_cover_declared_grid_and_zero_overhead_boundary():
+    rows = resource_scalarization_sensitivity_rows(build_exact_suite(), 'primary')
+    assert len(rows) == 51 * len(RESOURCE_TOFFOLI_WEIGHTS) * 2 * 4
+    zero = [r for r in rows if abs(r['eps_per_logical_depth_model']) < 1e-15 and abs(r['fixed_overhead_ratio_to_canonical_alpha6_oracle']) < 1e-15]
+    assert len(zero) == 51 * len(RESOURCE_TOFFOLI_WEIGHTS)
+    assert all(r['k_star'] == 0 for r in zero)
+
+
+def test_resource_scalarization_summary_reports_all_alpha_scope_coordinates():
+    p = resource_scalarization_sensitivity_rows(build_exact_suite(), 'primary', eps_levels=(0.0,), canonical_fixed_ratios=(0.0,0.25))
+    c = resource_scalarization_sensitivity_rows(build_connected_validation_suite(), 'connected_validation', eps_levels=(0.0,), canonical_fixed_ratios=(0.0,0.25))
+    summary = resource_scalarization_summary_rows(p+c)
+    assert len(summary) == 2 * len(RESOURCE_TOFFOLI_WEIGHTS) * 2
+    assert {r['scope'] for r in summary} == {'primary','connected_validation'}
+
+
+def test_classical_budget_curve_small_grid_has_expected_rows_and_metadata():
+    suite = build_exact_suite()[:2]
+    raw, summary, agg = run_classical_budget_curve(suite, budgets=(64,128), runs=3)
+    assert len(raw) == 2 * 2 * 2 * 3
+    assert len(summary) == 2 * 2 * 2
+    assert len(agg) == 2 * 2
+    assert {r['curve_budget'] for r in raw} == {64,128}
+    assert all(float(r['budget_over_state_count']) > 0 for r in summary)
+
+
+def test_classical_budget_curve_4096_endpoint_matches_single_budget_runner():
+    suite = build_exact_suite()[:1]
+    raw0, summary0 = run_budgeted_classical_suite(suite, runs=4, eval_budget=4096)
+    raw, summary, agg = run_classical_budget_curve(suite, budgets=(4096,), runs=4)
+    key=lambda r:(r['method'],r['run_index'])
+    assert [(r['best_cut'],r['objective_evaluations']) for r in sorted(raw0,key=key)] == [(r['best_cut'],r['objective_evaluations']) for r in sorted(raw,key=key)]
+    assert len(agg) == 2
+
+
+def test_declared_classical_budget_curve_spans_sub_state_space_to_full_n12_space():
+    assert CLASSICAL_BUDGET_CURVE == (64,128,256,512,1024,4096)
+    assert CLASSICAL_BUDGET_CURVE[-1] == 2**12
+
+
+def test_dense_operational_levels_cover_full_unit_interval():
+    assert DENSE_OPERATIONAL_LEVELS == tuple(round(i * 0.05, 2) for i in range(21))
+    assert set(OPERATIONAL_LEVELS).issubset(set(DENSE_OPERATIONAL_LEVELS))
+
+
+def test_dense_lambda_rows_are_complete_and_do_not_use_cstar_for_construction():
+    suite = build_exact_suite()[:2]
+    levels = (0.0, 0.25, 0.4, 0.55, 1.0)
+    rows = dense_operational_lambda_rows(suite, "test", levels=levels)
+    assert len(rows) == len(suite) * len(levels)
+    assert all(r["construction_uses_C_star"] is False for r in rows)
+    assert all(r["tier"] == "test" for r in rows)
+
+
+def test_dense_lambda_summary_matches_declared_operational_points():
+    suite = build_exact_suite()
+    rows = dense_operational_lambda_rows(suite, "primary", levels=OPERATIONAL_LEVELS)
+    summary = dense_operational_lambda_summary_rows(rows)
+    by_level = {round(float(r["operational_level"]), 2): r for r in summary}
+    assert int(by_level[0.25]["feasible_count"]) == 18
+    assert int(by_level[0.40]["feasible_count"]) == 18
+    assert int(by_level[0.55]["feasible_count"]) == 15
+    assert all(float(r["zero_fixed_zero_attenuation_nonzero_k_fraction"]) == 0.0 for r in summary if int(r["feasible_count"]) > 0)
+
+
+def test_qaoa_stability_declares_twenty_nested_starts():
+    assert QAOA_STABILITY_STARTS == 20
+    inst = build_exact_suite()[0]
+    first_five = [qaoa_initial_params(inst, 2, s) for s in range(5)]
+    first_twenty = [qaoa_initial_params(inst, 2, s) for s in range(QAOA_STABILITY_STARTS)]
+    assert all(np.array_equal(a, b) for a, b in zip(first_five, first_twenty[:5]))
+    assert len({tuple(np.round(x, 14)) for x in first_twenty}) == 20
+
+def test_qaoa_stability_streams_remain_instance_conditioned():
+    a, b = build_exact_suite()[:2]
+    for s in (0, 5, 19):
+        assert not np.array_equal(qaoa_initial_params(a, 3, s), qaoa_initial_params(b, 3, s))

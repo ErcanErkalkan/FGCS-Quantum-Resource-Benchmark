@@ -1,0 +1,46 @@
+{
+  "basis_gates": [
+    "rz",
+    "sx",
+    "x",
+    "cx"
+  ],
+  "evidence_label": "compiler-locked Qiskit transpilation evidence; synthetic topology, not physical hardware execution",
+  "optimization_level": 1,
+  "oracle_basis_median_compiled_cx": 53794.0,
+  "oracle_basis_median_compiled_depth": 110317.0,
+  "oracle_basis_rows": 9,
+  "oracle_sparse_routed_cx": {
+    "n10_d25_s17": 48636,
+    "n12_d25_s17": 97268,
+    "n8_d25_s17": 30655
+  },
+  "oracle_sparse_routed_depths": {
+    "n10_d25_s17": 65177,
+    "n12_d25_s17": 130085,
+    "n8_d25_s17": 41539
+  },
+  "oracle_sparse_routed_rows": 3,
+  "python_version": "3.12.14",
+  "qaoa_median_compiled_cx_by_p": {
+    "1": 97.0,
+    "2": 234.5,
+    "3": 348.0
+  },
+  "qaoa_median_compiled_depth_by_p": {
+    "1": 78.0,
+    "2": 180.5,
+    "3": 260.5
+  },
+  "qaoa_routed_rows": 54,
+  "qiskit_version": "2.4.2",
+  "row_count": 66,
+  "seed_transpiler": 20260901,
+  "semantic_oracle_check": {
+    "failures": [],
+    "oracle_qubits": 16,
+    "passed": true,
+    "tested_basis_states": 8,
+    "threshold": 5
+  }
+}

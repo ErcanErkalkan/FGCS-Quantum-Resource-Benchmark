@@ -35,6 +35,102 @@ for n, count, emin, emax, rho in by_n:
 lines += [r'\bottomrule', r'\end{tabular}']
 write('table_suite.tex', lines)
 
+# Reviewer-audit structural diagnostics: make disconnected/bipartite degeneracy explicit.
+pdiag = read_csv('primary_graph_diagnostics.csv')
+cdiag = read_csv('coverage_graph_diagnostics.csv')
+vdiag = read_csv('connected_validation_graph_diagnostics.csv')
+lines = [r'\begin{tabular}{lrrrrr}', r'\toprule', r'tier & inst. & disconnected & bipartite & isolated-bearing & med. $M_{opt}$ \\', r'\midrule']
+for label, rr in [('primary', pdiag), ('expanded coverage', cdiag), ('connected validation', vdiag)]:
+    dis = sum(x['connected'].lower() != 'true' for x in rr)
+    bip = sum(x['bipartite'].lower() == 'true' for x in rr)
+    iso = sum(int(float(x['isolated_vertices'])) > 0 for x in rr)
+    mopt = np.median([int(float(x['M_opt'])) for x in rr])
+    lines.append(f'{label} & {len(rr)} & {dis} & {bip} & {iso} & {mopt:.1f} {ROW_END}')
+lines += [r'\bottomrule', r'\end{tabular}']
+write('table_graph_structure_audit.tex', lines)
+
+# Connected, non-bipartite exact validation tier through n=14.
+cvop = read_csv('connected_validation_operational_thresholds.csv')
+cvcc = read_csv('connected_validation_coupled_oracle.csv')
+cvfo = read_csv('connected_validation_fixed_overhead.csv')
+lines = [r'\begin{tabular}{rrrrrr}', r'\toprule', r'$\lambda$ & feasible & med. $\tau/C^*$ & med. $\rho_\tau$ & nonzero $k$ @ $\chi=0$ & med. $\chi_{BE}$ \\', r'\midrule']
+for level in (0.25, 0.40, 0.55):
+    op = [x for x in cvop if abs(float(x['operational_level'])-level)<1e-12 and x['feasible_exact_validation'].lower()=='true']
+    q = np.array([float(x['realized_quality_ratio_exact_validation']) for x in op])
+    rho = np.array([float(x['rho_tau_exact_validation']) for x in op])
+    c0 = [x for x in cvcc if abs(float(x['operational_level'])-level)<1e-12 and abs(float(x['eps_per_logical_depth_model']))<1e-15]
+    nz0 = np.mean([int(float(x['k_star'])) > 0 for x in c0]) if c0 else float('nan')
+    be = [x for x in cvfo if abs(float(x['operational_level'])-level)<1e-12 and abs(float(x['eps_per_logical_depth_model']))<1e-15 and abs(float(x['fixed_overhead_ratio_to_oracle']))<1e-15]
+    bevals = np.array([float(x['break_even_fixed_overhead_ratio_to_oracle']) for x in be])
+    lines.append(f'{level:.2f} & {len(op)}/45 & {np.median(q):.3f} & {np.median(rho):.4f} & {nz0:.3f} & {np.median(bevals):.3f} {ROW_END}')
+lines += [r'\bottomrule', r'\end{tabular}']
+write('table_connected_validation.tex', lines)
+
+
+# P8: dense operational-lambda audit. Keep only six representative points in manuscript table.
+dl = read_csv('dense_operational_lambda_summary.csv')
+show_levels = (0.0, 0.25, 0.40, 0.55, 0.75, 1.0)
+labels = {'primary':'primary', 'connected_validation':'connected'}
+lines = [r'\begin{tabular}{lrrrr}', r'\toprule', r'tier & $\lambda$ & feasible & median $\tau/C^*$ & median $\rho_\tau$ \\', r'\midrule']
+for tier in ('primary','connected_validation'):
+    for level in show_levels:
+        rr=[x for x in dl if x['tier']==tier and abs(float(x['operational_level'])-level)<1e-12]
+        if not rr: continue
+        x=rr[0]
+        feas=f"{int(float(x['feasible_count']))}/{int(float(x['instances']))}"
+        ratio='--' if str(x['median_tau_over_Cstar_feasible']).lower()=='nan' else f"{float(x['median_tau_over_Cstar_feasible']):.3f}"
+        rho='--' if str(x['median_rho_tau_feasible']).lower()=='nan' else f"{float(x['median_rho_tau_feasible']):.4f}"
+        lines.append(f"{labels[tier]} & {level:.2f} & {feas} & {ratio} & {rho} {ROW_END}")
+    if tier=='primary': lines.append(r'\midrule')
+lines += [r'\bottomrule', r'\end{tabular}']
+write('table_dense_operational_lambda.tex', lines)
+
+# Canonical Goemans--Williamson Max-Cut reference: certified numerical SDP
+# relaxation plus deterministic-seed random-hyperplane rounding.
+gws = read_csv('gw_sdp_summary.csv')
+lines = [r'\begin{tabular}{lrrrrrr}', r'\toprule', r'tier & inst. & cert. & med. SDP/$C^*$ & med. mean round/$C^*$ & opt. found & max gap \\', r'\midrule']
+for tier, label in [('primary','primary'), ('connected_validation','connected val.')]:
+    x = [r for r in gws if r['tier']==tier and r['n']=='all'][0]
+    lines.append(
+        f"{label} & {x['instances']} & {x['certified_instances']} & "
+        f"{float(x['median_sdp_upper_bound_over_Cstar']):.3f} & "
+        f"{float(x['median_rounding_mean_ratio_to_Cstar']):.3f} & "
+        f"{x['instances_with_optimum_in_rounding']}/{x['instances']} & "
+        f"{float(x['max_primal_dual_gap']):.1e} {ROW_END}"
+    )
+lines += [r'\bottomrule', r'\end{tabular}']
+write('table_gw_sdp.tex', lines)
+
+# BBHT unknown-solution-count resource comparison. The schedule does not consume rho;
+# exact rho appears only in retrospective expected-cost evaluation.
+bbhts = read_csv('bbht_summary.csv')
+lines = [r'\begin{tabular}{lrrrrr}', r'\toprule', r'tier & $\varepsilon_D$ & $\chi$ & med. BBHT/uniform & BBHT better frac. & med. BBHT/oracle \\', r'\midrule']
+for tier, label in [('primary','primary'), ('connected_validation','connected val.')]:
+    for eps, fixed in [(0.0,0.0),(0.0,0.25),(1e-4,0.25)]:
+        x = [r for r in bbhts if r['scope']==tier and abs(float(r['eps_per_logical_depth_model'])-eps)<1e-15 and abs(float(r['fixed_overhead_ratio_to_oracle'])-fixed)<1e-15][0]
+        lines.append(
+            f"{label} & {eps:.0e} & {fixed:.2f} & "
+            f"{float(x['median_bbht_over_uniform_resource_ratio']):.3f} & "
+            f"{float(x['bbht_better_than_uniform_fraction']):.3f} & "
+            f"{float(x['median_bbht_over_oracle_informed_resource_ratio']):.3f} {ROW_END}"
+        )
+lines += [r'\bottomrule', r'\end{tabular}']
+write('table_bbht_summary.tex', lines)
+
+# Sensitivity of the mixed logical gate-equivalent scalarization to the Toffoli weight.
+rs = read_csv('resource_scalarization_summary.csv')
+lines = [r'\begin{tabular}{lrrrr}', r'\toprule', r'tier & $\alpha_T$ & med. $\chi_{BE}^{(6)}$ & nonzero $k$ @ $\chi_6=0$ & nonzero $k$ @ $\chi_6=0.25$ \\', r'\midrule']
+for tier, label in [('primary','primary'), ('connected_validation','connected val.')]:
+    for alpha in (1.0,4.0,6.0,10.0):
+        z0=[r for r in rs if r['scope']==tier and abs(float(r['eps_per_logical_depth_model']))<1e-15 and abs(float(r['toffoli_weight_alpha'])-alpha)<1e-15 and abs(float(r['fixed_overhead_ratio_to_canonical_alpha6_oracle']))<1e-15][0]
+        z25=[r for r in rs if r['scope']==tier and abs(float(r['eps_per_logical_depth_model']))<1e-15 and abs(float(r['toffoli_weight_alpha'])-alpha)<1e-15 and abs(float(r['fixed_overhead_ratio_to_canonical_alpha6_oracle'])-0.25)<1e-15][0]
+        lines.append(
+            f"{label} & {alpha:.0f} & {float(z0['median_break_even_ratio_to_canonical_alpha6_oracle']):.3f} & "
+            f"{float(z0['nonzero_k_fraction']):.3f} & {float(z25['nonzero_k_fraction']):.3f} {ROW_END}"
+        )
+lines += [r'\bottomrule', r'\end{tabular}']
+write('table_resource_scalarization.tex', lines)
+
 
 # Operational threshold construction independent of C*. Exact quantities below are retrospective validation only.
 op = read_csv('operational_thresholds.csv')
@@ -126,6 +222,23 @@ for method, label in [('simulated_annealing','sim. annealing'), ('tabu_search','
         lines.append(f'{label} & {n} & {len(rr)} & {budget} & {ratio:.3f} & {hit:.3f} {ROW_END}')
 lines += [r'\bottomrule', r'\end{tabular}']
 write('table_classical_budgeted.tex', lines)
+
+# P7: objective-evaluation budget curve for the stronger classical references.
+cbc = read_csv('classical_budget_curve_aggregate.csv')
+lookup = {(x['method'], int(float(x['eval_budget_per_run']))): x for x in cbc}
+lines = [r'\begin{tabular}{rrrrrr}', r'\toprule', r'budget & SA med. AR & SA hit & tabu med. AR & tabu hit & solved (SA/tabu) \\', r'\midrule']
+for budget in sorted({int(float(x['eval_budget_per_run'])) for x in cbc}):
+    sa = lookup[('simulated_annealing', budget)]
+    tb = lookup[('tabu_search', budget)]
+    lines.append(
+        f"{budget} & {float(sa['median_of_instance_median_best_ratio']):.3f} & "
+        f"{float(sa['median_instance_optimum_hit_fraction']):.3f} & "
+        f"{float(tb['median_of_instance_median_best_ratio']):.3f} & "
+        f"{float(tb['median_instance_optimum_hit_fraction']):.3f} & "
+        f"{int(float(sa['instances_with_at_least_one_optimum_hit']))}/{int(float(tb['instances_with_at_least_one_optimum_hit']))} {ROW_END}"
+    )
+lines += [r'\bottomrule', r'\end{tabular}']
+write('table_classical_budget_curve.tex', lines)
 
 # P2: host-side simulation scaling boundary
 sc = read_csv('simulator_scaling.csv')
@@ -221,6 +334,19 @@ for x in opt_inf:
     lines.append(f"{x['p']} & {float(x['median_instance_delta']):+.4f} & [{float(x['bootstrap95_lo']):+.4f},{float(x['bootstrap95_hi']):+.4f}] & {float(x['p_holm']):.4f} & {float(x['rank_biserial']):+.3f} & {x['n_instances']} {ROW_END}")
 lines += [r'\bottomrule', r'\end{tabular}']
 write('table_qaoa_inference.tex', lines)
+
+# P10: twenty-start QAOA initialization-stability audit.
+qs = read_csv('qaoa_initialization_stability_aggregate.csv')
+qsi = read_csv('qaoa_initialization_stability_inference.csv')
+lines = [r'\begin{tabular}{rrrrr}', r'\toprule', r'$p$ & starts/inst. & runs & median inst. AR & median inst. $P_{opt}$ \\', r'\midrule']
+for x in qs:
+    starts = int(float(x['optimizer_runs'])) // int(float(x['instances']))
+    lines.append(f"{x['p']} & {starts} & {x['optimizer_runs']} & {float(x['instance_median_approx_ratio']):.3f} & {float(x['instance_median_p_opt']):.4f} {ROW_END}")
+lines += [r'\midrule', r'\multicolumn{5}{l}{\textit{20-start depth contrasts}} \\', r'contrast & median $\Delta$ & 95\% CI & $p_{\rm Holm}$ & $n$ \\', r'\midrule']
+for x in qsi:
+    lines.append(f"{x['comparison']} & {float(x['median_delta']):+.4f} & [{float(x['bootstrap95_lo']):+.4f},{float(x['bootstrap95_hi']):+.4f}] & {float(x['p_holm']):.5f} & {x['n_instances']} {ROW_END}")
+lines += [r'\bottomrule', r'\end{tabular}']
+write('table_qaoa_stability.tex', lines)
 
 # K/L: expanded exact seed/topology coverage alongside the 18-instance primary QAOA suite.
 cv = read_csv('coverage_summary.csv')

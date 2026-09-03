@@ -1,0 +1,13 @@
+method,eval_budget_per_run,instances,runs_per_instance,median_of_instance_median_best_ratio,q1_of_instance_median_best_ratio,q3_of_instance_median_best_ratio,median_instance_optimum_hit_fraction,instances_with_at_least_one_optimum_hit,median_budget_over_state_count,evidence_label
+simulated_annealing,64,18,64,1.0,0.9626280199579832,1.0,0.5546875,18,0.0625,within-classical objective-evaluation budget curve; not matched to quantum resources
+simulated_annealing,128,18,64,1.0,1.0,1.0,0.6875,18,0.125,within-classical objective-evaluation budget curve; not matched to quantum resources
+simulated_annealing,256,18,64,1.0,1.0,1.0,0.859375,18,0.25,within-classical objective-evaluation budget curve; not matched to quantum resources
+simulated_annealing,512,18,64,1.0,1.0,1.0,0.9609375,18,0.5,within-classical objective-evaluation budget curve; not matched to quantum resources
+simulated_annealing,1024,18,64,1.0,1.0,1.0,1.0,18,1.0,within-classical objective-evaluation budget curve; not matched to quantum resources
+simulated_annealing,4096,18,64,1.0,1.0,1.0,1.0,18,4.0,within-classical objective-evaluation budget curve; not matched to quantum resources
+tabu_search,64,18,64,1.0,0.9827193072350892,1.0,0.7890625,18,0.0625,within-classical objective-evaluation budget curve; not matched to quantum resources
+tabu_search,128,18,64,1.0,1.0,1.0,1.0,18,0.125,within-classical objective-evaluation budget curve; not matched to quantum resources
+tabu_search,256,18,64,1.0,1.0,1.0,1.0,18,0.25,within-classical objective-evaluation budget curve; not matched to quantum resources
+tabu_search,512,18,64,1.0,1.0,1.0,1.0,18,0.5,within-classical objective-evaluation budget curve; not matched to quantum resources
+tabu_search,1024,18,64,1.0,1.0,1.0,1.0,18,1.0,within-classical objective-evaluation budget curve; not matched to quantum resources
+tabu_search,4096,18,64,1.0,1.0,1.0,1.0,18,4.0,within-classical objective-evaluation budget curve; not matched to quantum resources

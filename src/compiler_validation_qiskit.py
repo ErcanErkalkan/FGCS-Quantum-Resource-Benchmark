@@ -6,16 +6,17 @@ import hashlib
 import json
 import math
 import platform
+import sys
 import time
 from dataclasses import dataclass
 from pathlib import Path
 
 import numpy as np
-import qiskit
 from qiskit import QuantumCircuit, transpile
 from qiskit.circuit.library import DraperQFTAdder, IntegerComparator
 from qiskit.quantum_info import Statevector
 from qiskit.transpiler import CouplingMap
+import qiskit
 
 RANDOM_GRAPH_STREAM_VERSION = 2
 BASIS_GATES = ["rz", "sx", "x", "cx"]
@@ -54,7 +55,12 @@ def build_instance(n: int, density: float, seed: int) -> Instance:
 
 
 def exact_suite() -> list[Instance]:
-    return [build_instance(n, d, s) for n in (8, 10, 12) for d in (0.25, 0.50, 0.75) for s in (17, 42)]
+    return [
+        build_instance(n, d, s)
+        for n in (8, 10, 12)
+        for d in (0.25, 0.50, 0.75)
+        for s in (17, 42)
+    ]
 
 
 def random_cut_expectation(inst: Instance) -> float:
@@ -62,15 +68,15 @@ def random_cut_expectation(inst: Instance) -> float:
 
 
 def spectral_upper_bound(inst: Instance) -> float:
-    lap = np.zeros((inst.n, inst.n), dtype=float)
+    L = np.zeros((inst.n, inst.n), dtype=float)
     total = 0.0
     for i, j, w in inst.edges:
         total += w
-        lap[i, i] += w
-        lap[j, j] += w
-        lap[i, j] -= w
-        lap[j, i] -= w
-    return float(min(total, inst.n * float(np.linalg.eigvalsh(lap)[-1]) / 4.0))
+        L[i, i] += w
+        L[j, j] += w
+        L[i, j] -= w
+        L[j, i] -= w
+    return float(min(total, inst.n * float(np.linalg.eigvalsh(L)[-1]) / 4.0))
 
 
 def operational_threshold(inst: Instance, level: float = 0.40) -> int:
@@ -80,9 +86,10 @@ def operational_threshold(inst: Instance, level: float = 0.40) -> int:
 
 
 def line_coupling(n: int) -> CouplingMap:
-    edges = []
+    edges: list[list[int]] = []
     for i in range(n - 1):
-        edges.extend(([i, i + 1], [i + 1, i]))
+        edges.append([i, i + 1])
+        edges.append([i + 1, i])
     return CouplingMap(edges)
 
 
@@ -104,6 +111,7 @@ def qaoa_circuit(inst: Instance, p: int) -> QuantumCircuit:
 def threshold_oracle_circuit(inst: Instance, threshold: int) -> QuantumCircuit:
     total_weight = int(sum(w for _, _, w in inst.edges))
     b = max(1, int(math.ceil(math.log2(total_weight + 1))))
+
     adder = DraperQFTAdder(b, kind="fixed").to_gate(label=f"add_{b}")
     cadd = adder.control(1)
     cmp_gate = IntegerComparator(b, threshold, geq=True).to_gate(label=f"ge_{threshold}")
@@ -117,7 +125,9 @@ def threshold_oracle_circuit(inst: Instance, threshold: int) -> QuantumCircuit:
     accum = list(range(const[-1] + 1, const[-1] + 1 + b))
     flag = accum[-1] + 1
     cmp_anc = list(range(flag + 1, flag + 1 + cmp_anc_count))
-    qc = QuantumCircuit(flag + 1 + cmp_anc_count, name=f"oracle_{inst.instance_id}_tau{threshold}")
+    total_qubits = flag + 1 + cmp_anc_count
+
+    qc = QuantumCircuit(total_qubits, name=f"oracle_{inst.instance_id}_tau{threshold}")
 
     def load_constant(weight: int) -> None:
         for bit in range(b):
@@ -128,13 +138,14 @@ def threshold_oracle_circuit(inst: Instance, threshold: int) -> QuantumCircuit:
         qc.cx(data[i], parity)
         qc.cx(data[j], parity)
         load_constant(w)
-        qc.append(cadd.inverse() if inverse else cadd, [parity] + const + accum)
+        gate = cadd.inverse() if inverse else cadd
+        qc.append(gate, [parity] + const + accum)
         load_constant(w)
         qc.cx(data[j], parity)
         qc.cx(data[i], parity)
 
     for i, j, w in inst.edges:
-        edge_add(i, j, w)
+        edge_add(i, j, w, inverse=False)
 
     cmp_qargs = accum + [flag] + cmp_anc
     qc.append(cmp_gate, cmp_qargs)
@@ -143,6 +154,7 @@ def threshold_oracle_circuit(inst: Instance, threshold: int) -> QuantumCircuit:
 
     for i, j, w in reversed(inst.edges):
         edge_add(i, j, w, inverse=True)
+
     return qc
 
 
@@ -151,6 +163,8 @@ def cut_value(x: int, edges: tuple[tuple[int, int, int], ...]) -> int:
 
 
 def semantic_oracle_check() -> dict:
+    # Small nontrivial weighted triangle. The full reversible oracle must return all
+    # work registers to |0> and apply only the threshold-dependent phase.
     edges = ((0, 1, 2), (1, 2, 3), (0, 2, 4))
     n = 3
     vals = np.asarray([cut_value(x, edges) for x in range(1 << n)], dtype=float)
@@ -165,17 +179,43 @@ def semantic_oracle_check() -> dict:
                 prep.x(q)
         prep.compose(oracle, inplace=True)
         sv = Statevector.from_instruction(prep)
-        amp = complex(sv.data[x])
+        target_index = x
+        amp = complex(sv.data[target_index])
         leakage = float(1.0 - abs(amp) ** 2)
         expected_phase = -1.0 if cut_value(x, edges) >= threshold else 1.0
-        if leakage > 1e-8 or abs(amp - expected_phase) >= 1e-8:
-            failures.append({"x": x, "cut": cut_value(x, edges), "amp_real": amp.real, "amp_imag": amp.imag, "leakage": leakage, "expected_phase": expected_phase})
-    return {"passed": not failures, "tested_basis_states": 1 << n, "threshold": threshold, "failures": failures, "oracle_qubits": oracle.num_qubits}
+        phase_ok = abs(amp - expected_phase) < 1e-8
+        if leakage > 1e-8 or not phase_ok:
+            failures.append({
+                "x": x,
+                "cut": cut_value(x, edges),
+                "amp_real": amp.real,
+                "amp_imag": amp.imag,
+                "leakage": leakage,
+                "expected_phase": expected_phase,
+            })
+    return {
+        "passed": not failures,
+        "tested_basis_states": 1 << n,
+        "threshold": threshold,
+        "failures": failures,
+        "oracle_qubits": oracle.num_qubits,
+    }
 
 
-def compile_metrics(circuit: QuantumCircuit, profile: str, coupling_map: CouplingMap | None) -> dict:
+def compile_metrics(
+    circuit: QuantumCircuit,
+    *,
+    profile: str,
+    coupling_map: CouplingMap | None,
+) -> dict:
     t0 = time.perf_counter()
-    compiled = transpile(circuit, basis_gates=BASIS_GATES, coupling_map=coupling_map, optimization_level=OPTIMIZATION_LEVEL, seed_transpiler=SEED_TRANSPILER)
+    compiled = transpile(
+        circuit,
+        basis_gates=BASIS_GATES,
+        coupling_map=coupling_map,
+        optimization_level=OPTIMIZATION_LEVEL,
+        seed_transpiler=SEED_TRANSPILER,
+    )
     elapsed = time.perf_counter() - t0
     ops = compiled.count_ops()
     return {
@@ -203,17 +243,19 @@ def sha256(path: Path) -> str:
 
 
 def write_csv(path: Path, rows: list[dict]) -> None:
-    fields = sorted({k for row in rows for k in row})
+    if not rows:
+        raise RuntimeError("no compiler-validation rows generated")
+    fields = sorted({k for r in rows for k in r})
     with path.open("w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=fields, lineterminator="\n")
-        writer.writeheader()
-        writer.writerows(rows)
+        w = csv.DictWriter(f, fieldnames=fields, lineterminator="\n")
+        w.writeheader()
+        w.writerows(rows)
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--out-dir", default="compiler_validation_artifact")
-    args = parser.parse_args()
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--out-dir", default="compiler_validation_artifact")
+    args = ap.parse_args()
     out = Path(args.out_dir)
     out.mkdir(parents=True, exist_ok=True)
 
@@ -222,31 +264,72 @@ def main() -> None:
         raise RuntimeError(f"semantic threshold-oracle check failed: {semantic['failures']}")
 
     suite = exact_suite()
-    rows = []
+    rows: list[dict] = []
+
+    # QAOA: all 18 primary graphs, p=1..3, fully routed onto a bidirectional line.
     for inst in suite:
         for p in (1, 2, 3):
-            metrics = compile_metrics(qaoa_circuit(inst, p), "qaoa_line_routed", line_coupling(inst.n))
-            rows.append({"circuit_family": "qaoa", "instance_id": inst.instance_id, "n": inst.n, "density": inst.density, "graph_seed": inst.seed, "n_edges": len(inst.edges), "p": p, "operational_level": "", "threshold": "", **metrics})
+            qc = qaoa_circuit(inst, p)
+            metrics = compile_metrics(qc, profile="qaoa_line_routed", coupling_map=line_coupling(inst.n))
+            rows.append({
+                "circuit_family": "qaoa",
+                "instance_id": inst.instance_id,
+                "n": inst.n,
+                "density": inst.density,
+                "graph_seed": inst.seed,
+                "n_edges": len(inst.edges),
+                "p": p,
+                "operational_level": "",
+                "threshold": "",
+                **metrics,
+            })
 
-    oracle_reps = [inst for inst in suite if inst.seed == 17]
+    # Oracle: one representative seed for every n x density cell, exact reversible
+    # arithmetic/comparator circuit, compiled to the fixed basis without topology.
+    oracle_reps = [i for i in suite if i.seed == 17]
     for inst in oracle_reps:
         tau = operational_threshold(inst, 0.40)
         qc = threshold_oracle_circuit(inst, tau)
-        metrics = compile_metrics(qc, "oracle_basis_decomposition", None)
-        rows.append({"circuit_family": "threshold_oracle", "instance_id": inst.instance_id, "n": inst.n, "density": inst.density, "graph_seed": inst.seed, "n_edges": len(inst.edges), "p": "", "operational_level": 0.40, "threshold": tau, **metrics})
+        metrics = compile_metrics(qc, profile="oracle_basis_decomposition", coupling_map=None)
+        rows.append({
+            "circuit_family": "threshold_oracle",
+            "instance_id": inst.instance_id,
+            "n": inst.n,
+            "density": inst.density,
+            "graph_seed": inst.seed,
+            "n_edges": len(inst.edges),
+            "p": "",
+            "operational_level": 0.40,
+            "threshold": tau,
+            **metrics,
+        })
 
+    # Topology-routing stress check on the sparse representative at each n.
     for n in (8, 10, 12):
-        inst = next(x for x in suite if x.n == n and abs(x.density - 0.25) < 1e-12 and x.seed == 17)
+        inst = next(i for i in suite if i.n == n and abs(i.density - 0.25) < 1e-12 and i.seed == 17)
         tau = operational_threshold(inst, 0.40)
         qc = threshold_oracle_circuit(inst, tau)
-        metrics = compile_metrics(qc, "oracle_line_routed_sparse", line_coupling(qc.num_qubits))
-        rows.append({"circuit_family": "threshold_oracle", "instance_id": inst.instance_id, "n": inst.n, "density": inst.density, "graph_seed": inst.seed, "n_edges": len(inst.edges), "p": "", "operational_level": 0.40, "threshold": tau, **metrics})
+        metrics = compile_metrics(qc, profile="oracle_line_routed_sparse", coupling_map=line_coupling(qc.num_qubits))
+        rows.append({
+            "circuit_family": "threshold_oracle",
+            "instance_id": inst.instance_id,
+            "n": inst.n,
+            "density": inst.density,
+            "graph_seed": inst.seed,
+            "n_edges": len(inst.edges),
+            "p": "",
+            "operational_level": 0.40,
+            "threshold": tau,
+            **metrics,
+        })
 
     csv_path = out / "compiler_validation_qiskit.csv"
     write_csv(csv_path, rows)
+
     qaoa_rows = [r for r in rows if r["compiler_profile"] == "qaoa_line_routed"]
     oracle_basis = [r for r in rows if r["compiler_profile"] == "oracle_basis_decomposition"]
     oracle_routed = [r for r in rows if r["compiler_profile"] == "oracle_line_routed_sparse"]
+
     summary = {
         "evidence_label": "compiler-locked Qiskit transpilation evidence; synthetic topology, not physical hardware execution",
         "qiskit_version": qiskit.__version__,
@@ -259,8 +342,14 @@ def main() -> None:
         "qaoa_routed_rows": len(qaoa_rows),
         "oracle_basis_rows": len(oracle_basis),
         "oracle_sparse_routed_rows": len(oracle_routed),
-        "qaoa_median_compiled_depth_by_p": {str(p): float(np.median([r["compiled_depth"] for r in qaoa_rows if int(r["p"]) == p])) for p in (1, 2, 3)},
-        "qaoa_median_compiled_cx_by_p": {str(p): float(np.median([r["compiled_cx"] for r in qaoa_rows if int(r["p"]) == p])) for p in (1, 2, 3)},
+        "qaoa_median_compiled_depth_by_p": {
+            str(p): float(np.median([r["compiled_depth"] for r in qaoa_rows if int(r["p"]) == p]))
+            for p in (1, 2, 3)
+        },
+        "qaoa_median_compiled_cx_by_p": {
+            str(p): float(np.median([r["compiled_cx"] for r in qaoa_rows if int(r["p"]) == p]))
+            for p in (1, 2, 3)
+        },
         "oracle_basis_median_compiled_depth": float(np.median([r["compiled_depth"] for r in oracle_basis])),
         "oracle_basis_median_compiled_cx": float(np.median([r["compiled_cx"] for r in oracle_basis])),
         "oracle_sparse_routed_depths": {r["instance_id"]: int(r["compiled_depth"]) for r in oracle_routed},
@@ -268,6 +357,7 @@ def main() -> None:
     }
     summary_path = out / "compiler_validation_summary.json"
     summary_path.write_text(json.dumps(summary, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
     env = {
         "qiskit_version": qiskit.__version__,
         "python_version": platform.python_version(),
@@ -280,7 +370,12 @@ def main() -> None:
     }
     env_path = out / "compiler_environment.json"
     env_path.write_text(json.dumps(env, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-    checksums = {csv_path.name: sha256(csv_path), summary_path.name: sha256(summary_path), env_path.name: sha256(env_path)}
+
+    checksums = {
+        csv_path.name: sha256(csv_path),
+        summary_path.name: sha256(summary_path),
+        env_path.name: sha256(env_path),
+    }
     (out / "SHA256SUMS.json").write_text(json.dumps(checksums, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     print(json.dumps(summary, indent=2, sort_keys=True))
 

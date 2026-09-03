@@ -6,7 +6,8 @@ authors:
   - family-names: Erkalkan
     given-names: Ercan
     affiliation: "Marmara University, Vocational School of Technical Sciences, Department of Electronics and Automation, Artificial Intelligence Operator Program"
-version: 1.0.0
+    orcid: "https://orcid.org/0000-0001-9259-7112"
+version: 1.1.0-dev
 license: BSD-3-Clause
 repository-code: "https://github.com/ErcanErkalkan/FGCS-Quantum-Resource-Benchmark"
 keywords:
@@ -19,8 +20,9 @@ keywords:
 abstract: >-
   Reproducibility package for a resource-aware weighted Max-Cut benchmark that
   separates operational target construction, amplitude-amplification configuration,
-  logical resource modeling, ideal-statevector QAOA, and classical reference methods.
-  The package includes exact micro-instance ground truth, fixed-density random and
-  structured graph coverage, inference tables, resource-sensitivity studies,
-  generated figures/tables, tests, and fail-closed preflight validation. It makes no
-  hardware-speedup or quantum-advantage claim.
+  logical resource modeling, ideal-statevector QAOA, classical references, and
+  compiler-locked validation. The package includes exact micro-instance ground truth,
+  connected and structured validation tiers, BBHT unknown-solution-count analysis,
+  fixed-overhead and resource-sensitivity studies, QAOA initialization and objective
+  audits, Qiskit compiler evidence, generated figures/tables, tests, and fail-closed
+  preflight validation. It makes no hardware-speedup or quantum-advantage claim.

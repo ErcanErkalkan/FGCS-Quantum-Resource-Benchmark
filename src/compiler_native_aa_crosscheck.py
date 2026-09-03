@@ -90,6 +90,8 @@ def select_k(rho: float, prep_cost: float, iter_cost: float, *, k_max: int = K_M
 
 
 def break_even_fixed_ratio(rho: float, prep_cost: float, iter_cost: float, *, k_max: int = K_MAX) -> float | None:
+    # Find the smallest fixed per-trial cost C, normalized by iteration cost,
+    # for which any k>0 strictly beats k=0 in probability per total resource.
     candidates = []
     for k in range(1, k_max + 1):
         p = grover_probability(rho, k)
@@ -143,6 +145,8 @@ def main() -> int:
             cache[cache_key] = prep_m, diff_m
         prep_m, diff_m = cache[cache_key]
 
+        # Two compiler-native resource coordinates. compiled_size counts all locked-basis
+        # instructions; compiled_depth is the serial critical-path coordinate.
         size_iter = float(oracle_m["compiled_size"] + diff_m["compiled_size"])
         depth_iter = float(oracle_m["compiled_depth"] + diff_m["compiled_depth"])
         size_sel = select_k(rho, float(prep_m["compiled_size"]), size_iter)

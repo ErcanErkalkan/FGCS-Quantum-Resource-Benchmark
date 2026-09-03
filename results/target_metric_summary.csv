@@ -4,430 +4,430 @@ n8_d25_s17,8,0.9,36,hillclimb,256 starts,1.0,1.0,none/common probability metric 
 n8_d25_s17,8,0.9,36,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n8_d25_s17,8,0.9,36,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n8_d25_s17,8,0.9,36,amplitude_amplification,k=3; eps=0; oracle_cost=1,0.8969365358352662,1.114906083147518,within-AA normalized_resource_per_hit=7.80434258203
-n8_d25_s17,8,0.9,36,qaoa,p=1; median over 5 L-BFGS-B starts,0.03125,32.0,none/common probability metric only
-n8_d25_s17,8,0.9,36,qaoa,p=2; median over 5 L-BFGS-B starts,0.16449101271036404,6.0793594952254395,none/common probability metric only
-n8_d25_s17,8,0.9,36,qaoa,p=3; median over 5 L-BFGS-B starts,0.33313081951978124,3.001823732314927,none/common probability metric only
+n8_d25_s17,8,0.9,36,qaoa,p=1; median over 5 L-BFGS-B starts,0.12767853366482082,7.8321701487047175,none/common probability metric only
+n8_d25_s17,8,0.9,36,qaoa,p=2; median over 5 L-BFGS-B starts,0.2990249428622358,3.344202628811174,none/common probability metric only
+n8_d25_s17,8,0.9,36,qaoa,p=3; median over 5 L-BFGS-B starts,0.38090244218985175,2.6253441544004956,none/common probability metric only
 n8_d25_s17,8,0.95,38,uniform,uniform sample,0.0234375,42.666666666666664,none/common probability metric only
 n8_d25_s17,8,0.95,38,hillclimb,256 starts,1.0,1.0,none/common probability metric only
 n8_d25_s17,8,0.95,38,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n8_d25_s17,8,0.95,38,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n8_d25_s17,8,0.95,38,amplitude_amplification,k=3; eps=0; oracle_cost=1,0.774417118715064,1.2912937689952282,within-AA normalized_resource_per_hit=9.03905638297
-n8_d25_s17,8,0.95,38,qaoa,p=1; median over 5 L-BFGS-B starts,0.0234375,42.666666666666664,none/common probability metric only
-n8_d25_s17,8,0.95,38,qaoa,p=2; median over 5 L-BFGS-B starts,0.13988744606501477,7.14860431103471,none/common probability metric only
-n8_d25_s17,8,0.95,38,qaoa,p=3; median over 5 L-BFGS-B starts,0.2567092412640432,3.8954577368386625,none/common probability metric only
+n8_d25_s17,8,0.95,38,qaoa,p=1; median over 5 L-BFGS-B starts,0.09860549537166363,10.14142260764273,none/common probability metric only
+n8_d25_s17,8,0.95,38,qaoa,p=2; median over 5 L-BFGS-B starts,0.22090647645591419,4.526802545780353,none/common probability metric only
+n8_d25_s17,8,0.95,38,qaoa,p=3; median over 5 L-BFGS-B starts,0.30561803078609,3.2720582533297127,none/common probability metric only
 n8_d25_s17,8,1.0,40,uniform,uniform sample,0.0078125,128.0,none/common probability metric only
 n8_d25_s17,8,1.0,40,hillclimb,256 starts,0.578125,1.7297297297297298,none/common probability metric only
 n8_d25_s17,8,1.0,40,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n8_d25_s17,8,1.0,40,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n8_d25_s17,8,1.0,40,amplitude_amplification,k=6; eps=0; oracle_cost=1,0.8335479177263119,1.199691078021913,within-AA normalized_resource_per_hit=15.5959840143
-n8_d25_s17,8,1.0,40,qaoa,p=1; median over 5 L-BFGS-B starts,0.0078125,128.0,none/common probability metric only
-n8_d25_s17,8,1.0,40,qaoa,p=2; median over 5 L-BFGS-B starts,0.01732419351637639,57.7227447300626,none/common probability metric only
-n8_d25_s17,8,1.0,40,qaoa,p=3; median over 5 L-BFGS-B starts,0.08315384538547037,12.025902053769986,none/common probability metric only
+n8_d25_s17,8,1.0,40,qaoa,p=1; median over 5 L-BFGS-B starts,0.032410449419015046,30.854246637299177,none/common probability metric only
+n8_d25_s17,8,1.0,40,qaoa,p=2; median over 5 L-BFGS-B starts,0.056527067621379976,17.69063993727802,none/common probability metric only
+n8_d25_s17,8,1.0,40,qaoa,p=3; median over 5 L-BFGS-B starts,0.11720121680852222,8.53233462271772,none/common probability metric only
 n8_d25_s42,8,0.9,28,uniform,uniform sample,0.15625,6.4,none/common probability metric only
 n8_d25_s42,8,0.9,28,hillclimb,256 starts,1.0,1.0,none/common probability metric only
 n8_d25_s42,8,0.9,28,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n8_d25_s42,8,0.9,28,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n8_d25_s42,8,0.9,28,amplitude_amplification,k=1; eps=0; oracle_cost=1,0.88134765625,1.1346260387811635,within-AA normalized_resource_per_hit=3.40387811634
-n8_d25_s42,8,0.9,28,qaoa,p=1; median over 5 L-BFGS-B starts,0.15625,6.4,none/common probability metric only
-n8_d25_s42,8,0.9,28,qaoa,p=2; median over 5 L-BFGS-B starts,0.5409544942346871,1.8485843276239815,none/common probability metric only
-n8_d25_s42,8,0.9,28,qaoa,p=3; median over 5 L-BFGS-B starts,0.5306240941135496,1.884573299805733,none/common probability metric only
+n8_d25_s42,8,0.9,28,qaoa,p=1; median over 5 L-BFGS-B starts,0.17931429174348884,5.576800322366449,none/common probability metric only
+n8_d25_s42,8,0.9,28,qaoa,p=2; median over 5 L-BFGS-B starts,0.35112670302001514,2.8479747948506136,none/common probability metric only
+n8_d25_s42,8,0.9,28,qaoa,p=3; median over 5 L-BFGS-B starts,0.841297621233611,1.1886399946474122,none/common probability metric only
 n8_d25_s42,8,0.95,30,uniform,uniform sample,0.0625,16.0,none/common probability metric only
 n8_d25_s42,8,0.95,30,hillclimb,256 starts,1.0,1.0,none/common probability metric only
 n8_d25_s42,8,0.95,30,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n8_d25_s42,8,0.95,30,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n8_d25_s42,8,0.95,30,amplitude_amplification,k=2; eps=0; oracle_cost=1,0.908447265625,1.1007793603869926,within-AA normalized_resource_per_hit=5.50389680193
-n8_d25_s42,8,0.95,30,qaoa,p=1; median over 5 L-BFGS-B starts,0.0625,16.0,none/common probability metric only
-n8_d25_s42,8,0.95,30,qaoa,p=2; median over 5 L-BFGS-B starts,0.08440340466255625,11.847863294116955,none/common probability metric only
-n8_d25_s42,8,0.95,30,qaoa,p=3; median over 5 L-BFGS-B starts,0.442476362018004,2.260007733383305,none/common probability metric only
+n8_d25_s42,8,0.95,30,qaoa,p=1; median over 5 L-BFGS-B starts,0.11390857004410673,8.778970709691011,none/common probability metric only
+n8_d25_s42,8,0.95,30,qaoa,p=2; median over 5 L-BFGS-B starts,0.0625,16.0,none/common probability metric only
+n8_d25_s42,8,0.95,30,qaoa,p=3; median over 5 L-BFGS-B starts,0.5402141390187439,1.8511177841742916,none/common probability metric only
 n8_d25_s42,8,1.0,31,uniform,uniform sample,0.03125,32.0,none/common probability metric only
 n8_d25_s42,8,1.0,31,hillclimb,256 starts,1.0,1.0,none/common probability metric only
 n8_d25_s42,8,1.0,31,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n8_d25_s42,8,1.0,31,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n8_d25_s42,8,1.0,31,amplitude_amplification,k=3; eps=0; oracle_cost=1,0.8969365358352662,1.114906083147518,within-AA normalized_resource_per_hit=7.80434258203
-n8_d25_s42,8,1.0,31,qaoa,p=1; median over 5 L-BFGS-B starts,0.03125,32.0,none/common probability metric only
-n8_d25_s42,8,1.0,31,qaoa,p=2; median over 5 L-BFGS-B starts,0.03125,32.0,none/common probability metric only
-n8_d25_s42,8,1.0,31,qaoa,p=3; median over 5 L-BFGS-B starts,0.22867203708511566,4.373075137419548,none/common probability metric only
+n8_d25_s42,8,1.0,31,qaoa,p=1; median over 5 L-BFGS-B starts,0.06292730122449824,15.89135368180528,none/common probability metric only
+n8_d25_s42,8,1.0,31,qaoa,p=2; median over 5 L-BFGS-B starts,0.03283533646065646,30.4549947645034,none/common probability metric only
+n8_d25_s42,8,1.0,31,qaoa,p=3; median over 5 L-BFGS-B starts,0.15687603285384863,6.374460023040205,none/common probability metric only
 n8_d50_s17,8,0.9,52,uniform,uniform sample,0.1171875,8.533333333333333,none/common probability metric only
 n8_d50_s17,8,0.9,52,hillclimb,256 starts,1.0,1.0,none/common probability metric only
 n8_d50_s17,8,0.9,52,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n8_d50_s17,8,0.9,52,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n8_d50_s17,8,0.9,52,amplitude_amplification,k=1; eps=0; oracle_cost=1,0.7508468627929688,1.3318294975359448,within-AA normalized_resource_per_hit=3.99548849261
-n8_d50_s17,8,0.9,52,qaoa,p=1; median over 5 L-BFGS-B starts,0.1908798427196277,5.238897862404684,none/common probability metric only
-n8_d50_s17,8,0.9,52,qaoa,p=2; median over 5 L-BFGS-B starts,0.27548139834215546,3.630009162208377,none/common probability metric only
-n8_d50_s17,8,0.9,52,qaoa,p=3; median over 5 L-BFGS-B starts,0.1171875,8.533333333333333,none/common probability metric only
+n8_d50_s17,8,0.9,52,qaoa,p=1; median over 5 L-BFGS-B starts,0.1171875,8.533333333333333,none/common probability metric only
+n8_d50_s17,8,0.9,52,qaoa,p=2; median over 5 L-BFGS-B starts,0.28740519007424314,3.479408286752504,none/common probability metric only
+n8_d50_s17,8,0.9,52,qaoa,p=3; median over 5 L-BFGS-B starts,0.34753393708729163,2.877416831234026,none/common probability metric only
 n8_d50_s17,8,0.95,55,uniform,uniform sample,0.03125,32.0,none/common probability metric only
 n8_d50_s17,8,0.95,55,hillclimb,256 starts,0.6171875,1.620253164556962,none/common probability metric only
 n8_d50_s17,8,0.95,55,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n8_d50_s17,8,0.95,55,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n8_d50_s17,8,0.95,55,amplitude_amplification,k=3; eps=0; oracle_cost=1,0.8969365358352662,1.114906083147518,within-AA normalized_resource_per_hit=7.80434258203
-n8_d50_s17,8,0.95,55,qaoa,p=1; median over 5 L-BFGS-B starts,0.06520126134161217,15.337126604969358,none/common probability metric only
-n8_d50_s17,8,0.95,55,qaoa,p=2; median over 5 L-BFGS-B starts,0.06194602911552641,16.143084783288487,none/common probability metric only
-n8_d50_s17,8,0.95,55,qaoa,p=3; median over 5 L-BFGS-B starts,0.03125,32.0,none/common probability metric only
+n8_d50_s17,8,0.95,55,qaoa,p=1; median over 5 L-BFGS-B starts,0.03125,32.0,none/common probability metric only
+n8_d50_s17,8,0.95,55,qaoa,p=2; median over 5 L-BFGS-B starts,0.12129991557159378,8.244028821353785,none/common probability metric only
+n8_d50_s17,8,0.95,55,qaoa,p=3; median over 5 L-BFGS-B starts,0.12034529918462548,8.309423025039546,none/common probability metric only
 n8_d50_s17,8,1.0,57,uniform,uniform sample,0.015625,64.0,none/common probability metric only
 n8_d50_s17,8,1.0,57,hillclimb,256 starts,0.484375,2.064516129032258,none/common probability metric only
 n8_d50_s17,8,1.0,57,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n8_d50_s17,8,1.0,57,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n8_d50_s17,8,1.0,57,amplitude_amplification,k=4; eps=0; oracle_cost=1,0.8163770193968958,1.2249242399531983,within-AA normalized_resource_per_hit=11.0243181596
-n8_d50_s17,8,1.0,57,qaoa,p=1; median over 5 L-BFGS-B starts,0.0182173706562904,54.892663648730405,none/common probability metric only
-n8_d50_s17,8,1.0,57,qaoa,p=2; median over 5 L-BFGS-B starts,0.03646329931248719,27.42483589951886,none/common probability metric only
-n8_d50_s17,8,1.0,57,qaoa,p=3; median over 5 L-BFGS-B starts,0.015625,64.0,none/common probability metric only
+n8_d50_s17,8,1.0,57,qaoa,p=1; median over 5 L-BFGS-B starts,0.015625,64.0,none/common probability metric only
+n8_d50_s17,8,1.0,57,qaoa,p=2; median over 5 L-BFGS-B starts,0.02780356800770854,35.966606865807655,none/common probability metric only
+n8_d50_s17,8,1.0,57,qaoa,p=3; median over 5 L-BFGS-B starts,0.02737795599200471,36.525736263584974,none/common probability metric only
 n8_d50_s42,8,0.9,54,uniform,uniform sample,0.046875,21.333333333333332,none/common probability metric only
 n8_d50_s42,8,0.9,54,hillclimb,256 starts,0.8828125,1.1327433628318584,none/common probability metric only
 n8_d50_s42,8,0.9,54,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n8_d50_s42,8,0.9,54,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n8_d50_s42,8,0.9,54,amplitude_amplification,k=2; eps=0; oracle_cost=1,0.7870681285858153,1.2705380432527174,within-AA normalized_resource_per_hit=6.35269021626
-n8_d50_s42,8,0.9,54,qaoa,p=1; median over 5 L-BFGS-B starts,0.046875,21.333333333333332,none/common probability metric only
-n8_d50_s42,8,0.9,54,qaoa,p=2; median over 5 L-BFGS-B starts,0.1426922487996092,7.00808914578364,none/common probability metric only
+n8_d50_s42,8,0.9,54,qaoa,p=1; median over 5 L-BFGS-B starts,0.04793549782495279,20.861366740191666,none/common probability metric only
+n8_d50_s42,8,0.9,54,qaoa,p=2; median over 5 L-BFGS-B starts,0.046875,21.333333333333332,none/common probability metric only
 n8_d50_s42,8,0.9,54,qaoa,p=3; median over 5 L-BFGS-B starts,0.046875,21.333333333333332,none/common probability metric only
 n8_d50_s42,8,0.95,57,uniform,uniform sample,0.015625,64.0,none/common probability metric only
 n8_d50_s42,8,0.95,57,hillclimb,256 starts,0.41796875,2.392523364485981,none/common probability metric only
 n8_d50_s42,8,0.95,57,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n8_d50_s42,8,0.95,57,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n8_d50_s42,8,0.95,57,amplitude_amplification,k=4; eps=0; oracle_cost=1,0.8163770193968958,1.2249242399531983,within-AA normalized_resource_per_hit=11.0243181596
-n8_d50_s42,8,0.95,57,qaoa,p=1; median over 5 L-BFGS-B starts,0.015625,64.0,none/common probability metric only
-n8_d50_s42,8,0.95,57,qaoa,p=2; median over 5 L-BFGS-B starts,0.032162261428711314,31.09234101017841,none/common probability metric only
-n8_d50_s42,8,0.95,57,qaoa,p=3; median over 5 L-BFGS-B starts,0.015625,64.0,none/common probability metric only
+n8_d50_s42,8,0.95,57,qaoa,p=1; median over 5 L-BFGS-B starts,0.004795488854323691,208.5293137733776,none/common probability metric only
+n8_d50_s42,8,0.95,57,qaoa,p=2; median over 5 L-BFGS-B starts,0.015625,64.0,none/common probability metric only
+n8_d50_s42,8,0.95,57,qaoa,p=3; median over 5 L-BFGS-B starts,0.016887989768250584,59.21367869845585,none/common probability metric only
 n8_d50_s42,8,1.0,60,uniform,uniform sample,0.015625,64.0,none/common probability metric only
 n8_d50_s42,8,1.0,60,hillclimb,256 starts,0.41796875,2.392523364485981,none/common probability metric only
 n8_d50_s42,8,1.0,60,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n8_d50_s42,8,1.0,60,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n8_d50_s42,8,1.0,60,amplitude_amplification,k=4; eps=0; oracle_cost=1,0.8163770193968958,1.2249242399531983,within-AA normalized_resource_per_hit=11.0243181596
-n8_d50_s42,8,1.0,60,qaoa,p=1; median over 5 L-BFGS-B starts,0.015625,64.0,none/common probability metric only
-n8_d50_s42,8,1.0,60,qaoa,p=2; median over 5 L-BFGS-B starts,0.032162261428711314,31.09234101017841,none/common probability metric only
-n8_d50_s42,8,1.0,60,qaoa,p=3; median over 5 L-BFGS-B starts,0.015625,64.0,none/common probability metric only
+n8_d50_s42,8,1.0,60,qaoa,p=1; median over 5 L-BFGS-B starts,0.004795488854323691,208.5293137733776,none/common probability metric only
+n8_d50_s42,8,1.0,60,qaoa,p=2; median over 5 L-BFGS-B starts,0.015625,64.0,none/common probability metric only
+n8_d50_s42,8,1.0,60,qaoa,p=3; median over 5 L-BFGS-B starts,0.016887989768250584,59.21367869845585,none/common probability metric only
 n8_d75_s17,8,0.9,81,uniform,uniform sample,0.0234375,42.666666666666664,none/common probability metric only
 n8_d75_s17,8,0.9,81,hillclimb,256 starts,0.6484375,1.5421686746987953,none/common probability metric only
 n8_d75_s17,8,0.9,81,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n8_d75_s17,8,0.9,81,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n8_d75_s17,8,0.9,81,amplitude_amplification,k=3; eps=0; oracle_cost=1,0.774417118715064,1.2912937689952282,within-AA normalized_resource_per_hit=9.03905638297
-n8_d75_s17,8,0.9,81,qaoa,p=1; median over 5 L-BFGS-B starts,0.029862044286370185,33.48732559667477,none/common probability metric only
-n8_d75_s17,8,0.9,81,qaoa,p=2; median over 5 L-BFGS-B starts,0.0234375,42.666666666666664,none/common probability metric only
-n8_d75_s17,8,0.9,81,qaoa,p=3; median over 5 L-BFGS-B starts,0.0234375,42.666666666666664,none/common probability metric only
+n8_d75_s17,8,0.9,81,qaoa,p=1; median over 5 L-BFGS-B starts,0.02343749999999999,42.666666666666686,none/common probability metric only
+n8_d75_s17,8,0.9,81,qaoa,p=2; median over 5 L-BFGS-B starts,0.027219685535386135,36.73811729749706,none/common probability metric only
+n8_d75_s17,8,0.9,81,qaoa,p=3; median over 5 L-BFGS-B starts,0.06370302370092101,15.697841984626894,none/common probability metric only
 n8_d75_s17,8,0.95,86,uniform,uniform sample,0.015625,64.0,none/common probability metric only
 n8_d75_s17,8,0.95,86,hillclimb,256 starts,0.6484375,1.5421686746987953,none/common probability metric only
 n8_d75_s17,8,0.95,86,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n8_d75_s17,8,0.95,86,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n8_d75_s17,8,0.95,86,amplitude_amplification,k=4; eps=0; oracle_cost=1,0.8163770193968958,1.2249242399531983,within-AA normalized_resource_per_hit=11.0243181596
-n8_d75_s17,8,0.95,86,qaoa,p=1; median over 5 L-BFGS-B starts,0.02575991445031634,38.820004698723665,none/common probability metric only
-n8_d75_s17,8,0.95,86,qaoa,p=2; median over 5 L-BFGS-B starts,0.015624999999999998,64.00000000000001,none/common probability metric only
-n8_d75_s17,8,0.95,86,qaoa,p=3; median over 5 L-BFGS-B starts,0.01991176622227585,50.221561906510935,none/common probability metric only
+n8_d75_s17,8,0.95,86,qaoa,p=1; median over 5 L-BFGS-B starts,0.015624999999999997,64.00000000000001,none/common probability metric only
+n8_d75_s17,8,0.95,86,qaoa,p=2; median over 5 L-BFGS-B starts,0.025179898391597587,39.71421903488281,none/common probability metric only
+n8_d75_s17,8,0.95,86,qaoa,p=3; median over 5 L-BFGS-B starts,0.05466027427480898,18.294822213522355,none/common probability metric only
 n8_d75_s17,8,1.0,90,uniform,uniform sample,0.0078125,128.0,none/common probability metric only
 n8_d75_s17,8,1.0,90,hillclimb,256 starts,0.6484375,1.5421686746987953,none/common probability metric only
 n8_d75_s17,8,1.0,90,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n8_d75_s17,8,1.0,90,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n8_d75_s17,8,1.0,90,amplitude_amplification,k=6; eps=0; oracle_cost=1,0.8335479177263119,1.199691078021913,within-AA normalized_resource_per_hit=15.5959840143
-n8_d75_s17,8,1.0,90,qaoa,p=1; median over 5 L-BFGS-B starts,0.011942299138252994,83.73596980139682,none/common probability metric only
-n8_d75_s17,8,1.0,90,qaoa,p=2; median over 5 L-BFGS-B starts,0.007812499999999998,128.00000000000003,none/common probability metric only
-n8_d75_s17,8,1.0,90,qaoa,p=3; median over 5 L-BFGS-B starts,0.0078125,128.0,none/common probability metric only
+n8_d75_s17,8,1.0,90,qaoa,p=1; median over 5 L-BFGS-B starts,0.000631486036851688,1583.5662891068196,none/common probability metric only
+n8_d75_s17,8,1.0,90,qaoa,p=2; median over 5 L-BFGS-B starts,0.007812500000000003,127.99999999999994,none/common probability metric only
+n8_d75_s17,8,1.0,90,qaoa,p=3; median over 5 L-BFGS-B starts,0.0303647429724499,32.93293148923755,none/common probability metric only
 n8_d75_s42,8,0.9,83,uniform,uniform sample,0.0546875,18.285714285714285,none/common probability metric only
 n8_d75_s42,8,0.9,83,hillclimb,256 starts,0.96875,1.032258064516129,none/common probability metric only
 n8_d75_s42,8,0.9,83,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n8_d75_s42,8,0.9,83,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n8_d75_s42,8,0.9,83,amplitude_amplification,k=2; eps=0; oracle_cost=1,0.8550346419215202,1.1695432570459356,within-AA normalized_resource_per_hit=5.84771628523
-n8_d75_s42,8,0.9,83,qaoa,p=1; median over 5 L-BFGS-B starts,0.0546875,18.285714285714285,none/common probability metric only
-n8_d75_s42,8,0.9,83,qaoa,p=2; median over 5 L-BFGS-B starts,0.07156492419383123,13.973325777465131,none/common probability metric only
-n8_d75_s42,8,0.9,83,qaoa,p=3; median over 5 L-BFGS-B starts,0.09265017628382,10.793287612714833,none/common probability metric only
+n8_d75_s42,8,0.9,83,qaoa,p=1; median over 5 L-BFGS-B starts,0.07141545200444642,14.002571879510596,none/common probability metric only
+n8_d75_s42,8,0.9,83,qaoa,p=2; median over 5 L-BFGS-B starts,0.1639881625975458,6.098001124960257,none/common probability metric only
+n8_d75_s42,8,0.9,83,qaoa,p=3; median over 5 L-BFGS-B starts,0.12255151030310632,8.15983415893205,none/common probability metric only
 n8_d75_s42,8,0.95,88,uniform,uniform sample,0.0390625,25.6,none/common probability metric only
 n8_d75_s42,8,0.95,88,hillclimb,256 starts,0.96875,1.032258064516129,none/common probability metric only
 n8_d75_s42,8,0.95,88,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n8_d75_s42,8,0.95,88,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n8_d75_s42,8,0.95,88,amplitude_amplification,k=2; eps=0; oracle_cost=1,0.7032984867691994,1.4218713943119414,within-AA normalized_resource_per_hit=7.10935697156
-n8_d75_s42,8,0.95,88,qaoa,p=1; median over 5 L-BFGS-B starts,0.0390625,25.6,none/common probability metric only
-n8_d75_s42,8,0.95,88,qaoa,p=2; median over 5 L-BFGS-B starts,0.06164188861692359,16.22273461175966,none/common probability metric only
-n8_d75_s42,8,0.95,88,qaoa,p=3; median over 5 L-BFGS-B starts,0.07205962108813867,13.877397423126395,none/common probability metric only
+n8_d75_s42,8,0.95,88,qaoa,p=1; median over 5 L-BFGS-B starts,0.06831091426848122,14.638949144637664,none/common probability metric only
+n8_d75_s42,8,0.95,88,qaoa,p=2; median over 5 L-BFGS-B starts,0.11890699648596985,8.409934062357657,none/common probability metric only
+n8_d75_s42,8,0.95,88,qaoa,p=3; median over 5 L-BFGS-B starts,0.09316474204130826,10.733674328820774,none/common probability metric only
 n8_d75_s42,8,1.0,92,uniform,uniform sample,0.0078125,128.0,none/common probability metric only
 n8_d75_s42,8,1.0,92,hillclimb,256 starts,0.96875,1.032258064516129,none/common probability metric only
 n8_d75_s42,8,1.0,92,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n8_d75_s42,8,1.0,92,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n8_d75_s42,8,1.0,92,amplitude_amplification,k=6; eps=0; oracle_cost=1,0.8335479177263119,1.199691078021913,within-AA normalized_resource_per_hit=15.5959840143
-n8_d75_s42,8,1.0,92,qaoa,p=1; median over 5 L-BFGS-B starts,0.0078125,128.0,none/common probability metric only
-n8_d75_s42,8,1.0,92,qaoa,p=2; median over 5 L-BFGS-B starts,0.014971103862677766,66.79534182465673,none/common probability metric only
-n8_d75_s42,8,1.0,92,qaoa,p=3; median over 5 L-BFGS-B starts,0.007812499999999993,128.0000000000001,none/common probability metric only
+n8_d75_s42,8,1.0,92,qaoa,p=1; median over 5 L-BFGS-B starts,0.027355203549585524,36.5561162134051,none/common probability metric only
+n8_d75_s42,8,1.0,92,qaoa,p=2; median over 5 L-BFGS-B starts,0.042033799942628396,23.790378251904233,none/common probability metric only
+n8_d75_s42,8,1.0,92,qaoa,p=3; median over 5 L-BFGS-B starts,0.020693157569715726,48.325152728914226,none/common probability metric only
 n10_d25_s17,10,0.9,54,uniform,uniform sample,0.0078125,128.0,none/common probability metric only
 n10_d25_s17,10,0.9,54,hillclimb,256 starts,0.69140625,1.4463276836158192,none/common probability metric only
 n10_d25_s17,10,0.9,54,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n10_d25_s17,10,0.9,54,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n10_d25_s17,10,0.9,54,amplitude_amplification,k=6; eps=0; oracle_cost=1,0.8335479177263119,1.199691078021913,within-AA normalized_resource_per_hit=15.5959840143
-n10_d25_s17,10,0.9,54,qaoa,p=1; median over 5 L-BFGS-B starts,0.01944741966998649,51.420703464496924,none/common probability metric only
-n10_d25_s17,10,0.9,54,qaoa,p=2; median over 5 L-BFGS-B starts,0.011982669345795031,83.45385916460432,none/common probability metric only
-n10_d25_s17,10,0.9,54,qaoa,p=3; median over 5 L-BFGS-B starts,0.0078125,128.0,none/common probability metric only
+n10_d25_s17,10,0.9,54,qaoa,p=1; median over 5 L-BFGS-B starts,0.0078125,128.0,none/common probability metric only
+n10_d25_s17,10,0.9,54,qaoa,p=2; median over 5 L-BFGS-B starts,0.04778539458993595,20.926896357796515,none/common probability metric only
+n10_d25_s17,10,0.9,54,qaoa,p=3; median over 5 L-BFGS-B starts,0.03192132582305546,31.32701960887042,none/common probability metric only
 n10_d25_s17,10,0.95,57,uniform,uniform sample,0.0078125,128.0,none/common probability metric only
 n10_d25_s17,10,0.95,57,hillclimb,256 starts,0.69140625,1.4463276836158192,none/common probability metric only
 n10_d25_s17,10,0.95,57,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n10_d25_s17,10,0.95,57,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n10_d25_s17,10,0.95,57,amplitude_amplification,k=6; eps=0; oracle_cost=1,0.8335479177263119,1.199691078021913,within-AA normalized_resource_per_hit=15.5959840143
-n10_d25_s17,10,0.95,57,qaoa,p=1; median over 5 L-BFGS-B starts,0.01944741966998649,51.420703464496924,none/common probability metric only
-n10_d25_s17,10,0.95,57,qaoa,p=2; median over 5 L-BFGS-B starts,0.011982669345795031,83.45385916460432,none/common probability metric only
-n10_d25_s17,10,0.95,57,qaoa,p=3; median over 5 L-BFGS-B starts,0.0078125,128.0,none/common probability metric only
+n10_d25_s17,10,0.95,57,qaoa,p=1; median over 5 L-BFGS-B starts,0.0078125,128.0,none/common probability metric only
+n10_d25_s17,10,0.95,57,qaoa,p=2; median over 5 L-BFGS-B starts,0.04778539458993595,20.926896357796515,none/common probability metric only
+n10_d25_s17,10,0.95,57,qaoa,p=3; median over 5 L-BFGS-B starts,0.03192132582305546,31.32701960887042,none/common probability metric only
 n10_d25_s17,10,1.0,59,uniform,uniform sample,0.00390625,256.0,none/common probability metric only
 n10_d25_s17,10,1.0,59,hillclimb,256 starts,0.69140625,1.4463276836158192,none/common probability metric only
 n10_d25_s17,10,1.0,59,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n10_d25_s17,10,1.0,59,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n10_d25_s17,10,1.0,59,amplitude_amplification,k=9; eps=0; oracle_cost=1,0.8606760445971724,1.161877347786572,within-AA normalized_resource_per_hit=22.0756696079
-n10_d25_s17,10,1.0,59,qaoa,p=1; median over 5 L-BFGS-B starts,0.006768022626411834,147.75364315384456,none/common probability metric only
-n10_d25_s17,10,1.0,59,qaoa,p=2; median over 5 L-BFGS-B starts,0.007161486476586435,139.63581489253275,none/common probability metric only
-n10_d25_s17,10,1.0,59,qaoa,p=3; median over 5 L-BFGS-B starts,0.004407787201637633,226.8712064022665,none/common probability metric only
+n10_d25_s17,10,1.0,59,qaoa,p=1; median over 5 L-BFGS-B starts,0.00390625,256.0,none/common probability metric only
+n10_d25_s17,10,1.0,59,qaoa,p=2; median over 5 L-BFGS-B starts,0.020408735302697104,48.99862657672108,none/common probability metric only
+n10_d25_s17,10,1.0,59,qaoa,p=3; median over 5 L-BFGS-B starts,0.018267137067955828,54.743115808453524,none/common probability metric only
 n10_d25_s42,10,0.9,45,uniform,uniform sample,0.03125,32.0,none/common probability metric only
 n10_d25_s42,10,0.9,45,hillclimb,256 starts,0.91015625,1.0987124463519313,none/common probability metric only
 n10_d25_s42,10,0.9,45,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n10_d25_s42,10,0.9,45,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n10_d25_s42,10,0.9,45,amplitude_amplification,k=3; eps=0; oracle_cost=1,0.8969365358352662,1.114906083147518,within-AA normalized_resource_per_hit=7.80434258203
-n10_d25_s42,10,0.9,45,qaoa,p=1; median over 5 L-BFGS-B starts,0.03125,32.0,none/common probability metric only
-n10_d25_s42,10,0.9,45,qaoa,p=2; median over 5 L-BFGS-B starts,0.18376101731113437,5.441850587422757,none/common probability metric only
-n10_d25_s42,10,0.9,45,qaoa,p=3; median over 5 L-BFGS-B starts,0.03125,32.0,none/common probability metric only
+n10_d25_s42,10,0.9,45,qaoa,p=1; median over 5 L-BFGS-B starts,0.07562875869521193,13.22248331524328,none/common probability metric only
+n10_d25_s42,10,0.9,45,qaoa,p=2; median over 5 L-BFGS-B starts,0.10452836199050565,9.566781502716271,none/common probability metric only
+n10_d25_s42,10,0.9,45,qaoa,p=3; median over 5 L-BFGS-B starts,0.26343254128264326,3.7960382385981517,none/common probability metric only
 n10_d25_s42,10,0.95,48,uniform,uniform sample,0.01171875,85.33333333333333,none/common probability metric only
 n10_d25_s42,10,0.95,48,hillclimb,256 starts,0.68359375,1.4628571428571429,none/common probability metric only
 n10_d25_s42,10,0.95,48,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n10_d25_s42,10,0.95,48,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n10_d25_s42,10,0.95,48,amplitude_amplification,k=5; eps=0; oracle_cost=1,0.8640169934267792,1.1573846435981523,within-AA normalized_resource_per_hit=12.7312310796
-n10_d25_s42,10,0.95,48,qaoa,p=1; median over 5 L-BFGS-B starts,0.01171875,85.33333333333333,none/common probability metric only
-n10_d25_s42,10,0.95,48,qaoa,p=2; median over 5 L-BFGS-B starts,0.06038425539817158,16.56060828118251,none/common probability metric only
-n10_d25_s42,10,0.95,48,qaoa,p=3; median over 5 L-BFGS-B starts,0.01171875,85.33333333333333,none/common probability metric only
+n10_d25_s42,10,0.95,48,qaoa,p=1; median over 5 L-BFGS-B starts,0.025059549815935365,39.9049467107386,none/common probability metric only
+n10_d25_s42,10,0.95,48,qaoa,p=2; median over 5 L-BFGS-B starts,0.04799715473163347,20.834568332045947,none/common probability metric only
+n10_d25_s42,10,0.95,48,qaoa,p=3; median over 5 L-BFGS-B starts,0.0999464333754892,10.005359533372197,none/common probability metric only
 n10_d25_s42,10,1.0,50,uniform,uniform sample,0.0078125,128.0,none/common probability metric only
 n10_d25_s42,10,1.0,50,hillclimb,256 starts,0.68359375,1.4628571428571429,none/common probability metric only
 n10_d25_s42,10,1.0,50,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n10_d25_s42,10,1.0,50,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n10_d25_s42,10,1.0,50,amplitude_amplification,k=6; eps=0; oracle_cost=1,0.8335479177263119,1.199691078021913,within-AA normalized_resource_per_hit=15.5959840143
-n10_d25_s42,10,1.0,50,qaoa,p=1; median over 5 L-BFGS-B starts,0.0078125,128.0,none/common probability metric only
-n10_d25_s42,10,1.0,50,qaoa,p=2; median over 5 L-BFGS-B starts,0.040825400253007085,24.494554708654515,none/common probability metric only
-n10_d25_s42,10,1.0,50,qaoa,p=3; median over 5 L-BFGS-B starts,0.0078125,128.0,none/common probability metric only
+n10_d25_s42,10,1.0,50,qaoa,p=1; median over 5 L-BFGS-B starts,0.021226583272551718,47.1107378497937,none/common probability metric only
+n10_d25_s42,10,1.0,50,qaoa,p=2; median over 5 L-BFGS-B starts,0.030306813970930754,32.9958801000714,none/common probability metric only
+n10_d25_s42,10,1.0,50,qaoa,p=3; median over 5 L-BFGS-B starts,0.0676405880810377,14.784022853289459,none/common probability metric only
 n10_d50_s17,10,0.9,63,uniform,uniform sample,0.02734375,36.57142857142857,none/common probability metric only
 n10_d50_s17,10,0.9,63,hillclimb,256 starts,0.75390625,1.3264248704663213,none/common probability metric only
 n10_d50_s17,10,0.9,63,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n10_d50_s17,10,0.9,63,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n10_d50_s17,10,0.9,63,amplitude_amplification,k=3; eps=0; oracle_cost=1,0.842614590269875,1.1867822033317952,within-AA normalized_resource_per_hit=8.30747542332
-n10_d50_s17,10,0.9,63,qaoa,p=1; median over 5 L-BFGS-B starts,0.04776432571314929,20.936127226113122,none/common probability metric only
-n10_d50_s17,10,0.9,63,qaoa,p=2; median over 5 L-BFGS-B starts,0.0524460172907511,19.067224770494647,none/common probability metric only
-n10_d50_s17,10,0.9,63,qaoa,p=3; median over 5 L-BFGS-B starts,0.04840771620383581,20.65786363044246,none/common probability metric only
+n10_d50_s17,10,0.9,63,qaoa,p=1; median over 5 L-BFGS-B starts,0.0404347624162394,24.731195146045426,none/common probability metric only
+n10_d50_s17,10,0.9,63,qaoa,p=2; median over 5 L-BFGS-B starts,0.02734375,36.57142857142857,none/common probability metric only
+n10_d50_s17,10,0.9,63,qaoa,p=3; median over 5 L-BFGS-B starts,0.06401532500381464,15.621259439679648,none/common probability metric only
 n10_d50_s17,10,0.95,67,uniform,uniform sample,0.01171875,85.33333333333333,none/common probability metric only
 n10_d50_s17,10,0.95,67,hillclimb,256 starts,0.75390625,1.3264248704663213,none/common probability metric only
 n10_d50_s17,10,0.95,67,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n10_d50_s17,10,0.95,67,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n10_d50_s17,10,0.95,67,amplitude_amplification,k=5; eps=0; oracle_cost=1,0.8640169934267792,1.1573846435981523,within-AA normalized_resource_per_hit=12.7312310796
-n10_d50_s17,10,0.95,67,qaoa,p=1; median over 5 L-BFGS-B starts,0.018958702932539796,52.74622444152804,none/common probability metric only
-n10_d50_s17,10,0.95,67,qaoa,p=2; median over 5 L-BFGS-B starts,0.03854957884245041,25.94062062485648,none/common probability metric only
-n10_d50_s17,10,0.95,67,qaoa,p=3; median over 5 L-BFGS-B starts,0.015922372212495928,62.80471192698264,none/common probability metric only
+n10_d50_s17,10,0.95,67,qaoa,p=1; median over 5 L-BFGS-B starts,0.011718750000000017,85.3333333333332,none/common probability metric only
+n10_d50_s17,10,0.95,67,qaoa,p=2; median over 5 L-BFGS-B starts,0.01171875,85.33333333333333,none/common probability metric only
+n10_d50_s17,10,0.95,67,qaoa,p=3; median over 5 L-BFGS-B starts,0.013103741206284946,76.31408345582787,none/common probability metric only
 n10_d50_s17,10,1.0,70,uniform,uniform sample,0.00390625,256.0,none/common probability metric only
 n10_d50_s17,10,1.0,70,hillclimb,256 starts,0.640625,1.5609756097560976,none/common probability metric only
 n10_d50_s17,10,1.0,70,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n10_d50_s17,10,1.0,70,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n10_d50_s17,10,1.0,70,amplitude_amplification,k=9; eps=0; oracle_cost=1,0.8606760445971724,1.161877347786572,within-AA normalized_resource_per_hit=22.0756696079
-n10_d50_s17,10,1.0,70,qaoa,p=1; median over 5 L-BFGS-B starts,0.004601772582403385,217.30756618088378,none/common probability metric only
+n10_d50_s17,10,1.0,70,qaoa,p=1; median over 5 L-BFGS-B starts,0.003906250000000005,255.99999999999966,none/common probability metric only
 n10_d50_s17,10,1.0,70,qaoa,p=2; median over 5 L-BFGS-B starts,0.00390625,256.0,none/common probability metric only
-n10_d50_s17,10,1.0,70,qaoa,p=3; median over 5 L-BFGS-B starts,0.00930087426241586,107.5167744220482,none/common probability metric only
+n10_d50_s17,10,1.0,70,qaoa,p=3; median over 5 L-BFGS-B starts,0.00390625,256.0,none/common probability metric only
 n10_d50_s42,10,0.9,83,uniform,uniform sample,0.00390625,256.0,none/common probability metric only
 n10_d50_s42,10,0.9,83,hillclimb,256 starts,0.5859375,1.7066666666666668,none/common probability metric only
 n10_d50_s42,10,0.9,83,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n10_d50_s42,10,0.9,83,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n10_d50_s42,10,0.9,83,amplitude_amplification,k=9; eps=0; oracle_cost=1,0.8606760445971724,1.161877347786572,within-AA normalized_resource_per_hit=22.0756696079
-n10_d50_s42,10,0.9,83,qaoa,p=1; median over 5 L-BFGS-B starts,0.002635875877164255,379.38053482086815,none/common probability metric only
-n10_d50_s42,10,0.9,83,qaoa,p=2; median over 5 L-BFGS-B starts,0.0039062499999999996,256.00000000000006,none/common probability metric only
-n10_d50_s42,10,0.9,83,qaoa,p=3; median over 5 L-BFGS-B starts,0.004146315445076201,241.17798398274593,none/common probability metric only
+n10_d50_s42,10,0.9,83,qaoa,p=1; median over 5 L-BFGS-B starts,0.00390625,256.0,none/common probability metric only
+n10_d50_s42,10,0.9,83,qaoa,p=2; median over 5 L-BFGS-B starts,0.004541300792625688,220.20122552195454,none/common probability metric only
+n10_d50_s42,10,0.9,83,qaoa,p=3; median over 5 L-BFGS-B starts,0.015154490174585275,65.98704334356576,none/common probability metric only
 n10_d50_s42,10,0.95,88,uniform,uniform sample,0.00390625,256.0,none/common probability metric only
 n10_d50_s42,10,0.95,88,hillclimb,256 starts,0.5859375,1.7066666666666668,none/common probability metric only
 n10_d50_s42,10,0.95,88,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n10_d50_s42,10,0.95,88,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n10_d50_s42,10,0.95,88,amplitude_amplification,k=9; eps=0; oracle_cost=1,0.8606760445971724,1.161877347786572,within-AA normalized_resource_per_hit=22.0756696079
-n10_d50_s42,10,0.95,88,qaoa,p=1; median over 5 L-BFGS-B starts,0.002635875877164255,379.38053482086815,none/common probability metric only
-n10_d50_s42,10,0.95,88,qaoa,p=2; median over 5 L-BFGS-B starts,0.0039062499999999996,256.00000000000006,none/common probability metric only
-n10_d50_s42,10,0.95,88,qaoa,p=3; median over 5 L-BFGS-B starts,0.004146315445076201,241.17798398274593,none/common probability metric only
+n10_d50_s42,10,0.95,88,qaoa,p=1; median over 5 L-BFGS-B starts,0.00390625,256.0,none/common probability metric only
+n10_d50_s42,10,0.95,88,qaoa,p=2; median over 5 L-BFGS-B starts,0.004541300792625688,220.20122552195454,none/common probability metric only
+n10_d50_s42,10,0.95,88,qaoa,p=3; median over 5 L-BFGS-B starts,0.015154490174585275,65.98704334356576,none/common probability metric only
 n10_d50_s42,10,1.0,92,uniform,uniform sample,0.001953125,512.0,none/common probability metric only
 n10_d50_s42,10,1.0,92,hillclimb,256 starts,0.5859375,1.7066666666666668,none/common probability metric only
 n10_d50_s42,10,1.0,92,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n10_d50_s42,10,1.0,92,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n10_d50_s42,10,1.0,92,amplitude_amplification,k=13; eps=0; oracle_cost=1,0.8643653530373577,1.156918190306941,within-AA normalized_resource_per_hit=31.2367911383
-n10_d50_s42,10,1.0,92,qaoa,p=1; median over 5 L-BFGS-B starts,0.0017498096804159807,571.4907233581374,none/common probability metric only
-n10_d50_s42,10,1.0,92,qaoa,p=2; median over 5 L-BFGS-B starts,0.001953125,512.0,none/common probability metric only
-n10_d50_s42,10,1.0,92,qaoa,p=3; median over 5 L-BFGS-B starts,0.0019531249999999774,512.0000000000059,none/common probability metric only
+n10_d50_s42,10,1.0,92,qaoa,p=1; median over 5 L-BFGS-B starts,0.001953125,512.0,none/common probability metric only
+n10_d50_s42,10,1.0,92,qaoa,p=2; median over 5 L-BFGS-B starts,0.004218840141578361,237.0319724003285,none/common probability metric only
+n10_d50_s42,10,1.0,92,qaoa,p=3; median over 5 L-BFGS-B starts,0.01082687107497712,92.36278820306478,none/common probability metric only
 n10_d75_s17,10,0.9,104,uniform,uniform sample,0.04296875,23.272727272727273,none/common probability metric only
 n10_d75_s17,10,0.9,104,hillclimb,256 starts,0.97265625,1.0281124497991967,none/common probability metric only
 n10_d75_s17,10,0.9,104,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n10_d75_s17,10,0.9,104,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n10_d75_s17,10,0.9,104,amplitude_amplification,k=2; eps=0; oracle_cost=1,0.747238791314885,1.3382602879065493,within-AA normalized_resource_per_hit=6.69130143953
-n10_d75_s17,10,0.9,104,qaoa,p=1; median over 5 L-BFGS-B starts,0.046747493634678776,21.39152117576135,none/common probability metric only
-n10_d75_s17,10,0.9,104,qaoa,p=2; median over 5 L-BFGS-B starts,0.055523412363257564,18.010420423326625,none/common probability metric only
-n10_d75_s17,10,0.9,104,qaoa,p=3; median over 5 L-BFGS-B starts,0.04296875000000007,23.272727272727234,none/common probability metric only
+n10_d75_s17,10,0.9,104,qaoa,p=1; median over 5 L-BFGS-B starts,0.04941188067615224,20.238047739045726,none/common probability metric only
+n10_d75_s17,10,0.9,104,qaoa,p=2; median over 5 L-BFGS-B starts,0.054766040623890726,18.259490527488808,none/common probability metric only
+n10_d75_s17,10,0.9,104,qaoa,p=3; median over 5 L-BFGS-B starts,0.04676072723702646,21.385467230461973,none/common probability metric only
 n10_d75_s17,10,0.95,110,uniform,uniform sample,0.009765625,102.4,none/common probability metric only
 n10_d75_s17,10,0.95,110,hillclimb,256 starts,0.37890625,2.6391752577319587,none/common probability metric only
 n10_d75_s17,10,0.95,110,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n10_d75_s17,10,0.95,110,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n10_d75_s17,10,0.95,110,amplitude_amplification,k=5; eps=0; oracle_cost=1,0.785130573365116,1.2736734932050104,within-AA normalized_resource_per_hit=14.0104084253
-n10_d75_s17,10,0.95,110,qaoa,p=1; median over 5 L-BFGS-B starts,0.010519303607001908,95.06332713264169,none/common probability metric only
-n10_d75_s17,10,0.95,110,qaoa,p=2; median over 5 L-BFGS-B starts,0.009765625000000116,102.39999999999878,none/common probability metric only
-n10_d75_s17,10,0.95,110,qaoa,p=3; median over 5 L-BFGS-B starts,0.009765625000000017,102.39999999999982,none/common probability metric only
+n10_d75_s17,10,0.95,110,qaoa,p=1; median over 5 L-BFGS-B starts,0.009765625,102.4,none/common probability metric only
+n10_d75_s17,10,0.95,110,qaoa,p=2; median over 5 L-BFGS-B starts,0.014297791828651893,69.94087002973856,none/common probability metric only
+n10_d75_s17,10,0.95,110,qaoa,p=3; median over 5 L-BFGS-B starts,0.009765625,102.4,none/common probability metric only
 n10_d75_s17,10,1.0,115,uniform,uniform sample,0.00390625,256.0,none/common probability metric only
 n10_d75_s17,10,1.0,115,hillclimb,256 starts,0.35546875,2.8131868131868134,none/common probability metric only
 n10_d75_s17,10,1.0,115,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n10_d75_s17,10,1.0,115,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n10_d75_s17,10,1.0,115,amplitude_amplification,k=9; eps=0; oracle_cost=1,0.8606760445971724,1.161877347786572,within-AA normalized_resource_per_hit=22.0756696079
-n10_d75_s17,10,1.0,115,qaoa,p=1; median over 5 L-BFGS-B starts,0.004212653745716914,237.38006025696257,none/common probability metric only
-n10_d75_s17,10,1.0,115,qaoa,p=2; median over 5 L-BFGS-B starts,0.00369616953184667,270.5503606866168,none/common probability metric only
-n10_d75_s17,10,1.0,115,qaoa,p=3; median over 5 L-BFGS-B starts,0.003906250000000007,255.99999999999955,none/common probability metric only
+n10_d75_s17,10,1.0,115,qaoa,p=1; median over 5 L-BFGS-B starts,0.00390625,256.0,none/common probability metric only
+n10_d75_s17,10,1.0,115,qaoa,p=2; median over 5 L-BFGS-B starts,0.003915044584520192,255.42493282296934,none/common probability metric only
+n10_d75_s17,10,1.0,115,qaoa,p=3; median over 5 L-BFGS-B starts,0.003906250000000012,255.9999999999992,none/common probability metric only
 n10_d75_s42,10,0.9,121,uniform,uniform sample,0.017578125,56.888888888888886,none/common probability metric only
 n10_d75_s42,10,0.9,121,hillclimb,256 starts,0.875,1.1428571428571428,none/common probability metric only
 n10_d75_s42,10,0.9,121,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n10_d75_s42,10,0.9,121,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n10_d75_s42,10,0.9,121,amplitude_amplification,k=4; eps=0; oracle_cost=1,0.8665050304364178,1.154061390152977,within-AA normalized_resource_per_hit=10.3865525114
-n10_d75_s42,10,0.9,121,qaoa,p=1; median over 5 L-BFGS-B starts,0.01346284522172516,74.27850380291736,none/common probability metric only
-n10_d75_s42,10,0.9,121,qaoa,p=2; median over 5 L-BFGS-B starts,0.017947589024824927,55.717790206629424,none/common probability metric only
-n10_d75_s42,10,0.9,121,qaoa,p=3; median over 5 L-BFGS-B starts,0.030396812600923633,32.898186172638844,none/common probability metric only
+n10_d75_s42,10,0.9,121,qaoa,p=1; median over 5 L-BFGS-B starts,0.017578125,56.888888888888886,none/common probability metric only
+n10_d75_s42,10,0.9,121,qaoa,p=2; median over 5 L-BFGS-B starts,0.026614155213014405,37.57398993115501,none/common probability metric only
+n10_d75_s42,10,0.9,121,qaoa,p=3; median over 5 L-BFGS-B starts,0.017578125,56.888888888888886,none/common probability metric only
 n10_d75_s42,10,0.95,128,uniform,uniform sample,0.001953125,512.0,none/common probability metric only
 n10_d75_s42,10,0.95,128,hillclimb,256 starts,0.5703125,1.7534246575342465,none/common probability metric only
 n10_d75_s42,10,0.95,128,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n10_d75_s42,10,0.95,128,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n10_d75_s42,10,0.95,128,amplitude_amplification,k=13; eps=0; oracle_cost=1,0.8643653530373577,1.156918190306941,within-AA normalized_resource_per_hit=31.2367911383
-n10_d75_s42,10,0.95,128,qaoa,p=1; median over 5 L-BFGS-B starts,0.0019531249999999844,512.0000000000041,none/common probability metric only
+n10_d75_s42,10,0.95,128,qaoa,p=1; median over 5 L-BFGS-B starts,0.0026248234679384576,380.9780018407875,none/common probability metric only
 n10_d75_s42,10,0.95,128,qaoa,p=2; median over 5 L-BFGS-B starts,0.001953125,512.0,none/common probability metric only
-n10_d75_s42,10,0.95,128,qaoa,p=3; median over 5 L-BFGS-B starts,0.002673148464122416,374.09070742664346,none/common probability metric only
+n10_d75_s42,10,0.95,128,qaoa,p=3; median over 5 L-BFGS-B starts,0.001953125,512.0,none/common probability metric only
 n10_d75_s42,10,1.0,134,uniform,uniform sample,0.001953125,512.0,none/common probability metric only
 n10_d75_s42,10,1.0,134,hillclimb,256 starts,0.5703125,1.7534246575342465,none/common probability metric only
 n10_d75_s42,10,1.0,134,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n10_d75_s42,10,1.0,134,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n10_d75_s42,10,1.0,134,amplitude_amplification,k=13; eps=0; oracle_cost=1,0.8643653530373577,1.156918190306941,within-AA normalized_resource_per_hit=31.2367911383
-n10_d75_s42,10,1.0,134,qaoa,p=1; median over 5 L-BFGS-B starts,0.0019531249999999844,512.0000000000041,none/common probability metric only
+n10_d75_s42,10,1.0,134,qaoa,p=1; median over 5 L-BFGS-B starts,0.0026248234679384576,380.9780018407875,none/common probability metric only
 n10_d75_s42,10,1.0,134,qaoa,p=2; median over 5 L-BFGS-B starts,0.001953125,512.0,none/common probability metric only
-n10_d75_s42,10,1.0,134,qaoa,p=3; median over 5 L-BFGS-B starts,0.002673148464122416,374.09070742664346,none/common probability metric only
+n10_d75_s42,10,1.0,134,qaoa,p=3; median over 5 L-BFGS-B starts,0.001953125,512.0,none/common probability metric only
 n12_d25_s17,12,0.9,73,uniform,uniform sample,0.0078125,128.0,none/common probability metric only
 n12_d25_s17,12,0.9,73,hillclimb,256 starts,0.66796875,1.4970760233918128,none/common probability metric only
 n12_d25_s17,12,0.9,73,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n12_d25_s17,12,0.9,73,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n12_d25_s17,12,0.9,73,amplitude_amplification,k=6; eps=0; oracle_cost=1,0.8335479177263119,1.199691078021913,within-AA normalized_resource_per_hit=15.5959840143
-n12_d25_s17,12,0.9,73,qaoa,p=1; median over 5 L-BFGS-B starts,0.010577155836114589,94.5433739933759,none/common probability metric only
-n12_d25_s17,12,0.9,73,qaoa,p=2; median over 5 L-BFGS-B starts,0.023124318261268376,43.244518117315934,none/common probability metric only
-n12_d25_s17,12,0.9,73,qaoa,p=3; median over 5 L-BFGS-B starts,0.0875405161639039,11.423281970689771,none/common probability metric only
+n12_d25_s17,12,0.9,73,qaoa,p=1; median over 5 L-BFGS-B starts,0.0078125,128.0,none/common probability metric only
+n12_d25_s17,12,0.9,73,qaoa,p=2; median over 5 L-BFGS-B starts,0.026014624101920424,38.43991733581033,none/common probability metric only
+n12_d25_s17,12,0.9,73,qaoa,p=3; median over 5 L-BFGS-B starts,0.02384031575457922,41.94575316427683,none/common probability metric only
 n12_d25_s17,12,0.95,77,uniform,uniform sample,0.00390625,256.0,none/common probability metric only
 n12_d25_s17,12,0.95,77,hillclimb,256 starts,0.66796875,1.4970760233918128,none/common probability metric only
 n12_d25_s17,12,0.95,77,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n12_d25_s17,12,0.95,77,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n12_d25_s17,12,0.95,77,amplitude_amplification,k=9; eps=0; oracle_cost=1,0.8606760445971724,1.161877347786572,within-AA normalized_resource_per_hit=22.0756696079
 n12_d25_s17,12,0.95,77,qaoa,p=1; median over 5 L-BFGS-B starts,0.00390625,256.0,none/common probability metric only
-n12_d25_s17,12,0.95,77,qaoa,p=2; median over 5 L-BFGS-B starts,0.004074263049205243,245.44316062142028,none/common probability metric only
-n12_d25_s17,12,0.95,77,qaoa,p=3; median over 5 L-BFGS-B starts,0.06667148677841808,14.998915553263249,none/common probability metric only
+n12_d25_s17,12,0.95,77,qaoa,p=2; median over 5 L-BFGS-B starts,0.006398905522321043,156.27672521679534,none/common probability metric only
+n12_d25_s17,12,0.95,77,qaoa,p=3; median over 5 L-BFGS-B starts,0.004415614344716496,226.46905321261812,none/common probability metric only
 n12_d25_s17,12,1.0,81,uniform,uniform sample,0.0009765625,1024.0,none/common probability metric only
 n12_d25_s17,12,1.0,81,hillclimb,256 starts,0.66796875,1.4970760233918128,none/common probability metric only
 n12_d25_s17,12,1.0,81,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n12_d25_s17,12,1.0,81,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n12_d25_s17,12,1.0,81,amplitude_amplification,k=18; eps=0; oracle_cost=1,0.8379113151277889,1.1934437236326032,within-AA normalized_resource_per_hit=44.1574177744
 n12_d25_s17,12,1.0,81,qaoa,p=1; median over 5 L-BFGS-B starts,0.0009765625,1024.0,none/common probability metric only
-n12_d25_s17,12,1.0,81,qaoa,p=2; median over 5 L-BFGS-B starts,0.0024885335143212477,401.84309122023296,none/common probability metric only
-n12_d25_s17,12,1.0,81,qaoa,p=3; median over 5 L-BFGS-B starts,0.0295881219658288,33.79734614974536,none/common probability metric only
+n12_d25_s17,12,1.0,81,qaoa,p=2; median over 5 L-BFGS-B starts,0.003630826950656327,275.4193503546719,none/common probability metric only
+n12_d25_s17,12,1.0,81,qaoa,p=3; median over 5 L-BFGS-B starts,0.0009765625,1024.0,none/common probability metric only
 n12_d25_s42,12,0.9,56,uniform,uniform sample,0.00732421875,136.53333333333333,none/common probability metric only
 n12_d25_s42,12,0.9,56,hillclimb,256 starts,0.64453125,1.5515151515151515,none/common probability metric only
 n12_d25_s42,12,0.9,56,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n12_d25_s42,12,0.9,56,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n12_d25_s42,12,0.9,56,amplitude_amplification,k=6; eps=0; oracle_cost=1,0.8053925556185695,1.2416305477668157,within-AA normalized_resource_per_hit=16.141197121
 n12_d25_s42,12,0.9,56,qaoa,p=1; median over 5 L-BFGS-B starts,0.00732421875,136.53333333333333,none/common probability metric only
-n12_d25_s42,12,0.9,56,qaoa,p=2; median over 5 L-BFGS-B starts,0.013540410103389893,73.85300684132501,none/common probability metric only
-n12_d25_s42,12,0.9,56,qaoa,p=3; median over 5 L-BFGS-B starts,0.00732421875,136.53333333333333,none/common probability metric only
+n12_d25_s42,12,0.9,56,qaoa,p=2; median over 5 L-BFGS-B starts,0.02166063180874298,46.16670505411414,none/common probability metric only
+n12_d25_s42,12,0.9,56,qaoa,p=3; median over 5 L-BFGS-B starts,0.049141569772694925,20.349370291293404,none/common probability metric only
 n12_d25_s42,12,0.95,59,uniform,uniform sample,0.00244140625,409.6,none/common probability metric only
 n12_d25_s42,12,0.95,59,hillclimb,256 starts,0.4921875,2.0317460317460316,none/common probability metric only
 n12_d25_s42,12,0.95,59,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n12_d25_s42,12,0.95,59,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n12_d25_s42,12,0.95,59,amplitude_amplification,k=11; eps=0; oracle_cost=1,0.823260987425016,1.2146816322825957,within-AA normalized_resource_per_hit=27.9376775425
 n12_d25_s42,12,0.95,59,qaoa,p=1; median over 5 L-BFGS-B starts,0.00244140625,409.6,none/common probability metric only
-n12_d25_s42,12,0.95,59,qaoa,p=2; median over 5 L-BFGS-B starts,0.004978734908830863,200.8542367311591,none/common probability metric only
-n12_d25_s42,12,0.95,59,qaoa,p=3; median over 5 L-BFGS-B starts,0.00244140625,409.6,none/common probability metric only
+n12_d25_s42,12,0.95,59,qaoa,p=2; median over 5 L-BFGS-B starts,0.010442773375892092,95.76000206119318,none/common probability metric only
+n12_d25_s42,12,0.95,59,qaoa,p=3; median over 5 L-BFGS-B starts,0.011230252045102921,89.04519649103169,none/common probability metric only
 n12_d25_s42,12,1.0,62,uniform,uniform sample,0.00048828125,2048.0,none/common probability metric only
 n12_d25_s42,12,1.0,62,hillclimb,256 starts,0.32421875,3.0843373493975905,none/common probability metric only
 n12_d25_s42,12,1.0,62,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n12_d25_s42,12,1.0,62,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n12_d25_s42,12,1.0,62,amplitude_amplification,k=26; eps=0; oracle_cost=1,0.8486721595721104,1.1783113051619216,within-AA normalized_resource_per_hit=62.4504991736
 n12_d25_s42,12,1.0,62,qaoa,p=1; median over 5 L-BFGS-B starts,0.00048828125,2048.0,none/common probability metric only
-n12_d25_s42,12,1.0,62,qaoa,p=2; median over 5 L-BFGS-B starts,0.0005100052329174378,1960.764195064416,none/common probability metric only
-n12_d25_s42,12,1.0,62,qaoa,p=3; median over 5 L-BFGS-B starts,0.00048828125,2048.0,none/common probability metric only
+n12_d25_s42,12,1.0,62,qaoa,p=2; median over 5 L-BFGS-B starts,0.0007821109075932461,1278.5910416174272,none/common probability metric only
+n12_d25_s42,12,1.0,62,qaoa,p=3; median over 5 L-BFGS-B starts,0.0016308276067258727,613.1855972242508,none/common probability metric only
 n12_d50_s17,12,0.9,108,uniform,uniform sample,0.02490234375,40.15686274509804,none/common probability metric only
 n12_d50_s17,12,0.9,108,hillclimb,256 starts,0.98046875,1.0199203187250996,none/common probability metric only
 n12_d50_s17,12,0.9,108,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n12_d50_s17,12,0.9,108,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n12_d50_s17,12,0.9,108,amplitude_amplification,k=3; eps=0; oracle_cost=1,0.8016944509007435,1.2473580163570426,within-AA normalized_resource_per_hit=8.7315061145
-n12_d50_s17,12,0.9,108,qaoa,p=1; median over 5 L-BFGS-B starts,0.033406406159714505,29.934378311125286,none/common probability metric only
-n12_d50_s17,12,0.9,108,qaoa,p=2; median over 5 L-BFGS-B starts,0.04362939011190872,22.92032956305406,none/common probability metric only
-n12_d50_s17,12,0.9,108,qaoa,p=3; median over 5 L-BFGS-B starts,0.06696975933464411,14.93211279143257,none/common probability metric only
+n12_d50_s17,12,0.9,108,qaoa,p=1; median over 5 L-BFGS-B starts,0.035188909235229375,28.41804482529541,none/common probability metric only
+n12_d50_s17,12,0.9,108,qaoa,p=2; median over 5 L-BFGS-B starts,0.03044928618800748,32.84149236949444,none/common probability metric only
+n12_d50_s17,12,0.9,108,qaoa,p=3; median over 5 L-BFGS-B starts,0.0469349917786933,21.306065306566474,none/common probability metric only
 n12_d50_s17,12,0.95,114,uniform,uniform sample,0.00537109375,186.1818181818182,none/common probability metric only
 n12_d50_s17,12,0.95,114,hillclimb,256 starts,0.9140625,1.0940170940170941,none/common probability metric only
 n12_d50_s17,12,0.95,114,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n12_d50_s17,12,0.95,114,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n12_d50_s17,12,0.95,114,amplitude_amplification,k=7; eps=0; oracle_cost=1,0.7944952109045791,1.2586608280010168,within-AA normalized_resource_per_hit=18.87991242
-n12_d50_s17,12,0.95,114,qaoa,p=1; median over 5 L-BFGS-B starts,0.005324879508353075,187.7976766293607,none/common probability metric only
-n12_d50_s17,12,0.95,114,qaoa,p=2; median over 5 L-BFGS-B starts,0.008868095647534829,112.76378150905285,none/common probability metric only
-n12_d50_s17,12,0.95,114,qaoa,p=3; median over 5 L-BFGS-B starts,0.012150723650805592,82.29962500494364,none/common probability metric only
+n12_d50_s17,12,0.95,114,qaoa,p=1; median over 5 L-BFGS-B starts,0.009659306616167805,103.52709979474034,none/common probability metric only
+n12_d50_s17,12,0.95,114,qaoa,p=2; median over 5 L-BFGS-B starts,0.0061771357100839155,161.8873288419974,none/common probability metric only
+n12_d50_s17,12,0.95,114,qaoa,p=3; median over 5 L-BFGS-B starts,0.00964385725908518,103.69294911099298,none/common probability metric only
 n12_d50_s17,12,1.0,119,uniform,uniform sample,0.00048828125,2048.0,none/common probability metric only
 n12_d50_s17,12,1.0,119,hillclimb,256 starts,0.20703125,4.830188679245283,none/common probability metric only
 n12_d50_s17,12,1.0,119,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n12_d50_s17,12,1.0,119,tabu_search,64 runs; <= 4096 objective evaluations/run,0.359375,2.782608695652174,classical objective-evaluation budget only; not matched to quantum resources
 n12_d50_s17,12,1.0,119,amplitude_amplification,k=26; eps=0; oracle_cost=1,0.8486721595721104,1.1783113051619216,within-AA normalized_resource_per_hit=62.4504991736
-n12_d50_s17,12,1.0,119,qaoa,p=1; median over 5 L-BFGS-B starts,0.000259915055287305,3847.4108354155155,none/common probability metric only
-n12_d50_s17,12,1.0,119,qaoa,p=2; median over 5 L-BFGS-B starts,0.0010228961171351695,977.6163808312277,none/common probability metric only
-n12_d50_s17,12,1.0,119,qaoa,p=3; median over 5 L-BFGS-B starts,0.0004969176878547534,2012.405725215994,none/common probability metric only
+n12_d50_s17,12,1.0,119,qaoa,p=1; median over 5 L-BFGS-B starts,0.00048828125,2048.0,none/common probability metric only
+n12_d50_s17,12,1.0,119,qaoa,p=2; median over 5 L-BFGS-B starts,0.00048828124999999913,2048.0000000000036,none/common probability metric only
+n12_d50_s17,12,1.0,119,qaoa,p=3; median over 5 L-BFGS-B starts,0.0011423198315966914,875.4115724334732,none/common probability metric only
 n12_d50_s42,12,0.9,116,uniform,uniform sample,0.005859375,170.66666666666666,none/common probability metric only
 n12_d50_s42,12,0.9,116,hillclimb,256 starts,0.81640625,1.2248803827751196,none/common probability metric only
 n12_d50_s42,12,0.9,116,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n12_d50_s42,12,0.9,116,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n12_d50_s42,12,0.9,116,amplitude_amplification,k=7; eps=0; oracle_cost=1,0.8326325428624705,1.201009987625687,within-AA normalized_resource_per_hit=18.0151498144
-n12_d50_s42,12,0.9,116,qaoa,p=1; median over 5 L-BFGS-B starts,0.00973232984314744,102.75031941134863,none/common probability metric only
-n12_d50_s42,12,0.9,116,qaoa,p=2; median over 5 L-BFGS-B starts,0.0096319576189279,103.82105482221864,none/common probability metric only
-n12_d50_s42,12,0.9,116,qaoa,p=3; median over 5 L-BFGS-B starts,0.011894408797017593,84.07311511361037,none/common probability metric only
+n12_d50_s42,12,0.9,116,qaoa,p=1; median over 5 L-BFGS-B starts,0.005859375,170.66666666666666,none/common probability metric only
+n12_d50_s42,12,0.9,116,qaoa,p=2; median over 5 L-BFGS-B starts,0.013345004896401245,74.93440487756362,none/common probability metric only
+n12_d50_s42,12,0.9,116,qaoa,p=3; median over 5 L-BFGS-B starts,0.012702846093388821,78.72251561958612,none/common probability metric only
 n12_d50_s42,12,0.95,122,uniform,uniform sample,0.001953125,512.0,none/common probability metric only
 n12_d50_s42,12,0.95,122,hillclimb,256 starts,0.81640625,1.2248803827751196,none/common probability metric only
 n12_d50_s42,12,0.95,122,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n12_d50_s42,12,0.95,122,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n12_d50_s42,12,0.95,122,amplitude_amplification,k=13; eps=0; oracle_cost=1,0.8643653530373577,1.156918190306941,within-AA normalized_resource_per_hit=31.2367911383
-n12_d50_s42,12,0.95,122,qaoa,p=1; median over 5 L-BFGS-B starts,0.0033006933678281394,302.9666462649941,none/common probability metric only
-n12_d50_s42,12,0.95,122,qaoa,p=2; median over 5 L-BFGS-B starts,0.0030635426810701376,326.41947709071457,none/common probability metric only
-n12_d50_s42,12,0.95,122,qaoa,p=3; median over 5 L-BFGS-B starts,0.001953125,512.0,none/common probability metric only
+n12_d50_s42,12,0.95,122,qaoa,p=1; median over 5 L-BFGS-B starts,0.001953125,512.0,none/common probability metric only
+n12_d50_s42,12,0.95,122,qaoa,p=2; median over 5 L-BFGS-B starts,0.003413459360133186,292.9579334323705,none/common probability metric only
+n12_d50_s42,12,0.95,122,qaoa,p=3; median over 5 L-BFGS-B starts,0.004299979802949067,232.55923186294206,none/common probability metric only
 n12_d50_s42,12,1.0,128,uniform,uniform sample,0.00048828125,2048.0,none/common probability metric only
 n12_d50_s42,12,1.0,128,hillclimb,256 starts,0.4921875,2.0317460317460316,none/common probability metric only
 n12_d50_s42,12,1.0,128,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n12_d50_s42,12,1.0,128,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n12_d50_s42,12,1.0,128,amplitude_amplification,k=26; eps=0; oracle_cost=1,0.8486721595721104,1.1783113051619216,within-AA normalized_resource_per_hit=62.4504991736
-n12_d50_s42,12,1.0,128,qaoa,p=1; median over 5 L-BFGS-B starts,0.0005359595529449092,1865.812437721003,none/common probability metric only
-n12_d50_s42,12,1.0,128,qaoa,p=2; median over 5 L-BFGS-B starts,0.000987855109865233,1012.2942018657209,none/common probability metric only
-n12_d50_s42,12,1.0,128,qaoa,p=3; median over 5 L-BFGS-B starts,0.0008068406432507294,1239.4021153558142,none/common probability metric only
+n12_d50_s42,12,1.0,128,qaoa,p=1; median over 5 L-BFGS-B starts,0.00048828125,2048.0,none/common probability metric only
+n12_d50_s42,12,1.0,128,qaoa,p=2; median over 5 L-BFGS-B starts,0.0004960497957134729,2015.926644142028,none/common probability metric only
+n12_d50_s42,12,1.0,128,qaoa,p=3; median over 5 L-BFGS-B starts,0.0013694363116931018,730.2274603509312,none/common probability metric only
 n12_d75_s17,12,0.9,148,uniform,uniform sample,0.046875,21.333333333333332,none/common probability metric only
 n12_d75_s17,12,0.9,148,hillclimb,256 starts,0.99609375,1.003921568627451,none/common probability metric only
 n12_d75_s17,12,0.9,148,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n12_d75_s17,12,0.9,148,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n12_d75_s17,12,0.9,148,amplitude_amplification,k=2; eps=0; oracle_cost=1,0.7870681285858153,1.2705380432527174,within-AA normalized_resource_per_hit=6.35269021626
-n12_d75_s17,12,0.9,148,qaoa,p=1; median over 5 L-BFGS-B starts,0.04599680882740577,21.740638655005586,none/common probability metric only
-n12_d75_s17,12,0.9,148,qaoa,p=2; median over 5 L-BFGS-B starts,0.04935491019627304,20.261408561442654,none/common probability metric only
-n12_d75_s17,12,0.9,148,qaoa,p=3; median over 5 L-BFGS-B starts,0.04945064605152502,20.222182718463408,none/common probability metric only
+n12_d75_s17,12,0.9,148,qaoa,p=1; median over 5 L-BFGS-B starts,0.04687499999999922,21.333333333333687,none/common probability metric only
+n12_d75_s17,12,0.9,148,qaoa,p=2; median over 5 L-BFGS-B starts,0.050265069760507826,19.894531227442528,none/common probability metric only
+n12_d75_s17,12,0.9,148,qaoa,p=3; median over 5 L-BFGS-B starts,0.05407190914132677,18.49389111426264,none/common probability metric only
 n12_d75_s17,12,0.95,156,uniform,uniform sample,0.01123046875,89.04347826086956,none/common probability metric only
 n12_d75_s17,12,0.95,156,hillclimb,256 starts,0.890625,1.1228070175438596,none/common probability metric only
 n12_d75_s17,12,0.95,156,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n12_d75_s17,12,0.95,156,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n12_d75_s17,12,0.95,156,amplitude_amplification,k=5; eps=0; oracle_cost=1,0.8462741409422342,1.181650190665886,within-AA normalized_resource_per_hit=12.9981520973
-n12_d75_s17,12,0.95,156,qaoa,p=1; median over 5 L-BFGS-B starts,0.011358801387774488,88.03745799062065,none/common probability metric only
-n12_d75_s17,12,0.95,156,qaoa,p=2; median over 5 L-BFGS-B starts,0.012690538457156786,78.79886289900122,none/common probability metric only
-n12_d75_s17,12,0.95,156,qaoa,p=3; median over 5 L-BFGS-B starts,0.01272522186397896,78.58409155369469,none/common probability metric only
+n12_d75_s17,12,0.95,156,qaoa,p=1; median over 5 L-BFGS-B starts,0.011230468749999733,89.04347826087168,none/common probability metric only
+n12_d75_s17,12,0.95,156,qaoa,p=2; median over 5 L-BFGS-B starts,0.012919563420418972,77.40199629497779,none/common probability metric only
+n12_d75_s17,12,0.95,156,qaoa,p=3; median over 5 L-BFGS-B starts,0.015086563427899073,66.28414779675627,none/common probability metric only
 n12_d75_s17,12,1.0,164,uniform,uniform sample,0.00048828125,2048.0,none/common probability metric only
 n12_d75_s17,12,1.0,164,hillclimb,256 starts,0.171875,5.818181818181818,none/common probability metric only
 n12_d75_s17,12,1.0,164,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n12_d75_s17,12,1.0,164,tabu_search,64 runs; <= 4096 objective evaluations/run,0.875,1.1428571428571428,classical objective-evaluation budget only; not matched to quantum resources
 n12_d75_s17,12,1.0,164,amplitude_amplification,k=26; eps=0; oracle_cost=1,0.8486721595721104,1.1783113051619216,within-AA normalized_resource_per_hit=62.4504991736
-n12_d75_s17,12,1.0,164,qaoa,p=1; median over 5 L-BFGS-B starts,0.0012571703340475658,795.4371598798516,none/common probability metric only
-n12_d75_s17,12,1.0,164,qaoa,p=2; median over 5 L-BFGS-B starts,0.00011986847867368333,8342.476780090696,none/common probability metric only
-n12_d75_s17,12,1.0,164,qaoa,p=3; median over 5 L-BFGS-B starts,0.0010124566990787896,987.696561156518,none/common probability metric only
+n12_d75_s17,12,1.0,164,qaoa,p=1; median over 5 L-BFGS-B starts,0.0005308020975353293,1883.9413119188769,none/common probability metric only
+n12_d75_s17,12,1.0,164,qaoa,p=2; median over 5 L-BFGS-B starts,0.00015572245677066793,6421.681372987183,none/common probability metric only
+n12_d75_s17,12,1.0,164,qaoa,p=3; median over 5 L-BFGS-B starts,0.0008552910991217742,1169.1925720106467,none/common probability metric only
 n12_d75_s42,12,0.9,158,uniform,uniform sample,0.021484375,46.54545454545455,none/common probability metric only
 n12_d75_s42,12,0.9,158,hillclimb,256 starts,0.94140625,1.062240663900415,none/common probability metric only
 n12_d75_s42,12,0.9,158,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n12_d75_s42,12,0.9,158,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n12_d75_s42,12,0.9,158,amplitude_amplification,k=3; eps=0; oracle_cost=1,0.7347305712749815,1.361043134852406,within-AA normalized_resource_per_hit=9.52730194397
-n12_d75_s42,12,0.9,158,qaoa,p=1; median over 5 L-BFGS-B starts,0.021484375,46.54545454545455,none/common probability metric only
-n12_d75_s42,12,0.9,158,qaoa,p=2; median over 5 L-BFGS-B starts,0.023330000848804655,42.86326462140855,none/common probability metric only
-n12_d75_s42,12,0.9,158,qaoa,p=3; median over 5 L-BFGS-B starts,0.026478017189335193,37.767178442756645,none/common probability metric only
+n12_d75_s42,12,0.9,158,qaoa,p=1; median over 5 L-BFGS-B starts,0.022749640677533822,43.95673822609163,none/common probability metric only
+n12_d75_s42,12,0.9,158,qaoa,p=2; median over 5 L-BFGS-B starts,0.021998850050822746,45.45692150679488,none/common probability metric only
+n12_d75_s42,12,0.9,158,qaoa,p=3; median over 5 L-BFGS-B starts,0.031325890915568824,31.922475970284523,none/common probability metric only
 n12_d75_s42,12,0.95,167,uniform,uniform sample,0.005859375,170.66666666666666,none/common probability metric only
 n12_d75_s42,12,0.95,167,hillclimb,256 starts,0.94140625,1.062240663900415,none/common probability metric only
 n12_d75_s42,12,0.95,167,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n12_d75_s42,12,0.95,167,tabu_search,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n12_d75_s42,12,0.95,167,amplitude_amplification,k=7; eps=0; oracle_cost=1,0.8326325428624705,1.201009987625687,within-AA normalized_resource_per_hit=18.0151498144
-n12_d75_s42,12,0.95,167,qaoa,p=1; median over 5 L-BFGS-B starts,0.005859375000000099,170.6666666666638,none/common probability metric only
-n12_d75_s42,12,0.95,167,qaoa,p=2; median over 5 L-BFGS-B starts,0.005566919488635774,179.6325601692974,none/common probability metric only
-n12_d75_s42,12,0.95,167,qaoa,p=3; median over 5 L-BFGS-B starts,0.007623363876595126,131.175687818097,none/common probability metric only
+n12_d75_s42,12,0.95,167,qaoa,p=1; median over 5 L-BFGS-B starts,0.006588362716481536,151.78277867100223,none/common probability metric only
+n12_d75_s42,12,0.95,167,qaoa,p=2; median over 5 L-BFGS-B starts,0.006308024810646362,158.52822872735868,none/common probability metric only
+n12_d75_s42,12,0.95,167,qaoa,p=3; median over 5 L-BFGS-B starts,0.009555548042059284,104.65124507756579,none/common probability metric only
 n12_d75_s42,12,1.0,175,uniform,uniform sample,0.00048828125,2048.0,none/common probability metric only
 n12_d75_s42,12,1.0,175,hillclimb,256 starts,0.44921875,2.226086956521739,none/common probability metric only
 n12_d75_s42,12,1.0,175,simulated_annealing,64 runs; <= 4096 objective evaluations/run,1.0,1.0,classical objective-evaluation budget only; not matched to quantum resources
 n12_d75_s42,12,1.0,175,tabu_search,64 runs; <= 4096 objective evaluations/run,0.921875,1.0847457627118644,classical objective-evaluation budget only; not matched to quantum resources
 n12_d75_s42,12,1.0,175,amplitude_amplification,k=26; eps=0; oracle_cost=1,0.8486721595721104,1.1783113051619216,within-AA normalized_resource_per_hit=62.4504991736
-n12_d75_s42,12,1.0,175,qaoa,p=1; median over 5 L-BFGS-B starts,0.0004882812499999435,2048.000000000237,none/common probability metric only
-n12_d75_s42,12,1.0,175,qaoa,p=2; median over 5 L-BFGS-B starts,0.0004028028170393898,2482.604286012753,none/common probability metric only
-n12_d75_s42,12,1.0,175,qaoa,p=3; median over 5 L-BFGS-B starts,0.00037107564787004,2694.8682990650605,none/common probability metric only
+n12_d75_s42,12,1.0,175,qaoa,p=1; median over 5 L-BFGS-B starts,0.00048828125,2048.0,none/common probability metric only
+n12_d75_s42,12,1.0,175,qaoa,p=2; median over 5 L-BFGS-B starts,0.00048828125,2048.0,none/common probability metric only
+n12_d75_s42,12,1.0,175,qaoa,p=3; median over 5 L-BFGS-B starts,0.00048828125,2048.0,none/common probability metric only

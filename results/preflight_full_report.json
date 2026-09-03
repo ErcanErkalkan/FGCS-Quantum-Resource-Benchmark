@@ -1,11 +1,11 @@
 {
   "status": "PASS",
-  "created_utc": "2026-08-31T16:42:33.684318+00:00",
-  "root": "/mnt/data/fgcs_p2_license",
+  "created_utc": "2026-09-01T19:55:36.906314+00:00",
+  "root": "/mnt/data/fgcs_v1_1_work",
   "runtime_checked": true,
   "artifacts_checked": true,
   "summary": {
-    "pass": 158,
+    "pass": 244,
     "warn": 0,
     "fail": 0
   },
@@ -96,7 +96,147 @@
       "detail": "present"
     },
     {
+      "name": "required:results/gw_sdp_primary.csv",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/gw_sdp_connected_validation.csv",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/gw_sdp_summary.csv",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/bbht_operational_primary.csv",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/bbht_operational_connected_validation.csv",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/bbht_summary.csv",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/resource_scalarization_primary.csv",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/resource_scalarization_connected_validation.csv",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/resource_scalarization_summary.csv",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/classical_budget_curve_runs.csv",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/classical_budget_curve_summary.csv",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/classical_budget_curve_aggregate.csv",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/dense_operational_lambda_primary.csv",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/dense_operational_lambda_connected_validation.csv",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/dense_operational_lambda_summary.csv",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/qaoa_initialization_stability_runs.csv",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/qaoa_initialization_stability_instance_summary.csv",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/qaoa_initialization_stability_aggregate.csv",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/qaoa_initialization_stability_inference.csv",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:results/qaoa_initialization_stability_comparison.csv",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
       "name": "required:reproducibility/ENVIRONMENT_LOCK.md",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:reproducibility/P3_STRUCTURAL_GRAPH_VALIDATION.md",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:reproducibility/P4_GW_SDP_BASELINE.md",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:reproducibility/P5_BBHT_UNKNOWN_RHO.md",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:reproducibility/P6_RESOURCE_SCALARIZATION.md",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:reproducibility/P7_CLASSICAL_BUDGET_CURVE.md",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:reproducibility/P8_DENSE_OPERATIONAL_LAMBDA.md",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:reproducibility/P9_QAOA_INITIALIZATION_STREAM.md",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "name": "required:reproducibility/P10_QAOA_20_START_STABILITY.md",
       "status": "PASS",
       "detail": "present"
     },
@@ -303,7 +443,7 @@
     {
       "name": "tex-env:equation",
       "status": "PASS",
-      "detail": "begin=21; end=21"
+      "detail": "begin=23; end=23"
     },
     {
       "name": "tex-env:figure",
@@ -328,7 +468,7 @@
     {
       "name": "tex-env:table",
       "status": "PASS",
-      "detail": "begin=18; end=18"
+      "detail": "begin=21; end=21"
     },
     {
       "name": "duplicate:main.tex",
@@ -356,6 +496,36 @@
       "detail": "expected=e4ff5991427097da7ec8d7b4c2c12687b41d57d03c038c0f4624c6de95754338; actual=e4ff5991427097da7ec8d7b4c2c12687b41d57d03c038c0f4624c6de95754338"
     },
     {
+      "name": "artifact-hash:bbht_operational_connected_validation.csv",
+      "status": "PASS",
+      "detail": "expected=948974064944acc8c4e07b71c9cb9009c2904b57f32f67bdfd5af7cae8d82703; actual=948974064944acc8c4e07b71c9cb9009c2904b57f32f67bdfd5af7cae8d82703"
+    },
+    {
+      "name": "artifact-hash:bbht_operational_primary.csv",
+      "status": "PASS",
+      "detail": "expected=25e25ad7ebb1c83141749ceec8c6a69c4f16890099a9b20b3d255d97d0417348; actual=25e25ad7ebb1c83141749ceec8c6a69c4f16890099a9b20b3d255d97d0417348"
+    },
+    {
+      "name": "artifact-hash:bbht_summary.csv",
+      "status": "PASS",
+      "detail": "expected=71ff95167d59e08c8966b0d8fe434b4a9d7832854d14fd75bc5b100b56af3671; actual=71ff95167d59e08c8966b0d8fe434b4a9d7832854d14fd75bc5b100b56af3671"
+    },
+    {
+      "name": "artifact-hash:classical_budget_curve_aggregate.csv",
+      "status": "PASS",
+      "detail": "expected=aa25a183f3d976f489302291a53a44815ac296c3c3d71166665277fbc4b5ee5f; actual=aa25a183f3d976f489302291a53a44815ac296c3c3d71166665277fbc4b5ee5f"
+    },
+    {
+      "name": "artifact-hash:classical_budget_curve_runs.csv",
+      "status": "PASS",
+      "detail": "expected=616c24e2793ebe532331cf8f9e243149bf8021c9d1674bc93f700a3fd31126ca; actual=616c24e2793ebe532331cf8f9e243149bf8021c9d1674bc93f700a3fd31126ca"
+    },
+    {
+      "name": "artifact-hash:classical_budget_curve_summary.csv",
+      "status": "PASS",
+      "detail": "expected=f1a044f35c44b52509c15c3f85600d74f7edac4c997ecc85eb5de85c098395e8; actual=f1a044f35c44b52509c15c3f85600d74f7edac4c997ecc85eb5de85c098395e8"
+    },
+    {
       "name": "artifact-hash:classical_budgeted_runs.csv",
       "status": "PASS",
       "detail": "expected=e1325b7d9b22876560756beb9a59cc995c90c5249f254ac5f8cc8c50a02bc43f; actual=e1325b7d9b22876560756beb9a59cc995c90c5249f254ac5f8cc8c50a02bc43f"
@@ -371,6 +541,36 @@
       "detail": "expected=ff467ae2c6894686fae6913403a8b2cf0dd65f7e6f4988f0361a1cf34e8ac3dd; actual=ff467ae2c6894686fae6913403a8b2cf0dd65f7e6f4988f0361a1cf34e8ac3dd"
     },
     {
+      "name": "artifact-hash:connected_validation_coupled_oracle.csv",
+      "status": "PASS",
+      "detail": "expected=9ff543213e6d037b026792f188a32db29a3b332fc863b6ce117209d56d9a7533; actual=9ff543213e6d037b026792f188a32db29a3b332fc863b6ce117209d56d9a7533"
+    },
+    {
+      "name": "artifact-hash:connected_validation_fixed_overhead.csv",
+      "status": "PASS",
+      "detail": "expected=9c9b74be7ef22e2400f3740a142315c4783e47c7e0ec16191b1d58edbe63e9fd; actual=9c9b74be7ef22e2400f3740a142315c4783e47c7e0ec16191b1d58edbe63e9fd"
+    },
+    {
+      "name": "artifact-hash:connected_validation_graph_diagnostics.csv",
+      "status": "PASS",
+      "detail": "expected=99bbdeab6a741eb37015ae8ff49c59b834f8707f94100dd3c38b1ec335d2c9df; actual=99bbdeab6a741eb37015ae8ff49c59b834f8707f94100dd3c38b1ec335d2c9df"
+    },
+    {
+      "name": "artifact-hash:connected_validation_graphs.csv",
+      "status": "PASS",
+      "detail": "expected=6ef42f3f76316b06131d3fad44f26814f25f4773354dda57777bfe72b6ebe017; actual=6ef42f3f76316b06131d3fad44f26814f25f4773354dda57777bfe72b6ebe017"
+    },
+    {
+      "name": "artifact-hash:connected_validation_ground_truth.csv",
+      "status": "PASS",
+      "detail": "expected=542786cb5a277ba15910d1d9756a35b5f6cdd6bbc1106c260c11999b303c72f4; actual=542786cb5a277ba15910d1d9756a35b5f6cdd6bbc1106c260c11999b303c72f4"
+    },
+    {
+      "name": "artifact-hash:connected_validation_operational_thresholds.csv",
+      "status": "PASS",
+      "detail": "expected=f8ec89dabc829c6ab86671fbf74d45fa7457f1e6c0c71f01a5102d6aca35664a; actual=f8ec89dabc829c6ab86671fbf74d45fa7457f1e6c0c71f01a5102d6aca35664a"
+    },
+    {
       "name": "artifact-hash:coupled_oracle_depth_sensitivity.csv",
       "status": "PASS",
       "detail": "expected=4fc0bb52e508a1f364d0c77a0242c022b71b213348f6d827ff42e18bbf934684; actual=4fc0bb52e508a1f364d0c77a0242c022b71b213348f6d827ff42e18bbf934684"
@@ -379,6 +579,11 @@
       "name": "artifact-hash:coverage_coupled_oracle.csv",
       "status": "PASS",
       "detail": "expected=24b7954e06483ad5ea2d9aebd2f6de80461352bbcaf1c1c7abf29bad915edf43; actual=24b7954e06483ad5ea2d9aebd2f6de80461352bbcaf1c1c7abf29bad915edf43"
+    },
+    {
+      "name": "artifact-hash:coverage_graph_diagnostics.csv",
+      "status": "PASS",
+      "detail": "expected=571fcb7948c367426cb5a24c014a7ee673b8d430aeb33d7cd957af705cd38de9; actual=571fcb7948c367426cb5a24c014a7ee673b8d430aeb33d7cd957af705cd38de9"
     },
     {
       "name": "artifact-hash:coverage_graphs.csv",
@@ -406,9 +611,39 @@
       "detail": "expected=d56d5315868209b91c421f50013e403b5ac44fd9059834e1cb1ac05d1391bcc6; actual=d56d5315868209b91c421f50013e403b5ac44fd9059834e1cb1ac05d1391bcc6"
     },
     {
+      "name": "artifact-hash:dense_operational_lambda_connected_validation.csv",
+      "status": "PASS",
+      "detail": "expected=251e5ca30f9694086d42b30546b20efaad92179b223d7917e95f7873826b8cbd; actual=251e5ca30f9694086d42b30546b20efaad92179b223d7917e95f7873826b8cbd"
+    },
+    {
+      "name": "artifact-hash:dense_operational_lambda_primary.csv",
+      "status": "PASS",
+      "detail": "expected=33ec17bfea7381ee84a9c105c927541d281f58434ff3966fedc10631d96487d9; actual=33ec17bfea7381ee84a9c105c927541d281f58434ff3966fedc10631d96487d9"
+    },
+    {
+      "name": "artifact-hash:dense_operational_lambda_summary.csv",
+      "status": "PASS",
+      "detail": "expected=ca1cea72e6962784f4a70d95706d4ffb0d25bb2296df9dbad7b0bc80afa75905; actual=ca1cea72e6962784f4a70d95706d4ffb0d25bb2296df9dbad7b0bc80afa75905"
+    },
+    {
       "name": "artifact-hash:fixed_overhead_sensitivity.csv",
       "status": "PASS",
       "detail": "expected=78ec97afcbd816cbb06805c722a516457400b034176232a91bf53b80250d6a71; actual=78ec97afcbd816cbb06805c722a516457400b034176232a91bf53b80250d6a71"
+    },
+    {
+      "name": "artifact-hash:gw_sdp_connected_validation.csv",
+      "status": "PASS",
+      "detail": "expected=b78ef94f9c31832a0668ac2cee176c5fa8c3d2c8d194fbf06b20431e4ceafdb6; actual=b78ef94f9c31832a0668ac2cee176c5fa8c3d2c8d194fbf06b20431e4ceafdb6"
+    },
+    {
+      "name": "artifact-hash:gw_sdp_primary.csv",
+      "status": "PASS",
+      "detail": "expected=69d8dcd725462de8b67d524d229107bf90e93f7ddeab0725911fac4e32c94333; actual=69d8dcd725462de8b67d524d229107bf90e93f7ddeab0725911fac4e32c94333"
+    },
+    {
+      "name": "artifact-hash:gw_sdp_summary.csv",
+      "status": "PASS",
+      "detail": "expected=05f100ea07f068cbf9fb10cbbc6cb50174c90d97b574c2af8c20677c67879f79; actual=05f100ea07f068cbf9fb10cbbc6cb50174c90d97b574c2af8c20677c67879f79"
     },
     {
       "name": "artifact-hash:large_searchspace_sensitivity.csv",
@@ -428,7 +663,7 @@
     {
       "name": "artifact-hash:operational_target_metric_summary.csv",
       "status": "PASS",
-      "detail": "expected=7f2960377ce1508d3ec4757da48959ca67909aebab9f89ae122038c5ef8ec66e; actual=7f2960377ce1508d3ec4757da48959ca67909aebab9f89ae122038c5ef8ec66e"
+      "detail": "expected=fea1192adb2d251de63e2ef48af28a25c9e7b4c10d1101ac8c4c8237eaf1caab; actual=fea1192adb2d251de63e2ef48af28a25c9e7b4c10d1101ac8c4c8237eaf1caab"
     },
     {
       "name": "artifact-hash:operational_thresholds.csv",
@@ -441,59 +676,104 @@
       "detail": "expected=72eea63b89395b4f0de0c33128c9a940fafb05e02fd512edf47e86e143b07009; actual=72eea63b89395b4f0de0c33128c9a940fafb05e02fd512edf47e86e143b07009"
     },
     {
+      "name": "artifact-hash:primary_graph_diagnostics.csv",
+      "status": "PASS",
+      "detail": "expected=5ce52d3a5e5f4d6fae38eaf2113629b54c8e6cdab05907105d99ddacf6942a28; actual=5ce52d3a5e5f4d6fae38eaf2113629b54c8e6cdab05907105d99ddacf6942a28"
+    },
+    {
       "name": "artifact-hash:qaoa_aggregate_summary.csv",
       "status": "PASS",
-      "detail": "expected=021539b1cad27a928c9e52d80d08bf067b6d94cd171a038332f4766b16147003; actual=021539b1cad27a928c9e52d80d08bf067b6d94cd171a038332f4766b16147003"
+      "detail": "expected=2ec1a593769d4a81c45fc60b95d753acb42cdd10aaa7d527fa0702ee5f51ad77; actual=2ec1a593769d4a81c45fc60b95d753acb42cdd10aaa7d527fa0702ee5f51ad77"
     },
     {
       "name": "artifact-hash:qaoa_depth_inference.csv",
       "status": "PASS",
-      "detail": "expected=0ac7e7c0e28a94223bf1a373cd1820d7133b067e6914d09367f2bf80123e7834; actual=0ac7e7c0e28a94223bf1a373cd1820d7133b067e6914d09367f2bf80123e7834"
+      "detail": "expected=f084ece51431d4936e9665a0149d2f7d97c13208799ef197cbea057605a8950c; actual=f084ece51431d4936e9665a0149d2f7d97c13208799ef197cbea057605a8950c"
+    },
+    {
+      "name": "artifact-hash:qaoa_initialization_stability_aggregate.csv",
+      "status": "PASS",
+      "detail": "expected=222721f9918b965464d1bb471d476c656fcb01e525d4fe849a344823d7eac7f3; actual=222721f9918b965464d1bb471d476c656fcb01e525d4fe849a344823d7eac7f3"
+    },
+    {
+      "name": "artifact-hash:qaoa_initialization_stability_comparison.csv",
+      "status": "PASS",
+      "detail": "expected=59d7b5a6889cd15b1406be5f3af26b109b6c97137154a77dadd5786012baaf09; actual=59d7b5a6889cd15b1406be5f3af26b109b6c97137154a77dadd5786012baaf09"
+    },
+    {
+      "name": "artifact-hash:qaoa_initialization_stability_inference.csv",
+      "status": "PASS",
+      "detail": "expected=55607dd45ba5d7915cc7b04c9ee808abd3f89d945cb1255836e5546d413d44e9; actual=55607dd45ba5d7915cc7b04c9ee808abd3f89d945cb1255836e5546d413d44e9"
+    },
+    {
+      "name": "artifact-hash:qaoa_initialization_stability_instance_summary.csv",
+      "status": "PASS",
+      "detail": "expected=defd0c625a62fc3a2ca9c2019cb891362a4079c1967895a8d23b78b3007e50d7; actual=defd0c625a62fc3a2ca9c2019cb891362a4079c1967895a8d23b78b3007e50d7"
+    },
+    {
+      "name": "artifact-hash:qaoa_initialization_stability_runs.csv",
+      "status": "PASS",
+      "detail": "expected=11bed8ff0f00be12f11d808050d2924b43943c7bbe73d523b37c1bbbc0b9dd42; actual=11bed8ff0f00be12f11d808050d2924b43943c7bbe73d523b37c1bbbc0b9dd42"
     },
     {
       "name": "artifact-hash:qaoa_instance_summary.csv",
       "status": "PASS",
-      "detail": "expected=8aebb448236ef2d6cfed0f52e5937c8bb264fe5186ab0f328c2da980cde6dbb2; actual=8aebb448236ef2d6cfed0f52e5937c8bb264fe5186ab0f328c2da980cde6dbb2"
+      "detail": "expected=1fb2e4638c9cefbe7654cb5b27363a3de6968e4e058762baed7d3a12ef8b4371; actual=1fb2e4638c9cefbe7654cb5b27363a3de6968e4e058762baed7d3a12ef8b4371"
     },
     {
       "name": "artifact-hash:qaoa_optimizer_budget_aggregate.csv",
       "status": "PASS",
-      "detail": "expected=a220aa74d317bf875a3bdab2aea5ad2eb0ce4aa8b7bbf06824b8695e1b15b670; actual=a220aa74d317bf875a3bdab2aea5ad2eb0ce4aa8b7bbf06824b8695e1b15b670"
+      "detail": "expected=92201f761713a82e77bb099dd7482e1e24a76649336da33a00f7e496c4d15cea; actual=92201f761713a82e77bb099dd7482e1e24a76649336da33a00f7e496c4d15cea"
     },
     {
       "name": "artifact-hash:qaoa_optimizer_budget_instance_summary.csv",
       "status": "PASS",
-      "detail": "expected=201786a516dab1139110168a5578e2bc4999653bda3b686616c59e766e1e7bb0; actual=201786a516dab1139110168a5578e2bc4999653bda3b686616c59e766e1e7bb0"
+      "detail": "expected=4799648ced7920fb96045067b23989d4faf9db1af97e695fddaf36c9e9452b48; actual=4799648ced7920fb96045067b23989d4faf9db1af97e695fddaf36c9e9452b48"
     },
     {
       "name": "artifact-hash:qaoa_optimizer_budget_paired.csv",
       "status": "PASS",
-      "detail": "expected=f7e7b2b784826d190e01b813c18c6fe9d41364447c6e3d05f2af1ba70759e174; actual=f7e7b2b784826d190e01b813c18c6fe9d41364447c6e3d05f2af1ba70759e174"
+      "detail": "expected=e6100ed33e06a56157f36d87e856ca2daa3438504d641057a20509edd3f66ca6; actual=e6100ed33e06a56157f36d87e856ca2daa3438504d641057a20509edd3f66ca6"
     },
     {
       "name": "artifact-hash:qaoa_optimizer_budget_runs.csv",
       "status": "PASS",
-      "detail": "expected=6df8453f0d9847e1c8203e0652e11979c5b39176913e2f5a9ba0d2d69702e9c7; actual=6df8453f0d9847e1c8203e0652e11979c5b39176913e2f5a9ba0d2d69702e9c7"
+      "detail": "expected=c8ead4123b1b6d28b20bd76cb8d8a1250c453b390211cb1732910f72d514ea23; actual=c8ead4123b1b6d28b20bd76cb8d8a1250c453b390211cb1732910f72d514ea23"
     },
     {
       "name": "artifact-hash:qaoa_optimizer_inference.csv",
       "status": "PASS",
-      "detail": "expected=e133f5b08589373b883b7b7820c032683d4d21a9d9ef9b4d586bc23ee5d28247; actual=e133f5b08589373b883b7b7820c032683d4d21a9d9ef9b4d586bc23ee5d28247"
+      "detail": "expected=ccb08b238f26f68872a5adb982da66280d4513851e3d067d798f6af747ab1c3a; actual=ccb08b238f26f68872a5adb982da66280d4513851e3d067d798f6af747ab1c3a"
     },
     {
       "name": "artifact-hash:qaoa_optimizer_inference_instance_deltas.csv",
       "status": "PASS",
-      "detail": "expected=c167bf9c3d0c4c9060a6f04151eade492755904db71f4b935bf923c37c714055; actual=c167bf9c3d0c4c9060a6f04151eade492755904db71f4b935bf923c37c714055"
+      "detail": "expected=014f1f29023d0fe515f51dc04bc90be6ad284decf5fa5cdae5894fb68737d380; actual=014f1f29023d0fe515f51dc04bc90be6ad284decf5fa5cdae5894fb68737d380"
     },
     {
       "name": "artifact-hash:qaoa_runs.csv",
       "status": "PASS",
-      "detail": "expected=6db7fdd15d4645a152eb5c2e806687d7f88b510f75305a095494bdf4c17ee131; actual=6db7fdd15d4645a152eb5c2e806687d7f88b510f75305a095494bdf4c17ee131"
+      "detail": "expected=aa7047fe6a7ddb31fc7f2f61b718e17cdbb2c2bab2ba1f03a487c51d09fd1760; actual=aa7047fe6a7ddb31fc7f2f61b718e17cdbb2c2bab2ba1f03a487c51d09fd1760"
     },
     {
       "name": "artifact-hash:resource_robustness_grid.csv",
       "status": "PASS",
       "detail": "expected=3159815433818de12853d1c3565ecaff5a19652ed67bc3a7130da2974e09c116; actual=3159815433818de12853d1c3565ecaff5a19652ed67bc3a7130da2974e09c116"
+    },
+    {
+      "name": "artifact-hash:resource_scalarization_connected_validation.csv",
+      "status": "PASS",
+      "detail": "expected=1186d77372f356920fab2baa6191792be78a6cb75a7bfdcbaf3d7fb4350cfe02; actual=1186d77372f356920fab2baa6191792be78a6cb75a7bfdcbaf3d7fb4350cfe02"
+    },
+    {
+      "name": "artifact-hash:resource_scalarization_primary.csv",
+      "status": "PASS",
+      "detail": "expected=af37a606f4862f7d172b999b18b206b35cfc16d1ce6b6d6fd9d799ea9bbb85ba; actual=af37a606f4862f7d172b999b18b206b35cfc16d1ce6b6d6fd9d799ea9bbb85ba"
+    },
+    {
+      "name": "artifact-hash:resource_scalarization_summary.csv",
+      "status": "PASS",
+      "detail": "expected=7bdf22dc28c4206b4124f5293b347024f939cd2e94f6b9d8af5bd5db64bd5b7e; actual=7bdf22dc28c4206b4124f5293b347024f939cd2e94f6b9d8af5bd5db64bd5b7e"
     },
     {
       "name": "artifact-hash:rho_estimation_robustness.csv",
@@ -508,7 +788,7 @@
     {
       "name": "artifact-hash:target_metric_summary.csv",
       "status": "PASS",
-      "detail": "expected=8e902b8fd5a14ab5a32a87a0ac3da7ff9ee00592fd33a16968948413e1d624f7; actual=8e902b8fd5a14ab5a32a87a0ac3da7ff9ee00592fd33a16968948413e1d624f7"
+      "detail": "expected=ce57ee5a4b29f9f48654e84f102a28c0e92591277dbd7e0196395cbb8b8bc6a7; actual=ce57ee5a4b29f9f48654e84f102a28c0e92591277dbd7e0196395cbb8b8bc6a7"
     },
     {
       "name": "source-hash:.python-version",
@@ -518,37 +798,37 @@
     {
       "name": "source-hash:CLAIMS_REGISTER.md",
       "status": "PASS",
-      "detail": "expected=a760d36311a743be7a8950847423569195e4ae033b21f83ce229fb56ec0ec558; actual=a760d36311a743be7a8950847423569195e4ae033b21f83ce229fb56ec0ec558"
+      "detail": "expected=c8853651b3a2771d324b42f4f0c0dd4e7a1bcd4c3d2d9a29b0bed151509bdae4; actual=c8853651b3a2771d324b42f4f0c0dd4e7a1bcd4c3d2d9a29b0bed151509bdae4"
     },
     {
       "name": "source-hash:README.md",
       "status": "PASS",
-      "detail": "expected=30177e70be5c308e3199889aec220b973c087b877f810c9bb29fab6c0671040a; actual=30177e70be5c308e3199889aec220b973c087b877f810c9bb29fab6c0671040a"
+      "detail": "expected=8d3ea3f73445ca1cc31e71144eef5e325c7d27d1357ee5741fd666372e9f9e64; actual=8d3ea3f73445ca1cc31e71144eef5e325c7d27d1357ee5741fd666372e9f9e64"
     },
     {
       "name": "source-hash:benchmark.py",
       "status": "PASS",
-      "detail": "expected=702562b0c4ad740972f7cc6b238b2176a1e8223b7c5fcdd17a9a06208a35491a; actual=702562b0c4ad740972f7cc6b238b2176a1e8223b7c5fcdd17a9a06208a35491a"
+      "detail": "expected=2135f75fc4d8b822edb63f61af78c00d9605a878e9dbda513b58c6e771180491; actual=2135f75fc4d8b822edb63f61af78c00d9605a878e9dbda513b58c6e771180491"
     },
     {
       "name": "source-hash:finalize_manifest.py",
       "status": "PASS",
-      "detail": "expected=b7bd721db7bf5bb75e68d55412bf6614974e70ae6972c046ef375b37fefc6565; actual=b7bd721db7bf5bb75e68d55412bf6614974e70ae6972c046ef375b37fefc6565"
+      "detail": "expected=6ac5fc3c7d3ef68042269a05cedcbabb53ccc7827817799feeaabde95097d0ec; actual=6ac5fc3c7d3ef68042269a05cedcbabb53ccc7827817799feeaabde95097d0ec"
     },
     {
       "name": "source-hash:main.tex",
       "status": "PASS",
-      "detail": "expected=a8f40931f832e568f483f5c402705e0eeaef43df0c2012ec010c325f696326ae; actual=a8f40931f832e568f483f5c402705e0eeaef43df0c2012ec010c325f696326ae"
+      "detail": "expected=98464758dc1fad8b5a8a190b1295d6b4c7d92c51cc3cde5c7829e6ed40d92377; actual=98464758dc1fad8b5a8a190b1295d6b4c7d92c51cc3cde5c7829e6ed40d92377"
     },
     {
       "name": "source-hash:preflight.py",
       "status": "PASS",
-      "detail": "expected=82af9ec43136bc8f1fdab46820f386f302bf114bb880fb7620aeeaa49e037d74; actual=82af9ec43136bc8f1fdab46820f386f302bf114bb880fb7620aeeaa49e037d74"
+      "detail": "expected=7bc06ba99e832eaef8e13acc23835ac497724145aaf246f94717bd7873c6e1eb; actual=7bc06ba99e832eaef8e13acc23835ac497724145aaf246f94717bd7873c6e1eb"
     },
     {
       "name": "source-hash:references.bib",
       "status": "PASS",
-      "detail": "expected=a9cd6fca7b448d752607a16950218263a4b2efdd55175c51fef6c7c37a6a8195; actual=a9cd6fca7b448d752607a16950218263a4b2efdd55175c51fef6c7c37a6a8195"
+      "detail": "expected=625fd3838014884476e14caeab78e7dd444dab6576485c7cc8a532c839e2bfbc; actual=625fd3838014884476e14caeab78e7dd444dab6576485c7cc8a532c839e2bfbc"
     },
     {
       "name": "source-hash:render_figures.py",
@@ -563,7 +843,7 @@
     {
       "name": "source-hash:render_tables.py",
       "status": "PASS",
-      "detail": "expected=05af2e787cfe2a646be8d66cd3ef2d532ee6ccd0674a30f891dd8c06ee2f6d78; actual=05af2e787cfe2a646be8d66cd3ef2d532ee6ccd0674a30f891dd8c06ee2f6d78"
+      "detail": "expected=30d344b57b9cdb8417bc5c1d170ba9b51890c67735179d0e52469e31b3abd145; actual=30d344b57b9cdb8417bc5c1d170ba9b51890c67735179d0e52469e31b3abd145"
     },
     {
       "name": "source-hash:requirements.lock",
@@ -578,7 +858,7 @@
     {
       "name": "source-hash:test_core.py",
       "status": "PASS",
-      "detail": "expected=587f73e99fc534df63104e186cb720f66a82139772c27fb495782e82c28ca34c; actual=587f73e99fc534df63104e186cb720f66a82139772c27fb495782e82c28ca34c"
+      "detail": "expected=86876d6850cd8d6f8f73d3ba2cc3ad3f53d02436bda6e7fee8f0979a2a18ffcb; actual=86876d6850cd8d6f8f73d3ba2cc3ad3f53d02436bda6e7fee8f0979a2a18ffcb"
     },
     {
       "name": "source-hash:test_finalize_manifest.py",
@@ -618,17 +898,17 @@
     {
       "name": "manuscript-dependency-hash:figures/fig_qaoa_depth.pdf",
       "status": "PASS",
-      "detail": "expected=01e61404ae6c67956f1b5419c534b82a13d4352fb37f11ebcf38bb651813e1ab; actual=01e61404ae6c67956f1b5419c534b82a13d4352fb37f11ebcf38bb651813e1ab"
+      "detail": "expected=3cf90f50aa910b23114886a68ab70fd2cba10d9d654f1de063a677b79f235338; actual=3cf90f50aa910b23114886a68ab70fd2cba10d9d654f1de063a677b79f235338"
     },
     {
       "name": "manuscript-dependency-hash:figures/fig_qaoa_vs_local.pdf",
       "status": "PASS",
-      "detail": "expected=147661ecaf21406211e8d6f67bd4697cf1a76bf0d75eddf206310005f993f133; actual=147661ecaf21406211e8d6f67bd4697cf1a76bf0d75eddf206310005f993f133"
+      "detail": "expected=7ec2931dc3c04c7ee5deea717a297957cf4fedfb905621c28f83fa3908c12cce; actual=7ec2931dc3c04c7ee5deea717a297957cf4fedfb905621c28f83fa3908c12cce"
     },
     {
       "name": "manuscript-dependency-hash:figures/fig_threshold_common_metric.pdf",
       "status": "PASS",
-      "detail": "expected=765146959950e2089e38de1a00c06309677fc4d40c7f8ba36985fbe5a6e67a61; actual=765146959950e2089e38de1a00c06309677fc4d40c7f8ba36985fbe5a6e67a61"
+      "detail": "expected=8bcb58cc699849980decdf2fd7197171320295d4a1467051e3a801c1294cbd27; actual=8bcb58cc699849980decdf2fd7197171320295d4a1467051e3a801c1294cbd27"
     },
     {
       "name": "manuscript-dependency-hash:results/table_aa_aggregate.tex",
@@ -646,6 +926,11 @@
       "detail": "expected=bf04f9ae82e0343232124b326f8b74b4a6ca5c6aefd969bc795e89b2aa4abe55; actual=bf04f9ae82e0343232124b326f8b74b4a6ca5c6aefd969bc795e89b2aa4abe55"
     },
     {
+      "name": "manuscript-dependency-hash:results/table_connected_validation.tex",
+      "status": "PASS",
+      "detail": "expected=37bceb1a089989e29db3867cce31257879f6c3171a2417f74c35d7cddc2229bc; actual=37bceb1a089989e29db3867cce31257879f6c3171a2417f74c35d7cddc2229bc"
+    },
+    {
       "name": "manuscript-dependency-hash:results/table_coupled_oracle.tex",
       "status": "PASS",
       "detail": "expected=e70365209193bbd2d755902ae3f129928be0519fc007c332e4974dd331a76a66; actual=e70365209193bbd2d755902ae3f129928be0519fc007c332e4974dd331a76a66"
@@ -661,6 +946,11 @@
       "detail": "expected=0307574662ec551f39e6081aeb45eaa3609539a32105585153999e0f267d634c; actual=0307574662ec551f39e6081aeb45eaa3609539a32105585153999e0f267d634c"
     },
     {
+      "name": "manuscript-dependency-hash:results/table_graph_structure_audit.tex",
+      "status": "PASS",
+      "detail": "expected=ecd21c3a9592b4a0deb7825cbea798409c73447339f779280b0bf7ba7e08201a; actual=ecd21c3a9592b4a0deb7825cbea798409c73447339f779280b0bf7ba7e08201a"
+    },
+    {
       "name": "manuscript-dependency-hash:results/table_large_tier.tex",
       "status": "PASS",
       "detail": "expected=3c0233581eb4c34dfe4b48d38f226caa5cbec0351fd520591c7a1566725f8753; actual=3c0233581eb4c34dfe4b48d38f226caa5cbec0351fd520591c7a1566725f8753"
@@ -668,7 +958,7 @@
     {
       "name": "manuscript-dependency-hash:results/table_operational_metric.tex",
       "status": "PASS",
-      "detail": "expected=6697b878b2d17cd7cb713e1f5910a2f07ab21cf598eff9da80004c17da0767e3; actual=6697b878b2d17cd7cb713e1f5910a2f07ab21cf598eff9da80004c17da0767e3"
+      "detail": "expected=12ae7a79383dfd313eed6759ae67e0364c0b6157be30cf36f260a47e1465ad15; actual=12ae7a79383dfd313eed6759ae67e0364c0b6157be30cf36f260a47e1465ad15"
     },
     {
       "name": "manuscript-dependency-hash:results/table_operational_threshold.tex",
@@ -683,17 +973,22 @@
     {
       "name": "manuscript-dependency-hash:results/table_qaoa_aggregate.tex",
       "status": "PASS",
-      "detail": "expected=e0ea43ceb84c660c8bc69c8023eb93dd35b0159e695bf86771f2079909278e38; actual=e0ea43ceb84c660c8bc69c8023eb93dd35b0159e695bf86771f2079909278e38"
+      "detail": "expected=2dff9b86a33e057c3276e9c78cb11324fcd6ff0991d2ade01ebf8f3593298b50; actual=2dff9b86a33e057c3276e9c78cb11324fcd6ff0991d2ade01ebf8f3593298b50"
     },
     {
       "name": "manuscript-dependency-hash:results/table_qaoa_inference.tex",
       "status": "PASS",
-      "detail": "expected=f2501ab8aa05511bfb85e65667ce7a83a245f5dbb3964a96eafe96e7d3f838e6; actual=f2501ab8aa05511bfb85e65667ce7a83a245f5dbb3964a96eafe96e7d3f838e6"
+      "detail": "expected=c93dcf94a7a2ada1ce067487639503e0a6fd2e1d1eae3111cf13d02cf804a379; actual=c93dcf94a7a2ada1ce067487639503e0a6fd2e1d1eae3111cf13d02cf804a379"
     },
     {
       "name": "manuscript-dependency-hash:results/table_qaoa_optimizer_budget.tex",
       "status": "PASS",
-      "detail": "expected=ef4840f48a94a051cf5d60d98c516d6eb3445170d7008559d147182e531c5c5c; actual=ef4840f48a94a051cf5d60d98c516d6eb3445170d7008559d147182e531c5c5c"
+      "detail": "expected=8ceee4c9cbda3ee18e907c39d1d3fb721dd0094fe61fdd1b61a04fb96dc41a02; actual=8ceee4c9cbda3ee18e907c39d1d3fb721dd0094fe61fdd1b61a04fb96dc41a02"
+    },
+    {
+      "name": "manuscript-dependency-hash:results/table_qaoa_stability.tex",
+      "status": "PASS",
+      "detail": "expected=f10576a103b7e361ec90a03fef6e0c5db0b1ff6d1737edbc5dd4792a3c713578; actual=f10576a103b7e361ec90a03fef6e0c5db0b1ff6d1737edbc5dd4792a3c713578"
     },
     {
       "name": "manuscript-dependency-hash:results/table_rho_robustness.tex",
@@ -718,7 +1013,37 @@
     {
       "name": "manuscript-dependency-hash:results/table_target_metric.tex",
       "status": "PASS",
-      "detail": "expected=11f1cd18c77b6f674dcbd8fa12551a08773364d9ca2d3882bc72fc2aa5d75b71; actual=11f1cd18c77b6f674dcbd8fa12551a08773364d9ca2d3882bc72fc2aa5d75b71"
+      "detail": "expected=01f94b98067c4c19bfbe0b63e125c20616939151bed5a51e85270e1bb30391be; actual=01f94b98067c4c19bfbe0b63e125c20616939151bed5a51e85270e1bb30391be"
+    },
+    {
+      "name": "row-count:bbht_operational_connected_validation.csv",
+      "status": "PASS",
+      "detail": "expected=504; actual=504"
+    },
+    {
+      "name": "row-count:bbht_operational_primary.csv",
+      "status": "PASS",
+      "detail": "expected=204; actual=204"
+    },
+    {
+      "name": "row-count:bbht_summary.csv",
+      "status": "PASS",
+      "detail": "expected=8; actual=8"
+    },
+    {
+      "name": "row-count:classical_budget_curve_aggregate.csv",
+      "status": "PASS",
+      "detail": "expected=12; actual=12"
+    },
+    {
+      "name": "row-count:classical_budget_curve_runs.csv",
+      "status": "PASS",
+      "detail": "expected=13824; actual=13824"
+    },
+    {
+      "name": "row-count:classical_budget_curve_summary.csv",
+      "status": "PASS",
+      "detail": "expected=216; actual=216"
     },
     {
       "name": "row-count:classical_budgeted_runs.csv",
@@ -731,6 +1056,36 @@
       "detail": "expected=36; actual=36"
     },
     {
+      "name": "row-count:connected_validation_coupled_oracle.csv",
+      "status": "PASS",
+      "detail": "expected=252; actual=252"
+    },
+    {
+      "name": "row-count:connected_validation_fixed_overhead.csv",
+      "status": "PASS",
+      "detail": "expected=4410; actual=4410"
+    },
+    {
+      "name": "row-count:connected_validation_graph_diagnostics.csv",
+      "status": "PASS",
+      "detail": "expected=45; actual=45"
+    },
+    {
+      "name": "row-count:connected_validation_graphs.csv",
+      "status": "PASS",
+      "detail": "expected=1515; actual=1515"
+    },
+    {
+      "name": "row-count:connected_validation_ground_truth.csv",
+      "status": "PASS",
+      "detail": "expected=45; actual=45"
+    },
+    {
+      "name": "row-count:connected_validation_operational_thresholds.csv",
+      "status": "PASS",
+      "detail": "expected=135; actual=135"
+    },
+    {
       "name": "row-count:coupled_oracle_depth_sensitivity.csv",
       "status": "PASS",
       "detail": "expected=255; actual=255"
@@ -739,6 +1094,11 @@
       "name": "row-count:coverage_coupled_oracle.csv",
       "status": "PASS",
       "detail": "expected=360; actual=360"
+    },
+    {
+      "name": "row-count:coverage_graph_diagnostics.csv",
+      "status": "PASS",
+      "detail": "expected=63; actual=63"
     },
     {
       "name": "row-count:coverage_graphs.csv",
@@ -761,9 +1121,34 @@
       "detail": "expected=12; actual=12"
     },
     {
+      "name": "row-count:dense_operational_lambda_connected_validation.csv",
+      "status": "PASS",
+      "detail": "expected=945; actual=945"
+    },
+    {
+      "name": "row-count:dense_operational_lambda_primary.csv",
+      "status": "PASS",
+      "detail": "expected=378; actual=378"
+    },
+    {
+      "name": "row-count:dense_operational_lambda_summary.csv",
+      "status": "PASS",
+      "detail": "expected=42; actual=42"
+    },
+    {
       "name": "row-count:fixed_overhead_sensitivity.csv",
       "status": "PASS",
       "detail": "expected=8085; actual=8085"
+    },
+    {
+      "name": "row-count:gw_sdp_connected_validation.csv",
+      "status": "PASS",
+      "detail": "expected=45; actual=45"
+    },
+    {
+      "name": "row-count:gw_sdp_primary.csv",
+      "status": "PASS",
+      "detail": "expected=18; actual=18"
     },
     {
       "name": "row-count:maxcut_ground_truth.csv",
@@ -781,9 +1166,39 @@
       "detail": "expected=54; actual=54"
     },
     {
+      "name": "row-count:primary_graph_diagnostics.csv",
+      "status": "PASS",
+      "detail": "expected=18; actual=18"
+    },
+    {
       "name": "row-count:qaoa_depth_inference.csv",
       "status": "PASS",
       "detail": "expected=3; actual=3"
+    },
+    {
+      "name": "row-count:qaoa_initialization_stability_aggregate.csv",
+      "status": "PASS",
+      "detail": "expected=3; actual=3"
+    },
+    {
+      "name": "row-count:qaoa_initialization_stability_comparison.csv",
+      "status": "PASS",
+      "detail": "expected=6; actual=6"
+    },
+    {
+      "name": "row-count:qaoa_initialization_stability_inference.csv",
+      "status": "PASS",
+      "detail": "expected=3; actual=3"
+    },
+    {
+      "name": "row-count:qaoa_initialization_stability_instance_summary.csv",
+      "status": "PASS",
+      "detail": "expected=54; actual=54"
+    },
+    {
+      "name": "row-count:qaoa_initialization_stability_runs.csv",
+      "status": "PASS",
+      "detail": "expected=1080; actual=1080"
     },
     {
       "name": "row-count:qaoa_optimizer_inference.csv",
@@ -799,6 +1214,21 @@
       "name": "row-count:qaoa_runs.csv",
       "status": "PASS",
       "detail": "expected=270; actual=270"
+    },
+    {
+      "name": "row-count:resource_scalarization_connected_validation.csv",
+      "status": "PASS",
+      "detail": "expected=4032; actual=4032"
+    },
+    {
+      "name": "row-count:resource_scalarization_primary.csv",
+      "status": "PASS",
+      "detail": "expected=1632; actual=1632"
+    },
+    {
+      "name": "row-count:resource_scalarization_summary.csv",
+      "status": "PASS",
+      "detail": "expected=64; actual=64"
     }
   ]
 }

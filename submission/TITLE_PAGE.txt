@@ -1,0 +1,18 @@
+Title
+Resource-Aware Amplitude Amplification for Hybrid Quantum-Classical Workflows: A Reproducible Max-Cut Benchmark with QAOA and Classical References
+
+Author
+Ercan Erkalkan
+
+Affiliation
+Marmara University
+Vocational School of Technical Sciences
+Department of Electronics and Automation
+Artificial Intelligence Operator Program
+Mehmet Genç Campus
+34865 Kartal, Istanbul, Turkey
+
+Corresponding author
+Ercan Erkalkan
+Email: ercan.erkalkan@marmara.edu.tr
+ORCID: 0000-0001-9259-7112

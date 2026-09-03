@@ -1,0 +1,9 @@
+tier,n,instances,certified_instances,max_primal_dual_gap,median_sdp_upper_bound_over_Cstar,median_rounding_mean_ratio_to_Cstar,median_rounding_best_ratio_to_Cstar,instances_with_optimum_in_rounding,median_sdp_tightening_vs_spectral,evidence_label
+connected_validation,all,45,45,4.3501663071765506e-07,1.0170234738708877,0.9608627054732659,1.0,44,21.210576161579638,descriptive GW/SDP summary on exact validation tiers
+connected_validation,10,15,15,1.534015581228232e-07,1.0171992453080165,0.9627262995793269,1.0,15,16.995234238495982,descriptive GW/SDP summary on exact validation tiers
+connected_validation,12,15,15,1.300777938695319e-07,1.0105421662819352,0.9665543839738175,1.0,15,18.416455810531545,descriptive GW/SDP summary on exact validation tiers
+connected_validation,14,15,15,4.3501663071765506e-07,1.0180940054844538,0.9536767578125,1.0,14,34.508228762794346,descriptive GW/SDP summary on exact validation tiers
+primary,all,18,18,2.271964660849335e-07,1.0150432766778839,0.9661253679712626,1.0,18,15.416726909662387,descriptive GW/SDP summary on exact validation tiers
+primary,8,6,6,2.260051701341581e-08,1.0113164600043156,0.9677759245012734,1.0,6,13.555948958186576,descriptive GW/SDP summary on exact validation tiers
+primary,10,6,6,1.1817631673238793e-07,1.0109802246583532,0.9764686802455358,1.0,6,15.259302001501446,descriptive GW/SDP summary on exact validation tiers
+primary,12,6,6,2.271964660849335e-07,1.0195120732996155,0.9618050133884043,1.0,6,24.934989301697144,descriptive GW/SDP summary on exact validation tiers
