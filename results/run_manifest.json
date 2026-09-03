@@ -424,7 +424,7 @@
     "README.md": "829c4ce5531a9afdb6517136a5175f880bf41a6574e7e62a4ffaa7067e794980",
     "CLAIMS_REGISTER.md": "6c5ae8af6ddbff49226bb5827c27d1211393a1a13e9fa696348c164d2be602fb",
     "requirements.txt": "593c510ee8af7799985831f334d55681312656f53b1f2a006aa58e83c0e36888",
-    "requirements.lock": "ad072b8f3992bb4cc9b22ec2209a7ba26d03ca5de879dbeb5c7dcab6d1a50c46",
+    "requirements.lock": "5d0a8b79c483fa93cfe257654bcb62783c49c2243cbc98ce61da159d7db90b0e",
     ".python-version": "e72b03ed5b70312f2782f2b05055c55b24670e126d50e24c4f2c559bf288f810"
   },
   "manuscript_dependency_sha256": {
