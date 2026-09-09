@@ -1,0 +1,48 @@
+name: Compiler Topology Robustness
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - src/compiler_topology_robustness.py
+      - src/compiler_validation_qiskit.py
+      - results/compiler_validation_qiskit.csv
+      - .github/workflows/compiler-topology-robustness.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  compiler-topology-robustness:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install locked compiler environment
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install 'qiskit==2.4.2'
+          python -m pip freeze | sort > compiler_topology_environment_pip_freeze.txt
+
+      - name: Run topology robustness audit
+        run: |
+          python src/compiler_topology_robustness.py --out-dir compiler_topology_robustness_artifact
+          cp compiler_topology_environment_pip_freeze.txt compiler_topology_robustness_artifact/
+          sha256sum compiler_topology_robustness_artifact/* | sort > compiler_topology_robustness_artifact/SHA256SUMS.txt
+
+      - name: Upload topology robustness evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: compiler-topology-robustness-qiskit-2.4.2
+          path: compiler_topology_robustness_artifact/
+          if-no-files-found: error
+          retention-days: 90
