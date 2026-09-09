@@ -1,0 +1,58 @@
+{
+  "audit_date": "2026-09-09",
+  "evidence_label": "compiler-level synthetic-topology robustness; not physical hardware execution or timing evidence",
+  "qiskit_version": "2.4.2",
+  "python_version": "3.12.14",
+  "basis_gates": ["rz", "sx", "x", "cx"],
+  "seed_transpiler": 20260901,
+  "optimization_level": 1,
+  "workflow_run_id": 34365030258,
+  "workflow_artifact_id": 10109484982,
+  "workflow_artifact_sha256": "540bc30840c1917e18b69b1d1ab68a54ea69b332eeb00b4ff0254ad1e3c1d0ac",
+  "baseline_guard": {
+    "baseline_rows_expected": 57,
+    "line_rows_rerun": 57,
+    "metric_mismatches": 0,
+    "missing_rows": 0,
+    "extra_rows": 0,
+    "passed": true
+  },
+  "row_count": 171,
+  "qaoa_rows": 162,
+  "oracle_sparse_rows": 9,
+  "topologies": {
+    "line": "bidirectional path",
+    "ring": "bidirectional cycle",
+    "ladder": "bidirectional two-row ladder-like graph"
+  },
+  "qaoa_matched_median_ratios_to_line": {
+    "ring": {
+      "compiled_depth": 0.9363299038623714,
+      "compiled_cx": 0.8970508084539454,
+      "fraction_depth_not_worse_than_line": 0.8518518518518519,
+      "fraction_cx_not_worse_than_line": 0.9074074074074074
+    },
+    "ladder": {
+      "compiled_depth": 0.784705245512328,
+      "compiled_cx": 0.6218414194946271,
+      "fraction_depth_not_worse_than_line": 0.9814814814814815,
+      "fraction_cx_not_worse_than_line": 1.0
+    }
+  },
+  "oracle_sparse_matched_median_ratios_to_line": {
+    "ring": {
+      "compiled_depth": 1.0014913325902295,
+      "compiled_cx": 1.003947153808514
+    },
+    "ladder": {
+      "compiled_depth": 0.9271287224054503,
+      "compiled_cx": 0.9000489316587832
+    }
+  },
+  "interpretation": [
+    "The locked line-topology baseline is exactly reproduced before alternate-topology evidence is accepted.",
+    "Concrete routed depth and CX counts are topology-sensitive.",
+    "The alternate synthetic connectivity maps do not reveal a line-specific inflation pattern that reverses the compiler-level interpretation; ladder routing is generally cheaper and ring routing is typically similar to or cheaper than line for QAOA, while sparse-oracle ring routing is essentially unchanged.",
+    "No backend calibration, duration, fidelity, queue-time, energy, or hardware-speedup claim is made."
+  ]
+}
