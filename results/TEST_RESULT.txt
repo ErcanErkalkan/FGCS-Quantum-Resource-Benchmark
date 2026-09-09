@@ -1,16 +1,23 @@
-FGCS P2 GitHub/Zenodo release-preparation revalidation — 2026-08-31
-68/68 scientific regression tests PASS
-Full scientific/package preflight: 158 PASS, 0 WARN, 0 FAIL
-Release metadata syntax: CITATION.cff PASS; GitHub Actions YAML PASS
-Final manuscript candidate: 15 pages, double-column (elsarticle 5p,times)
-LaTeX: 0 overfull boxes; 0 undefined references/citations; 0 LaTeX warnings
-P0-1: configuration-specific deterministic random-graph streams (v2); 18 primary QAOA instances
-P0-2: 8,085 fixed-overhead sensitivity rows; zero-overhead selector compatibility preserved
-P1: random graph family random_fixed_density; literature/declaration/taxonomy cleanup complete
-P2: GitHub/Zenodo release metadata and preservation guide prepared; numerical evidence unchanged
-Funding: manual author confirmation required; no funding/no-funding assertion inferred
-License: manual author selection required before public v1.0.0 release
-GitHub remote: target ErcanErkalkan/FGCS-Quantum-Resource-Benchmark; repository creation/push pending
-Zenodo: repository enablement/release ingestion pending; DOI not yet assigned
-Hardware claims: false
-Compiler claims: false
+FGCS CURRENT VALIDATION STATUS — 2026-09-09
+
+Canonical archived software release: v1.1.0
+Archived release commit: 923ffe7570dd2d8fb6235ae6eab63a5cf1c50b8d
+Zenodo version DOI: 10.5281/zenodo.22272778
+
+Release verification:
+- 94/94 regression tests PASS in the v1.1.0 final release verification record.
+- Final full reproducibility preflight: 302 PASS, 0 WARN, 0 FAIL.
+- P14/P15/P16 dedicated checks: 11/11, 3/3, and 9/9 PASS.
+- GitHub Actions reproducibility workflow completed successfully for archived commit 923ffe7570dd2d8fb6235ae6eab63a5cf1c50b8d.
+
+Current evidence state:
+- Primary exact benchmark: 18 instances.
+- Expanded exact coverage tier: 63 instances.
+- Connected non-bipartite exact validation tier: 45 instances through n=14.
+- Compiler-locked Qiskit 2.4.2 evidence is present and explicitly synthetic-topology/compiler evidence, not physical-hardware evidence.
+- Hardware/quantum-advantage claims: none.
+
+Current journal-submission manuscript is maintained separately as the single canonical submission build. Historical manuscript PDFs are not authoritative for current submission.
+
+Preservation rule:
+- Do not move, rewrite, or retag the archived v1.1.0 Git tag or its Zenodo record.
